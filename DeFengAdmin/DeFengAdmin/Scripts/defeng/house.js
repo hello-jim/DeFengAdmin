@@ -601,28 +601,30 @@ function GetHouseObj() {
 //初始化编辑房源
 function InitEditHouseData(obj) {
     $(".owner-show").on("click", function () {
+        $(this).hide();
         $(".owner-info").show();
         $(".follow-record").hide();
+        $(".follow-record-show").show();
     });
     $(".follow-record-show").on("click", function () {
+        $(this).hide();
         $(".owner-info").hide();
         $(".follow-record").show();
+        $(".owner-show").show();
     });
-    $("#houseID").val(obj.ID);  
+    $("#houseID").val(obj.ID);
+    var arr = { "pro": obj.Province.ID, "city": obj.City.ID, "district": obj.District.ID, "area": obj.Area.ID };
+
     //省
-    InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", false);
+    InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", false, arr);
     $("#provinceSelect [value=" + obj.Province.ID + "]").attr("selected", "selected");
     $("#provinceSelect").prev().find("a span")[0].innerText = $("#provinceSelect :selected").text();
-
-    InitCity("#citySelect", "#provinceSelect", "#districtSelect", "#areaSelect", false);
     //城
     $("#citySelect [value=" + obj.City.ID + "]").attr("selected", "selected");
     $("#citySelect").prev().find("a span")[0].innerText = $("#citySelect :selected").text();
-    InitDistrict("#districtSelect", "#citySelect", "#areaSelect", "", false);
     //区
     $("#districtSelect [value=" + obj.District.ID + "]").attr("selected", "selected");
     $("#districtSelect").prev().find("a span")[0].innerText = $("#districtSelect :selected").text();
-    InitArea("#areaSelect", "#districtSelect", "", false);
     //片区
     $("#areaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
     $("#areaSelect").prev().find("a span")[0].innerText = $("#areaSelect :selected").text();
@@ -722,7 +724,10 @@ function InitEditHouseData(obj) {
     $("#lookHouseTypeSelect").prev().find("a span")[0].innerText = $("#lookHouseTypeSelect :selected").text();
     //跟进记录
     CreateFollowRecord(obj.ID);
-
+    $("#ownerTxt").val(obj.OwnerName);
+    $("#ownerPhoneTxt").val(obj.OwnerPhone);
+    $("#contactsTxt").val(obj.Contacts);
+    $("#contactPhoneTxt").val(obj.ContactPhone);
     $("#editSave").on("click", function () {
         var house = GetHouseObj();
         var houseJosn = JSON.stringify(house);
@@ -797,7 +802,10 @@ function ShowHousePanel(action) {
     if (action == "editHouse") {
         $("#fileUp").show();
         $(".follow-record-panel-show").show();
-        $(".owner-show").show();
+        var recordBtnIsShow = $(".follow-record-show").attr("style").indexOf("display: none") != -1;
+        if (recordBtnIsShow) {
+            $(".owner-show").show();
+        }
         $("#addHouse").hide();
         var houseID = $("#houseID").val();
     } else {
@@ -1059,13 +1067,13 @@ function CreateFollowRecord(houseID) {
                    var json = $.parseJSON(data);
                    var html = "";
                    for (var i = 0; i < json.length; i++) {
-                       html += "<div class='row'>";
-                       html += "<div class='col-md-7'>" + json[i].FollowContent + "</div>";
-                       html += "<div class='col-md-2'>" +  "暂无"+ "</div>";
-                       html += "<div class='col-md-3'>" + DateTimeConvert_yyyyMMddhhmm(json[i].CreateDate) + "</div>";
-                       html += "</div>";
+                       html += "<tr>"
+                       html += "<td style='width:70%;'>" + json[i].FollowContent + "</td>";
+                       html += "<td style='width:15%;'>暂无</td>";
+                       html += "<td style='width:15%;'>" + DateTimeConvert_yyyyMMddhhmm(json[i].CreateDate) + "</td>";
+                       html += "</tr>";
                    }
-                   $(".follow-record").html(html);
+                   $(".follow-record div table").html(html);
                }
            });
 

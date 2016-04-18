@@ -1,27 +1,31 @@
 ﻿///初始化省
 
-function InitProvince(id, cityID, districtID, areaID, async) {
+function InitProvince(id, cityID, districtID, areaID, async, arr) {
     $.ajax({
         url: "/Common/LoadProvince",
         async: async,
         success: function (data) {
             var json = $.parseJSON(data);
             var html = "";
-            var cookieValue = $.cookie("provinceID");
+            var selectedValue = $.cookie("provinceID");
+            if (arr != null) {
+                selectedValue = arr["pro"];
+            }
             for (var i = 0; i < json.length; i++) {
                 var selected = "";
-                if (json[i].ID == cookieValue) {
+                if (json[i].ID == selectedValue) {
                     selected = "selected=selected";
                 }
                 html += "<option value=" + json[i].ID + " " + selected + ">" + json[i].Name + "</option>";
             }
             $(id).html(html);
-            if (cookieValue != null) {
-                InitCity(cityID, id, districtID, areaID, async);
+            var proIsEmpty = $("" + id + " option").length < 1;
+            if (selectedValue != null || !proIsEmpty) {
+                InitCity(cityID, id, districtID, areaID, async, arr);
             }
             $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
             $(id).on("change", function () {
-                InitCity(cityID, id, districtID, areaID, async);
+                InitCity(cityID, id, districtID, areaID, async, "");
                 $.cookie("provinceID", $(this).val());
             })
         }
@@ -29,7 +33,7 @@ function InitProvince(id, cityID, districtID, areaID, async) {
 }
 
 //初始化市
-function InitCity(id, proID, districtID, areaID, async) {
+function InitCity(id, proID, districtID, areaID, async, arr) {
     var proID = $(proID).val();
     $.ajax({
         url: "/Common/LoadCity",
@@ -37,23 +41,27 @@ function InitCity(id, proID, districtID, areaID, async) {
         async: async,
         success: function (data) {
             var json = $.parseJSON(data);
-            var cookieValue = $.cookie("cityID");
+            var selectedValue = $.cookie("cityID");
+            if (arr != null) {
+                selectedValue = arr["city"];
+            }
             var html = "";
             for (var i = 0; i < json.length; i++) {
                 var selected = "";
-                if (json[i].ID == cookieValue) {
+                if (json[i].ID == selectedValue) {
                     selected = "selected=selected";
                 }
                 html += "<option value=" + json[i].ID + " " + selected + ">" + json[i].Name + "</option>";
             }
             $(id).html(html);
-            if (cookieValue != null) {
+            var cityIsEmpty = $("" + id + " option").length < 1;
+            if (selectedValue != null || !cityIsEmpty) {
                 var cityID = $(id).val();
-                InitDistrict(districtID, id, areaID, async);
+                InitDistrict(districtID, id, areaID, "", async, arr);
             }
             $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
             $(id).on("change", function () {
-                InitDistrict(districtID, id, areaID, async);
+                InitDistrict(districtID, id, areaID, "", async, "");
                 $.cookie("cityID", $(this).val());
             });
         }
@@ -61,7 +69,7 @@ function InitCity(id, proID, districtID, areaID, async) {
 }
 
 ///初始化区
-function InitDistrict(id, cityID, areaID, firstText, async) {
+function InitDistrict(id, cityID, areaID, firstText, async, arr) {
     $("" + id + " option").remove();
     $(id).prev().find("ul .select2-search-choice").remove();
     var cityID = $(cityID).val();
@@ -75,18 +83,26 @@ function InitDistrict(id, cityID, areaID, firstText, async) {
             if (firstText != "") {
                 html += "<option value=0 >" + firstText + "</option>";
             }
+            var selectedValue = 0;
+            if (arr != null) {
+                selectedValue = arr["district"];
+            }
             for (var i = 0; i < json.length; i++) {
-                html += "<option value=" + json[i].ID + ">" + json[i].Name + "</option>";
+                var selected = "";
+                if (json[i].ID == selectedValue) {
+                    selected = "selected"
+                }
+                html += "<option value=" + json[i].ID + " " + selected + ">" + json[i].Name + "</option>";
             }
 
             $(id).html(html);
             if ($("" + id + " :selected").length > 0) {
-                InitArea(areaID, id, async);
+                InitArea(areaID, id, firstText, async, arr);
             }
             // $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
             $(id).on("change", function () {
                 if ($("" + id + " :selected").length == 1) {
-                    InitArea(areaID, id, async);
+                    InitArea(areaID, id, firstText, async, "");
                     $(areaID).removeAttr("disabled");
                 } else {
                     $(areaID).prev().find("ul .select2-search-choice").remove()
@@ -98,7 +114,7 @@ function InitDistrict(id, cityID, areaID, firstText, async) {
     });
 }
 
-function InitArea(id, disID, firstText, async) {
+function InitArea(id, disID, firstText, async, arr) {
     $("" + id + " option").remove();
     var disID = $(disID)[0].value;
     $.ajax({
@@ -111,8 +127,16 @@ function InitArea(id, disID, firstText, async) {
             if (firstText != "") {
                 html += "<option value=0 >" + firstText + "</option>";
             }
+            var selectedValue = 0;
+            if (arr != null) {
+                selectedValue = arr["area"];
+            }
             for (var i = 0; i < json.length; i++) {
-                html += "<option value=" + json[i].ID + ">" + json[i].AreaName + "</option>";
+                var seleced = "";
+                if (json[i].ID == selectedValue) {
+                    seleced = "selected";
+                }
+                html += "<option value=" + json[i].ID + " " + seleced + ">" + json[i].AreaName + "</option>";
             }
             $(id).html(html);
             $(id).on("change", function () {

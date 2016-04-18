@@ -1192,15 +1192,39 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-md-6 follow-record">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'>
+                           
+                        </table>
+                    </div>
                 </div>
                 <div class="col-md-6 owner-info display">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input id="entrustIDTxt" class="form-control" name="entrustID" data-validate="required" placeholder="委托编号" />
+                                <input id="ownerTxt" class="form-control" name="entrustID" data-validate="required" placeholder="业主" />
                             </div>
                         </div>
-                    </div>               
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="ownerPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="手机" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="contactsTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系人" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="contactPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class=""></div>
                 <div class="col-sm-6">
@@ -1216,8 +1240,8 @@
                 <button class="btn display follow-record-panel-show" type="button">写跟进</button>
             </div>
             <div class="col-md-2">
-                <button class="btn display owner-show" type="button">看业主</button>
-                <button class="btn display follow-record-show" type="button">看跟进</button>
+                <button class="btn  owner-show" type="button">看业主</button>
+                <button class="btn  follow-record-show" type="button">看跟进</button>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-2"><button class="btn display" type="button" id="fileUp">上传图片</button></div>
