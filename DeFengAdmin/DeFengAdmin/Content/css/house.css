@@ -1,0 +1,94 @@
+﻿body {
+}
+
+.search_select {
+    width: 200px;
+}
+
+.display {
+    display: none;
+}
+
+.font_size {
+    font-size: 14px;
+}
+
+.float_left {
+    float: left;
+}
+
+.text_width {
+    width: 80%;
+}
+
+.transparent_div {
+    top: 0px;
+    position: absolute;
+    z-index: 99998;
+    width: 100%;
+    background-color: cadetblue;
+    opacity: 0.3;
+}
+
+.housePanelDiv {
+    position: absolute;
+    z-index: 99998;
+    width: 1200px;
+    height: 780px;
+    left: 30%;
+    margin-left: -250px;
+    margin-top: -100px;
+    border: solid 3px #ccc;
+}
+
+.imgPanellDiv {
+    position: absolute;
+    z-index: 99999;
+    width: 1200px;
+    height: 780px;
+    left: 30%;
+    margin-left: -250px;
+    margin-top: -100px;
+    border: solid 3px #ccc;
+}
+
+.housePanelClose a {
+    float: right;
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.search_txt input[type=text] {
+    width: 80px;
+    display: inline-block;
+}
+
+.table-add {
+    font-size: 20px;
+}
+
+.img-panel-close {
+    padding-left: 90%;
+}
+
+.img-delete {
+    padding-left: 90%;
+}
+
+.follow-record-panel {
+    position: absolute;
+    z-index: 99999;
+    left: 40%;
+    width: 800px;
+    height: 510px;
+    margin-left: -250px;
+    margin-top: -100px;
+    border: solid 3px #ccc;
+    display:none;
+}
+.follow-record-save {
+    float:right
+}
+.follow-record-panel-close {
+    float:right
+}
