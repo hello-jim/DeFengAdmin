@@ -15,6 +15,7 @@ namespace DeFengAdmin.Controllers
     public class HouseController : Controller
     {
 
+
         House_BLL bll = new House_BLL();
         // GET: House
         public ActionResult Index()

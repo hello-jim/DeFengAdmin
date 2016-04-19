@@ -1,6 +1,8 @@
 ﻿var searchAction = "";
 
 $(document).ready(function () {
+    $("#main-menu li").removeClass("active");
+    $(".house-menu").addClass("opened active");
     InitProvince("#provinceSearchSelect", "#citySearchSelect", "#districtSearchSelect", "#areaSearchSelect", true);
     InitTransactionType("#transactionTypeSearchSelect", "全部", true);
     InitHouseUseType("#houseUseTypeSearchSelect", "全部", true);
@@ -40,6 +42,7 @@ $(document).ready(function () {
     });
 
     $("#proxyStartDateSearchSelect").on("change", function () {
+        $(".pageCount").remove();
         var house = GetProxyStartDateObj();
         var houseJson = JSON.stringify(house);
         BeforeHouseDataLoading();
@@ -58,6 +61,7 @@ $(document).ready(function () {
     });
 
     $("#houseSaleDateSearchSelect").on("change", function () {
+        $(".pageCount").remove();
         var house = GetSaleHouseDateObj();
         var houseJson = JSON.stringify(house);
         BeforeHouseDataLoading();
@@ -76,6 +80,7 @@ $(document).ready(function () {
     });
 
     $("#houseLeaseDateSearchSelect").on("change", function () {
+        $(".pageCount").remove();
         var house = GetHouseLeaseDateObj();
         var houseJson = JSON.stringify(house);
         BeforeHouseDataLoading();
@@ -94,6 +99,7 @@ $(document).ready(function () {
     });
 
     $("#houseStatusSearchSelect").on("change", function () {
+        $(".pageCount").remove();
         var house = GetHouseStatusObj();
         var houseJson = JSON.stringify(house);
         BeforeHouseDataLoading();
@@ -112,6 +118,7 @@ $(document).ready(function () {
     });
 
     $("#houseQualitySearchSelect").on("change", function () {
+        $(".pageCount").remove();
         var house = GetHouseQualityObj();
         var houseJson = JSON.stringify(house);
         BeforeHouseDataLoading();
@@ -128,29 +135,6 @@ $(document).ready(function () {
                 searchAction = "houseQuality";
             });
     });
-
-    //$("#addHouse").on("click", function () {
-    //    var house = GetHouseObj();
-    //    var houseJson = JSON.stringify(house);
-    //    $.post("/Home/AddHouse",
-    //        {
-    //            house: houseJson
-    //        },
-    //        function (data) {
-
-    //        });
-    //});
-    //$("#updateHouse").on("click", function () {
-    //    var house = GetHouseObj();
-    //    var houseJson = JSON.stringify(house);
-    //    $.post("/House/AddHouse",
-    //        {
-    //            house: houseJson
-    //        },
-    //        function (data) {
-
-    //        });
-    //});
 });
 
 function CreateHouseTable(json) {
@@ -293,12 +277,12 @@ function GetSaleHouseDateObj() {
     var transactionType = new Object();
     transactionType.ID = 2;
 
-    var houseSaleDateVal = $("#houseSaleDateSearchSelect").val();
+    var houseSaleDateVal = parseInt($("#houseSaleDateSearchSelect").val());
     var proxyStartDate = new Date();
-    if (transactionType.ID == -1) {
-        proxyStartDate = null;
+    if (houseSaleDateVal == -1) {
+        proxyStartDate = new Date("1900-01-01");
     } else {
-        proxyStartDate.setDate(proxyStartDate.getDate() - parseInt(houseSaleDateVal));
+        proxyStartDate.setDate(proxyStartDate.getDate() - houseSaleDateVal);
     }
 
     var house = new Object();
@@ -309,13 +293,13 @@ function GetSaleHouseDateObj() {
 }
 
 function GetProxyStartDateObj() {
-    var proxyStartDateVal = $("#proxyStartDateSearchSelect").val();
+    var proxyStartDateVal = parseInt($("#proxyStartDateSearchSelect").val());
     var proxyStartDate = new Date();
-    //if (proxyStartDateVal == -1) {
-    //    proxyStartDate = null;
-    //} else {
-    proxyStartDate.setDate(proxyStartDate.getDate() - parseInt(proxyStartDateVal));
-    // }
+    if (proxyStartDateVal == -1) {
+        proxyStartDate = new Date("1900-01-01");
+    } else {
+        proxyStartDate.setDate(proxyStartDate.getDate() - proxyStartDateVal);
+    }
     var house = new Object();
     house.ProxyStartDate = proxyStartDate;
 
@@ -326,12 +310,12 @@ function GetHouseLeaseDateObj() {
     var transactionType = new Object();
     transactionType.ID = 1;
 
-    var houseLeaseDateVal = $("#houseLeaseDateSearchSelect").val();
+    var houseLeaseDateVal = parseInt($("#houseLeaseDateSearchSelect").val());
     var proxyStartDate = new Date();
     if (transactionType.ID == -1) {
-        proxyStartDate = null;
+        proxyStartDate = new Date("1900-01-01");
     } else {
-        proxyStartDate.setDate(proxyStartDate.getDate() - parseInt(houseLeaseDateVal));
+        proxyStartDate.setDate(proxyStartDate.getDate() - houseLeaseDateVal);
     }
 
     var house = new Object();
@@ -344,7 +328,6 @@ function GetHouseLeaseDateObj() {
 function GetHouseStatusObj() {
     var houseStatus = new Object();
     houseStatus.ID = $("#houseStatusSearchSelect").val();
-
     var house = new Object();
     house.HouseStatus = houseStatus;
     return house;
@@ -802,9 +785,9 @@ function ShowHousePanel(action) {
     if (action == "editHouse") {
         $("#fileUp").show();
         $(".follow-record-panel-show").show();
-        var recordBtnIsShow = $(".follow-record-show").attr("style").indexOf("display: none") != -1;
+        var recordBtnIsShow = $(".follow-record-show").css("display") == "inline-block";
         if (recordBtnIsShow) {
-            $(".owner-show").show();
+            $(".owner-show").hide();
         }
         $("#addHouse").hide();
         var houseID = $("#houseID").val();

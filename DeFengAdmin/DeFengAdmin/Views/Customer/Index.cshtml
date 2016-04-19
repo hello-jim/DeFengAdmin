@@ -13,7 +13,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"></h3>
-           
+
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
@@ -21,14 +21,14 @@
 
                             <script type="text/javascript">
                                 jQuery(document).ready(function ($) {
-                                    $("#proxyStartDateSearchSelect").selectBoxIt().on('open', function () {
+                                    $("#entrustStartDateSearchSelect").selectBoxIt().on('open', function () {
                                         // Adding Custom Scrollbar
                                         $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
                                     });
                                 });
                             </script>
 
-                            <select class="form-control" id="proxyStartDateSearchSelect">
+                            <select class="form-control" id="entrustStartDateSearchSelect">
                                 <option value="-1">全部</option>
                                 <option value="0">今天</option>
                                 <option value="3">最近三天</option>
@@ -48,23 +48,22 @@
 
                             <script type="text/javascript">
                                 jQuery(document).ready(function ($) {
-                                    $("#houseSaleDateSearchSelect").selectBoxIt().on('open', function () {
+                                    $("#customerBuyDateSearchSelect").selectBoxIt().on('open', function () {
                                         // Adding Custom Scrollbar
                                         $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
                                     });
                                 });
                             </script>
 
-                            <select class="form-control" id="houseSaleDateSearchSelect">
-                                <option value="-1">出售</option>
-                                <option value="0">今日售房</option>
+                            <select class="form-control" id="customerBuyDateSearchSelect">
+                                <option value="-1">全部</option>
+                                <option value="0">今日买客</option>
                                 <option value="3">最近三天</option>
                                 <option value="7">最近七天</option>
                                 <option value="15">最近半月</option>
                                 <option value="30">最近一个月</option>
                                 <option value="90">最近三个月</option>
-                                <option value="180">最近半年</option>
-                                <option value="-1">全部</option>
+                                <option value="180">最近半年</option>                              
                             </select>
 
                         </div>
@@ -83,15 +82,14 @@
                             </script>
 
                             <select class="form-control" id="houseLeaseDateSearchSelect">
-                                <option value="-1">出租</option>
+                                <option value="-1">全部</option>
                                 <option value="0">今日租房</option>
                                 <option value="3">最近三天</option>
                                 <option value="7">最近七天</option>
                                 <option value="15">最近半月</option>
                                 <option value="30">最近一个月</option>
                                 <option value="90">最近三个月</option>
-                                <option value="180">最近半年</option>
-                                <option value="-1">全部</option>
+                                <option value="180">最近半年</option>                        
                             </select>
 
                         </div>
@@ -111,15 +109,16 @@
 
                             <select class="form-control" id="houseStatusSearchSelect">
                                 <option value="-1">状态</option>
-                                <option value="1">暂缓</option>
-                                <option value="2">无效</option>
-                                <option value="3">我售</option>
-                                <option value="4">我租</option>
-                                <option value="5">已租</option>
-                                <option value="6">预定</option>
-                                <option value="7">已售</option>
-                                <option value="8">未知</option>
-                                <option value="9">有效</option>
+                                <option value="1">有效</option>
+                                <option value="2">非有效</option>
+                                <option value="3">预定</option>
+                                <option value="4">已购</option>
+                                <option value="5">我购</option>
+                                <option value="6">已租</option>
+                                <option value="7">我租</option>
+                                <option value="8">暂缓</option>
+                                <option value="9">未知</option>
+                                <option value="9">无效</option>
                             </select>
 
                         </div>
@@ -138,10 +137,9 @@
                             </script>
 
                             <select class="form-control" id="houseQualitySearchSelect">
-                                <option value="-1">优质房</option>
-                                <option value="1">优质房</option>
-                                <option value="2">普通房</option>
-                                <option value="3">聚焦房</option>
+                                <option value="-1">全部</option>
+                                <option value="1">优质客</option>
+                                <option value="2">私客</option>
                             </select>
 
                         </div>
@@ -505,194 +503,6 @@
                         }, 0);
                     });
                 </script>
-
-                <div class="album-images row">
-
-                    <!-- Album Image -->
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="album-image">
-                            <a href="#" class="thumb" data-action="edit">
-                                <img src="~/Content/images/album-img-1.png" class="img-responsive" />
-                            </a>
-
-                            <a href="#" class="name">
-                                <span>IMG_007.jpg</span>
-                                <em>28 September 2014</em>
-                            </a>
-
-                            <div class="image-options">
-                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
-                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
-                            </div>
-
-                            <div class="image-checkbox">
-                                <input type="checkbox" class="cbr" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album Image -->
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="album-image">
-                            <a href="#" class="thumb" data-action="edit">
-                                <img src="assets/images/album-img-2.png" class="img-responsive" />
-                            </a>
-
-                            <a href="#" class="name">
-                                <span>IMG_008.jpg</span>
-                                <em>20 September 2014</em>
-                            </a>
-
-                            <div class="image-options">
-                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
-                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
-                            </div>
-
-                            <div class="image-checkbox">
-                                <input type="checkbox" class="cbr" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album Image -->
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="album-image">
-                            <a href="#" class="thumb" data-action="edit">
-                                <img src="assets/images/album-img-3.png" class="img-responsive" />
-                            </a>
-
-                            <a href="#" class="name">
-                                <span>IMG_060.jpg</span>
-                                <em>03 September 2014</em>
-                            </a>
-
-                            <div class="image-options">
-                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
-                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
-                            </div>
-
-                            <div class="image-checkbox">
-                                <input type="checkbox" class="cbr" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album Image -->
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="album-image">
-                            <a href="#" class="thumb" data-action="edit">
-                                <img src="assets/images/album-img-4.png" class="img-responsive" />
-                            </a>
-
-                            <a href="#" class="name">
-                                <span>IMG_1008.jpg</span>
-                                <em>23 August 2014</em>
-                            </a>
-
-                            <div class="image-options">
-                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
-                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
-                            </div>
-
-                            <div class="image-checkbox">
-                                <input type="checkbox" class="cbr" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album Image -->
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="album-image">
-                            <a href="#" class="thumb" data-action="edit">
-                                <img src="assets/images/album-img-5.png" class="img-responsive" />
-                            </a>
-
-                            <a href="#" class="name">
-                                <span>IMG_023.jpg</span>
-                                <em>30 July 2014</em>
-                            </a>
-
-                            <div class="image-options">
-                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
-                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
-                            </div>
-
-                            <div class="image-checkbox">
-                                <input type="checkbox" class="cbr" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album Image -->
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="album-image">
-                            <a href="#" class="thumb" data-action="edit">
-                                <img src="assets/images/album-img-6.png" class="img-responsive" />
-                            </a>
-
-                            <a href="#" class="name">
-                                <span>IMG_012.jpg</span>
-                                <em>16 July 2014</em>
-                            </a>
-
-                            <div class="image-options">
-                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
-                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
-                            </div>
-
-                            <div class="image-checkbox">
-                                <input type="checkbox" class="cbr" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album Image -->
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="album-image">
-                            <a href="#" class="thumb" data-action="edit">
-                                <img src="assets/images/album-img-7.png" class="img-responsive" />
-                            </a>
-
-                            <a href="#" class="name">
-                                <span>IMG_207.jpg</span>
-                                <em>25 June 2014</em>
-                            </a>
-
-                            <div class="image-options">
-                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
-                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
-                            </div>
-
-                            <div class="image-checkbox">
-                                <input type="checkbox" class="cbr" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Album Image -->
-                    <div class="col-md-3 col-sm-4 col-xs-6">
-                        <div class="album-image">
-                            <a href="#" class="thumb" data-action="edit">
-                                <img src="assets/images/album-img-8.png" class="img-responsive" />
-                            </a>
-
-                            <a href="#" class="name">
-                                <span>IMG_002.jpg</span>
-                                <em>24 August 2013</em>
-                            </a>
-
-                            <div class="image-options">
-                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
-                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
-                            </div>
-
-                            <div class="image-checkbox">
-                                <input type="checkbox" class="cbr" />
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
         </div>

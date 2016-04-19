@@ -139,10 +139,6 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\System.Web.WebPages.Deplo
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\System.Web.WebPages.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\System.Web.WebPages.Razor.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\WebGrease.dll
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.dll
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.BLL.pdb
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Common.pdb
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Model.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.AI.DependencyCollector.xml
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.AI.Web.xml
@@ -172,7 +168,10 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.O
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.Google.xml
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.BLL.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.BLL.pdb
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache

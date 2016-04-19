@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using DeFeng.Model.Global;
 using DeFeng.Model;
+//using DeFeng.BLL;
+//using Newtonsoft.Json;
+
 namespace DeFengAdmin.Controllers
 {
     public class CustomerController : Controller
@@ -18,7 +21,11 @@ namespace DeFengAdmin.Controllers
         public string Search()
         {
             try
-            { }
+            {
+                //var customer = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<Customer>(HttpContext.Request.Form["customer"]) : null;
+                //Customer_BLL bll = new Customer_BLL();
+                //bll.Search(customer);
+            }
             catch (Exception ex)
             {
                 Log log = new Log();
