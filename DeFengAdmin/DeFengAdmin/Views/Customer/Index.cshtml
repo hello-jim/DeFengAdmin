@@ -458,37 +458,41 @@
                         <ul class="table-col-menu dropdown-menu"></ul>
                     </div>
                 </div>
-                <div id="houseTabelDiv" class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
-                    <table id='houseTable' cellspacing='0' class='table table-small-font table-bordered table-striped'>
+                <div id="customer-tabel-div" class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+                    <table id='customer-table' cellspacing='0' class='table table-small-font table-bordered table-striped'>
                         <thead>
                             <tr>
                                 <th class="col-select">选择</th>
-                                <th class='colHouseID' data-priority='1'>房源编号</th>
+                                <th class='colCustomerID' data-priority='1'>客源编号</th>
                                 <th class='colTransactionType' data-priority='3'>交易</th>
-                                <th class='colDistrict' data-priority='1'>城区</th>
+                                <th class='colEntrustStartDate' data-priority='1'>委托日</th>
+                                <th class='colCustomerName' data-priority='3'>客户</th>
+                                <th class='colDistrict' data-priority='3'>城区</th>
                                 <th class='colArea' data-priority='3'>片区</th>
-                                <th class='colResidentialDistrict' data-priority='3'>楼盘字典</th>
-                                <th class='colResidentialDistrictAddr' data-priority='3'>楼盘地址</th>
-                                <th class='colHousePosition' data-priority='6'>栋楼位置</th>
-                                <th class='colHouseNumber' data-priority='6'>房号</th>
-                                <th class='colTotalFloor' data-priority='6'>总层</th>
-                                <th class='colHouseType1' data-priority='6'>房型</th>
+                                <th class='colResidentialDistrict' data-priority='3'>楼盘小区</th>
+                                <th class='colHousePosition' data-priority='6'>位置</th>
+                                <th class='colFloor' data-priority='6'>楼层</th>
+                                <th class='colHouseType' data-priority='6'>房型</th>
                                 <th class='colHouseSize' data-priority='6'>面积</th>
-                                <th class='colHouseUseSize' data-priority='6'>套内</th>
                                 <th class='colOrientation' data-priority='6'>朝向</th>
-                                <th class='colSaleTotalPrice' data-priority='6'>售总价</th>
-                                <th class='colSaleUnitPrice' data-priority='6'>售单价</th>
-                                <th class='colLeaseTotalPrice' data-priority='6'>租总价</th>
-                                <th class='colLeaseUnitPrice' data-priority='6'>租单价</th>
-                                <th class='colProxyStartDate' data-priority='6'>委托日</th>
+                                <th class='colPrice' data-priority='6'>价格</th>
+                                <th class='colDecorationType' data-priority='6'>装修</th>
+                                <th class='colSupporting' data-priority='6'>配套</th>
+                                <th class='colHouseUseType' data-priority='6'>用途</th>
+                                <th class='colHouseType' data-priority='6'>类型</th>
+                                <th class='colRemarks' data-priority='6'>备注</th>
+                                <th class='colGrade' data-priority='6'>等级</th>
                                 <th class='colLookHouseType' data-priority='6'>看房</th>
                                 <th class='colDepartment' data-priority='6'>部门</th>
                                 <th class='colStaff' data-priority='6'>员工</th>
-                                <th class='colHouseStatus' data-priority='6'>状态</th>
-                                <th class='colHousingLetter' data-priority='6'>公私</th>
-                                <th class='colHouseSource' data-priority='6'>来源</th>
-                                @*<th class='colImgCount' data-priority='6'>图片</th>*@
-                                <th class='colLastFollwDate' data-priority='6'>最后跟进日</th>
+                                <th class='colCustomerStatus' data-priority='6'>状态</th>
+                                <th class='colCustomerLetter' data-priority='6'>公私</th>
+                                <th class='colLastFollowDate' data-priority='6'>最后跟进日</th>
+                                <th class='colEntrustType' data-priority='6'>委托</th>
+                                <th class='colSource' data-priority='6'>来源</th>
+                                <th class='colCustomerType' data-priority='6'>类别</th>
+                                <th class='colIntention' data-priority='6'>意向</th>
+                                <th class='colEntrustOverDate' data-priority='6'>期限</th>
                             </tr>
                         </thead>
                     </table>

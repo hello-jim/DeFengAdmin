@@ -227,6 +227,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SysConfKey.xml" />
+    <Content Include="Content\css\customer.css" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
