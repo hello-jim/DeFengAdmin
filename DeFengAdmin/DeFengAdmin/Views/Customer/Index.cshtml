@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<link rel="stylesheet" href="~/Content/css/House.css" />
+<link rel="stylesheet" href="~/Content/css/customer.css" />
 <link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css" />
 <!-- Responsive Table -->
 <link rel="stylesheet" href="/Content/css/xenon-components.css">
@@ -444,7 +444,7 @@
 
                             <a href="#">
 
-                                <span class="expand-icon table-add" id="addHousePanel">+</span>
+                                <span class="expand-icon table-add add-customer" id="addHousePanel">+</span>
                             </a>&nbsp;
                             <a href="#" data-toggle="">
                                 <span id="deleteHouse" class="table-add">&times;</span>
@@ -508,12 +508,15 @@
         </div>
     </div>
 </div>
-<div class="housePanelDiv display">
+<div class="customer-panel display">
     <div class="panel">
         <div class="row">
             <input id="houseID" value="0" type="hidden" />
             <div class="col-md-11"></div>
-            <div class="col-md-1 housePanelClose"><a id="houserPanelClose" href="javascript:void(0);">x</a></div>
+            <div class="col-md-1 housePanelClose"><a class="customer-panel-close" href="javascript:void(0);">x</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
         </div>
         <div class="row">
             <div class="col-md-2">
@@ -1203,8 +1206,8 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <button class="btn display" type="button" id="addHouse">添加</button>
-                    <button class="btn display" type="button" id="editHouse">修改</button>
+                    <button class="btn display" type="button" id="addCustomer">添加</button>
+                    <button class="btn display" type="button" id="editCustomer">修改</button>
                     <button class="btn display" type="button" id="fileUp">上传图片</button>
                 </div>
             </div>
