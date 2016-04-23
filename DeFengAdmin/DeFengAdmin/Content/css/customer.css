@@ -1,0 +1,61 @@
+﻿body {
+}
+
+.customer-panel {
+    position: absolute;
+    z-index: 99998;
+    width: 1200px;
+    height: 780px;
+    left: 30%;
+    margin-left: -250px;
+    margin-top: -100px;
+    border: solid 3px #ccc;
+}
+.imgPanellDiv {
+    position: absolute;
+    z-index: 99999;
+    width: 1200px;
+    height: 780px;
+    left: 30%;
+    margin-left: -250px;
+    margin-top: -100px;
+    border: solid 3px #ccc;
+}
+.search_txt input[type=text] {
+    width: 80px;
+    display: inline-block;
+}
+
+.table-add {
+    font-size: 20px;
+}
+
+.img-panel-close {
+    padding-left: 90%;
+}
+
+.img-delete {
+    padding-left: 90%;
+}
+
+.follow-record-panel {
+    position: absolute;
+    z-index: 99999;
+    left: 40%;
+    width: 800px;
+    height: 510px;
+    margin-left: -250px;
+    margin-top: -100px;
+    border: solid 3px #ccc;
+    display:none;
+}
+.follow-record-save {
+    float:right
+}
+.follow-record-panel-close {
+    float:right
+}
+.display {
+    display: none;
+}
+

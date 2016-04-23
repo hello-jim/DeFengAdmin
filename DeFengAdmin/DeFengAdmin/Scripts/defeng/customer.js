@@ -28,7 +28,7 @@ function GetEntrustStartDateObj() {
     if (entrustStartDateVal == -1) {
         entrustStartDate = new Date("1900-01-01");
     } else {
-        entrustStartDate.setDate(proxyStartDate.getDate() - entrustStartDateVal);
+        entrustStartDate.setDate(entrustStartDate.getDate() - entrustStartDateVal);
     }
     var house = new Object();
     house.EntrustStartDate = entrustStartDate;
@@ -301,4 +301,17 @@ function HouseTableDoubleClick() {
                 });
         });
     });
+}
+
+//表格加载前
+function BeforeHouseDataLoading() {
+    $("houseTabelDiv").addClass("display");
+    $("#houseTable tbody").remove();
+    $("#loadImg").removeClass("display");
+}
+
+//表格加载后
+function AfterHouseDataLoading() {
+    $("#loadImg").addClass("display");
+    $("houseTabelDiv").removeClass("display");
 }

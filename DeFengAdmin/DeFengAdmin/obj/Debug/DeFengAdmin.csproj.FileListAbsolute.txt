@@ -175,3 +175,5 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.BLL.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Model.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Model.pdb
