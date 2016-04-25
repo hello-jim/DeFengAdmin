@@ -1,5 +1,17 @@
-﻿///初始化省
+﻿function GetSysConf(key) {
+    var value = "";
+    $.ajax({
+        url: "/Common/GetSysConf",
+        data: { key: key },
+        async: false,
+        success: function (data) {
+            value = data;
+        }
+    });
+    return value;
+}
 
+///初始化省
 function InitProvince(id, cityID, districtID, areaID, async, arr) {
     $.ajax({
         url: "/Common/LoadProvince",

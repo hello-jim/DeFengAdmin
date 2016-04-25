@@ -6,4 +6,5 @@
   <key>errorLogPath</key>
   <key>houseMaxCount</key>
   <key>houseImgSave</key>
+  <key>customerMaxCount</key>
 </root>

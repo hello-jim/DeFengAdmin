@@ -26,6 +26,8 @@ namespace DeFengAdmin.Controllers
                 var customer = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<Customer>(HttpContext.Request.Form["customer"]) : null;
                 Customer_BLL bll = new Customer_BLL();
                 list = bll.Search(customer);
+                var json = JsonConvert.SerializeObject(list);
+                return json;
             }
             catch (Exception ex)
             {
@@ -36,5 +38,6 @@ namespace DeFengAdmin.Controllers
             }
             return "";
         }
+
     }
 }

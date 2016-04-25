@@ -169,12 +169,13 @@ function CreateCustomerTable(json) {
             html += "<tr class='customer-tab-tr' houseID=" + json[i].ID + " houseJson='" + JSON.stringify(json[i]) + "'>";
             html += "<td><div  class='cbr-replaced col-select' houseID=" + json[i].ID + "><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div></td>";
             html += "<td class='colCustomerID'>" + IDPrefix + json[i].ID + "</td>";
-            html += "<td class='colTransactionType' transactionTypeID='" + json[i].TransactionType.ID + "'>" + json[i].TransactionType.TransactionTypeName + "</td>";
+            html += "<td class='colTransactionType' transactionTypeID='" + json[i].CustomerTransactionType.ID + "'>" + json[i].CustomerTransactionType.TypeName + "</td>";
             html += "<td class='colEntrustStartDate'>" + DateTimeConvert_yyyyMMdd(json[i].EntrustStartDate) + "</td>";
+            html += "<td class='colCustomerName'>" + json[i].CustomerName + "</td>";
             html += "<td class='colDistrict' districtID='" + json[i].District.ID + "'>" + json[i].District.Name + "</td>";
             html += "<td class='colArea' areaID='" + json[i].Area.ID + "'>" + json[i].Area.AreaName + "</td>";
             html += "<td class='colResidentialDistrict' colResidentialDistrictID='" + json[i].ResidentialDistrict.ID + "'>" + json[i].ResidentialDistrict.Name + "</td>";
-            html += "<td class='colHousePosition'>" + json[i].HousePosition + "</td>";
+            html += "<td class='colHousePosition'>" + json[i].Position + "</td>";
             html += "<td class='colFloor'>" + json[i].Floor + "</td>";
             html += "<td class='colHouseType1'>" + GetHouseType1(json[i].RoomCount, json[i].HallCount, json[i].ToiletCount, json[i].BalconyCount) + "</td>";
             html += "<td class='colHouseSize'>" + json[i].HouseSize + "</td>";
@@ -182,19 +183,17 @@ function CreateCustomerTable(json) {
             html += "<td class='colPrice'>" + json[i].Price + "</td>";
             html += "<td class='colDecorationType'>" + json[i].DecorationType.TypeName + "</td>";
             html += "<td class='colSupporting'>" + json[i].Supporting + "</td>";
-            html += "<td class='colHouseUseType'>" + json[i].HouseUseType.Name + "</td>";
+            html += "<td class='colHouseUseType'>" + json[i].HouseUseType.TypeName + "</td>";
             html += "<td class='colHouseType' colHouseTypeID='" + json[i].HouseType.ID + "'>" + json[i].HouseType.TypeName + "</td>";
             html += "<td class='colRemarks'>" + json[i].Remarks + "</td>";
-            html += "<td class='colGrade'>" + json[i].Grade + "</td>";
-            html += "<td class='colRemarks'>" + json[i].Remarks + "</td>";
-            html += "<td class='colLookHouseType'>" + json[i].LookHouseType.TypeName + "</td>";
-            html += "<td class='colStaff'>" + "暂无" + "</td>";
+            html += "<td class='colGrade'>" + json[i].Grade.GradeName + "</td>";
             html += "<td class='colDepartment'>" + "暂无" + "</td>";
+            html += "<td class='colStaff'>" + "暂无" + "</td>";
             html += "<td class='colCustomerStatus'>" + json[i].CustomerStatus.StatusName + "</td>";
-            html += "<td class='colCustomerLetter'>" + json[i].CustomerLetter + "</td>";
-            html += "<td class='colLastFollowDate'>" + json[i].LastFollowDate + "</td>";
-            html += "<td class='colEntrustType'>" + json[i].EntrustType.TypeName + "</td>";        
-            html += "<td class='colSource'>" + json[i].HouseStatus.Source.SourceName + "</td>";
+            html += "<td class='colIsPrivateCustomer'>" + (json[i].IsPrivateCustomer == true ? "私" : "公") + "</td>";
+            html += "<td class='colLastFollowDate'>" +DateTimeConvert_yyyyMMdd(json[i].LastFollowDate) + "</td>";
+            html += "<td class='colEntrustType'>" + json[i].EntrustType.TypeName + "</td>";
+            html += "<td class='colSource'>" + json[i].Source.SourceName + "</td>";
             html += "<td class='colCustomerType'>" + json[i].CustomerType.TypeName + "</td>";
             html += "<td class='colIntention'>" + json[i].Intention.IntentionName + "</td>";
             html += "<td class='colEntrustOverDate'>" + DateTimeConvert_yyyyMMdd(json[i].EntrustOverDate) + "</td>";
@@ -314,4 +313,35 @@ function BeforeHouseDataLoading() {
 function AfterHouseDataLoading() {
     $("#loadImg").addClass("display");
     $("houseTabelDiv").removeClass("display");
+}
+
+function GetHouseType1(roomCount, hallCount, toiletCount, balconyCount) {
+    return roomCount + "-" + hallCount + "-" + toiletCount + "-" + balconyCount;
+}
+
+function InitTableColSelect() {
+    $("#customer-table tbody .col-select").on("click", function () {
+        var thisObj = this;
+        var checked = $(thisObj).hasClass("cbr-checked");
+        if (checked) {
+            $(thisObj).removeClass("cbr-checked");
+        }
+        else {
+            $(thisObj).addClass("cbr-checked");
+        }
+    });
+}
+
+function GetPageCountHtml(totalLength, activeIndex) {
+    var houseMaxCount = GetSysConf("customerMaxCount");
+    var count = totalLength / houseMaxCount;
+    var html = "";
+    for (var i = 0; i < count; i++) {
+        var active = "";
+        if (i == activeIndex - 1) {
+            active = "active";
+        }
+        html += "<li class='paginate_button " + active + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (i + 1) + ">" + (i + 1) + "</a></li>";
+    }
+    return html;
 }

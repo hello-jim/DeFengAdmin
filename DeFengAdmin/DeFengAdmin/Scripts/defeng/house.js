@@ -219,18 +219,7 @@ function GetPageCountHtml(totalLength, activeIndex) {
 }
 
 //获取系统配置
-function GetSysConf(key) {
-    var value = "";
-    $.ajax({
-        url: "/Common/GetSysConf",
-        data: { key: key },
-        async: false,
-        success: function (data) {
-            value = data;
-        }
-    });
-    return value;
-}
+
 
 function InitPageIndex() {
     $(".paginate_button").on("click", function () {
