@@ -232,7 +232,13 @@ function InitOrientation(id, firstText, async) {
                 html += "<option value=" + json[i].ID + ">" + json[i].OrientationName + "</option>";
             }
             $(id).html(html);
-            $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
         }
     });
 }
@@ -252,7 +258,13 @@ function InitHouseType(id, firstText, async) {
                 html += "<option value=" + json[i].ID + ">" + json[i].TypeName + "</option>";
             }
             $(id).html(html);
-            $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
         }
     });
 }
@@ -276,7 +288,7 @@ function InitHousingLetter(id, firstText, async) {
         }
     });
 }
-
+//初始化房源资质
 function InitHouseQuality(id, firstText, async) {
     $.ajax({
         url: "/Common/LoadHouseQuality",
@@ -501,7 +513,13 @@ function InitHousePayType(id, firstText, async) {
                 html += "<option value=" + json[i].ID + ">" + json[i].TypeName + "</option>";
             }
             $(id).html(html);
-            $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
         }
     });
 }
@@ -583,6 +601,87 @@ function InitFollowType(id, firstText, async) {
                 $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
             });
             // $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
+        }
+    });
+}
+
+function InitCustomerTransactionType(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadCustomerTransactionType",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].TypeName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).selectBoxIt().on('open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+            });
+            // $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
+        }
+    });
+}
+//初始化客户状态
+function InitCustomerStatus(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadCustomerStatus",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].StatusName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).selectBoxIt().on('open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+            });
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+            // $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
+        }
+    });
+}
+
+function InitCustomerType(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadCustomerType",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].TypeName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
         }
     });
 }
@@ -669,7 +768,7 @@ function TableAscSort(sortCol) {
         case "colStaff":
             trArr = trArr.sort(StaffAscSort);
             break;
-        case "clHouseStatus":
+        case "colHouseStatus":
             trArr = trArr.sort(HouseStatusAscSort);
             break;
         case "colHousingLetter":
@@ -678,8 +777,8 @@ function TableAscSort(sortCol) {
         case "colHouseSource":
             trArr = trArr.sort(HouseSourceAscSort);
             break;
-        case "colLastFollwDate":
-            trArr = trArr.sort(LastFollwDateAscSort);
+        case "colLastFollowDate":
+            trArr = trArr.sort(LastFollowDateAscSort);
             break;
     }
     return trArr;
@@ -749,8 +848,8 @@ function TableDescSort(sortCol) {
         case "colHouseSource":
             trArr = trArr.sort(HouseSourceDescSort);
             break;
-        case "colLastFollwDate":
-            trArr = trArr.sort(LastFollwDateDescSort);
+        case "colLastFollowDate":
+            trArr = trArr.sort(LastFollowDateDescSort);
             break;
     }
     return trArr;
@@ -839,7 +938,7 @@ function HouseSourceAscSort(a, b) {
     return $(a).find("td.colHouseSource").text().localeCompare($(b).find("td.colHouseSource").text());
 }
 
-function LastFollwDateAscSort(a, b) {
+function LastFollowDateAscSort(a, b) {
     var dt = new Date($(a).find("td.colLastFollowDate").text());
     var dt2 = new Date($(b).find("td.colLastFollowDate").text());
     return dt > dt2 ? 1 : -1;
@@ -928,7 +1027,7 @@ function HouseSourceDescSort(a, b) {
     return $(b).find("td.colHouseSource").text().localeCompare($(a).find("td.colHouseSource").text());
 }
 
-function LastFollwDateDescSort(a, b) {
+function LastFollowDateDescSort(a, b) {
     var dt = new Date($(a).find("td.colLastFollowDate").text());
     var dt2 = new Date($(b).find("td.colLastFollowDate").text());
     return dt > dt2 ? -1 : 1;

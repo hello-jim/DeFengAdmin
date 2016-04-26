@@ -74,14 +74,14 @@
 
                             <script type="text/javascript">
                                 jQuery(document).ready(function ($) {
-                                    $("#houseLeaseDateSearchSelect").selectBoxIt().on('open', function () {
+                                    $("#customerLeaseDateSearchSelect").selectBoxIt().on('open', function () {
                                         // Adding Custom Scrollbar
                                         $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
                                     });
                                 });
                             </script>
 
-                            <select class="form-control" id="houseLeaseDateSearchSelect">
+                            <select class="form-control" id="customerLeaseDateSearchSelect">
                                 <option value="-1">全部</option>
                                 <option value="0">今日租房</option>
                                 <option value="3">最近三天</option>
@@ -100,14 +100,14 @@
 
                             <script type="text/javascript">
                                 jQuery(document).ready(function ($) {
-                                    $("#houseStatusSearchSelect").selectBoxIt().on('open', function () {
+                                    $("#customerStatusSearchSelect").selectBoxIt().on('open', function () {
                                         // Adding Custom Scrollbar
                                         $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
                                     });
                                 });
                             </script>
 
-                            <select class="form-control" id="houseStatusSearchSelect">
+                            <select class="form-control" id="customerStatusSearchSelect">
                                 <option value="-1">状态</option>
                                 <option value="1">有效</option>
                                 <option value="2">非有效</option>
@@ -244,122 +244,57 @@
                         <div class="col-md-2">
                             <div class="form-group search_select">
                                 <label class="control-label">交易类型</label>
-
-                                <script type="text/javascript">
-                                    jQuery(document).ready(function ($) {
-                                        $("#transactionTypeSearchSelect").select2({
-                                            placeholder: 'Select your country...',
-                                            allowClear: true
-                                        }).on('select2-open', function () {
-                                            // Adding Custom Scrollbar
-                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                        });
-
-                                    });
-                                </script>
-
-                                <select class="form-control search_select" id="transactionTypeSearchSelect"></select>
-
-
+                                <select class="form-control search_select" id="customerTransactionTypeSearchSelect"></select>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group search_select">
                                 <label class="control-label">状态</label>
-
-                                <script type="text/javascript">
-                                    jQuery(document).ready(function ($) {
-                                        $("#houseStatusJoinSearchSelect").select2({
-                                            placeholder: 'Select your country...',
-                                            allowClear: true
-                                        }).on('select2-open', function () {
-                                            // Adding Custom Scrollbar
-                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                        });
-
-                                    });
-                                </script>
-
                                 <select class="form-control search_select" id="houseStatusJoinSearchSelect"></select>
-
-
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group search_select">
                                 <label class="control-label">房屋使用类型</label>
-
-                                <script type="text/javascript">
-                                    jQuery(document).ready(function ($) {
-                                        $("#houseUseTypeSearchSelect").select2({
-                                            placeholder: 'Select your country...',
-                                            allowClear: true
-                                        }).on('select2-open', function () {
-                                            // Adding Custom Scrollbar
-                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                        });
-
-                                    });
-                                </script>
-
                                 <select class="form-control search_select" id="houseUseTypeSearchSelect">
                                     <option>请选择</option>
                                 </select>
-
-
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group search_select">
                                 <label class="control-label">房屋类型</label>
-
-                                <script type="text/javascript">
-                                    jQuery(document).ready(function ($) {
-                                        $("#houseTypeSearchSelect").select2({
-                                            placeholder: 'Select your country...',
-                                            allowClear: true
-                                        }).on('select2-open', function () {
-                                            // Adding Custom Scrollbar
-                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                        });
-
-                                    });
-                                </script>
-
                                 <select class="form-control search_select" id="houseTypeSearchSelect">
                                     <option value="">请选择</option>
                                 </select>
-
-
                             </div>
-
                         </div>
                         <div class="col-md-2">
                             <div class="form-group search_select">
-                                <label class="control-label">房屋朝向</label>
-
-                                <script type="text/javascript">
-                                    jQuery(document).ready(function ($) {
-                                        $("#orientationSearchSelect").select2({
-                                            placeholder: 'Select your country...',
-                                            allowClear: true
-                                        }).on('select2-open', function () {
-                                            // Adding Custom Scrollbar
-                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                        });
-
-                                    });
-                                </script>
-
+                                <label class="control-label">房屋朝向</label>                            
                                 <select class="form-control search_select" id="orientationSearchSelect">
                                     <option>请选择</option>
                                 </select>
-
-
                             </div>
                         </div>
-
-
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">客户类型</label>
+                                <select class="form-control search_select" id="customerTypeSearchSelect">
+                                    <option>请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">公私客</label>
+                                <select class="form-control search_select" id="customserPrivatePubliceSearchSelect">
+                                    <option value="-1">全部</option>
+                                    <option value="1">公客</option>
+                                    <option value="2">私客</option>
+                                </select>
+                            </div>
+                        </div>
                         @*<div class="col-md-2">
                                 <div class="form-group search_select">
                                     <label class="control-label">房型</label>
@@ -1217,8 +1152,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="imgPanellDiv panel panel-default display">
 
     <div class="panel-heading">
@@ -1240,9 +1173,6 @@
 
     </div>
 </div>
-
-
-
 
 <!-- Main Footer -->
 <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->

@@ -466,5 +466,50 @@ namespace DeFengAdmin.Controllers
             }
             return result;
         }
+
+        public string LoadCustomerTransactionType()
+        {
+            var result = "";
+            try
+            {
+                CustomerTransactionType_BLL bll = new CustomerTransactionType_BLL();
+                var list = bll.LoadCustomerTransactionType();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadCustomerStatus()
+        {
+            var result = "";
+            try
+            {
+                CustomerStatus_BLL bll = new CustomerStatus_BLL();
+                var list = bll.LoadCustomerStatus();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadCustomerType()
+        {
+            var result = "";
+            try
+            {
+                CustomerType_BLL bll = new CustomerType_BLL();
+                var list = bll.LoadCustomerType();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
     }
 }
