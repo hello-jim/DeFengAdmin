@@ -1,6 +1,7 @@
 ﻿var searchAction = "";
 
 $(document).ready(function () {
+    var testCode = "";
     InitCustomerTransactionType("#customerTransactionTypeSearchSelect", "全部", true);
     InitCustomerStatus("#houseStatusJoinSearchSelect", "全部", true);
     InitHousePayType("#houseUseTypeSearchSelect", "全部", true);
