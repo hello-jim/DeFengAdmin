@@ -84,7 +84,7 @@ function InitCity(id, proID, districtID, areaID, async, arr) {
 function InitDistrict(id, cityID, areaID, firstText, async, arr) {
     $("" + id + " option").remove();
     $(id).prev().find("ul .select2-search-choice").remove();
-    var cityID = $(cityID).val();
+    //var cityID = $(cityID).val();
     $.ajax({
         url: "/Common/LoadDistrict",
         data: { cityID: cityID },
@@ -108,6 +108,13 @@ function InitDistrict(id, cityID, areaID, firstText, async, arr) {
             }
 
             $(id).html(html);
+            $(id).select2({
+                placeholder: '',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
             if ($("" + id + " :selected").length > 0) {
                 InitArea(areaID, id, firstText, async, arr);
             }
@@ -620,11 +627,13 @@ function InitCustomerTransactionType(id, firstText, async) {
             }
 
             $(id).html(html);
-            $(id).selectBoxIt().on('open', function () {
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
                 // Adding Custom Scrollbar
-                $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
             });
-            // $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
         }
     });
 }
@@ -644,10 +653,6 @@ function InitCustomerStatus(id, firstText, async) {
             }
 
             $(id).html(html);
-            $(id).selectBoxIt().on('open', function () {
-                // Adding Custom Scrollbar
-                $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-            });
             $(id).select2({
                 placeholder: 'Select your country...',
                 allowClear: true
@@ -655,7 +660,6 @@ function InitCustomerStatus(id, firstText, async) {
                 // Adding Custom Scrollbar
                 $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
             });
-            // $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
         }
     });
 }
@@ -1066,5 +1070,15 @@ function HideTableCol() {
     for (var i = 0; i < objArr.length; i++) {
         $(".col" + objArr[i].attributes["col"].value).hide();
     }
+}
+
+function GetObjArrVal(arr) {
+    var result = "";
+    for (var i = 0; i < arr.length; i++) {
+        result += arr[i].value + ",";
+    }
+    result = result.substring(0, result.lastIndexOf(','));
+    result = result != "" ? result : "";
+    return result;
 }
 

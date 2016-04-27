@@ -146,59 +146,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2">
-                        <div class="form-group search_select">
-                            <label class="control-label">省</label>
-
-                            <script type="text/javascript">
-                                jQuery(document).ready(function ($) {
-                                    $("#provinceSearchSelect").select2({
-                                        placeholder: 'Select your country...',
-                                        allowClear: true
-                                    }).on('select2-open', function () {
-                                        // Adding Custom Scrollbar
-                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                    });
-
-                                });
-                            </script>
-
-                            <select class="form-control search_select" id="provinceSearchSelect">
-                                <option>请选择</option>
-                            </select>
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group search_select">
-                            <label class="control-label">城市</label>
-
-                            <script type="text/javascript">
-                                jQuery(document).ready(function ($) {
-                                    $("#citySearchSelect").select2({
-                                        placeholder: 'Select your country...',
-                                        allowClear: true
-                                    }).on('select2-open', function () {
-                                        // Adding Custom Scrollbar
-                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                    });
-
-                                });
-                            </script>
-
-                            <select class="form-control search_select" id="citySearchSelect">
-                                <option>请选择</option>
-                            </select>
-
-
-                        </div>
-                    </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label class="control-label">城区</label>
-
-
                             <script type="text/javascript">
                                 jQuery(document).ready(function ($) {
                                     $("#districtSearchSelect").select2({
@@ -250,7 +200,7 @@
                         <div class="col-md-2">
                             <div class="form-group search_select">
                                 <label class="control-label">状态</label>
-                                <select class="form-control search_select" id="houseStatusJoinSearchSelect"></select>
+                                <select class="form-control search_select" id="customerStatusJoinSearchSelect"></select>
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -451,10 +401,7 @@
         <div class="row">
             <input id="houseID" value="0" type="hidden" />
             <div class="col-md-11"></div>
-            <div class="col-md-1 housePanelClose"><a class="customer-panel-close" href="javascript:void(0);">x</a></div>
-        </div>
-        <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-md-1 housePanelClose"><a id="houserPanelClose" href="javascript:void(0);">x</a></div>
         </div>
         <div class="row">
             <div class="col-md-2">
@@ -1127,50 +1074,192 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <div class="col-sm-5">
-                    <textarea class="form-control" cols="5" id="field-5" placeholder="备注"></textarea>
+                <div class="col-md-6 follow-record">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'></table>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-5">
+                <div class="col-md-6 owner-info display">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="ownerTxt" class="form-control" name="entrustID" data-validate="required" placeholder="业主" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="ownerPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="手机" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="contactsTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系人" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="contactPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=""></div>
+                <div class="col-sm-6">
                     <textarea class="form-control" cols="5" id="field-5" placeholder="备注"></textarea>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">
-                <button class="btn display" type="button">写跟进</button>
 
             </div>
             <div class="col-md-2">
+                <button class="btn display follow-record-panel-show" type="button">写跟进</button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn  owner-show" type="button">看业主</button>
+                <button class="btn  follow-record-show" type="button">看跟进</button>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><button class="btn display" type="button" id="fileUp">上传图片</button></div>
+            <div class="col-md-2">
                 <div class="form-group">
-                    <button class="btn display" type="button" id="addCustomer">添加</button>
-                    <button class="btn display" type="button" id="editCustomer">修改</button>
-                    <button class="btn display" type="button" id="fileUp">上传图片</button>
+                    <button class="btn display" type="button" id="addHouse">添加</button>
+                    <button class="btn display" type="button" id="editHouse">修改</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="imgPanellDiv panel panel-default display">
 
-    <div class="panel-heading">
-        <div class="panel-title">
-            上传房源图片
-        </div>
-        <a href="javascript:void(0);">X</a>
-    </div>
-    <div class="album-images row"></div>
-    <div class="panel-body">
-
-        <!-- Auto initialization -->
-        <form id="imgFrom" class="dropzone dz-clickable" action="/House/AddImg">
-            <div class="dz-default dz-message">
-                <input name="houseID" type="hidden" value="10" />
-                <span>点击此处上传图片</span>
+<div class="follow-record-panel">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-10">房源跟进<span class="follow-record-title"></span> </div>
+                <div class="col-md-2"><a class="follow-record-panel-close" href="javascript:void(0);">X</a></div>
             </div>
-        </form>
+        </div>
+        <div class="panel-body">
 
+            <div class="row">
+                <div class="col-md-8">
+
+                    <div class="form-group">
+                        <label for="field-1" class="control-label">时间方式</label>
+
+                        <input type="text" class="form-control" id="txtSysTime" value="（系统时间）" disabled>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label class="control-label"></label>
+
+
+
+                        <select class="form-control" id="followType"></select>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="control-label">跟进部门</label>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ($) {
+                                $("#followDepartment").selectBoxIt().on('open', function () {
+                                    // Adding Custom Scrollbar
+                                    $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                });
+                            });
+                        </script>
+
+                        <select class="form-control" id="followDepartment"></select>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label"></label>
+
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ($) {
+                                $("#followStaff").selectBoxIt().on('open', function () {
+                                    // Adding Custom Scrollbar
+                                    $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                });
+                            });
+                        </script>
+
+                        <select class="form-control" id="followStaff"></select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group no-margin">
+                        <label for="field-7" class="control-label">跟进内容</label>
+
+                        <textarea class="form-control autogrow" id="followContent" placeholder=""></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="txtNextNotice" class="control-label">下次提醒</label>
+
+                        <input type="text" class="form-control" id="txtNextNotice" placeholder="">
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="txtNoticeRange" class="control-label">提醒范围</label>
+
+                        <input type="text" class="form-control" id="txtNoticeRange" value="本部" disabled placeholder="Address">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <label for="field-4" class="control-label">提醒内容</label>
+
+                        <input type="text" class="form-control" id="txtNoticeContent" placeholder="Boston" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-2"><button class="btn btn-primary follow-record-save">保存</button></div>
+            </div>
+        </div>
     </div>
 </div>
 

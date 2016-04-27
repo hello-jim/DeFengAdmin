@@ -1,9 +1,9 @@
 ﻿var searchAction = "";
 
 $(document).ready(function () {
-    var testCode = "";
+    InitDistrict("#districtSearchSelect", 195, "#areaSearchSelect", "", true);
     InitCustomerTransactionType("#customerTransactionTypeSearchSelect", "全部", true);
-    InitCustomerStatus("#houseStatusJoinSearchSelect", "全部", true);
+    InitCustomerStatus("#customerStatusJoinSearchSelect", "全部", true);
     InitHousePayType("#houseUseTypeSearchSelect", "全部", true);
     InitHouseType("#houseTypeSearchSelect", "全部", true);
     InitOrientation("#orientationSearchSelect", "全部", true);
@@ -14,6 +14,26 @@ $(document).ready(function () {
     InitHouseAdd();
     $("#multipleSearchItem").on("click", function () {
         $("#multipleSearchDiv").toggle(500);
+    });
+    $("#search").on("click", function () {
+        $(".pageCount").remove();
+        var customer = GetJointSearchObj();
+        var customerJson = JSON.stringify(customer);
+        BeforeHouseDataLoading();
+        $.post(
+            "/Customer/Search",
+             {
+                 customer: customerJson
+             },
+            function (data) {
+                var json = "";
+                if (data != "") {
+                    json = $.parseJSON(data);
+                }
+                CreateCustomerTable(json);
+                searchAction = "jointSearch";
+            }
+            );
     });
     $("#entrustStartDateSearchSelect").on("changed", function () {
         var customer = GetEntrustStartDateObj();
@@ -167,6 +187,11 @@ function GetJointSearchObj() {
     if (orientation.ID == 0) {
         orientation = null;
     }
+    var customerStatus = new Object();
+    customerStatus.ID = $("#customerStatusJoinSearchSelect").val();
+    if (customerStatus.ID == 0) {
+        customerStatus = null;
+    }
     var salePriceFrom = $("#salePriceFromTxt").val() != "" ? $("#salePriceFromTxt").val() : 0;
     var salePriceTo = $("#salePriceToTxt").val() != "" ? $("#salePriceToTxt").val() : 0;
     var houseSizeFrom = $("#houseSizeFromTxt").val() != "" ? $("#houseSizeFromTxt").val() : 0;
@@ -178,10 +203,11 @@ function GetJointSearchObj() {
     customer.Area = area;
     customer.HouseUseType = houseUseType;
     customer.CustomerTransactionType = customerTransactionType;
-    customer.CustomerType = houseType;
+    customer.CustomerType = customerType;
+    customer.CustomerStatus = customerStatus;
     customer.Orientation = orientation;
-    customer.SalePriceFrom = salePriceFrom;
-    customer.SalePriceTo = salePriceTo;
+    customer.PriceFrom = salePriceFrom;
+    customer.PriceTo = salePriceTo;
     customer.HouseSizeFrom = houseSizeFrom;
     customer.HouseSizeTo = houseSizeTo;
     customer.FloorFrom = floorFrom;
@@ -274,7 +300,7 @@ function ShowCustomerPanel(action) {
 function CreateCustomerTable(json) {
     var html = "";
     if (json == "") {
-        html += "没有数据";
+        html = "";
     }
     else {
         html += "<tbody>";
@@ -317,9 +343,9 @@ function CreateCustomerTable(json) {
         var pageIndexHtml = "";
         pageIndexHtml += "<div class='row pageCount'>";
         pageIndexHtml += "<div class='col-md-6'></div>";
-        pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous disabled' aria-controls='example-1' tabindex='0' id='example-1_previous'><a href='#'>Previous</a></li>";
+        pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous page-up' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#'>上一页</a></li>";
         pageIndexHtml += GetPageCountHtml(json[0].TotalCustomerCount, json[0].PageIndex);
-        pageIndexHtml += "<li class='paginate_button next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>Next</a></li></ul></div></div></div>";
+        pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + json[0].TotalCustomerCount + ">最后一页</a></li></ul></div></div></div>";
     }
     $("#customer-table").append(html);
     $("#customer-tabel-div").append(pageIndexHtml);
@@ -332,10 +358,24 @@ function CreateCustomerTable(json) {
 
 function InitPageIndex() {
     $(".paginate_button").on("click", function () {
-        $(".paginate_button.active").removeClass("active");
-        $(this).addClass("active");
+        // $(".paginate_button.active").removeClass("active");
+        // $(this).addClass("active");
         BeforeHouseDataLoading();
-        var pageIndex = $(".paginate_button.active a").attr("pageIndex");
+        var pageIndex = $(this).find("a").attr("pageIndex");
+        if (pageIndex == null) {
+            pageIndex = parseInt($(".paginate_button.active a").attr("pageIndex"));
+            if ($(this).hasClass("page-up")) {
+                if (!pageIndex <= 1) {
+                    pageIndex--;
+                }
+            }
+            if ($(this).hasClass("page-next")) {
+                var totalPageLength = $(".paginate_button").length - 3;
+                if (pageIndex != totalPageLength) {
+                    pageIndex++;
+                }
+            }
+        }
         $(".pageCount").remove();
         var customer = new Object();
         switch (searchAction) {
@@ -395,7 +435,6 @@ function CustomerTableDoubleClick() {
         InitAppliance("#applianceSelect", "", false);
         InitLookHouseType("#lookHouseTypeSelect", "", false);
         InitEditHouseData(obj);
-        $("#editHouse").unbind("click");
         $("#editHouse").on("click", function () {
             var thisObj = this;
             $(thisObj).attr("disabled", "disabled");
@@ -412,6 +451,46 @@ function CustomerTableDoubleClick() {
                     $(thisObj).removeAttr("disabled");
                 });
         });
+    });
+}
+
+//房源面板
+function ShowHousePanel(action) {
+    $(".customer-panel *").unbind("click");
+    //InitHousePanelClose();
+    $('.form_datetime').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language: 'zh-CN',
+        // weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $(".customer-panel").show();
+    var scrollTop = $(document).scrollTop();
+    $(".customer-panel").css("top", scrollTop + 400 + "px");
+    if (action == "editHouse") {
+        $("#fileUp").show();
+        $(".follow-record-panel-show").show();
+        var recordBtnIsShow = $(".follow-record-show").css("display") == "inline-block";
+        if (recordBtnIsShow) {
+            $(".owner-show").hide();
+        }
+        $("#addHouse").hide();
+        var houseID = $("#houseID").val();
+    } else {
+        $("#fileUp").hide();
+        $(".follow-record-panel-show").hide();
+        $(".owner-show").hide();
+        $("#addHouse").show();
+    }
+    $("#" + action + "").removeClass("display");
+    $(".follow-record-panel-show").on("click", function () {
+        $(".follow-record-panel").css("top", scrollTop + 500 + "px");
+        ShowFollowRecordPanel();
     });
 }
 
@@ -449,12 +528,23 @@ function GetPageCountHtml(totalLength, activeIndex) {
     var houseMaxCount = GetSysConf("customerMaxCount");
     var count = totalLength / houseMaxCount;
     var html = "";
-    for (var i = 0; i < count; i++) {
-        var active = "";
-        if (i == activeIndex - 1) {
-            active = "active";
-        }
-        html += "<li class='paginate_button " + active + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (i + 1) + ">" + (i + 1) + "</a></li>";
+    var active = "active";
+    html += "<li class='paginate_button " + (activeIndex == 1 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=1>1</a></li>";
+    html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=2>2</a></li>";
+    if (activeIndex > 5) {
+        html += "<li><a href='javascript:void()'>.......</a><li/>";
+        html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex - 1) + ">" + (activeIndex - 1) + "</a></li>"
+        html += "<li class='paginate_button active' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + activeIndex + ">" + activeIndex + "</a></li>"
+        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>"
+        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 2) + ">" + (activeIndex + 2) + "</a></li>"
+        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 3) + ">" + (activeIndex + 3) + "</a></li>"
+    }
+    else {
+        html += "<li class='paginate_button " + (activeIndex == 3 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=3>3</a></li>"
+        html += "<li class='paginate_button " + (activeIndex == 4 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=4>4</a></li>"
+        html += "<li class='paginate_button " + (activeIndex == 5 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=5>5</a></li>"
+        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=6>6</a></li>"
+        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=7>7</a></li>"
     }
     return html;
 }

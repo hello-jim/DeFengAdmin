@@ -379,15 +379,7 @@ function GetJointSearchObj() {
     return house;
 }
 
-function GetObjArrVal(arr) {
-    var result = "";
-    for (var i = 0; i < arr.length; i++) {
-        result += arr[i].value + ",";
-    }
-    result = result.substring(0, result.lastIndexOf(','));
-    result = result != "" ? result : "";
-    return result;
-}
+
 
 function HouseTableDoubleClick() {
     $(".houseTabTr").on("dblclick", function () {
