@@ -63,7 +63,7 @@
                                 <option value="15">最近半月</option>
                                 <option value="30">最近一个月</option>
                                 <option value="90">最近三个月</option>
-                                <option value="180">最近半年</option>                              
+                                <option value="180">最近半年</option>
                             </select>
 
                         </div>
@@ -89,7 +89,7 @@
                                 <option value="15">最近半月</option>
                                 <option value="30">最近一个月</option>
                                 <option value="90">最近三个月</option>
-                                <option value="180">最近半年</option>                        
+                                <option value="180">最近半年</option>
                             </select>
 
                         </div>
@@ -221,7 +221,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group search_select">
-                                <label class="control-label">房屋朝向</label>                            
+                                <label class="control-label">房屋朝向</label>
                                 <select class="form-control search_select" id="orientationSearchSelect">
                                     <option>请选择</option>
                                 </select>
@@ -403,211 +403,87 @@
             <div class="col-md-11"></div>
             <div class="col-md-1 housePanelClose"><a id="houserPanelClose" href="javascript:void(0);">x</a></div>
         </div>
+
         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">城市</label>
+                    <label class="control-label" for="customerName">客户</label>
+                    <input class="form-control" name="customerName" id="customerNameTxt" data-validate="required" placeholder="客户" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="contacts">联系人</label>
+                    <input class="form-control" name="contacts" id="contactsTxt" data-validate="required" placeholder="联系人" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="idCard">身份证</label>
+                    <input class="form-control" name="idCard" id="idCardTxt" data-validate="required" placeholder="身份证" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="presentAddress">现住址</label>
+                    <input class="form-control" name="presentAddress" id="presentAddressTxt" data-validate="required" placeholder="现住址" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="contactsPhone">手机</label>
+                    <input class="form-control" name="contactsPhone" id="contactsPhoneTxt" data-validate="required" placeholder="手机" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="toiletCount">联系</label>
+                    <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
+                </div>
+            </div>
 
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#provinceSelect").select2({
-
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="provinceSelect"></select>
-
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">交易</label>
+                    <select class="form-control" id="customerTransactionTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">状态</label>
+                    <select class="form-control" id="customerStatusSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">城市</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#citySelect").select2({
-
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
                     <select class="form-control" id="citySelect"></select>
-
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">城区</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#districtSelect").select2({
-
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
                     <select class="form-control" id="districtSelect"></select>
-
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">片区</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#areaSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
                     <select class="form-control" id="areaSelect"></select>
-
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">楼盘字典</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#residentialDistrictSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
                     <select class="form-control" id="residentialDistrictSelect"></select>
-
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label" for="editHousePosition">栋楼位置</label>
-                    <input class="form-control" name="editHousePosition" id="housePositionTxt" data-validate="required" placeholder="栋楼位置" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="houseNumber">栋楼位置</label>
-                    <input class="form-control" name="houseNumber" id="houseNumberTxt" data-validate="required" placeholder="房号" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="floor">楼层</label>
-                    <input class="form-control" name="floor" id="floorTxt" data-validate="required" placeholder="楼层" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="totalFloor">总层</label>
-                    <input class="form-control" name="totalFloor" id="totalFloorTxt" data-validate="required" placeholder="总层" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="roomCount">房</label>
-                    <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="hallCount">厅</label>
-                    <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="toiletCount">卫</label>
-                    <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="balconyCount">阳台</label>
-                    <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">用途</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#houseUseTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="houseUseTypeSelect"></select>
-
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">房源资质</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#houseQualitySelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="houseQualitySelect"></select>
-
+                    <label class="control-label">位置</label>
+                    <select class="form-control" id="positionSelect"></select>
                 </div>
             </div>
         </div>
@@ -615,460 +491,135 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="houseSize">面积</label>
-                    <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="面积" />
+                    <input id="houseSizeFromTxt" class="form-control" name="houseSizeFrom" data-validate="required" placeholder="面积" />-
+                    <input id="houseSizeToTxt" class="form-control" name="houseSizeTo" data-validate="required" placeholder="面积" />
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label" for="houseUseSize">套内</label>
-                    <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="套内" />
+                    <label class="control-label" for="houseUseSize">价格</label>
+                    <input id="priceFromTxt" class="form-control" name="priceFrom" data-validate="required" placeholder="From" />-
+                    <input id="priceToTxt" class="form-control" name="priceTo" data-validate="required" placeholder="To" />
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">朝向</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#orientationSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="orientationSelect"></select>
-
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">类型</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#houseTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="houseTypeSelect"></select>
-
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">建房年代</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#houseCreateDateSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="houseCreateDateSelect"></select>
-
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">盘符</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#housingLetterSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="housingLetterSelect"></select>
-
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">交易</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#transactionTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="transactionTypeSelect"></select>
-
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">状态</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#houseStatusSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="houseStatusSelect"></select>
-
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="saleTotalPrice">售价</label>
-                    <input id="saleTotalPriceTxt" class="form-control" name="saleTotalPrice" data-validate="required" placeholder="售价" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="minSalePrice">底价</label>
-                    <input id="minSalePriceTxt" class="form-control" name="minSalePrice" data-validate="required" placeholder="底价" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">包税费</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#taxPayTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="taxPayTypeSelect"></select>
-
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="leaseTotalPrice">租价</label>
-                    <input id="leaseTotalPriceTxt" class="form-control" name="leaseTotalPrice" data-validate="required" placeholder="租价" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="minLeasePrice">底价</label>
-                    <input id="minLeasePriceTxt" class="form-control" name="minLeasePrice" data-validate="required" placeholder="底价" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="proxyStartDate">委托</label>
-                    <input id="proxyStartDate" class="form-control" name="proxyStartDate" data-validate="required" placeholder="位置" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">委托方式</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#entrustTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="entrustTypeSelect"></select>
-
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="managementPrice">管理费</label>
-                    <input id="managementPriceTxt" class="form-control" name="managementPrice" data-validate="required" placeholder="管理费" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-2">
                 <div class="form-group input-append date form_datetime">
-                    <label class="control-label" for="submitHouseDate">交房</label>
-                    <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" placeholder="交房日期" readonly />
+                    <label class="control-label" for="entrustStartDate">委托日期</label>
+                    <input id="entrustStartDate" class="form-control" name="entrustStartDate" data-validate="required" placeholder="委托日期" readonly />
                     <span class="add-on"><i class="icon-remove"></i></span>
                     <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label" for="entrustID">委托编号</label>
-                    <input id="entrustIDTxt" class="form-control" name="entrustID" data-validate="required" placeholder="委托编号" />
+                    <label class="control-label">来源</label>
+                    <select class="form-control" id="sourceSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">来源</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#sourceSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="sourceSelect"></select>
-
+                    <label class="control-label">委托方式</label>
+                    <select class="form-control" id="entrustTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">等级</label>
+                    <select class="form-control" id="gradeSelect"></select>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">现状</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#currentSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="currentSelect"></select>
-
+                    <label class="control-label">类别</label>
+                    <select class="form-control" id="customerTypeSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">产权</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#propertyOwnSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="propertyOwnSelect"></select>
+                    <label class="control-label">意向</label>
+                    <select class="form-control" id="intentionSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">装修</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#decorationTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="decorationTypeSelect"></select>
+                    <label class="control-label">国籍</label>
+                    <select class="form-control" id="nationalitySelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">证件</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#houseDocumentTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="houseDocumentTypeSelect"></select>
+                    <label class="control-label">期限</label>
+                    <select class="form-control" id="entrustOverDateSelect"></select>
+                </div>
+            </div>       
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">用途</label>
+                    <select class="form-control" id="houseUseTypeSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">配套</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#supportingSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="supportingSelect" multiple></select>
+                    <label class="control-label" for="park">停车</label>
+                    <input id="parkTxt" class="form-control" name="park" data-validate="required" placeholder="停车" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="industry">行业</label>
+                    <input id="industryTxt" class="form-control" name="industry" data-validate="required" placeholder="行业" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">类型</label>
+                    <select class="form-control" id="houseTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">围墙</label>
+                    <select class="form-control" id="wallSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">状况</label>
+                    <select class="form-control" id="landTypeSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">付款</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#housePayTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
                     <select class="form-control" id="housePayTypeSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">家具</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#furnitureSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="furnitureSelect"></select>
+                    <label class="control-label">地段</label>
+                    <select class="form-control" id="housePayTypeSelect"></select>
                 </div>
             </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">装修</label>
+                    <select class="form-control" id="decorationTypeSelect"></select>
+                </div>
+            </div>        
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">配套</label>
+                    <select class="form-control" id="supportingSelect" ></select>
+                </div>
+            </div>                
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">付佣</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#commissionPayTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
                     <select class="form-control" id="commissionPayTypeSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">家电</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#applianceSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="applianceSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">看房</label>
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#lookHouseTypeSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="lookHouseTypeSelect"></select>
                 </div>
             </div>
         </div>
