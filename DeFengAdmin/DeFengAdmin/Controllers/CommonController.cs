@@ -511,5 +511,50 @@ namespace DeFengAdmin.Controllers
             }
             return result;
         }
+
+        public string LoadOfficeLevel()
+        {
+            var result = "";
+            try
+            {
+                OfficeLevel_BLL bll = new OfficeLevel_BLL();
+                var list = bll.LoadOfficeLevel();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadLandType()
+        {
+            var result = "";
+            try
+            {
+                LandType_BLL bll = new LandType_BLL();
+                var list = bll.LoadLandType();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadCarPark()
+        {
+            var result = "";
+            try
+            {
+                CarPark_BLL bll = new CarPark_BLL();
+                var list = bll.LoadCarPark();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
     }
 }

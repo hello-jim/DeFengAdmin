@@ -215,18 +215,172 @@ function GetJointSearchObj() {
     return customer;
 }
 
+function GetCustomerObj() {
+    var customer = new Object();
+    customer.CustomerName = $("#customerNameTxt").val() != "" ? $("#customerNameTxt").val() : 0;
+    customer.CustomerPhone = $("#customerPhoneTxt").val() != "" ? $("#customerNameTxt").val() : 0;
+    customer.Contacts = $("#contactsTxt").val() != "" ? $("#contactsTxt").val() : 0;
+    customer.IdCard = $("#idCardTxt").val() != "" ? $("#idCardTxt").val() : 0;
+    customer.PresentAddress = $("#presentAddressTxt").val() != "" ? $("#presentAddressTxt").val() : 0;
+    //交易
+    var customerTransactionType = new Object();
+    customerTransactionType.ID = $("#customerTransactionTypeSelect").val();
+    customer.CustomerTransactionType = customerTransactionType;
+    //状态
+    var customerStatus = new Object();
+    customerStatus.ID = $("#customerStatusSelect").val();
+    customer.CustomerStatus = customerStatus;
+    //城
+    var city = new Object();
+    city.ID = $("#citySelect").val();
+    customer.City = city;
+    //区
+    var district = new Object();
+    district.ID = $("#districtSelect").val();
+    customer.District = district;
+    //片区
+    var area = new Object();
+    area.ID = $("#areaSelect").val() != null ? $("#areaSelect").val() : 24;
+    customer.Area = area;
+    //楼盘
+    var residentialDistrict = new Object();
+    residentialDistrict.ID = $("#residentialDistrictSelect").val();
+    customer.ResidentialDistrict = residentialDistrict;
+    //客户需求
+    var customerDemand = new Object();
+    customerDemand.ID = $("#customerDemandSelect").val() != null ? $("#customerDemandSelect").val() : 0;
+    customer.CustomerDemand = customerDemand;
+    //客户状态
+    var customerStatus = new Object();
+    customerStatus.ID = $("#customerStatusSelect").val() != null ? $("#customerStatusSelect").val() : 0;
+    customer.CustomerStatus = customerStatus;
+    //交易
+    var customerTransactionType = new Object();
+    customerTransactionType.ID = $("#customerTransactionTypeSelect").val() != null ? $("#customerTransactionTypeSelect").val() : 0;
+    customer.CustomerTransactionType = customerTransactionType;
+    //房
+    house.RoomCount = $("#roomCountTxt").val() != "" ? $("#roomCountTxt").val() : 0;
+    //厅
+    house.HallCount = $("#hallCountTxt").val() != "" ? $("#hallCountTxt").val() : 0;
+    //卫
+    house.ToiletCount = $("#toiletCountTxt").val() != "" ? $("#toiletCountTxt").val() : 0;
+    //阳台
+    house.BalconyCount = $("#balconyCountTxt").val() != "" ? $("#balconyCountTxt").val() : 0;
+    //面积
+    house.HouseSizeFrom = $("#houseSizeFromTxt").val() != "" ? $("#houseSizeFromTxt").val() : 0;
+    house.HouseSizeTo = $("#houseSizeToTxt").val() != "" ? $("#houseSizeToTxt").val() : 0;
+    //价格
+    house.PriceFrom = $("#priceFromTxt").val() != "" ? $("#priceFromTxt").val() : 0;
+    house.PriceTo = $("#priceToTxt").val() != "" ? $("#priceToTxt").val() : 0;
+    //委托日期
+    customer.EntrustStartDate = $("#entrustStartDateTxt").val() != "" ? $("#entrustStartDateTxt").val() : 0;
+    //等级
+    var grade = new Object();
+    grade.ID = $("#gradeSelect").val() != null ? $("#gradeSelect").val() : 0;
+    Customer.Grade = grade;
+    //朝向
+    var orientation = new Object();
+    orientation.ID = $("#orientationSelect").val();
+    house.Orientation = orientation;
+    //国籍
+    var nationality = new Object();
+    nationality.ID = $("#nationalitySelect").val() != null ? $("#nationalitySelect").val() : 0;
+    Customer.Nationality = nationality;
+    //委托结束日期
+    customer.EntrustOverDate = $("#entrustOverDate").val() != "" ? $("#entrustOverDateTxt").val() : 0;
+    customer.Floor = $("#floorTxt").val() != "" ? $("#floorTxt").val() : 0;//楼层
+    //装修
+    var decorationType = new Object();  
+    decorationType.ID = $("#decorationTypeSelect").val() != null ? $("#decorationTypeSelect").val() : 0;
+    house.DecorationType = decorationType;
+    //用途
+    var houseUseType = new Object();
+    houseUseType.ID = $("#houseUseTypeSelect").val() != null ? $("#houseUseTypeSelect").val() : 0;
+    house.HouseUseType = houseUseType;
+    //配套
+    house.Supporting = $("#supportingSelect").val() != null ? $("#supportingSelect").val().toString() : "0";
+    //付佣
+    var commissionPayType = new Object();
+    commissionPayType.ID = $("#commissionPayTypeSelect").val() != null ? $("#commissionPayTypeSelect").val().toString() : "0";
+    house.CommissionPayType = commissionPayType;
+    //委托方式
+    var entrustType = new Object();
+    entrustType.ID = $("#entrustTypeSelect").val() != null ? $("#entrustTypeSelect").val() : 0;
+    house.EntrustType = entrustType;
+    //客户类型
+    var customerType = new Object();
+    customerType.ID = $("#customerTypeSelect").val() != null ? $("#customerTypeSelect").val() : 0;
+    Customer.CustomerType = customerType;
+    customer.Remarks = $("#remarksTxt").val() != "" ? $("#remarksTxt").val() : 0;
+    //商铺位置
+    var shopLocation = new Object();
+    shopLocation.ID = $("#shopLocationSelect").val() != null ? $("#shopLocationSelect").val() : 0;
+    Customer.ShopLocation = shopLocation;
+    //行业
+    customer.Industry = $("#industryTxt").val() != "" ? $("#industryTxt").val() : 0;
+    //围墙
+    var wall = new Object();
+    wall.ID = $("#wallSelect").val() != null ? $("#wallSelect").val() : 0;
+    Customer.Wall = wall;
+    //电量
+    customer.Electricity = $("#electricityTxt").val() != "" ? $("#electricityTxt").val() : 0;
+    //停车
+    house.Park = $("#parkTxt").val() != "" ? $("#parkTxt").val() : 0;
+    //地皮类型
+    var landType = new Object();
+    landType.ID = $("#landTypeSelect").val() != null ? $("#landTypeSelect").val() : 0;
+    Customer.LandType = landType;
+    //容纳工人数量
+    house.WorkerCount = $("#workerCountTxt").val() != "" ? $("#workerCountTxt").val() : 0;
+    //宿舍数量
+    house.DormCount = $("#dormCountTxt").val() != "" ? $("#dormCountTxt").val() : 0;
+    //总层
+    house.TotalFloor = $("#totalFloorTxt").val() != "" ? $("#totalFloorTxt").val() : 0;
+    //办公室数量
+    house.OfficeCount = $("#officeCountTxt").val() != "" ? $("#officeCountTxt").val() : 0;
+    //办公室数量
+    house.ClearingCount = $("#clearingCountTxt").val() != "" ? $("#clearingCountTxt").val() : 0;
+    //办公室等级
+    var officeLevel = new Object();
+    officeLevel.ID = $("#officeLevelSelect").val();
+    house.OfficeLevel = officeLevel;
+    //办公室等级
+    var carPark = new Object();
+    carPark.ID = $("#carParkSelect").val();
+    house.CarPark = carPark;
+    //类型
+    var current = new Object();
+    current.ID = $("#currentSelect").val();
+    house.Current = current;
+    //来源
+    var source = new Object();
+    source.ID = $("#sourceSelect").val() != null ? $("#sourceSelect").val() : 0;
+    house.Source = source;
+    //现状
+    var current = new Object();
+    current.ID = $("#currentSelect").val() != null ? $("#currentSelect").val() : 0;
+    house.Current = current;
+    //付款
+    var housePayType = new Object();
+    housePayType.ID = $("#housePayTypeSelect").val() != null ? $("#housePayTypeSelect").val().toString() : "0";
+    house.HousePayType = housePayType;
+  
+    return house;
+}
+
 function InitHouseAdd() {
     $(".add-customer").on("click", function () {
         ShowCustomerPanel("addCustomer");
-        InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", "", true);
         InitResidentialDistrict("#residentialDistrictSelect", "", true);
-        InitHouseType("#houseTypeSelect", "", true);
+        InitCustomerType("#customerTypeSelect", "", true);
         InitHouseUseType("#houseTypeSelect", "", true);
         InitOrientation("#orientationSelect", "", true);
         InitHousingLetter("#housingLetterSelect", "", true);
         InitHouseQuality("#houseQualitySelect", "", true);
-        InitTransactionType("#transactionTypeSelect", "", true);
-        InitHouseStatus("#houseStatusSelect", "", true);
+        InitCustomerTransactionType("#customerTransactionTypeSelect", "", true);
+        InitCustomerStatus("#customerStatusSelect", "", true);
+        InitOfficeLevel("#officeLevelSelect", "", true);
+        InitLandType("#landTypeSelect", "", true);
         InitTaxPayType("#taxPayTypeSelect", "", true);
         InitEntrustType("#entrustTypeSelect", "", true);
         InitSource("#sourceSelect", "", true);
@@ -241,8 +395,8 @@ function InitHouseAdd() {
         InitAppliance("#applianceSelect", "", true);
         InitLookHouseType("#lookHouseTypeSelect", "", true);
         $("#addHouse").on("click", function () {
-            var house = GetHouseObj();
-            var houseJson = JSON.stringify(house);
+            var customer = GetCustomerObj();
+            var customerJson = JSON.stringify(customer);
             $.post("/House/AddHouse",
                 {
                     house: houseJson
