@@ -46,15 +46,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DeFeng.BLL">
-      <HintPath>..\..\DeFeng\DeFeng.BLL\bin\Debug\DeFeng.BLL.dll</HintPath>
+    <Reference Include="DeFeng.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\DeFeng\DeFeng\DeFeng.BLL\bin\Debug\DeFeng.BLL.dll</HintPath>
     </Reference>
     <Reference Include="DeFeng.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DeFeng\DeFeng.Common\bin\Debug\DeFeng.Common.dll</HintPath>
     </Reference>
-    <Reference Include="DeFeng.Model">
-      <HintPath>..\..\DeFeng\DeFeng.Model\bin\Debug\DeFeng.Model.dll</HintPath>
+    <Reference Include="DeFeng.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\DeFeng\DeFeng\DeFeng.Model\bin\Debug\DeFeng.Model.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\..\dll\log4net.dll</HintPath>
@@ -226,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SysConfKey.xml" />
+    <Content Include="Scripts\card.js" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -1187,6 +1190,7 @@
     <Content Include="Scripts\uikit\vendor\spectrum\spectrum.css" />
     <Content Include="Scripts\uikit\vendor\spectrum\spectrum.js" />
     <Content Include="Scripts\uikit\vendor\spectrum\test.html" />
+    <Content Include="Scripts\validata.js" />
     <Content Include="Scripts\wysihtml5\index.html" />
     <Content Include="Scripts\wysihtml5\lib\css\bootstrap-responsive.css" />
     <Content Include="Scripts\wysihtml5\lib\css\bootstrap-responsive.min.css" />
@@ -1706,6 +1710,8 @@
     <Content Include="Views\House\Index.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\dx.all.d.ts" />

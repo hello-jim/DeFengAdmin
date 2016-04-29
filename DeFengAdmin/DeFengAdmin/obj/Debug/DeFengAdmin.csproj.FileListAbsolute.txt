@@ -106,6 +106,8 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.dll.config
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Antlr3.Runtime.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.BLL.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Model.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\EntityFramework.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\EntityFramework.SqlServer.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.AI.Agent.Intercept.dll
@@ -141,7 +143,6 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\System.Web.WebPages.Razor
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\WebGrease.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.BLL.pdb
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Common.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Model.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.AI.DependencyCollector.xml
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.AI.ServerTelemetryChannel.xml

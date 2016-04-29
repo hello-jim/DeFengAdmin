@@ -2355,6 +2355,10 @@ output {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+.form-number {
+    float:left;
+    font-size:13px;
+}
 .form-control:focus {
   border-color: rgba(104, 184, 40, 0.5);
   outline: 0;
