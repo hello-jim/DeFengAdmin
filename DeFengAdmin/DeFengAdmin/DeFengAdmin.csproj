@@ -273,6 +273,7 @@
     <Content Include="Scripts\defeng\group.js" />
     <Content Include="Scripts\defeng\house.js" />
     <Content Include="Content\css\jquery.treeview.css" />
+    <Content Include="Scripts\defeng\information.js" />
     <Content Include="Scripts\defeng\test.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.treeview.js" />
