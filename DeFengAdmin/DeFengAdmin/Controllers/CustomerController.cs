@@ -20,14 +20,14 @@ namespace DeFengAdmin.Controllers
 
         public string Search()
         {
+            var result = "";
             try
             {
                 var list = new List<Customer>();
                 var customer = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<Customer>(HttpContext.Request.Form["customer"]) : null;
                 Customer_BLL bll = new Customer_BLL();
                 list = bll.Search(customer);
-                var json = JsonConvert.SerializeObject(list);
-                return json;
+                result = JsonConvert.SerializeObject(list);
             }
             catch (Exception ex)
             {
@@ -36,7 +36,23 @@ namespace DeFengAdmin.Controllers
                 log.Type = LogType.Error;
                 GlobalQueue.LogGlobalQueue.Enqueue(log);
             }
-            return "";
+            return result;
+        }
+
+        public int AddCustomer()
+        {
+            var result = 0;
+            try
+            {
+                var customer = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<Customer>(HttpContext.Request.Form["customer"]) : null;
+                Customer_BLL bll = new Customer_BLL();
+                result = bll.AddCutomer(customer);
+            }
+            catch (Exception ex)
+            {
+                result = -1;
+            }
+            return result;
         }
 
     }

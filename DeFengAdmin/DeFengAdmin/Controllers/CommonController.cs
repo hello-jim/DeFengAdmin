@@ -556,5 +556,112 @@ namespace DeFengAdmin.Controllers
             }
             return result;
         }
+
+        public string LoadGrade()
+        {
+            var result = "";
+            try
+            {
+                Grade_BLL bll = new Grade_BLL();
+                var list = bll.LoadGrade();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadIntention()
+        {
+            var result = "";
+            try
+            {
+                Intention_BLL bll = new Intention_BLL();
+                var list = bll.LoadIntention();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadCountry()
+        {
+            var result = "";
+            try
+            {
+                Country_BLL bll = new Country_BLL();
+                var list = bll.LoadCountry();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadWall()
+        {
+            var result = "";
+            try
+            {
+                Wall_BLL bll = new Wall_BLL();
+                var list = bll.LoadWall();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadLandPlan()
+        {
+            var result = "";
+            try
+            {
+                LandPlan_BLL bll = new LandPlan_BLL();
+                var list = bll.LoadLandPlan();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadShopArea()
+        {
+            var result = "";
+            try
+            {
+                ShopArea_BLL bll = new ShopArea_BLL();
+                var list = bll.LoadShopArea();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        public string LoadShopLocation()
+        {
+            var result = "";
+            try
+            {
+                ShopLocation_BLL bll = new ShopLocation_BLL();
+                var list = bll.LoadShopLocation();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
+
+        
     }
 }

@@ -46,7 +46,7 @@ function InitProvince(id, cityID, districtID, areaID, async, arr) {
 
 //初始化市
 function InitCity(id, proID, districtID, areaID, async, arr) {
-    var proID = $(proID).val();
+    // var proID = $(proID).val();
     $.ajax({
         url: "/Common/LoadCity",
         data: { proID: proID },
@@ -66,14 +66,21 @@ function InitCity(id, proID, districtID, areaID, async, arr) {
                 html += "<option value=" + json[i].ID + " " + selected + ">" + json[i].Name + "</option>";
             }
             $(id).html(html);
+            $(id).select2({
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
             var cityIsEmpty = $("" + id + " option").length < 1;
             if (selectedValue != null || !cityIsEmpty) {
                 var cityID = $(id).val();
-                InitDistrict(districtID, id, areaID, "", async, arr);
+                InitDistrict(districtID, cityID, areaID, "", async, arr);
             }
-            $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
+
             $(id).on("change", function () {
-                InitDistrict(districtID, id, areaID, "", async, "");
+                var selectID = $(this).val();
+                InitDistrict(districtID, selectID, areaID, "", async, "");
                 $.cookie("cityID", $(this).val());
             });
         }
@@ -116,12 +123,13 @@ function InitDistrict(id, cityID, areaID, firstText, async, arr) {
                 $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
             });
             if ($("" + id + " :selected").length > 0) {
-                InitArea(areaID, id, firstText, async, arr);
+
+                InitArea(areaID, $(id).val(), firstText, async, arr);
             }
             // $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
             $(id).on("change", function () {
                 if ($("" + id + " :selected").length == 1) {
-                    InitArea(areaID, id, firstText, async, "");
+                    InitArea(areaID, $(id).val(), firstText, async, "");
                     $(areaID).removeAttr("disabled");
                 } else {
                     $(areaID).prev().find("ul .select2-search-choice").remove()
@@ -135,7 +143,7 @@ function InitDistrict(id, cityID, areaID, firstText, async, arr) {
 
 function InitArea(id, disID, firstText, async, arr) {
     $("" + id + " option").remove();
-    var disID = $(disID)[0].value;
+    //var disID = $(disID)[0].value;
     $.ajax({
         url: "/Common/LoadArea",
         data: { disID: disID },
@@ -158,8 +166,12 @@ function InitArea(id, disID, firstText, async, arr) {
                 html += "<option value=" + json[i].ID + " " + seleced + ">" + json[i].AreaName + "</option>";
             }
             $(id).html(html);
-            $(id).on("change", function () {
-
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
             });
         }
     });
@@ -862,6 +874,188 @@ function InitCarPark(id, firstText, async) {
             }
             for (var i = 0; i < json.length; i++) {
                 html += "<option value=" + json[i].ID + ">" + json[i].Name + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
+function InitGrade(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadGrade",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].GradeName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
+function InitIntention(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadIntention",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].IntentionName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
+function InitCountry(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadCountry",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].ChineseName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
+function InitWall(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadWall",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].Item + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
+function InitLandPlan(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadLandPlan",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].PlanName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
+function InitShopArea(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadShopArea",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].ShopAreaName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
+function InitShopLocation(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadShopLocation",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].Item + "</option>";
             }
 
             $(id).html(html);

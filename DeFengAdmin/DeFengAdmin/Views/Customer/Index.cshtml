@@ -480,12 +480,7 @@
                     <select class="form-control" id="residentialDistrictSelect"></select>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">位置</label>
-                    <select class="form-control" id="positionSelect"></select>
-                </div>
-            </div>
+    
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="workerCount">员工</label>
@@ -525,7 +520,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">规划</label>
-                    <select class="form-control" id="landTypeSelect"></select>
+                    <select class="form-control" id="landPlanSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
@@ -553,7 +548,7 @@
             <div class="col-md-2">
                 <div class="form-group input-append date form_datetime">
                     <label class="control-label" for="entrustStartDate">委托日期</label>
-                    <input id="entrustStartDate" class="form-control" name="entrustStartDate" data-validate="required" placeholder="委托日期" readonly />
+                    <input id="entrustStartDateTxt" class="form-control" name="entrustStartDate" data-validate="required" placeholder="委托日期" readonly />
                     <span class="add-on"><i class="icon-remove"></i></span>
                     <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
@@ -662,7 +657,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">地段</label>
-                    <select class="form-control" id="housePayTypeSelect"></select>
+                    <select class="form-control" id="shopAreaSelect"></select>
                 </div>
             </div>
             <div class="col-md-2">
@@ -721,7 +716,7 @@
                 </div>
                 <div class=""></div>
                 <div class="col-sm-6">
-                    <textarea class="form-control" cols="5" id="field-5" placeholder="备注"></textarea>
+                    <textarea class="form-control" cols="5" id="remarksTxt" placeholder="备注"></textarea>
                 </div>
             </div>
         </div>
@@ -730,18 +725,18 @@
 
             </div>
             <div class="col-md-2">
-                <button class="btn display follow-record-panel-show" type="button">写跟进</button>
+                <button class="btn follow-record-panel-show" type="button">写跟进</button>
             </div>
             <div class="col-md-2">
                 <button class="btn  owner-show" type="button">看业主</button>
                 <button class="btn  follow-record-show" type="button">看跟进</button>
             </div>
             <div class="col-md-2"></div>
-            <div class="col-md-2"><button class="btn display" type="button" id="fileUp">上传图片</button></div>
+            <div class="col-md-2"><button class="btn" type="button" id="fileUp">上传图片</button></div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <button class="btn display" type="button" id="addHouse">添加</button>
-                    <button class="btn display" type="button" id="editHouse">修改</button>
+                    <button class="btn" type="button" id="addHouse">添加</button>
+                    <button class="btn" type="button" id="editHouse">修改</button>
                 </div>
             </div>
         </div>
