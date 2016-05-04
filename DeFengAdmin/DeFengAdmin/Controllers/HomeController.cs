@@ -49,6 +49,22 @@ namespace DeFengAdmin.Controllers
             return View();
         }
 
+        public ActionResult UserLogin()
+        {
+            var request = Request;
+            var name = request["name"] != null ? Convert.ToString(request["name"]) : "";
+            var password = request["password"] != null ? Convert.ToString(request["password"]) : "";
+            Staff staff = new Staff()
+            {
+                Name = name,
+                Password = password,
+            };
+            Staff_BLL bll = new Staff_BLL();
+            bll.UserLogin(staff);
+            
+            return View();
+        }
+
         public ActionResult Information()
         {
             var request = Request;
