@@ -287,13 +287,13 @@
                             <div class="row">
                                 <div class="col-md-4 font_size search_txt">
                                     <span>价格:</span>
-                                    <input id="salePriceFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
-                                    <input id="salePriceToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                    <input id="priceFromSearchTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="priceToSearchTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
                                 </div>
                                 <div class="col-md-4 font_size search_txt">
                                     <span>面积:</span>
-                                    <input id="houseSizeFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
-                                    <input id="houseSizeToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                    <input id="houseSizeFromSearchTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="houseSizeToSearchTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
                                 </div>
                                 <div class="col-md-4 font_size search_txt">
                                     <span> 楼层:</span>
@@ -399,9 +399,9 @@
 <div class="customer-panel display">
     <div class="panel">
         <div class="row">
-            <input id="houseID" value="0" type="hidden" />
+            <input id="editID" value="0" type="hidden" />
             <div class="col-md-11"></div>
-            <div class="col-md-1 housePanelClose"><a id="houserPanelClose" href="javascript:void(0);">x</a></div>
+            <div class="col-md-1 customer-panel-close"><a href="javascript:void(0);">x</a></div>
         </div>
 
         <div class="row">
@@ -440,7 +440,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="toiletCount">联系</label>
-                    <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
+                    <input class="form-control" name="toiletCount" id="contactsTxt" data-validate="required" placeholder="卫" />
                 </div>
             </div>
 
@@ -454,6 +454,30 @@
                 <div class="form-group">
                     <label class="control-label">状态</label>
                     <select class="form-control" id="customerStatusSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="roomCount">房</label>
+                    <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="hallCount">厅</label>
+                    <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="toiletCount">卫</label>
+                    <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="balconyCount">阳台</label>
+                    <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -480,7 +504,7 @@
                     <select class="form-control" id="residentialDistrictSelect"></select>
                 </div>
             </div>
-    
+
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="workerCount">员工</label>
@@ -596,7 +620,7 @@
                     <label class="control-label">期限</label>
                     <select class="form-control" id="entrustOverDateSelect"></select>
                 </div>
-            </div>       
+            </div>
         </div>
         <div class="row">
             <div class="col-md-2">
@@ -625,12 +649,6 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label" for="industry">围墙</label>
-                    <input id="industryTxt" class="form-control" name="industry" data-validate="required" placeholder="行业" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
                     <label class="control-label">类型</label>
                     <select class="form-control" id="houseTypeSelect"></select>
                 </div>
@@ -647,7 +665,7 @@
                     <select class="form-control" id="landTypeSelect"></select>
                 </div>
             </div>
-     
+
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">付款</label>
@@ -665,13 +683,13 @@
                     <label class="control-label">装修</label>
                     <select class="form-control" id="decorationTypeSelect"></select>
                 </div>
-            </div>        
+            </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">配套</label>
-                    <select class="form-control" id="supportingSelect" ></select>
+                    <select class="form-control" id="supportingSelect"></select>
                 </div>
-            </div>                
+            </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">付佣</label>
@@ -735,8 +753,8 @@
             <div class="col-md-2"><button class="btn" type="button" id="fileUp">上传图片</button></div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <button class="btn" type="button" id="addHouse">添加</button>
-                    <button class="btn" type="button" id="editHouse">修改</button>
+                    <button class="btn" type="button" id="addCustomer">添加</button>
+                    <button class="btn" type="button" id="editCustomer">修改</button>
                 </div>
             </div>
         </div>

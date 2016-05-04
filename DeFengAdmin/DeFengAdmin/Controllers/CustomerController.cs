@@ -55,5 +55,21 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
+        public int UpdateCustomer()
+        {
+            var result = 0;
+            try
+            {
+                var customer = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<Customer>(HttpContext.Request.Form["customer"]) : null;
+                Customer_BLL bll = new Customer_BLL();
+                result = bll.UpdateCustomer(customer);
+            }
+            catch (Exception ex)
+            {
+                result = -1;
+            }
+            return result;
+        }
+        
     }
 }
