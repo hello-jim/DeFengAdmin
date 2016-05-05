@@ -10,6 +10,8 @@ namespace DeFengAdmin.Controllers
 {
     public class HomeController : Controller
     {
+        public int result { get; private set; }
+
         public ActionResult Index()
         {
             return View();
@@ -45,7 +47,7 @@ namespace DeFengAdmin.Controllers
             };
             Staff_BLL bll = new Staff_BLL();
             bll.Register(staff);
-  
+           
             return View();
         }
 
@@ -61,9 +63,10 @@ namespace DeFengAdmin.Controllers
             };
             Staff_BLL bll = new Staff_BLL();
             bll.UserLogin(staff);
-            
             return View();
+
         }
+        
 
         public ActionResult Information()
         {

@@ -106,7 +106,6 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.dll.config
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Antlr3.Runtime.dll
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.BLL.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Model.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\EntityFramework.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\EntityFramework.SqlServer.dll
@@ -176,4 +175,5 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.M
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.BLL.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
