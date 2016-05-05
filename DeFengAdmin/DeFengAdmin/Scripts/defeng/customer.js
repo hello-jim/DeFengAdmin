@@ -1,5 +1,5 @@
 ﻿var searchAction = "";
-
+customerMaxCount = GetSysConf("customerMaxCount");
 $(document).ready(function () {
     InitDistrict("#districtSearchSelect", 195, "#areaSearchSelect", "", true);
     InitCustomerTransactionType("#customerTransactionTypeSearchSelect", "全部", true);
@@ -8,7 +8,9 @@ $(document).ready(function () {
     InitHouseType("#houseTypeSearchSelect", "全部", true);
     InitOrientation("#orientationSearchSelect", "全部", true);
     InitCustomerType("#customerTypeSearchSelect", "全部", true);
-    InitCustomerTableSort();
+    InitTableColChecked("CustomerTableColChecked", ".table-col-menu", false);
+    InitDisplayStatus("Customer");
+    InitTableSort("#customer-table");
     $("#main-menu li").removeClass("active");
     $(".customer-menu").addClass("opened active");
     InitCustomerAdd();
@@ -218,8 +220,9 @@ function GetJointSearchObj() {
 function GetCustomerObj() {
     var customer = new Object();
     customer.CustomerName = $("#customerNameTxt").val() != "" ? $("#customerNameTxt").val() : 0;
-    customer.CustomerPhone = $("#customerPhoneTxt").val() != "" ? $("#customerNameTxt").val() : 0;
+    customer.CustomerPhone = $("#customerPhoneTxt").val() != "" ? $("#customerPhoneTxt").val() : 0;
     customer.Contacts = $("#contactsTxt").val() != "" ? $("#contactsTxt").val() : 0;
+    customer.ContactsPhone = $("#contactsPhoneTxt").val() != "" ? $("#contactsPhoneTxt").val() : 0;
     customer.IdCard = $("#idCardTxt").val() != "" ? $("#idCardTxt").val() : 0;
     customer.PresentAddress = $("#presentAddressTxt").val() != "" ? $("#presentAddressTxt").val() : 0;
     customer.ID = $("#editID").val();
@@ -521,7 +524,7 @@ function CreateCustomerTable(json) {
         pageIndexHtml += "<div class='col-md-6'></div>";
         pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous page-up' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#'>上一页</a></li>";
         pageIndexHtml += GetPageCountHtml(json[0].TotalCustomerCount, json[0].PageIndex);
-        pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + json[0].TotalCustomerCount + ">最后一页</a></li></ul></div></div></div>";
+        pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetLastPageIndex(json[0].TotalCustomerCount, customerMaxCount) + ">最后一页</a></li></ul></div></div></div>";
     }
     $("#customer-table").append(html);
     $("#customer-tabel-div").append(pageIndexHtml);
@@ -781,7 +784,7 @@ function InitEditCustomerData(obj) {
     $("#totalFloorTxt").val(obj.TotalFloor);
     $("#balconyCountTxt").val(obj.BalconyCount);
     //跟进记录
-  //  CreateFollowRecord(obj.ID);
+    //  CreateFollowRecord(obj.ID);
     //$("#ownerTxt").val(obj.OwnerName);
     //$("#ownerPhoneTxt").val(obj.OwnerPhone);
     //$("#contactsTxt").val(obj.Contacts);
@@ -869,130 +872,36 @@ function InitTableColSelect() {
 }
 
 function GetPageCountHtml(totalLength, activeIndex) {
-    var houseMaxCount = GetSysConf("customerMaxCount");
-    var count = totalLength / houseMaxCount;
     var html = "";
     var active = "active";
+    var lastPageIndex = GetLastPageIndex(totalLength, customerMaxCount)
     html += "<li class='paginate_button " + (activeIndex == 1 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=1>1</a></li>";
     html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=2>2</a></li>";
     if (activeIndex > 5) {
         html += "<li><a href='javascript:void()'>.......</a><li/>";
-        html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex - 1) + ">" + (activeIndex - 1) + "</a></li>"
-        html += "<li class='paginate_button active' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + activeIndex + ">" + activeIndex + "</a></li>"
-        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>"
-        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 2) + ">" + (activeIndex + 2) + "</a></li>"
-        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 3) + ">" + (activeIndex + 3) + "</a></li>"
+        html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex - 1) + ">" + (activeIndex - 1) + "</a></li>";
+        html += "<li class='paginate_button active' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + activeIndex + ">" + activeIndex + "</a></li>";
+        if (lastPageIndex - activeIndex == 1) {
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
+        }
+        if (lastPageIndex - activeIndex == 2) {
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 2) + ">" + (activeIndex + 2) + "</a></li>";
+        }
+        if (lastPageIndex - activeIndex >= 3) {
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 2) + ">" + (activeIndex + 2) + "</a></li>";
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 3) + ">" + (activeIndex + 3) + "</a></li>";
+        }       
     }
     else {
-        html += "<li class='paginate_button " + (activeIndex == 3 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=3>3</a></li>"
-        html += "<li class='paginate_button " + (activeIndex == 4 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=4>4</a></li>"
-        html += "<li class='paginate_button " + (activeIndex == 5 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=5>5</a></li>"
-        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=6>6</a></li>"
-        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=7>7</a></li>"
+        html += "<li class='paginate_button " + (activeIndex == 3 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=3>3</a></li>";
+        html += "<li class='paginate_button " + (activeIndex == 4 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=4>4</a></li>";
+        html += "<li class='paginate_button " + (activeIndex == 5 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=5>5</a></li>";
+        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=6>6</a></li>";
+        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=7>7</a></li>";
     }
     return html;
-}
-
-function InitCustomerTableSort() {
-    $("#customer-table th").on("click", function () {
-        var trArr = "";
-        var sortCol = $(this).attr("class");
-        var sortType = $(this).attr("sortType");
-        var isFirstClick = sortType == null;
-        if (isFirstClick || sortType == "Asc") {
-            trArr = CustomerTableAscSort(sortCol);
-            $(this).attr("sortType", "Desc");
-        } else {
-            trArr = CustomerTableDescSort(sortCol);
-            $(this).attr("sortType", "Asc");
-        }
-        $("#customer-table tbody tr").remove();
-        $("#customer-table tbody").append(trArr);
-        if (trArr.length > 0) {
-            CustomerTableDoubleClick();
-        }
-    });
-}
-
-function CustomerTableAscSort(sortCol) {
-    var trArr = $("#customer-table tbody tr");
-    var sortArr = "";
-    switch (sortCol) {
-        case "colResidentialDistrict":
-            trArr = trArr.sort(ResidentialDistrictAscSort);
-            break;
-        case "colResidentialDistrictAddr":
-            trArr = trArr.sort(ResidentialDistrictAddrAscSort);
-            break;
-        case "colHousePosition":
-            trArr = trArr.sort(HousePositionAscSort);
-            break;
-        case "colHouseNumber":
-            trArr = trArr.sort(HouseNumberAscSort);
-            break;
-        case "colTotalFloor":
-            trArr = trArr.sort(TotalFloorAscSort);
-            break;
-        case "colHouseType1":
-            trArr = trArr.sort(HouseTypeAscSort);
-            break;
-        case "colHouseSize":
-            trArr = trArr.sort(HouseSizeAscSort);
-            break;
-        case "colHouseUseSize":
-            trArr = trArr.sort(HouseUseSizeAscSort);
-            break;
-        case "colOrientation":
-            trArr = trArr.sort(OrientationAscSort);
-            break;
-        case "colSaleTotalPrice":
-            trArr = trArr.sort(SaleTotalPriceAscSort);
-            break;
-        case "colSaleUnitPrice":
-            trArr = trArr.sort(SaleUnitPriceAscSort);
-            break;
-        case "colLeaseTotalPrice":
-            trArr = trArr.sort(LeaseTotalPriceAscSort);
-            break;
-        case "colLeaseUnitPrice":
-            trArr = trArr.sort(LeaseUnitPriceAscSort);
-            break;
-        case "colProxyStartDate":
-            trArr = trArr.sort(ProxyStartDateAscSort);
-            break;
-        case "colLookHouseType":
-            trArr = trArr.sort(LookHouseTypeAscSort);
-            break;
-        case "colDepartment":
-            trArr = trArr.sort(DepartmentAscSort);
-            break;
-        case "colStaff":
-            trArr = trArr.sort(StaffAscSort);
-            break;
-        case "colCustomerStatus":
-            trArr = trArr.sort(CustomerStatusAscSort);
-            break;
-        case "colHousingLetter":
-            trArr = trArr.sort(HousingLetterAscSort);
-            break;
-        case "colHouseSource":
-            trArr = trArr.sort(HouseSourceAscSort);
-            break;
-        case "colLastFollowDate":
-            trArr = trArr.sort(LastFollowDateAscSort);
-            break;
-        case "colRemarks":
-            trArr = trArr.sort(RemarksAscSort);
-            break;
-        case "colGrade":
-            trArr = trArr.sort(GradeAscSort);
-            break;
-        case "colHouseUseType":
-            trArr = trArr.sort(HouseUseTypeAscSort);
-            break;
-
-    }
-    return trArr;
 }
 
 function CustomerTableDescSort(sortCol) {
@@ -1094,191 +1003,6 @@ function HouseNumberAscSort(a, b) {
 
 function TotalFloorAscSort(a, b) {
     return parseInt($(a).find("td.colTotalFloor").text()) > parseInt($(b).find("td.colTotalFloor").text()) ? 1 : -1;
-}
-
-function HouseTypeAscSort(a, b) {
-    return $(a).find("td.colHouseType1").text().localeCompare($(b).find("td.colHouseType1").text());
-}
-
-function HouseSizeAscSort(a, b) {
-    return parseInt($(a).find("td.colHouseSize").text()) > parseInt($(b).find("td.colHouseSize").text()) ? 1 : -1;
-}
-
-function HouseUseSizeAscSort(a, b) {
-    return parseInt($(a).find("td.colHouseUseSize").text()) > parseInt($(b).find("td.colHouseUseSize").text()) ? 1 : -1;
-}
-
-function OrientationAscSort(a, b) {
-    return $(a).find("td.colOrientation").text().localeCompare($(b).find("td.colOrientation").text());
-}
-
-function SaleTotalPriceAscSort(a, b) {
-    return parseInt($(a).find("td.colSaleTotalPrice").text()) > parseInt($(b).find("td.colSaleTotalPrice").text()) ? 1 : -1;
-}
-
-function SaleUnitPriceAscSort(a, b) {
-    return parseInt($(a).find("td.colSaleUnitPrice").text()) > parseInt($(b).find("td.colSaleUnitPrice").text()) ? 1 : -1;
-}
-
-function LeaseTotalPriceAscSort(a, b) {
-    return parseInt($(a).find("td.colLeaseTotalPrice").text()) > parseInt($(b).find("td.colLeaseTotalPrice").text()) ? 1 : -1;
-}
-
-function LeaseUnitPriceAscSort(a, b) {
-    return parseInt($(a).find("td.colLeaseUnitPrice").text()) > parseInt($(b).find("td.colLeaseUnitPrice").text()) ? 1 : -1;
-}
-
-function ProxyStartDateAscSort(a, b) {
-    var dt = new Date($(a).find("td.colProxyStartDate").text());
-    var dt2 = new Date($(b).find("td.colProxyStartDate").text());
-    return dt > dt2 ? 1 : -1;
-}
-
-function LookHouseTypeAscSort(a, b) {
-    return $(a).find("td.colLookHouseType").text().localeCompare($(b).find("td.colLookHouseType").text());
-}
-
-function DepartmentAscSort(a, b) {
-    return $(a).find("td.colDepartment").text().localeCompare($(b).find("td.colDepartment").text());
-}
-
-function StaffAscSort(a, b) {
-    return $(a).find("td.colStaff").text().localeCompare($(b).find("td.colStaff").text());
-}
-
-function CustomertStatusAscSort(a, b) {
-    return $(a).find("td.colCustomerStatus").text().localeCompare($(b).find("td.colCustomerStatus").text());
-}
-
-function HousingLetterAscSort(a, b) {
-    return $(a).find("td.colHousingLetter").text().localeCompare($(b).find("td.colHousingLetter").text());
-}
-
-function HouseSourceAscSort(a, b) {
-    return $(a).find("td.colHouseSource").text().localeCompare($(b).find("td.colHouseSource").text());
-}
-
-function LastFollowDateAscSort(a, b) {
-    var dt = new Date($(a).find("td.colLastFollowDate").text());
-    var dt2 = new Date($(b).find("td.colLastFollowDate").text());
-    return dt > dt2 ? 1 : -1;
-}
-
-function RemarksAscSort(a, b) {
-    return $(a).find("td.colRemarks").text().localeCompare($(b).find("td.colRemarks").text());
-}
-
-function GradeAscSort(a, b) {
-    return $(a).find("td.colGrade").text().localeCompare($(b).find("td.colGrade").text());
-}
-
-function HouseUseTypeAscSort(a, b) {
-    return $(a).find("td.colHouseUseType").text().localeCompare($(b).find("td.colHouseUseType").text());
-}
-
-//降序
-function ResidentialDistrictDescSort(a, b) {
-    return $(b).find("td.colResidentialDistrict").text().localeCompare($(a).find("td.colResidentialDistrict").text());
-}
-
-function ResidentialDistrictAddrDescSort(a, b) {
-    return $(b).find("td.colResidentialDistrictAddr").text().localeCompare($(a).find("td.colResidentialDistrictAddr").text());
-}
-
-function HousePositionDescDescSort(a, b) {
-    return $(b).find("td.colHousePosition").text().localeCompare($(a).find("td.colHousePosition").text());
-}
-
-function HouseNumberDescSort(a, b) {
-    return $(b).find("td.colHouseNumber").text().localeCompare($(a).find("td.colHouseNumber").text());
-}
-
-function TotalFloorDescSort(a, b) {
-    return parseInt($(b).find("td.colTotalFloor").text()) > parseInt($(a).find("td.colTotalFloor").text()) ? 1 : -1;
-}
-
-function HouseTypeDescSort(a, b) {
-    return $(b).find("td.colHouseType1").text().localeCompare($(a).find("td.colHouseType1").text());
-}
-
-function HouseSizeDescSort(a, b) {
-    return parseInt($(b).find("td.colHouseSize").text()) > parseInt($(a).find("td.colHouseSize").text()) ? 1 : -1;
-}
-
-function HouseUseSizeDescSort(a, b) {
-    return parseInt($(b).find("td.colHouseUseSize").text()) > parseInt($(a).find("td.colHouseUseSize").text()) ? 1 : -1;
-}
-
-function OrientationDescSort(a, b) {
-    return $(b).find("td.colOrientation").text().localeCompare($(a).find("td.colOrientation").text());
-}
-
-function SaleTotalPriceDescSort(a, b) {
-    return parseInt($(b).find("td.colSaleTotalPrice").text()) > parseInt($(a).find("td.colSaleTotalPrice").text()) ? 1 : -1;
-}
-
-function SaleUnitPriceDescSort(a, b) {
-    return parseInt($(b).find("td.colSaleUnitPrice").text()) > parseInt($(a).find("td.colSaleUnitPrice").text()) ? 1 : -1;
-}
-
-function LeaseTotalPriceDescSort(a, b) {
-    return parseInt($(b).find("td.colLeaseTotalPrice").text()) > parseInt($(a).find("td.colLeaseTotalPrice").text()) ? 1 : -1;
-}
-
-function LeaseUnitPriceDescSort(a, b) {
-    return parseInt($(b).find("td.colLeaseUnitPrice").text()) > parseInt($(a).find("td.colLeaseUnitPrice").text()) ? 1 : -1;
-}
-
-function ProxyStartDateDescSort(a, b) {
-    var dt = new Date($(a).find("td.colProxyStartDate").text());
-    var dt2 = new Date($(b).find("td.colProxyStartDate").text());
-    return dt > dt2 ? -1 : 1;
-}
-
-function LookHouseTypeDescSort(a, b) {
-    return $(b).find("td.colLookHouseType").text().localeCompare($(a).find("td.colLookHouseType").text());
-}
-
-function DepartmentDescSort(a, b) {
-    return $(b).find("td.colDepartment").text().localeCompare($(a).find("td.colDepartment").text());
-}
-
-function StaffDescSort(a, b) {
-    return $(b).find("td.colStaff").text().localeCompare($(a).find("td.colStaff").text());
-}
-
-function CustomerStatusDescSort(a, b) {
-    return $(a).find("td.colCustomerStatus").text().localeCompare($(b).find("td.colCustomerStatus").text());
-}
-
-function HousingLetterDescSort(a, b) {
-    return $(b).find("td.colHousingLetter").text().localeCompare($(a).find("td.colHousingLetter").text());
-}
-
-function HouseSourceDescSort(a, b) {
-    return $(b).find("td.colHouseSource").text().localeCompare($(a).find("td.colHouseSource").text());
-}
-
-function LastFollowDateDescSort(a, b) {
-    var dt = new Date($(a).find("td.colLastFollowDate").text());
-    var dt2 = new Date($(b).find("td.colLastFollowDate").text());
-    return dt > dt2 ? -1 : 1;
-}
-
-function RemarksDescSort(a, b) {
-    return $(b).find("td.colRemarks").text().localeCompare($(a).find("td.colRemarks").text());
-}
-
-function GradeDescSort(a, b) {
-    return $(b).find("td.colGrade").text().localeCompare($(a).find("td.colGrade").text());
-}
-
-function HouseUseTypeDescSort(a, b) {
-    return $(b).find("td.colHouseUseType").text().localeCompare($(a).find("td.colHouseUseType").text());
-}
-
-function IntentionDescSort(a, b) {
-    return $(b).find("td.colIntention").text().localeCompare($(a).find("td.colIntention").text());
 }
 
 function InitTableColChecked(type, element, async) {

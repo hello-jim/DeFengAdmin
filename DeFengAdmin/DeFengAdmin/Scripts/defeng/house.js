@@ -12,9 +12,9 @@ $(document).ready(function () {
     InitHouseStatus("#houseStatusSearchSelect", "全部", true);
     HouseAdd();
     InitFileUp();
-    InitHouseTableSort();
+    InitTableSort("#houseTable");
     InitTableColChecked("HouseTableColChecked", ".table-col-menu", false);
-    InitDisplayStatus();
+    InitDisplayStatus("House");
     InitHouseDelete();
     $("#search").on("click", function () {
         $(".pageCount").remove();
@@ -849,23 +849,7 @@ function InitHousePanelClose() {
 }
 
 //表格排序
-function InitHouseTableSort() {
-    $("#houseTable th").on("click", function () {
-        var trArr = "";
-        var sortCol = $(this).attr("class");
-        var sortType = $(this).attr("sortType");
-        var isFirstClick = sortType == null;
-        if (isFirstClick || sortType == "Asc") {
-            trArr = TableAscSort(sortCol);
-            $(this).attr("sortType", "Desc");
-        } else {
-            trArr = TableDescSort(sortCol);
-            $(this).attr("sortType", "Asc");
-        }
-        $("#houseTable tbody tr").remove();
-        $("#houseTable tbody").append(trArr);
-    });
-}
+
 
 //表格加载前
 function BeforeHouseDataLoading() {
@@ -878,36 +862,6 @@ function BeforeHouseDataLoading() {
 function AfterHouseDataLoading() {
     $("#loadImg").addClass("display");
     $("houseTabelDiv").removeClass("display");
-}
-
-//列显示状态
-function InitDisplayStatus() {
-    $(".table-col-Select").on("click", function () {
-        $(".table-col-menu").toggle();
-    });
-    $(".cbr-replaced").on("click", function () {
-        var thisObj = $(this);
-        var checked = $(thisObj).hasClass("cbr-checked");
-        var col = $(thisObj).attr("col");
-        if (checked) {
-            $(".col" + col).hide();
-            $(thisObj).removeClass("cbr-checked");
-        }
-        else {
-            $(".col" + col).show();
-            $(thisObj).addClass("cbr-checked");
-        }
-        var colID = $(thisObj).attr("colID");
-        var status = $(thisObj).hasClass("cbr-checked");
-        $.post("/Common/ChangeHouseTableColStatus",
-            {
-                id: colID,
-                status: status
-            },
-            function (data) {
-
-            });
-    });
 }
 
 function InitTableColSelect() {

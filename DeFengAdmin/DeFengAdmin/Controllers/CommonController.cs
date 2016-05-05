@@ -452,6 +452,43 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
+        public string LoadCustomerTableColChecked()
+        {
+            var result = "";
+            try
+            {
+                CustomerTableColChecked_BLL bll = new CustomerTableColChecked_BLL();
+                var list = bll.LoadCustomerTableColChecked();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
+        public int ChangeCustomerTableColStatus()
+        {
+
+            var result = 0;
+            try
+            {
+                var id = Convert.ToInt32(Request["ID"]);
+                var status = Convert.ToBoolean(Request["status"]);
+                var obj = new CustomerTableColChecked();
+                obj.ID = id;
+                obj.CheckedStatus = status;
+                CustomerTableColChecked_BLL bll = new CustomerTableColChecked_BLL();
+                result = bll.ChangeCustomerTableColStatus(obj);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
         public string LoadFollowType()
         {
             var result = "";

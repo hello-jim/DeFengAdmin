@@ -1097,10 +1097,70 @@ function DateTimeConvert_yyyyMMddhhmm(dateTime) {
     return dateTime;
 }
 
-function TableAscSort(sortCol) {
-    var trArr = $("#houseTable tbody tr");
+//列显示状态
+function InitDisplayStatus(type) {
+    $(".table-col-Select").on("click", function () {
+        $(".table-col-menu").toggle();
+    });
+    $(".cbr-replaced").on("click", function () {
+        var thisObj = $(this);
+        var checked = $(thisObj).hasClass("cbr-checked");
+        var col = $(thisObj).attr("col");
+        if (checked) {
+            $(".col" + col).hide();
+            $(thisObj).removeClass("cbr-checked");
+        }
+        else {
+            $(".col" + col).show();
+            $(thisObj).addClass("cbr-checked");
+        }
+        var colID = $(thisObj).attr("colID");
+        var status = $(thisObj).hasClass("cbr-checked");
+        $.post("/Common/Change" + type + "TableColStatus",
+            {
+                id: colID,
+                status: status
+            },
+            function (data) {
+
+            });
+    });
+}
+
+function InitTableSort(table) {
+    $("" + table + " th").on("click", function () {
+        var trArr = "";
+        var sortCol = $(this).attr("class");
+        var sortType = $(this).attr("sortType");
+        var isFirstClick = sortType == null;
+        if (isFirstClick || sortType == "Asc") {
+            trArr = TableAscSort(table, sortCol);
+            $(this).attr("sortType", "Desc");
+        } else {
+            trArr = TableDescSort(table, sortCol);
+            $(this).attr("sortType", "Asc");
+        }
+        $("" + table + " tbody tr").remove();
+        $("" + table + " tbody").append(trArr);
+    });
+}
+
+function TableAscSort(table, sortCol) {
+    var trArr = $("" + table + " tbody tr");
     var sortArr = "";
     switch (sortCol) {
+        case "colCustomerID":
+            trArr = trArr.sort(CustomerIDAscSort);
+            break;
+        case "colCity":
+            trArr = trArr.sort(CityAscSort);
+            break;
+        case "colDistrict":
+            trArr = trArr.sort(DistrictAscSort);
+            break;
+        case "colArea":
+            trArr = trArr.sort(AreaAscSort);
+            break;
         case "colResidentialDistrict":
             trArr = trArr.sort(ResidentialDistrictAscSort);
             break;
@@ -1164,14 +1224,56 @@ function TableAscSort(sortCol) {
         case "colLastFollowDate":
             trArr = trArr.sort(LastFollowDateAscSort);
             break;
+        case "colCustomerName":
+            trArr = trArr.sort(CustomerNameAscSort);
+            break;
+        case "colEntrustStartDate":
+            trArr = trArr.sort(EntrustStartDateAscSort);
+            break;
+        case "colHouseUseType":
+            trArr = trArr.sort(HouseUseTypeAscSort);
+            break;
+        case "colRemarks":
+            trArr = trArr.sort(RemarksAscSort);
+            break;
+        case "colGrade":
+            trArr = trArr.sort(GradeAscSort);
+            break;
+        case "colEntrustType":
+            trArr = trArr.sort(EntrustTypeAscSort);
+            break;
+        case "colSource":
+            trArr = trArr.sort(SourceAscSort);
+            break;
+        case "colCustomerType":
+            trArr = trArr.sort(CustomerTypeAscSort);
+            break;
+        case "colIntention":
+            trArr = trArr.sort(IntentionAscSort);
+            break;
+        case "colEntrustOverDate":
+            trArr = trArr.sort(EntrustOverDateAscSort);
+            break;
     }
     return trArr;
 }
 
-function TableDescSort(sortCol) {
-    var trArr = $("#houseTable tbody tr");
+function TableDescSort(table, sortCol) {
+    var trArr = $("" + table + " tbody tr");
     var sortArr = "";
     switch (sortCol) {
+        case "colCustomerID":
+            trArr = trArr.sort(CustomerIDDescSort);
+            break;
+        case "colCity":
+            trArr = trArr.sort(CityDescSort);
+            break;
+        case "colDistrict":
+            trArr = trArr.sort(DistrictDescSort);
+            break;
+        case "colArea":
+            trArr = trArr.sort(AreaDescSort);
+            break;
         case "colResidentialDistrict":
             trArr = trArr.sort(ResidentialDistrictDescSort);
             break;
@@ -1235,11 +1337,54 @@ function TableDescSort(sortCol) {
         case "colLastFollowDate":
             trArr = trArr.sort(LastFollowDateDescSort);
             break;
+        case "colCustomerName":
+            trArr = trArr.sort(CustomerNameDescSort);
+            break;
+        case "colEntrustStartDate":
+            trArr = trArr.sort(EntrustStartDateDescSort);
+            break;
+        case "colHouseUseType":
+            trArr = trArr.sort(HouseUseTypeDescSort);
+            break;
+        case "colRemarks":
+            trArr = trArr.sort(RemarksDescSort);
+            break;
+        case "colGrade":
+            trArr = trArr.sort(GradeDescSort);
+            break;
+        case "colEntrustType":
+            trArr = trArr.sort(EntrustTypeDescSort);
+            break;
+        case "colSource":
+            trArr = trArr.sort(SourceDescSort);
+            break;
+        case "colIntention":
+            trArr = trArr.sort(IntentionDescSort);
+            break;
+        case "colEntrustOverDate":
+            trArr = trArr.sort(EntrustOverDateDescSort);
+            break;
     }
     return trArr;
 }
 
 //升序
+function CustomerIDAscSort(a, b) {
+    return $(a).find("td.colCustomerID").text().localeCompare($(b).find("td.colCustomerID").text());
+}
+
+function CityAscSort(a, b) {
+    return $(a).find("td.colArea").text().localeCompare($(b).find("td.colArea").text());
+}
+
+function DistrictAscSort(a, b) {
+    return $(a).find("td.colDistrict").text().localeCompare($(b).find("td.colDistrict").text());
+}
+
+function AreaAscSort(a, b) {
+    return $(a).find("td.colArea").text().localeCompare($(b).find("td.colArea").text());
+}
+
 function ResidentialDistrictAscSort(a, b) {
     return $(a).find("td.colResidentialDistrict").text().localeCompare($(b).find("td.colResidentialDistrict").text());
 }
@@ -1328,7 +1473,67 @@ function LastFollowDateAscSort(a, b) {
     return dt > dt2 ? 1 : -1;
 }
 
+function CustomerNameAscSort(a, b) {
+    return $(a).find("td.colCustomerName").text().localeCompare($(b).find("td.colCustomerName").text());
+}
+
+function RemarksAscSort(a, b) {
+    return $(a).find("td.colRemarks").text().localeCompare($(b).find("td.colRemarks").text());
+}
+
+function EntrustStartDateAscSort(a, b) {
+    var dt = new Date($(a).find("td.colEntrustStartDate").text());
+    var dt2 = new Date($(b).find("td.colEntrustStartDate").text());
+    return dt > dt2 ? 1 : -1;
+}
+
+function HouseUseTypeAscSort(a, b) {
+    return $(a).find("td.colHouseUseType").text().localeCompare($(b).find("td.colHouseUseType").text());
+}
+
+function GradeAscSort(a, b) {
+    return $(a).find("td.colGrade").text().localeCompare($(b).find("td.colGrade").text());
+}
+
+function EntrustTypeAscSort(a, b) {
+    return $(a).find("td.colEntrustType").text().localeCompare($(b).find("td.colEntrustType").text());
+}
+
+function SourceAscSort(a, b) {
+    return $(a).find("td.colSource").text().localeCompare($(b).find("td.colSource").text());
+}
+
+function CustomerTypeAscSort(a, b) {
+    return $(a).find("td.colCustomerType").text().localeCompare($(b).find("td.colCustomerType").text());
+}
+
+function IntentionAscSort(a, b) {
+    return $(a).find("td.colIntention").text().localeCompare($(b).find("td.colIntention").text());
+}
+
+function EntrustOverDateAscSort(a, b) {
+    var dt = new Date($(a).find("td.colEntrustOverDate").text());
+    var dt2 = new Date($(b).find("td.colEntrustOverDate").text());
+    return dt > dt2 ? 1 : -1;
+}
+
 //降序
+function CustomerIDDescSort(a, b) {
+    return $(b).find("td.colCustomerID").text().localeCompare($(a).find("td.colCustomerID").text());
+}
+
+function CityDescSort(a, b) {
+    return $(b).find("td.colArea").text().localeCompare($(a).find("td.colArea").text());
+}
+
+function DistrictDescSort(a, b) {
+    return $(b).find("td.colDistrict").text().localeCompare($(a).find("td.colDistrict").text());
+}
+
+function AreaDescSort(a, b) {
+    return $(b).find("td.colArea").text().localeCompare($(a).find("td.colArea").text());
+}
+
 function ResidentialDistrictDescSort(a, b) {
     return $(b).find("td.colResidentialDistrict").text().localeCompare($(a).find("td.colResidentialDistrict").text());
 }
@@ -1417,6 +1622,50 @@ function LastFollowDateDescSort(a, b) {
     return dt > dt2 ? -1 : 1;
 }
 
+function CustomerNameDescSort(a, b) {
+    return $(b).find("td.colCustomerName").text().localeCompare($(a).find("td.colCustomerName").text());
+}
+
+function EntrustStartDateDescSort(a, b) {
+    var dt = new Date($(a).find("td.colEntrustStartDate").text());
+    var dt2 = new Date($(b).find("td.colEntrustStartDate").text());
+    return dt > dt2 ? -1 : 1;
+}
+
+function HouseUseTypeDescSort(a, b) {
+    return $(b).find("td.colHouseUseType").text().localeCompare($(a).find("td.colHouseUseType").text());
+}
+
+function RemarksDescSort(a, b) {
+    return $(b).find("td.colRemarks").text().localeCompare($(a).find("td.colRemarks").text());
+}
+
+function GradeDescSort(a, b) {
+    return $(b).find("td.colGrade").text().localeCompare($(a).find("td.colGrade").text());
+}
+
+function EntrustTypeDescSort(a, b) {
+    return $(b).find("td.colEntrustType").text().localeCompare($(a).find("td.colEntrustType").text());
+}
+
+function SourceDescSort(a, b) {
+    return $(b).find("td.colSource").text().localeCompare($(a).find("td.colSource").text());
+}
+
+function CustomerTypeDescSort(a, b) {
+    return $(b).find("td.colCustomerType").text().localeCompare($(a).find("td.colCustomerType").text());
+}
+
+function IntentionDescSort(a, b) {
+    return $(b).find("td.colIntention").text().localeCompare($(a).find("td.colIntention").text());
+}
+
+function EntrustOverDateDescSort(a, b) {
+    var dt = new Date($(a).find("td.colEntrustOverDate").text());
+    var dt2 = new Date($(b).find("td.colEntrustOverDate").text());
+    return dt > dt2 ? -1 : 1;
+}
+
 function InitTableColChecked(type, element, async) {
     $.ajax({
         url: "/Common/Load" + type,
@@ -1460,5 +1709,16 @@ function GetObjArrVal(arr) {
     result = result.substring(0, result.lastIndexOf(','));
     result = result != "" ? result : "";
     return result;
+}
+
+//获取表格最后一页
+function GetLastPageIndex(totalCount,maxCount) {
+    var totalPageCount = totalCount / maxCount;
+    var numberArr = totalPageCount.toString().split(".");
+    var number = numberArr.length > 1 ? parseInt(numberArr[1]) : 0;
+    if (number >= 5) {
+        totalPageCount++;
+    }
+    return parseInt(totalPageCount);
 }
 
