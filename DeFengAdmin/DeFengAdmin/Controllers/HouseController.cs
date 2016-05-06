@@ -20,6 +20,8 @@ namespace DeFengAdmin.Controllers
         // GET: House
         public ActionResult Index()
         {
+            var house = HttpContext.Request.Form.Count == 0 ? "" : HttpContext.Request.Form["house"];
+            ViewBag.House = house;
             return View();
         }
 
@@ -204,7 +206,7 @@ namespace DeFengAdmin.Controllers
             {
                 var record = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<HouseFollowRecord>(HttpContext.Request.Form["record"]) : null;
                 HouseFollowRecord_BLL bll = new HouseFollowRecord_BLL();
-                result = bll.AddHouseFollowRecord(record);              
+                result = bll.AddHouseFollowRecord(record);
             }
             catch (Exception ex)
             {
@@ -243,6 +245,15 @@ namespace DeFengAdmin.Controllers
 
             }
             return result;
+        }
+
+        /// <summary>
+        ///房配客
+        /// </summary>
+        public void HouseMatchCustomer()
+        {
+            var house = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["customer"] : "";
+            Response.Redirect("/Customer/Index?customer=" + house);
         }
 
     }

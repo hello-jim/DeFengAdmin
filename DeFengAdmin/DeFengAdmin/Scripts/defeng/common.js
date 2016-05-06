@@ -129,7 +129,7 @@ function InitDistrict(id, cityID, areaID, firstText, async, arr) {
             // $(id).prev().find("a span")[0].innerText = $("" + id + " :selected").text();
             $(id).on("change", function () {
                 if ($("" + id + " :selected").length == 1) {
-                    InitArea(areaID, $(id).val(), firstText, async, "");
+                    InitArea(areaID, $(id)[0].value, firstText, async, "");
                     $(areaID).removeAttr("disabled");
                 } else {
                     $(areaID).prev().find("ul .select2-search-choice").remove()
@@ -1081,6 +1081,52 @@ function InitMultipleSelectData(id, arr) {
     }
 }
 
+//获取PageIndex
+function GetPageCountHtml(totalLength, activeIndex,maxCount) {
+    var html = "";
+    var active = "active";
+    var totalPageCount = GetTotalPageCount(totalLength, maxCount);
+    html += "<li class='paginate_button " + (activeIndex == 1 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=1>1</a></li>";
+    if (totalPageCount > 1) {
+        html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=2>2</a></li>";
+    }
+    if (activeIndex > 5) {
+        html += "<li><a href='javascript:void()'>.......</a><li/>";
+        html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex - 1) + ">" + (activeIndex - 1) + "</a></li>";
+        html += "<li class='paginate_button active' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + activeIndex + ">" + activeIndex + "</a></li>";
+        if (totalPageCount - activeIndex == 1) {
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
+        }
+        if (totalPageCount - activeIndex == 2) {
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 2) + ">" + (activeIndex + 2) + "</a></li>";
+        }
+        if (totalPageCount - activeIndex >= 3) {
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 2) + ">" + (activeIndex + 2) + "</a></li>";
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 3) + ">" + (activeIndex + 3) + "</a></li>";
+        }
+    }
+    else {
+        if (totalPageCount > 2) {
+            html += "<li class='paginate_button " + (activeIndex == 3 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=3>3</a></li>";
+        }
+        if (totalPageCount > 3) {
+            html += "<li class='paginate_button " + (activeIndex == 4 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=4>4</a></li>";
+        }
+        if (totalPageCount > 4) {
+            html += "<li class='paginate_button " + (activeIndex == 5 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=5>5</a></li>";
+        }
+        if (totalPageCount > 5) {
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=6>6</a></li>";
+        }
+        if (totalPageCount > 6) {
+            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=7>7</a></li>";
+        }
+    }
+    return html;
+}
+
 function DateTimeConvert_yyyyMMdd(dateTime) {
     var dt = new Date(dateTime);
     return dt.getFullYear() + "-" + ((dt.getMonth() + 1) < 10 ? "0" + (dt.getMonth() + 1) : (dt.getMonth() + 1)) + "-" + (dt.getDate() < 10 ? "0" + dt.getDate() : dt.getDate());
@@ -1711,8 +1757,8 @@ function GetObjArrVal(arr) {
     return result;
 }
 
-//获取表格最后一页
-function GetLastPageIndex(totalCount,maxCount) {
+//获取总页数
+function GetTotalPageCount(totalCount,maxCount) {
     var totalPageCount = totalCount / maxCount;
     var numberArr = totalPageCount.toString().split(".");
     var number = numberArr.length > 1 ? parseInt(numberArr[1]) : 0;
@@ -1721,4 +1767,6 @@ function GetLastPageIndex(totalCount,maxCount) {
     }
     return parseInt(totalPageCount);
 }
+
+
 

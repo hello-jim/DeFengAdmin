@@ -1,9 +1,28 @@
 ﻿var searchAction = "";
-
+houseMaxCount = GetSysConf("houseMaxCount");
 $(document).ready(function () {
+    var houseSearchVal = $("#houseSearchObj").val();
+    if (houseSearchVal != "") {
+        var houseSearchObj = JSON.parse(houseSearchVal);
+        $(".pageCount").remove();
+        BeforeHouseDataLoading();
+        $.post("/House/Search",
+            {
+                house: houseSearchVal
+            },
+            function (data) {               
+                var json = "";
+                if (data != "") {
+                    json = $.parseJSON(data);
+                }
+                CreateHouseTable(json);
+                searchAction = "jointSearch";
+            });
+    }
+
     $("#main-menu li").removeClass("active");
     $(".house-menu").addClass("opened active");
-    InitProvince("#provinceSearchSelect", "#citySearchSelect", "#districtSearchSelect", "#areaSearchSelect", true);
+    InitCity("#citySearchSelect", 19, "#districtSearchSelect", "#areaSearchSelect", true, "");
     InitTransactionType("#transactionTypeSearchSelect", "全部", true);
     InitHouseUseType("#houseUseTypeSearchSelect", "全部", true);
     InitOrientation("#orientationSearchSelect", "全部", true);
@@ -181,9 +200,9 @@ function CreateHouseTable(json) {
         var pageIndexHtml = "";
         pageIndexHtml += "<div class='row pageCount'>";
         pageIndexHtml += "<div class='col-md-6'></div>";
-        pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous disabled' aria-controls='example-1' tabindex='0' id='example-1_previous'><a href='#'>Previous</a></li>";
-        pageIndexHtml += GetPageCountHtml(json[0].TotalHouseCount, json[0].PageIndex);
-        pageIndexHtml += "<li class='paginate_button next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>Next</a></li></ul></div></div></div>";
+        pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous page-up' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#'>上一页</a></li>";
+        pageIndexHtml += GetPageCountHtml(json[0].TotalHouseCount, json[0].PageIndex, houseMaxCount);
+        pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetTotalPageCount(json[0].TotalHouseCount, houseMaxCount) + ">最后一页</a></li></ul></div></div></div>";
 
     }
 
@@ -202,20 +221,6 @@ function GetHouseUnitPrice(totalPrice, size) {
 
 function GetHouseType1(roomCount, hallCount, toiletCount, balconyCount) {
     return roomCount + "-" + hallCount + "-" + toiletCount + "-" + balconyCount;
-}
-
-function GetPageCountHtml(totalLength, activeIndex) {
-    var houseMaxCount = GetSysConf("houseMaxCount");
-    var count = totalLength / houseMaxCount;
-    var html = "";
-    for (var i = 0; i < count; i++) {
-        var active = "";
-        if (i == activeIndex - 1) {
-            active = "active";
-        }
-        html += "<li class='paginate_button " + active + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (i + 1) + ">" + (i + 1) + "</a></li>";
-    }
-    return html;
 }
 
 //获取系统配置

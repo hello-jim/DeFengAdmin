@@ -1,10 +1,11 @@
 ﻿var searchAction = "";
 customerMaxCount = GetSysConf("customerMaxCount");
-$(document).ready(function () {
+
+$(document).ready(function () {  
     InitDistrict("#districtSearchSelect", 195, "#areaSearchSelect", "", true);
     InitCustomerTransactionType("#customerTransactionTypeSearchSelect", "全部", true);
     InitCustomerStatus("#customerStatusJoinSearchSelect", "全部", true);
-    InitHousePayType("#houseUseTypeSearchSelect", "全部", true);
+    InitHouseUseType("#houseUseTypeSearchSelect", "全部", true);
     InitHouseType("#houseTypeSearchSelect", "全部", true);
     InitOrientation("#orientationSearchSelect", "全部", true);
     InitCustomerType("#customerTypeSearchSelect", "全部", true);
@@ -174,6 +175,11 @@ function GetJointSearchObj() {
     if (houseUseType.ID == 0) {
         houseUseType = null;
     }
+    var houseType = new Object();
+    houseType.ID = $("#houseTypeSearchSelect").val();
+    if (houseType.ID == 0) {
+        houseType = null;
+    }
     var customerTransactionType = new Object();
     customerTransactionType.ID = $("#customerTransactionTypeSearchSelect").val();
     if (customerTransactionType.ID == 0) {
@@ -194,6 +200,7 @@ function GetJointSearchObj() {
     if (customerStatus.ID == 0) {
         customerStatus = null;
     }
+    var privatePublice = parseInt($("#customserPrivatePubliceSearchSelect").val());
     var salePriceFrom = $("#priceFromSearchTxt").val() != "" ? $("#priceFromSearchTxt").val() : 0;
     var salePriceTo = $("#priceToSearchTxt").val() != "" ? $("#priceToSearchTxt").val() : 0;
     var houseSizeFrom = $("#houseSizeFromSearchTxt").val() != "" ? $("#houseSizeFromSearchTxt").val() : 0;
@@ -208,13 +215,47 @@ function GetJointSearchObj() {
     customer.CustomerType = customerType;
     customer.CustomerStatus = customerStatus;
     customer.Orientation = orientation;
+    if (privatePublice == 1) {
+        customer.isPubliceCustomer= true;
+    }
+    else if (privatePublice == 2) {
+        customer.isPrivateCustomer = true;
+    }
     customer.PriceFrom = salePriceFrom;
     customer.PriceTo = salePriceTo;
     customer.HouseSizeFrom = houseSizeFrom;
     customer.HouseSizeTo = houseSizeTo;
     customer.FloorFrom = floorFrom;
     customer.FloorTo = floorTo;
+    customer.HouseType = houseType;
     return customer;
+}
+
+//客配房
+function GetCustomerMatchHouseObj() {
+    var house = new Object();
+    //交易
+    var customerTransactionType = new Object();
+    customerTransactionType.ID = $("#customerTransactionTypeSelect").val();
+    house.CustomerTransactionType = customerTransactionType;
+    //城
+    var city = new Object();
+    city.ID = $("#citySelect").val();
+    house.City = city;
+    //区
+    var district = new Object();
+    district.ID = $("#districtSelect").val();
+    house.District = district;
+    //用途
+    var houseUseType = new Object();
+    houseUseType.ID = $("#houseUseTypeSelect").val() != null ? $("#houseUseTypeSelect").val() : 0;
+    house.HouseUseType = houseUseType;
+    //面积
+    house.HouseSizeFrom = $("#houseSizeFromTxt").val() != "" ? $("#houseSizeFromTxt").val() : 0;
+    house.HouseSizeTo = $("#houseSizeToTxt").val() != "" ? $("#houseSizeToTxt").val() : 0;
+    //价格
+    house.PriceFrom = $("#priceFromTxt").val() != "" ? $("#priceFromTxt").val() : 0;
+    house.PriceTo = $("#priceToTxt").val() != "" ? $("#priceToTxt").val() : 0;
 }
 
 function GetCustomerObj() {
@@ -376,7 +417,7 @@ function GetCustomerObj() {
     var housePayType = new Object();
     housePayType.ID = $("#housePayTypeSelect").val() != null ? $("#housePayTypeSelect").val().toString() : "0";
     customer.HousePayType = housePayType;
-    //付款
+    //意向
     var intention = new Object();
     intention.ID = $("#intentionSelect").val() != null ? $("#intentionSelect").val().toString() : "0";
     customer.Intention = intention;
@@ -523,8 +564,8 @@ function CreateCustomerTable(json) {
         pageIndexHtml += "<div class='row pageCount'>";
         pageIndexHtml += "<div class='col-md-6'></div>";
         pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous page-up' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#'>上一页</a></li>";
-        pageIndexHtml += GetPageCountHtml(json[0].TotalCustomerCount, json[0].PageIndex);
-        pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetLastPageIndex(json[0].TotalCustomerCount, customerMaxCount) + ">最后一页</a></li></ul></div></div></div>";
+        pageIndexHtml += GetPageCountHtml(json[0].TotalCustomerCount, json[0].PageIndex,customerMaxCount);
+        pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetTotalPageCount(json[0].TotalCustomerCount, customerMaxCount) + ">最后一页</a></li></ul></div></div></div>";
     }
     $("#customer-table").append(html);
     $("#customer-tabel-div").append(pageIndexHtml);
@@ -871,38 +912,7 @@ function InitTableColSelect() {
     });
 }
 
-function GetPageCountHtml(totalLength, activeIndex) {
-    var html = "";
-    var active = "active";
-    var lastPageIndex = GetLastPageIndex(totalLength, customerMaxCount)
-    html += "<li class='paginate_button " + (activeIndex == 1 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=1>1</a></li>";
-    html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=2>2</a></li>";
-    if (activeIndex > 5) {
-        html += "<li><a href='javascript:void()'>.......</a><li/>";
-        html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex - 1) + ">" + (activeIndex - 1) + "</a></li>";
-        html += "<li class='paginate_button active' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + activeIndex + ">" + activeIndex + "</a></li>";
-        if (lastPageIndex - activeIndex == 1) {
-            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
-        }
-        if (lastPageIndex - activeIndex == 2) {
-            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
-            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 2) + ">" + (activeIndex + 2) + "</a></li>";
-        }
-        if (lastPageIndex - activeIndex >= 3) {
-            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 1) + ">" + (activeIndex + 1) + "</a></li>";
-            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 2) + ">" + (activeIndex + 2) + "</a></li>";
-            html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex + 3) + ">" + (activeIndex + 3) + "</a></li>";
-        }       
-    }
-    else {
-        html += "<li class='paginate_button " + (activeIndex == 3 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=3>3</a></li>";
-        html += "<li class='paginate_button " + (activeIndex == 4 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=4>4</a></li>";
-        html += "<li class='paginate_button " + (activeIndex == 5 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=5>5</a></li>";
-        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=6>6</a></li>";
-        html += "<li class='paginate_button' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=7>7</a></li>";
-    }
-    return html;
-}
+
 
 function CustomerTableDescSort(sortCol) {
     var trArr = $("#customer-table tbody tr");

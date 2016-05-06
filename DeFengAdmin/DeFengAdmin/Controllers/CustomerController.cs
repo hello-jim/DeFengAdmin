@@ -70,6 +70,14 @@ namespace DeFengAdmin.Controllers
             }
             return result;
         }
-        
+
+        /// <summary>
+        ///客配房 
+        /// </summary>
+        public void CustomerMatchHouse()
+        {
+            var house = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["house"] : "";
+            Response.Redirect("/House/Index?house=" + house);
+        }
     }
 }

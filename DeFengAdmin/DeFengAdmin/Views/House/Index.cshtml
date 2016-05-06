@@ -63,7 +63,7 @@
                                 <option value="15">最近半月</option>
                                 <option value="30">最近一个月</option>
                                 <option value="90">最近三个月</option>
-                                <option value="180">最近半年</option>                            
+                                <option value="180">最近半年</option>
                             </select>
 
                         </div>
@@ -89,7 +89,7 @@
                                 <option value="15">最近半月</option>
                                 <option value="30">最近一个月</option>
                                 <option value="90">最近三个月</option>
-                                <option value="180">最近半年</option>                              
+                                <option value="180">最近半年</option>
                             </select>
                         </div>
                     </div>
@@ -145,30 +145,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-2">
-                        <div class="form-group search_select">
-                            <label class="control-label">省</label>
-
-                            <script type="text/javascript">
-                                jQuery(document).ready(function ($) {
-                                    $("#provinceSearchSelect").select2({
-                                        placeholder: 'Select your country...',
-                                        allowClear: true
-                                    }).on('select2-open', function () {
-                                        // Adding Custom Scrollbar
-                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                    });
-
-                                });
-                            </script>
-
-                            <select class="form-control search_select" id="provinceSearchSelect">
-                                <option>请选择</option>
-                            </select>
-
-
-                        </div>
-                    </div>
                     <div class="col-md-2">
                         <div class="form-group search_select">
                             <label class="control-label">城市</label>
@@ -1189,9 +1165,7 @@
             <div class="form-group">
                 <div class="col-md-6 follow-record">
                     <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                        <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'>
-                           
-                        </table>
+                        <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'></table>
                     </div>
                 </div>
                 <div class="col-md-6 owner-info display">
@@ -1401,7 +1375,7 @@
 </div>
 
 
-
+<input id="houseSearchObj" type="hidden" value="@ViewBag.House" />
 
 <!-- Main Footer -->
 <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
@@ -1422,7 +1396,6 @@
 <script src="~/Scripts/resizeable.js"></script>
 <script src="~/Scripts/joinable.js"></script>
 <script src="~/Scripts/xenon-api.js"></script>
-<script src="~/Scripts/xenon-toggles.js"></script>
 <script src="~/Scripts/moment.min.js"></script>
 
 <!-- Imported scripts on this page -->
