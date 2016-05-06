@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using DeFeng.Model;
 using DeFeng.BLL;
+using System.Data.SqlClient;
+using DeFeng.Common;
 
 namespace DeFengAdmin.Controllers
 {
     public class HomeController : Controller
     {
-        public int result { get; private set; }
 
         public ActionResult Index()
         {
@@ -30,44 +31,73 @@ namespace DeFengAdmin.Controllers
 
             return View();
         }
-
-       public ActionResult Register()
+        //注册  1是已存在账户 返回给前台0是账户已存在，1是注册成功
+        public int Register()
         {
             var request = Request;
             var name = request["name"] != null ? Convert.ToString(request["name"]) : "";
-            var password = request["passWord"] != null ? Convert.ToString(request["passWord"]) : "";
+            var password1 = request["passWord"] != null ? Convert.ToString(request["passWord"]) : "";
             var idCard = request["idCard"] != null ? Convert.ToString(request["idCard"]) : "";
             var phone = request["phone"] != null ? Convert.ToString(request["phone"]) : "";
+            string password;
+            password = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(password1, "MD5");
             Staff staff = new Staff()
             {
                 Name = name,
                 Password = password,
                 IdCard = idCard,
-                Phone = phone        
+                Phone = phone
             };
             Staff_BLL bll = new Staff_BLL();
             bll.Register(staff);
-           
-            return View();
+            var result = bll.UserLogin(staff);
+            if (result == 1)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
-
-        public ActionResult UserLogin()
+        //登录
+        public int UserLogin()
         {
             var request = Request;
             var name = request["name"] != null ? Convert.ToString(request["name"]) : "";
-            var password = request["password"] != null ? Convert.ToString(request["password"]) : "";
+            var password1 = request["password"] != null ? Convert.ToString(request["password"]) : "";
+            string password;
+            password = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(password1, "MD5");
             Staff staff = new Staff()
             {
                 Name = name,
                 Password = password,
             };
+            
             Staff_BLL bll = new Staff_BLL();
             bll.UserLogin(staff);
-            return View();
+            var result = bll.UserLogin(staff);
+            if (result == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                if (result == 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    Session["@name"] = name;
+                    Session["@password"] = password;
+                    return 2;
+                }
 
+            }
         }
-        
 
+        //个人信息
         public ActionResult Information()
         {
             var request = Request;
