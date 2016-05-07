@@ -174,7 +174,7 @@
                             <script type="text/javascript">
                                 jQuery(document).ready(function ($) {
                                     $("#areaSearchSelect").select2({
-                                        placeholder: 'Choose your favorite US Countries',
+                                        placeholder: '',
                                         allowClear: true
                                     }).on('select2-open', function () {
                                         // Adding Custom Scrollbar
@@ -344,7 +344,7 @@
                                 <span class="expand-icon table-add add-customer" id="addHousePanel">+</span>
                             </a>&nbsp;
                             <a href="#" data-toggle="">
-                                <span id="deleteHouse" class="table-add">&times;</span>
+                                <span id="deleteCustomer" class="table-add">&times;</span>
                             </a>
                         </div>
                     </div><div class="btn-group dropdown-btn-group pull-right">
@@ -411,7 +411,7 @@
 <div class="customer-panel display">
     <div class="panel">
         <div class="row">
-            <input id="editID" value="0" type="hidden" />
+            <input id="customerID" value="0" type="hidden" />
             <div class="col-md-11"></div>
             <div class="col-md-1 customer-panel-close"><a href="javascript:void(0);">x</a></div>
         </div>
@@ -777,7 +777,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="row">
-                <div class="col-md-10">房源跟进<span class="follow-record-title"></span> </div>
+                <div class="col-md-10">客源跟进<span class="follow-record-title"></span> </div>
                 <div class="col-md-2"><a class="follow-record-panel-close" href="javascript:void(0);">X</a></div>
             </div>
         </div>
@@ -900,6 +900,8 @@
     </div>
 </div>
 
+<input id="customerSearchObj" type="hidden" value="@ViewBag.Customer" />
+
 <!-- Main Footer -->
 <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
 <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
@@ -928,7 +930,7 @@
 <script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="~/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 <script src="/Scripts/colorpicker/bootstrap-colorpicker.min.js"></script>
-<script src="/Scripts/select2/select2.min.js"></script>
+<script src="/Scripts/select2/select2.min.js" charset="UTF-8"></script>
 <script src="/Scripts/jquery-ui/jquery-ui.min.js"></script>
 <script src="/Scripts/selectboxit/jquery.selectBoxIt.min.js"></script>
 <script src="/Scripts/tagsinput/bootstrap-tagsinput.min.js"></script>
@@ -939,6 +941,6 @@
 
 <!-- JavaScripts initializations and stuff -->
 <script src="/Scripts/xenon-custom.js"></script>
-<script src="~/Scripts/defeng/Common.js" charset=“UTF-8”></script>
-<script src="~/Scripts/defeng/customer.js" charset=“UTF-8”></script>
+<script src="~/Scripts/defeng/Common.js" charset="UTF-8"></script>
+<script src="~/Scripts/defeng/customer.js" charset="UTF-8"></script>
 

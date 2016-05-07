@@ -1,7 +1,24 @@
 ﻿var searchAction = "";
 customerMaxCount = GetSysConf("customerMaxCount");
-
-$(document).ready(function () {  
+type = "Customer";
+$(document).ready(function () {
+    var customerSearchVal = $("#houseSearchObj").val();
+    if (customerSearchVal != "") {
+        $(".pageCount").remove();
+        BeforeHouseDataLoading();
+        $.post("/Customer/Search",
+            {
+                customer: customerSearchVal
+            },
+            function (data) {
+                var json = "";
+                if (data != "") {
+                    json = $.parseJSON(data);
+                }
+                CreateCustomerTable(json);
+                searchAction = "jointSearch";
+            });
+    }
     InitDistrict("#districtSearchSelect", 195, "#areaSearchSelect", "", true);
     InitCustomerTransactionType("#customerTransactionTypeSearchSelect", "全部", true);
     InitCustomerStatus("#customerStatusJoinSearchSelect", "全部", true);
@@ -10,8 +27,9 @@ $(document).ready(function () {
     InitOrientation("#orientationSearchSelect", "全部", true);
     InitCustomerType("#customerTypeSearchSelect", "全部", true);
     InitTableColChecked("CustomerTableColChecked", ".table-col-menu", false);
-    InitDisplayStatus("Customer");
+    InitDisplayStatus(type);
     InitTableSort("#customer-table");
+    InitDelete(type);
     $("#main-menu li").removeClass("active");
     $(".customer-menu").addClass("opened active");
     InitCustomerAdd();
@@ -216,7 +234,7 @@ function GetJointSearchObj() {
     customer.CustomerStatus = customerStatus;
     customer.Orientation = orientation;
     if (privatePublice == 1) {
-        customer.isPubliceCustomer= true;
+        customer.isPubliceCustomer = true;
     }
     else if (privatePublice == 2) {
         customer.isPrivateCustomer = true;
@@ -266,7 +284,7 @@ function GetCustomerObj() {
     customer.ContactsPhone = $("#contactsPhoneTxt").val() != "" ? $("#contactsPhoneTxt").val() : 0;
     customer.IdCard = $("#idCardTxt").val() != "" ? $("#idCardTxt").val() : 0;
     customer.PresentAddress = $("#presentAddressTxt").val() != "" ? $("#presentAddressTxt").val() : 0;
-    customer.ID = $("#editID").val();
+    customer.ID = $("#customerID").val();
     //交易
     var customerTransactionType = new Object();
     customerTransactionType.ID = $("#customerTransactionTypeSelect").val();
@@ -527,7 +545,7 @@ function CreateCustomerTable(json) {
         var IDPrefix = "df000";
         for (var i = 0; i < json.length; i++) {
             html += "<tr class='customer-tab-tr' houseID=" + json[i].ID + " customerJson='" + JSON.stringify(json[i]) + "'>";
-            html += "<td><div  class='cbr-replaced col-select' houseID=" + json[i].ID + "><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div></td>";
+            html += "<td><div  class='cbr-replaced col-select' customerID=" + json[i].ID + "><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div></td>";
             html += "<td class='colCustomerID'>" + IDPrefix + json[i].ID + "</td>";
             html += "<td class='colTransactionType' transactionTypeID='" + json[i].CustomerTransactionType.ID + "'>" + json[i].CustomerTransactionType.TypeName + "</td>";
             html += "<td class='colEntrustStartDate'>" + DateTimeConvert_yyyyMMdd(json[i].EntrustStartDate) + "</td>";
@@ -563,9 +581,9 @@ function CreateCustomerTable(json) {
         var pageIndexHtml = "";
         pageIndexHtml += "<div class='row pageCount'>";
         pageIndexHtml += "<div class='col-md-6'></div>";
-        pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous page-up' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#'>上一页</a></li>";
-        pageIndexHtml += GetPageCountHtml(json[0].TotalCustomerCount, json[0].PageIndex,customerMaxCount);
-        pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetTotalPageCount(json[0].TotalCustomerCount, customerMaxCount) + ">最后一页</a></li></ul></div></div></div>";
+        pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous page-up' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='javascript:void(0);'>上一页</a></li>";
+        pageIndexHtml += GetPageCountHtml(json[0].TotalCustomerCount, json[0].PageIndex, customerMaxCount);
+        pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='javascript:void(0);'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='javascript:void(0);' pageIndex=" + GetTotalPageCount(json[0].TotalCustomerCount, customerMaxCount) + ">最后一页</a></li></ul></div></div></div>";
     }
     $("#customer-table").append(html);
     $("#customer-tabel-div").append(pageIndexHtml);
@@ -580,22 +598,30 @@ function InitPageIndex() {
     $(".paginate_button").on("click", function () {
         // $(".paginate_button.active").removeClass("active");
         // $(this).addClass("active");
-        BeforeHouseDataLoading();
+
         var pageIndex = $(this).find("a").attr("pageIndex");
         if (pageIndex == null) {
             pageIndex = parseInt($(".paginate_button.active a").attr("pageIndex"));
             if ($(this).hasClass("page-up")) {
                 if (!pageIndex <= 1) {
                     pageIndex--;
+                    if (pageIndex < 1) {
+                        return;
+                    }
                 }
             }
             if ($(this).hasClass("page-next")) {
-                var totalPageLength = $(".paginate_button").length - 3;
+                var page = $(".paginate_button");
+
+                var totalPageLength = parseInt($(page)[($(page).length - 3)].firstChild.text);
                 if (pageIndex != totalPageLength) {
                     pageIndex++;
+                } else if (pageIndex >= totalPageLength) {
+                    return;
                 }
             }
         }
+        BeforeHouseDataLoading();
         $(".pageCount").remove();
         var customer = new Object();
         switch (searchAction) {
@@ -635,40 +661,161 @@ function CustomerTableDoubleClick() {
     $(".customer-tab-tr").on("dblclick", function () {
         ShowCustomerPanel("editCustomer");
         var obj = $.parseJSON($(this).attr("customerJson"));
+        $("#customerID").val(obj.ID);
+        //客户
+        $("#customerNameTxt").val(obj.CustomerName);
+        //联系人
+        $("#contactsTxt").val(obj.Contacts);
+        //身份证
+        $("#idCardTxt").val(obj.IdCard);
+        //现住址
+        $("#presentAddressTxt").val(obj.PresentAddress);
+        //手机
+        $("#contactsPhoneTxt").val(obj.ContactsPhone);
+        //房
+        $("#roomCountTxt").val(obj.RoomCount);
+        //厅
+        $("#hallCountTxt").val(obj.HallCount);
+        //卫
+        $("#toiletCountTxt").val(obj.ToiletCount);
+        //阳台
+        $("#balconyCountTxt").val(obj.BalconyCount);
+        //员工数量
+        $("#workerCountTxt").val(obj.WorkerCount);
+        //宿舍数量
+        $("#dormCountTxt").val(obj.DormCount);
+        //办公室数量
+        $("#officeCountTxt").val(obj.OfficeCount);
+        //空地
+        $("#clearingCountTxt").val(obj.ClearingCount);
+        //面积From
+        $("#houseSizeFromTxt").val(obj.HouseSizeFrom);
+        //面积To
+        $("#houseSizeToTxt").val(obj.HouseSizeTo);
+        //价格From
+        $("#priceFromTxt").val(obj.PriceFrom);
+        //价格To
+        $("#priceToTxt").val(obj.PriceTo);
+        //委托日期
+        $("#entrustStartDateTxt").val(DateTimeConvert_yyyyMMdd(obj.EntrustStartDate));
+        //停车
+        $("#parkTxt").val(obj.Park);
+        //行业
+        $("#industryTxt").val(obj.Industry);
+        //电量
+        $("#electricityTxt").val(obj.Electricity);
+        //备注
+        $("#remarksTxt").val(obj.Remarks);
+        //楼层
+        $("#floorTxt").val(obj.Floor);
+        //总层
+        $("#totalFloorTxt").val(obj.TotalFloor);
+        $("#balconyCountTxt").val(obj.BalconyCount);
+
         InitCity("#citySelect", 19, "#districtSelect", "#areaSelect", false, "");
+        //城
+        $("#citySelect [value=" + obj.City.ID + "]").attr("selected", "selected");
+        $("#citySelect").prev().find("a span")[0].innerText = obj.City.Name
+        //区
+        $("#districtSelect [value=" + obj.District.ID + "]").attr("selected", "selected");
+        $("#districtSelect").prev().find("a span")[0].innerText = obj.District.Name
+        //片区
+        $("#areaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
+        $("#areaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
+        //楼盘
         InitResidentialDistrict("#residentialDistrictSelect", " ", false);
+        $("#residentialDistrictSelect [value=" + obj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+        $("#residentialDistrictSelect").prev().find("a span")[0].innerText = obj.ResidentialDistrict.Name;
+        //客户类型
         InitCustomerType("#customerTypeSelect", " ", false);
+        $("#customerTypeSelect [value=" + obj.CustomerType.ID + "]").attr("selected", "selected");
+        $("#customerTypeSelect").prev().find("a span")[0].innerText = obj.CustomerType.TypeName;
+        //房屋使用类型
         InitHouseUseType("#houseUseTypeSelect", " ", false);
+        $("#houseUseTypeSelect [value=" + obj.HouseUseType.ID + "]").attr("selected", "selected");
+        $("#houseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
+        //房屋类型
         InitHouseType("#houseTypeSelect", " ", false);
+        $("#houseTypeSelect [value=" + obj.HouseType.ID + "]").attr("selected", "selected");
+        $("#houseTypeSelect").prev().find("a span")[0].innerText = obj.HouseType.TypeName;
         InitOrientation("#orientationSelect", " ", false);
         InitHousingLetter("#housingLetterSelect", " ", false);
         InitHouseQuality("#houseQualitySelect", " ", false);
+        //交易
         InitCustomerTransactionType("#customerTransactionTypeSelect", " ", false);
+        $("#customerTransactionTypeSelect [value=" + obj.CustomerTransactionType.ID + "]").attr("selected", "selected");
+        $("#customerTransactionTypeSelect").prev().find("a span")[0].innerText = obj.CustomerTransactionType.TypeName;
+        //状态
         InitCustomerStatus("#customerStatusSelect", " ", false);
+        $("#customerStatusSelect [value=" + obj.CustomerStatus.ID + "]").attr("selected", "selected");
+        $("#customerStatusSelect").prev().find("a span")[0].innerText = obj.CustomerStatus.StatusName;
+        //写字楼等级
         InitOfficeLevel("#officeLevelSelect", " ", false);
+        $("#officeLevelSelect [value=" + obj.OfficeLevel.ID + "]").attr("selected", "selected");
+        $("#officeLevelSelect").prev().find("a span")[0].innerText = obj.OfficeLevel.LevelName;
+        //土地状况
         InitLandType("#landTypeSelect", " ", false);
+        $("#landTypeSelect [value=" + obj.LandType.ID + "]").attr("selected", "selected");
+        $("#landTypeSelect").prev().find("a span")[0].innerText = obj.LandType.TypeName;
         InitTaxPayType("#taxPayTypeSelect", " ", false);
+        //委托方式
         InitEntrustType("#entrustTypeSelect", " ", false);
+        $("#entrustTypeSelect [value=" + obj.EntrustType.ID + "]").attr("selected", "selected");
+        $("#entrustTypeSelect").prev().find("a span")[0].innerText = obj.EntrustType.TypeName;
+        //来源
         InitSource("#sourceSelect", " ", false);
+        $("#sourceSelect [value=" + obj.Source.ID + "]").attr("selected", "selected");
+        $("#sourceSelect").prev().find("a span")[0].innerText = obj.Source.SourceName;
         InitCurrent("#currentSelect", " ", false);
         InitPropertyOwn("#propertyOwnSelect", " ", false);
+        //装修
         InitDecorationType("#decorationTypeSelect", " ", false);
+        $("#decorationTypeSelect [value=" + obj.DecorationType.ID + "]").attr("selected", "selected");
+        $("#decorationTypeSelect").prev().find("a span")[0].innerText = obj.DecorationType.TypeName;
         InitHouseDocumentType("#houseDocumentTypeSelect", " ", false);
+        //佣金支付
         InitCommissionPayType("#commissionPayTypeSelect", " ", false);
+        $("#commissionPayTypeSelect [value=" + obj.CommissionPayType.ID + "]").attr("selected", "selected");
+        $("#commissionPayTypeSelect").prev().find("a span")[0].innerText = obj.CommissionPayType.TypeName;
         InitSupporting("#supportingSelect", " ", false);
+        //支付方式
         InitHousePayType("#housePayTypeSelect", " ", false);
+        $("#housePayTypeSelect [value=" + obj.HousePayType.ID + "]").attr("selected", "selected");
+        $("#housePayTypeSelect").prev().find("a span")[0].innerText = obj.HousePayType.TypeName;
         InitFurniture("#furnitureSelect", " ", false);
         InitAppliance("#applianceSelect", " ", false);
         InitLookHouseType("#lookHouseTypeSelect", " ", false);
+        //停车场
         InitCarPark("#carParkSelect", " ", false);
+        $("#carParkSelect [value=" + obj.CarPark.ID + "]").attr("selected", "selected");
+        $("#carParkSelect").prev().find("a span")[0].innerText = obj.CarPark.Name;
         InitGrade("#gradeSelect", " ", false);
+        //意向
         InitIntention("#intentionSelect", " ", false);
+        $("#intentionSelect [value=" + obj.Intention.ID + "]").attr("selected", "selected");
+        $("#intentionSelect").prev().find("a span")[0].innerText = obj.Intention.IntentionName;
+        //国籍
         InitCountry("#nationalitySelect", " ", false);
+        $("#nationalitySelect [value=" + obj.Nationality.ID + "]").attr("selected", "selected");
+        $("#nationalitySelect").prev().find("a span")[0].innerText = obj.Nationality.ChineseName;
+        //围墙
         InitWall("#wallSelect", " ", false);
+        $("#wallSelect [value=" + obj.Wall.ID + "]").attr("selected", "selected");
+        $("#wallSelect").prev().find("a span")[0].innerText = obj.Wall.Item;
+        //规划
         InitLandPlan("#landPlanSelect", " ", false);
+        $("#landPlanSelect [value=" + obj.LandPlan.ID + "]").attr("selected", "selected");
+        $("#landPlanSelect").prev().find("a span")[0].innerText = obj.LandPlan.PlanName;
+
+        //地段
         InitShopArea("#shopAreaSelect", " ", false);
+        $("#shopAreaSelect [value=" + obj.ShopArea.ID + "]").attr("selected", "selected");
+        $("#shopAreaSelect").prev().find("a span")[0].innerText = obj.ShopArea.ShopAreaName;
+        //商铺位置
         InitShopLocation("#shopLocationSelect", " ", false);
-        InitEditCustomerData(obj);
+        $("#shopLocationSelect [value=" + obj.ShopLocation.ID + "]").attr("selected", "selected");
+        $("#shopLocationSelect").prev().find("a span")[0].innerText = obj.ShopLocation.Item;
+
         $("#editCustomer").on("click", function () {
             var thisObj = this;
             $(thisObj).attr("disabled", "disabled");
@@ -701,131 +848,9 @@ function InitEditCustomerData(obj) {
         $(".follow-record").show();
         $(".owner-show").show();
     });
-    $("#editID").val(obj.ID);
-    //客户
-    $("#customerNameTxt").val(obj.CustomerName);
-    //联系人
-    $("#contactsTxt").val(obj.Contacts);
-    //身份证
-    $("#idCardTxt").val(obj.IdCard);
-    //现住址
-    $("#presentAddressTxt").val(obj.PresentAddress);
-    //手机
-    $("#contactsPhoneTxt").val(obj.ContactsPhone);
-    //房
-    $("#roomCountTxt").val(obj.RoomCount);
-    //厅
-    $("#hallCountTxt").val(obj.HallCount);
-    //卫
-    $("#toiletCountTxt").val(obj.ToiletCount);
-    //阳台
-    $("#balconyCountTxt").val(obj.BalconyCount);
-    //员工数量
-    $("#workerCountTxt").val(obj.WorkerCount);
-    //宿舍数量
-    $("#dormCountTxt").val(obj.DormCount);
-    //办公室数量
-    $("#officeCountTxt").val(obj.OfficeCount);
-    //空地
-    $("#clearingCountTxt").val(obj.ClearingCount);
-    //面积From
-    $("#houseSizeFromTxt").val(obj.HouseSizeFrom);
-    //面积To
-    $("#houseSizeToTxt").val(obj.HouseSizeTo);
-    //价格From
-    $("#priceFromTxt").val(obj.PriceFrom);
-    //价格To
-    $("#priceToTxt").val(obj.PriceTo);
-    //委托日期
-    $("#entrustStartDateTxt").val(DateTimeConvert_yyyyMMdd(obj.EntrustStartDate));
-    //停车
-    $("#parkTxt").val(obj.Park);
-    //行业
-    $("#industryTxt").val(obj.Industry);
-    //电量
-    $("#electricityTxt").val(obj.Electricity);
-    //备注
-    $("#remarksTxt").val(obj.Remarks);
-    //交易
-    $("#customerTransactionTypeSelect [value=" + obj.CustomerTransactionType.ID + "]").attr("selected", "selected");
-    $("#customerTransactionTypeSelect").prev().find("a span")[0].innerText = obj.CustomerTransactionType.TypeName;
-    //状态
-    $("#customerStatusSelect [value=" + obj.CustomerStatus.ID + "]").attr("selected", "selected");
-    $("#customerStatusSelect").prev().find("a span")[0].innerText = obj.CustomerStatus.StatusName;
-    //写字楼等级
-    $("#officeLevelSelect [value=" + obj.OfficeLevel.ID + "]").attr("selected", "selected");
-    $("#officeLevelSelect").prev().find("a span")[0].innerText = obj.OfficeLevel.LevelName;
-    //商铺位置
-    $("#shopLocationSelect [value=" + obj.ShopLocation.ID + "]").attr("selected", "selected");
-    $("#shopLocationSelect").prev().find("a span")[0].innerText = obj.ShopLocation.Item;
-    //规划
-    $("#landPlanSelect [value=" + obj.LandPlan.ID + "]").attr("selected", "selected");
-    $("#landPlanSelect").prev().find("a span")[0].innerText = obj.LandPlan.PlanName;
-    //停车场
-    $("#carParkSelect [value=" + obj.CarPark.ID + "]").attr("selected", "selected");
-    $("#carParkSelect").prev().find("a span")[0].innerText = obj.CarPark.Name;
-    //来源
-    $("#sourceSelect [value=" + obj.Source.ID + "]").attr("selected", "selected");
-    $("#sourceSelect").prev().find("a span")[0].innerText = obj.Source.SourceName;
-    //委托方式
-    $("#entrustTypeSelect [value=" + obj.EntrustType.ID + "]").attr("selected", "selected");
-    $("#entrustTypeSelect").prev().find("a span")[0].innerText = obj.EntrustType.TypeName;
-    //等级
-    $("#gradeSelect [value=" + obj.Grade.ID + "]").attr("selected", "selected");
-    $("#gradeSelect").prev().find("a span")[0].innerText = obj.Grade.GradeName;
-    //客户类型
-    $("#customerTypeSelect [value=" + obj.CustomerType.ID + "]").attr("selected", "selected");
-    $("#customerTypeSelect").prev().find("a span")[0].innerText = obj.CustomerType.TypeName;
-    //意向
-    $("#intentionSelect [value=" + obj.Intention.ID + "]").attr("selected", "selected");
-    $("#intentionSelect").prev().find("a span")[0].innerText = obj.Intention.IntentionName;
-    //国籍
-    $("#nationalitySelect [value=" + obj.Nationality.ID + "]").attr("selected", "selected");
-    $("#nationalitySelect").prev().find("a span")[0].innerText = obj.Nationality.ChineseName;
-    //房屋使用类型
-    $("#houseUseTypeSelect [value=" + obj.HouseUseType.ID + "]").attr("selected", "selected");
-    $("#houseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
-    //房屋类型
-    $("#houseTypeSelect [value=" + obj.HouseType.ID + "]").attr("selected", "selected");
-    $("#houseTypeSelect").prev().find("a span")[0].innerText = obj.HouseType.TypeName;
-    //围墙
-    $("#wallSelect [value=" + obj.Wall.ID + "]").attr("selected", "selected");
-    $("#wallSelect").prev().find("a span")[0].innerText = obj.Wall.Item;
-    //土地状况
-    $("#landTypeSelect [value=" + obj.LandType.ID + "]").attr("selected", "selected");
-    $("#landTypeSelect").prev().find("a span")[0].innerText = obj.LandType.TypeName;
-    //支付方式
-    $("#housePayTypeSelect [value=" + obj.HousePayType.ID + "]").attr("selected", "selected");
-    $("#housePayTypeSelect").prev().find("a span")[0].innerText = obj.HousePayType.TypeName;
-    //地段
-    $("#shopAreaSelect [value=" + obj.ShopArea.ID + "]").attr("selected", "selected");
-    $("#shopAreaSelect").prev().find("a span")[0].innerText = obj.ShopArea.ShopAreaName;
-    //装修
-    $("#decorationTypeSelect [value=" + obj.DecorationType.ID + "]").attr("selected", "selected");
-    $("#decorationTypeSelect").prev().find("a span")[0].innerText = obj.DecorationType.TypeName;
-    //佣金支付
-    $("#commissionPayTypeSelect [value=" + obj.CommissionPayType.ID + "]").attr("selected", "selected");
-    $("#commissionPayTypeSelect").prev().find("a span")[0].innerText = obj.CommissionPayType.TypeName;
-    // var arr = { "pro": obj.Province.ID, "city": obj.City.ID, "district": obj.District.ID, "area": obj.Area.ID };
-    //城
-    $("#citySelect [value=" + obj.City.ID + "]").attr("selected", "selected");
-    $("#citySelect").prev().find("a span")[0].innerText = obj.City.Name
-    //区
-    $("#districtSelect [value=" + obj.District.ID + "]").attr("selected", "selected");
-    $("#districtSelect").prev().find("a span")[0].innerText = obj.District.Name
-    //片区
-    $("#areaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
-    $("#areaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
-    //楼盘
-    $("#residentialDistrictSelect [value=" + obj.ResidentialDistrict.ID + "]").attr("selected", "selected");
-    $("#residentialDistrictSelect").prev().find("a span")[0].innerText = obj.ResidentialDistrict.Name;
-    //楼层
-    $("#floorTxt").val(obj.Floor);
-    //总层
-    $("#totalFloorTxt").val(obj.TotalFloor);
-    $("#balconyCountTxt").val(obj.BalconyCount);
+
     //跟进记录
-    //  CreateFollowRecord(obj.ID);
+    CreateFollowRecord(obj.ID, type);
     //$("#ownerTxt").val(obj.OwnerName);
     //$("#ownerPhoneTxt").val(obj.OwnerPhone);
     //$("#contactsTxt").val(obj.Contacts);
@@ -912,107 +937,11 @@ function InitTableColSelect() {
     });
 }
 
-
-
-function CustomerTableDescSort(sortCol) {
-    var trArr = $("#customer-table tbody tr");
-    var sortArr = "";
-    switch (sortCol) {
-        case "colResidentialDistrict":
-            trArr = trArr.sort(ResidentialDistrictDescSort);
-            break;
-        case "colResidentialDistrictAddr":
-            trArr = trArr.sort(ResidentialDistrictAddrDescSort);
-            break;
-        case "colHousePosition":
-            trArr = trArr.sort(HousePositionDescDescSort);
-            break;
-        case "colHouseNumber":
-            trArr = trArr.sort(HouseNumberDescSort);
-            break;
-        case "colTotalFloor":
-            trArr = trArr.sort(TotalFloorDescSort);
-            break;
-        case "colHouseType1":
-            trArr = trArr.sort(HouseTypeDescSort);
-            break;
-        case "colHouseSize":
-            trArr = trArr.sort(HouseSizeDescSort);
-            break;
-        case "colHouseUseSize":
-            trArr = trArr.sort(HouseUseSizeDescSort);
-            break;
-        case "colOrientation":
-            trArr = trArr.sort(OrientationDescSort);
-            break;
-        case "colSaleTotalPrice":
-            trArr = trArr.sort(SaleTotalPriceDescSort);
-            break;
-        case "colSaleUnitPrice":
-            trArr = trArr.sort(SaleUnitPriceDescSort);
-            break;
-        case "colLeaseTotalPrice":
-            trArr = trArr.sort(LeaseTotalPriceDescSort);
-            break;
-        case "colLeaseUnitPrice":
-            trArr = trArr.sort(LeaseUnitPriceDescSort);
-            break;
-        case "colProxyStartDate":
-            trArr = trArr.sort(ProxyStartDateDescSort);
-            break;
-        case "colLookHouseType":
-            trArr = trArr.sort(LookHouseTypeDescSort);
-            break;
-        case "colDepartment":
-            trArr = trArr.sort(DepartmentDescSort);
-            break;
-        case "colStaff":
-            trArr = trArr.sort(StaffDescSort);
-            break;
-        case "colCustomerStatus":
-            trArr = trArr.sort(CustomerStatusDescSort);
-            break;
-        case "colHousingLetter":
-            trArr = trArr.sort(HousingLetterDescSort);
-            break;
-        case "colHouseSource":
-            trArr = trArr.sort(HouseSourceDescSort);
-            break;
-        case "colLastFollowDate":
-            trArr = trArr.sort(LastFollowDateDescSort);
-            break;
-        case "colRemarks":
-            trArr = trArr.sort(RemarksDescSort);
-            break;
-        case "colGrade":
-            trArr = trArr.sort(GradeDescSort);
-            break;
-        case "colHouseUseType":
-            trArr = trArr.sort(HouseUseTypeDescSort);
-            break;
-    }
-    return trArr;
-}
-
-//升序
-function ResidentialDistrictAscSort(a, b) {
-    return $(a).find("td.colResidentialDistrict").text().localeCompare($(b).find("td.colResidentialDistrict").text());
-}
-
-function ResidentialDistrictAddrAscSort(a, b) {
-    return $(a).find("td.colResidentialDistrictAddr").text().localeCompare($(b).find("td.colResidentialDistrictAddr").text());
-}
-
-function HousePositionAscSort(a, b) {
-    return $(a).find("td.colHousePosition").text().localeCompare($(b).find("td.colHousePosition").text());
-}
-
-function HouseNumberAscSort(a, b) {
-    return $(a).find("td.colHouseNumber").text().localeCompare($(b).find("td.colHouseNumber").text());
-}
-
-function TotalFloorAscSort(a, b) {
-    return parseInt($(a).find("td.colTotalFloor").text()) > parseInt($(b).find("td.colTotalFloor").text()) ? 1 : -1;
+function ShowFollowRecordPanel() {
+    $(".follow-record-panel *").unbind("click");
+    InitFollowType("#followType", "", true);
+    $(".follow-record-panel").show();
+    InitFollowRecord();
 }
 
 function InitTableColChecked(type, element, async) {
@@ -1040,6 +969,60 @@ function InitTableColChecked(type, element, async) {
             $(element).html(html);
             HideTableCol();
         }
+    });
+}
+
+//初始化跟进记录面板事件
+function InitFollowRecord() {
+    $(".follow-record-panel-close").on("click", function () {
+        $(".follow-record-panel").hide();
+    });
+
+    //添加
+    $(".follow-record-save").on("click", function () {
+        var saveBtn = this;
+        $(saveBtn).attr("disabled", "disabled");
+        var record = GetFollowRecordObj(type);
+        var recordJson = JSON.stringify(record);
+        $.post("/Customer/AddCustomerFollowRecord",
+            {
+                record: recordJson
+            },
+            function (data) {
+                $(saveBtn).removeAttr("disabled");
+                if (data) {
+                    alert("success");
+                }
+            });
+    });
+    //编辑
+    $(".follow-record-edit").on("click", function () {
+        var thisObj = this;
+        var record = GetFollowRecordObj(type);
+        record.ID = $(thisObj).attr("recordID");
+        $.post("/Customer/UpdateCustomerFollowRecord",
+            {
+                record: record
+            },
+            function (data) {
+                if (data) {
+                    alert("success");
+                }
+            });
+    });
+    //删除
+    $(".follow-record-delete").on("click", function () {
+        var thisObj = this;
+        var recordID = $(thisObj).attr("recordID");
+        $.post("/Customer/DeleteCustomerFollowRecord",
+            {
+                recordID: recordID
+            },
+            function (data) {
+                if (data) {
+                    alert("success");
+                }
+            });
     });
 }
 

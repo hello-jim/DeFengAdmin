@@ -1082,7 +1082,7 @@ function InitMultipleSelectData(id, arr) {
 }
 
 //获取PageIndex
-function GetPageCountHtml(totalLength, activeIndex,maxCount) {
+function GetPageCountHtml(totalLength, activeIndex, maxCount) {
     var html = "";
     var active = "active";
     var totalPageCount = GetTotalPageCount(totalLength, maxCount);
@@ -1091,7 +1091,7 @@ function GetPageCountHtml(totalLength, activeIndex,maxCount) {
         html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=2>2</a></li>";
     }
     if (activeIndex > 5) {
-        html += "<li><a href='javascript:void()'>.......</a><li/>";
+        html += "<li><a href='javascript:void(0);'>.......</a><li/>";
         html += "<li class='paginate_button " + (activeIndex == 2 ? active : "") + "' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + (activeIndex - 1) + ">" + (activeIndex - 1) + "</a></li>";
         html += "<li class='paginate_button active' aria-controls='example-1' tabindex='0'><a href='#' pageIndex=" + activeIndex + ">" + activeIndex + "</a></li>";
         if (totalPageCount - activeIndex == 1) {
@@ -1758,7 +1758,7 @@ function GetObjArrVal(arr) {
 }
 
 //获取总页数
-function GetTotalPageCount(totalCount,maxCount) {
+function GetTotalPageCount(totalCount, maxCount) {
     var totalPageCount = totalCount / maxCount;
     var numberArr = totalPageCount.toString().split(".");
     var number = numberArr.length > 1 ? parseInt(numberArr[1]) : 0;
@@ -1768,5 +1768,71 @@ function GetTotalPageCount(totalCount,maxCount) {
     return parseInt(totalPageCount);
 }
 
+//创建跟进记录
+function CreateFollowRecord(id, type) {
+    $.ajax(
+           {
+               url: "/" + type + "/Load" + type + "FollowRecord",
+               data: { id: id },
+               success: function (data) {
+                   var json = $.parseJSON(data);
+                   var html = "";
+                   for (var i = 0; i < json.length; i++) {
+                       html += "<tr>"
+                       html += "<td style='width:70%;'>" + json[i].FollowContent + "</td>";
+                       html += "<td style='width:15%;'>暂无</td>";
+                       html += "<td style='width:15%;'>" + DateTimeConvert_yyyyMMddhhmm(json[i].CreateDate) + "</td>";
+                       html += "</tr>";
+                   }
+                   $(".follow-record div table").html(html);
+               }
+           });
+}
+function GetFollowRecordObj(type) {
+    var record = new Object();
+    var followType = new Object();
+    followType.ID = $("#followType").val() != null ? $("#followType").val() : 0;
+    var followStaff = new Object();
+    followStaff.ID = $("#followStaff").val() != null ? $("#followStaff").val() : 0;
+    var followDepartment = new Object();
+    followDepartment.ID = $("#followDepartment").val() != null ? $("#followDepartment").val() : 0;
+    var followContent = $("#followContent").val();
+    record.FollowType = followType;
+    record.FollowStaff = followStaff;
+    record.FollowDepartment = followDepartment;
+    record.FollowContent = followContent;
+    record[type + "ID"] = $(".panel input[id=" + type.toLowerCase() + "ID]").val();
+    return record;
+}
 
+
+function InitDelete(type) {
+    $("#delete" + type).on("click", function () {
+        var objArr = $(".col-select.cbr-checked");
+        if (objArr.length > 0) {
+            var isDelete = confirm("确定要删除吗？");
+            if (isDelete) {
+
+                var idArr = new Array();
+                for (var i = 0; i < objArr.length; i++) {
+                    idArr.push(objArr[i].attributes[type.toLowerCase() + "ID"].value);
+                }
+                $.post("/" + type + "/Delete" + type,
+                    {
+                        idArr: idArr
+                    },
+                    function (data) {
+                        if (data) {
+                            $(".col-select.cbr-checked").parents("tr").remove();
+                        }
+                    });
+            }
+            else {
+                return;
+            }
+        } else {
+            return;
+        }
+    });
+}
 

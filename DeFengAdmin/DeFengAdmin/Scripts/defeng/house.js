@@ -1,16 +1,16 @@
 ﻿var searchAction = "";
 houseMaxCount = GetSysConf("houseMaxCount");
+type = "House";
 $(document).ready(function () {
     var houseSearchVal = $("#houseSearchObj").val();
     if (houseSearchVal != "") {
-        var houseSearchObj = JSON.parse(houseSearchVal);
         $(".pageCount").remove();
         BeforeHouseDataLoading();
         $.post("/House/Search",
             {
                 house: houseSearchVal
             },
-            function (data) {               
+            function (data) {
                 var json = "";
                 if (data != "") {
                     json = $.parseJSON(data);
@@ -34,7 +34,7 @@ $(document).ready(function () {
     InitTableSort("#houseTable");
     InitTableColChecked("HouseTableColChecked", ".table-col-menu", false);
     InitDisplayStatus("House");
-    InitHouseDelete();
+    InitDelete(type);
     $("#search").on("click", function () {
         $(".pageCount").remove();
         var house = GetJointSearchObj();
@@ -692,7 +692,7 @@ function InitEditHouseData(obj) {
     $("#lookHouseTypeSelect [value=" + (obj.LookHouseType != null ? obj.LookHouseType.ID : 0) + "]").attr("selected", "selected");
     $("#lookHouseTypeSelect").prev().find("a span")[0].innerText = $("#lookHouseTypeSelect :selected").text();
     //跟进记录
-    CreateFollowRecord(obj.ID);
+    CreateFollowRecord(obj.ID, "House");
     $("#ownerTxt").val(obj.OwnerName);
     $("#ownerPhoneTxt").val(obj.OwnerPhone);
     $("#contactsTxt").val(obj.Contacts);
@@ -883,24 +883,7 @@ function InitTableColSelect() {
 }
 
 
-function InitHouseDelete() {
-    $("#deleteHouse").on("click", function () {
-        var objArr = $(".col-select.cbr-checked");
-        var idArr = new Array();
-        for (var i = 0; i < objArr.length; i++) {
-            idArr.push(objArr[i].attributes["houseID"].value);
-        }
-        $.post("/House/DeleteHouse",
-            {
-                idArr: idArr
-            },
-            function (data) {
-                if (data) {
-                    $(".col-select.cbr-checked").parents("tr").remove();
-                }
-            });
-    });
-}
+
 
 //初始化跟进记录面板
 function InitFollowRecord() {
@@ -912,7 +895,7 @@ function InitFollowRecord() {
     $(".follow-record-save").on("click", function () {
         var saveBtn = this;
         $(saveBtn).attr("disabled", "disabled");
-        var record = GetFollowRecordObj();
+        var record = GetFollowRecordObj("house");
         var recordJson = JSON.stringify(record);
         $.post("/House/AddHouseFollowRecord",
             {
@@ -928,7 +911,7 @@ function InitFollowRecord() {
     //编辑
     $(".follow-record-edit").on("click", function () {
         var thisObj = this;
-        var record = GetFollowRecordObj();
+        var record = GetFollowRecordObj("house");
         record.ID = $(thisObj).attr("recordID");
         $.post("",
             {
@@ -981,23 +964,3 @@ function ShowFollowRecordPanel() {
     InitFollowRecord();
 }
 
-function CreateFollowRecord(houseID) {
-    $.ajax(
-           {
-               url: "/House/LoadHouseFollowRecord",
-               data: { houseID: houseID },
-               success: function (data) {
-                   var json = $.parseJSON(data);
-                   var html = "";
-                   for (var i = 0; i < json.length; i++) {
-                       html += "<tr>"
-                       html += "<td style='width:70%;'>" + json[i].FollowContent + "</td>";
-                       html += "<td style='width:15%;'>暂无</td>";
-                       html += "<td style='width:15%;'>" + DateTimeConvert_yyyyMMddhhmm(json[i].CreateDate) + "</td>";
-                       html += "</tr>";
-                   }
-                   $(".follow-record div table").html(html);
-               }
-           });
-
-}

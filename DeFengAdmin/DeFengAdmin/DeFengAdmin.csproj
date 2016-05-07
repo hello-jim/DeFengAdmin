@@ -275,7 +275,6 @@
     <Content Include="Content\css\jquery.treeview.css" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.treeview.js" />
-    <Content Include="Content\css\custom.css" />
     <Content Include="Content\fonts\elusive\css\animation.css" />
     <Content Include="Content\fonts\elusive\css\elusive-codes.css" />
     <Content Include="Content\fonts\elusive\css\elusive-embedded.css" />

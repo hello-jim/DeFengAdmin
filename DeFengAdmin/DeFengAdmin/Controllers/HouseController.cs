@@ -103,22 +103,6 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
-        public string HouseDistributionCustomer()
-        {
-            try
-            {
-                var house = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<House>(HttpContext.Request.Form["house"]) : null;
-            }
-            catch (Exception ex)
-            {
-                Log log = new Log();
-                log.Msg = ex.StackTrace;
-                log.Type = LogType.Error;
-                GlobalQueue.LogGlobalQueue.Enqueue(log);
-            }
-            return "";
-        }
-
         public int AddImg()
         {
             var status = 0;
@@ -187,7 +171,7 @@ namespace DeFengAdmin.Controllers
             var result = "";
             try
             {
-                var houseID = Convert.ToInt32(Request["houseID"]);
+                var houseID = Convert.ToInt32(Request["id"]);
                 HouseFollowRecord_BLL bll = new HouseFollowRecord_BLL();
                 var list = bll.LoadHouseFollowRecord(houseID);
                 result = JsonConvert.SerializeObject(list);
@@ -252,8 +236,8 @@ namespace DeFengAdmin.Controllers
         /// </summary>
         public void HouseMatchCustomer()
         {
-            var house = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["customer"] : "";
-            Response.Redirect("/Customer/Index?customer=" + house);
+            var customer = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["customer"] : "";
+            Response.Redirect("/Customer/Index?customer=" + customer);
         }
 
     }

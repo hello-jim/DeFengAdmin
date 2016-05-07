@@ -49,12 +49,15 @@
     border: solid 3px #ccc;
     display:none;
 }
+
 .follow-record-save {
     float:right
 }
+
 .follow-record-panel-close {
     float:right
 }
+
 .display {
     display: none;
 }

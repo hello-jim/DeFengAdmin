@@ -15,6 +15,8 @@ namespace DeFengAdmin.Controllers
         // GET: Customer
         public ActionResult Index()
         {
+            var customer = HttpContext.Request.Form.Count == 0 ? "" : HttpContext.Request.Form["customer"];
+            ViewBag.Customer = customer;
             return View();
         }
 
@@ -71,6 +73,27 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
+        public bool DeleteCustomer()
+        {
+            var result = false;
+            try
+            {
+                var idStrArr = Request.Form[0].Split(',');
+                List<int> idArr = new List<int>();
+                for (int i = 0; i < idStrArr.Count(); i++)
+                {
+                    idArr.Add(Convert.ToInt32(idStrArr[i]));
+                }
+                Customer_BLL bll = new Customer_BLL();
+                result = bll.DeleteCustomer(idArr);
+            }
+            catch (Exception ex)
+            {
+                result = true;
+            }
+            return result;
+        }
+
         /// <summary>
         ///客配房 
         /// </summary>
@@ -78,6 +101,71 @@ namespace DeFengAdmin.Controllers
         {
             var house = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["house"] : "";
             Response.Redirect("/House/Index?house=" + house);
+        }
+
+        public string LoadCustomerFollowRecord()
+        {
+            var result = "";
+            try
+            {
+                var customerID = Convert.ToInt32(Request["id"]);
+                CustomerFollowRecord_BLL bll = new CustomerFollowRecord_BLL();
+                var list = bll.LoadHouseFollowRecord(customerID);
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
+        public bool AddCustomerFollowRecord()
+        {
+            var result = false;
+            try
+            {
+                var record = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<CustomerFollowRecord>(HttpContext.Request.Form["record"]) : null;
+                CustomerFollowRecord_BLL bll = new CustomerFollowRecord_BLL();
+                result = bll.AddCustomerFollowRecord(record);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
+        public bool DeleteCustomerFollowRecord()
+        {
+            var result = false;
+            try
+            {
+                var recordID = Convert.ToInt32(Request["recordID"]);
+                CustomerFollowRecord_BLL bll = new CustomerFollowRecord_BLL();
+                result = bll.DeleteCustomerFollowRecord(recordID);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
+        public bool UpdateCustomerFollowRecord()
+        {
+            var result = false;
+            try
+            {
+                var record = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<CustomerFollowRecord>(HttpContext.Request.Form["house"]) : null;
+                CustomerFollowRecord_BLL bll = new CustomerFollowRecord_BLL();
+                result = bll.UpdateCustomerFollowRecord(record);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
         }
     }
 }
