@@ -31,9 +31,20 @@ namespace DeFengAdmin.Controllers
 
             return View();
         }
-        //注册  1是已存在账户 返回给前台0是账户已存在，1是注册成功
-        public int Register()
+        
+        public ActionResult Register()
         {
+            
+            return View();
+        }
+        public ActionResult Information()
+        {
+            return View();
+        }
+
+
+        //注册 
+        public ActionResult StaffRegister() {
             var request = Request;
             var name = request["name"] != null ? Convert.ToString(request["name"]) : "";
             var password1 = request["passWord"] != null ? Convert.ToString(request["passWord"]) : "";
@@ -50,16 +61,40 @@ namespace DeFengAdmin.Controllers
             };
             Staff_BLL bll = new Staff_BLL();
             bll.Register(staff);
-            var result = bll.UserLogin(staff);
-            if (result == 1)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
+            return View();
+            //if ((bll.Register(staff)) > 0)
+            //{
+            //    //重复的用户名
+            //    return 1;
+            //}
+            //else
+            //{
+            //    return 0;
+            //}
         }
+        //验证用户名是否已注册
+        public int CheckUserName()
+        {
+            var request = Request;
+            var name = request["name"] != null ? Convert.ToString(request["name"]) : ""; 
+                Staff staff = new Staff()
+                {
+                    Name = name,
+                };
+                Staff_BLL bll = new Staff_BLL();
+                bll.CheckUserName(staff);
+                if ((bll.Register(staff)) > 0)
+                {
+                    //重复的用户名
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+        }
+
+
         //登录
         public int UserLogin()
         {
@@ -73,7 +108,6 @@ namespace DeFengAdmin.Controllers
                 Name = name,
                 Password = password,
             };
-            
             Staff_BLL bll = new Staff_BLL();
             bll.UserLogin(staff);
             var result = bll.UserLogin(staff);
@@ -97,9 +131,11 @@ namespace DeFengAdmin.Controllers
             }
         }
 
+       
+        
+
         //个人信息
-        public ActionResult Information()
-        {
+        public ActionResult StaffInformation() {
             var request = Request;
             var staffNumber = request["staffNumber"] != null ? Convert.ToString(request["staffNumber"]) : "";
             var staffName = request["staffName"] != null ? Convert.ToString(request["staffName"]) : "";
@@ -197,12 +233,12 @@ namespace DeFengAdmin.Controllers
                 Access_authority = access_authority
 
             };
-
             Staff_BLL bll = new Staff_BLL();
             bll.Information(staff);
-
             return View();
         }
+
+       
 
     }
 }
