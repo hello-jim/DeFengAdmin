@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<root>
+  <!--需要加载的配置(从配置文件读取)-->
+  <key>DeFengDBConStr</key>
+  <key>errorLogPath</key>
+  <key>houseMaxCount</key>
+  <key>houseImgSave</key>
+  <key>customerMaxCount</key>
+</root>

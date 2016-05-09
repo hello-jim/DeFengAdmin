@@ -25,7 +25,7 @@ namespace DeFengAdmin.Controllers
             return View();
         }
 
-        public string SearchHouse()
+        public string Search()
         {
             var result = "";
             try
@@ -33,7 +33,7 @@ namespace DeFengAdmin.Controllers
                 var house = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<House>(HttpContext.Request.Form["house"]) : null;
                 if (house != null)
                 {
-                    var list = bll.SearchHouse(house);
+                    var list = bll.Search(house);
                     if (list.Count > 0)
                     {
                         list[0].PageIndex = house.PageIndex;
@@ -238,6 +238,14 @@ namespace DeFengAdmin.Controllers
         {
             var customer = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["customer"] : "";
             Response.Redirect("/Customer/Index?customer=" + customer);
+        }
+
+        public string SameOwnerHouse()
+        {
+            House_BLL bll = new House_BLL();
+            var house = HttpContext.Request.Form.Count != 0 ? JsonConvert.DeserializeObject<House>(HttpContext.Request.Form["house"]) : null;
+            var list = bll.SameOwnerHouse(house);
+            return JsonConvert.SerializeObject(list);
         }
 
     }

@@ -1708,6 +1708,7 @@
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <None Include="Properties\PublishProfiles\DeFengAdmin.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\dx.all.d.ts" />

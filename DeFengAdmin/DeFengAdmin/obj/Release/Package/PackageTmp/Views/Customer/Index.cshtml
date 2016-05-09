@@ -1,0 +1,946 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" href="~/Content/css/customer.css" />
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css" />
+<!-- Responsive Table -->
+<link rel="stylesheet" href="/Content/css/xenon-components.css">
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"></h3>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#entrustStartDateSearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="entrustStartDateSearchSelect">
+                                <option value="-1">全部</option>
+                                <option value="0">今天</option>
+                                <option value="3">最近三天</option>
+                                <option value="7">最近七天</option>
+                                <option value="15">最近半月</option>
+                                <option value="30">最近一个月</option>
+                                <option value="90">最近三个月</option>
+                                <option value="180">最近半年</option>
+                                <option value="-1">全部</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#customerBuyDateSearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="customerBuyDateSearchSelect">
+                                <option value="-1">全部</option>
+                                <option value="0">今日买客</option>
+                                <option value="3">最近三天</option>
+                                <option value="7">最近七天</option>
+                                <option value="15">最近半月</option>
+                                <option value="30">最近一个月</option>
+                                <option value="90">最近三个月</option>
+                                <option value="180">最近半年</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#customerLeaseDateSearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="customerLeaseDateSearchSelect">
+                                <option value="-1">全部</option>
+                                <option value="0">今日租房</option>
+                                <option value="3">最近三天</option>
+                                <option value="7">最近七天</option>
+                                <option value="15">最近半月</option>
+                                <option value="30">最近一个月</option>
+                                <option value="90">最近三个月</option>
+                                <option value="180">最近半年</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#customerStatusSearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="customerStatusSearchSelect">
+                                <option value="-1">状态</option>
+                                <option value="1">有效</option>
+                                <option value="2">非有效</option>
+                                <option value="3">预定</option>
+                                <option value="4">已购</option>
+                                <option value="5">我购</option>
+                                <option value="6">已租</option>
+                                <option value="7">我租</option>
+                                <option value="8">暂缓</option>
+                                <option value="9">未知</option>
+                                <option value="9">无效</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#houseQualitySearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="houseQualitySearchSelect">
+                                <option value="-1">全部</option>
+                                <option value="1">优质客</option>
+                                <option value="2">私客</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">城区</label>
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#districtSearchSelect").select2({
+                                        placeholder: 'Choose your favorite US Countries',
+                                        allowClear: true
+                                    }).on('select2-open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+
+                                });
+                            </script>
+
+                            <select class="form-control" id="districtSearchSelect" multiple></select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">片区</label>
+
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#areaSearchSelect").select2({
+                                        placeholder: '',
+                                        allowClear: true
+                                    }).on('select2-open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+
+                                });
+                            </script>
+
+                            <select class="form-control" id="areaSearchSelect" multiple></select>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="multipleSearchDiv" class="row display">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">交易类型</label>
+                                <select class="form-control search_select" id="customerTransactionTypeSearchSelect"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">状态</label>
+                                <select class="form-control search_select" id="customerStatusJoinSearchSelect"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">房屋使用类型</label>
+                                <select class="form-control search_select" id="houseUseTypeSearchSelect">
+                                    <option>请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">房屋类型</label>
+                                <select class="form-control search_select" id="houseTypeSearchSelect">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">房屋朝向</label>
+                                <select class="form-control search_select" id="orientationSearchSelect">
+                                    <option>请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">客户类型</label>
+                                <select class="form-control search_select" id="customerTypeSearchSelect">
+                                    <option>请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">公私客</label>
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function ($) {
+                                        $("#customserPrivatePubliceSearchSelect").select2({
+                                            placeholder: 'Select your country...',
+                                            allowClear: true
+                                        }).on('select2-open', function () {
+                                            // Adding Custom Scrollbar
+                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                        });
+
+                                    });
+                                </script>
+                                <select class="form-control search_select" id="customserPrivatePubliceSearchSelect">
+                                    <option value="-1">全部</option>
+                                    <option value="1">公客</option>
+                                    <option value="2">私客</option>
+                                </select>
+                            </div>
+                        </div>
+                        @*<div class="col-md-2">
+                                <div class="form-group search_select">
+                                    <label class="control-label">房型</label>
+
+                                    <script type="text/javascript">
+                                        jQuery(document).ready(function ($) {
+                                            $("#roomhCountSearchSelect").select2({
+                                                placeholder: 'Select your country...',
+                                                allowClear: true
+                                            }).on('select2-open', function () {
+                                                // Adding Custom Scrollbar
+                                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                            });
+
+                                        });
+                                    </script>
+
+                                    <select class="form-control search_select" id="roomhCountSearchSelect">
+                                        <option>请选择</option>
+                                        <option value="1">单间</option>
+                                        <option value="2">1房</option>
+                                        <option value="3">2房</option>
+                                        <option value="4">3房</option>
+                                        <option value="5">4房</option>
+                                        <option value="6">5房</option>
+                                        <option value="7">单间+1房</option>
+                                        <option value="8">1-2房</option>
+                                        <option value="9">2-3房</option>
+                                        <option value="10">3-4房</option>
+                                        <option value="11">4-5房</option>
+                                        <option value="12">6房以上</option>
+                                    </select>
+
+
+                                </div>
+                            </div>*@
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4 font_size search_txt">
+                                    <span>价格:</span>
+                                    <input id="priceFromSearchTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="priceToSearchTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                </div>
+                                <div class="col-md-4 font_size search_txt">
+                                    <span>面积:</span>
+                                    <input id="houseSizeFromSearchTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="houseSizeToSearchTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                </div>
+                                <div class="col-md-4 font_size search_txt">
+                                    <span> 楼层:</span>
+                                    <input id="floorFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="floorToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <button id="multipleSearchItem" class="btn btn-white" type="button">更多查询条件</button>
+                            <button id="search" type="button" class="btn btn-success">查询</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <div id="loadImg" class="row display">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-6"><img src="~/Content/images/load3.gif" /></div>
+
+                </div>
+
+                <div class="btn-toolbar">
+                    <div class="btn-group focus-btn-group">
+                        <div class="panel-options">
+
+                            <a href="#">
+
+                                <span class="expand-icon table-add add-customer" id="addHousePanel">+</span>
+                            </a>&nbsp;
+                            <a href="#" data-toggle="">
+                                <span id="deleteCustomer" class="table-add">&times;</span>
+                            </a>
+                        </div>
+                    </div><div class="btn-group dropdown-btn-group pull-right">
+
+                        @*<button class="btn btn-default">Display all</button>*@
+                        @*<button id="addHousePanel" class="btn btn-white" type="button">添加房源</button>*@
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle table-col-Select">自选列 <span class="caret"></span></button>
+                        <ul class="table-col-menu dropdown-menu"></ul>
+                    </div>
+                </div>
+                <div id="customer-tabel-div" class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+                    <table id='customer-table' cellspacing='0' class='table table-small-font table-bordered table-striped'>
+                        <thead>
+                            <tr>
+                                <th class="col-select">选择</th>
+                                <th class='colCustomerID' data-priority='1'>客源编号</th>
+                                <th class='colTransactionType' data-priority='3'>交易</th>
+                                <th class='colEntrustStartDate' data-priority='1'>委托日</th>
+                                <th class='colCustomerName' data-priority='3'>客户</th>
+                                <th class='colDistrict' data-priority='3'>城区</th>
+                                <th class='colArea' data-priority='3'>片区</th>
+                                <th class='colResidentialDistrict' data-priority='3'>楼盘小区</th>
+                                <th class='colHousePosition' data-priority='6'>位置</th>
+                                <th class='colFloor' data-priority='6'>楼层</th>
+                                <th class='colHouseType1' data-priority='6'>房型</th>
+                                <th class='colHouseSize' data-priority='6'>面积</th>
+                                <th class='colOrientation' data-priority='6'>朝向</th>
+                                <th class='colPrice' data-priority='6'>价格</th>
+                                <th class='colDecorationType' data-priority='6'>装修</th>
+                                <th class='colSupporting' data-priority='6'>配套</th>
+                                <th class='colHouseUseType' data-priority='6'>用途</th>
+                                <th class='colHouseType' data-priority='6'>类型</th>
+                                <th class='colRemarks' data-priority='6'>备注</th>
+                                <th class='colGrade' data-priority='6'>等级</th>
+                                <th class='colDepartment' data-priority='6'>部门</th>
+                                <th class='colStaff' data-priority='6'>员工</th>
+                                <th class='colCustomerStatus' data-priority='6'>状态</th>
+                                <th class='colCustomerLetter' data-priority='6'>公私</th>
+                                <th class='colLastFollowDate' data-priority='6'>最后跟进日</th>
+                                <th class='colEntrustType' data-priority='6'>委托</th>
+                                <th class='colSource' data-priority='6'>来源</th>
+                                <th class='colCustomerType' data-priority='6'>类别</th>
+                                <th class='colIntention' data-priority='6'>意向</th>
+                                <th class='colEntrustOverDate' data-priority='6'>期限</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <script type="text/javascript">
+                    // This JavaScript Will Replace Checkboxes in dropdown toggles
+                    jQuery(document).ready(function ($) {
+                        setTimeout(function () {
+                            $(".checkbox-row input").addClass('cbr');
+                            cbr_replace();
+                        }, 0);
+                    });
+                </script>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="customer-panel display">
+    <div class="panel">
+        <div class="row">
+            <input id="customerID" value="0" type="hidden" />
+            <div class="col-md-11"></div>
+            <div class="col-md-1 customer-panel-close"><a href="javascript:void(0);">x</a></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="customerName">客户</label>
+                    <input class="form-control" name="customerName" id="customerNameTxt" data-validate="required" placeholder="客户" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="contacts">联系人</label>
+                    <input class="form-control" name="contacts" id="contactsTxt" data-validate="required" placeholder="联系人" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="idCard">身份证</label>
+                    <input class="form-control" name="idCard" id="idCardTxt" data-validate="required" placeholder="身份证" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="presentAddress">现住址</label>
+                    <input class="form-control" name="presentAddress" id="presentAddressTxt" data-validate="required" placeholder="现住址" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="contactsPhone">手机</label>
+                    <input class="form-control" name="contactsPhone" id="customerPhoneTxt" data-validate="required" placeholder="手机" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="toiletCount">联系</label>
+                    <input class="form-control" name="toiletCount" id="contactsPhoneTxt" data-validate="required" placeholder="联系" />
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">交易</label>
+                    <select class="form-control" id="customerTransactionTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">状态</label>
+                    <select class="form-control" id="customerStatusSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="roomCount">房</label>
+                    <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="hallCount">厅</label>
+                    <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="toiletCount">卫</label>
+                    <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="balconyCount">阳台</label>
+                    <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">城市</label>
+                    <select class="form-control" id="citySelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">城区</label>
+                    <select class="form-control" id="districtSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">片区</label>
+                    <select class="form-control" id="areaSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">楼盘字典</label>
+                    <select class="form-control" id="residentialDistrictSelect"></select>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="workerCount">员工</label>
+                    <input class="form-control" name="workerCount" id="workerCountTxt" data-validate="required" placeholder="员工" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="dormCount">宿舍</label>
+                    <input class="form-control" name="dormCount" id="dormCountTxt" data-validate="required" placeholder="宿舍" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="officeCount">办公</label>
+                    <input class="form-control" name="officeCount" id="officeCountTxt" data-validate="required" placeholder="办公" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="clearingCount">空地</label>
+                    <input class="form-control" name="clearingCount" id="clearingCountTxt" data-validate="required" placeholder="空地" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">级别</label>
+                    <select class="form-control" id="officeLevelSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">位置</label>
+                    <select class="form-control" id="shopLocationSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">规划</label>
+                    <select class="form-control" id="landPlanSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">停车场</label>
+                    <select class="form-control" id="carParkSelect"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="houseSize">面积</label>
+                    <input id="houseSizeFromTxt" class="form-control" name="houseSizeFrom" data-validate="required" placeholder="面积" />-
+                    <input id="houseSizeToTxt" class="form-control" name="houseSizeTo" data-validate="required" placeholder="面积" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="houseUseSize">价格</label>
+                    <input id="priceFromTxt" class="form-control" name="priceFrom" data-validate="required" placeholder="From" />-
+                    <input id="priceToTxt" class="form-control" name="priceTo" data-validate="required" placeholder="To" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group input-append date form_datetime">
+                    <label class="control-label" for="entrustStartDate">委托日期</label>
+                    <input id="entrustStartDateTxt" class="form-control" name="entrustStartDate" data-validate="required" placeholder="委托日期" readonly />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">来源</label>
+                    <select class="form-control" id="sourceSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">委托方式</label>
+                    <select class="form-control" id="entrustTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">等级</label>
+                    <select class="form-control" id="gradeSelect"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">类别</label>
+                    <select class="form-control" id="customerTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">意向</label>
+                    <select class="form-control" id="intentionSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">国籍</label>
+                    <select class="form-control" id="nationalitySelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">期限</label>
+                    <select class="form-control" id="entrustOverDateSelect"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">用途</label>
+                    <select class="form-control" id="houseUseTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="park">停车</label>
+                    <input id="parkTxt" class="form-control" name="park" data-validate="required" placeholder="停车" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="industry">行业</label>
+                    <input id="industryTxt" class="form-control" name="industry" data-validate="required" placeholder="行业" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="electricity">电量</label>
+                    <input id="electricityTxt" class="form-control" name="electricity" data-validate="required" placeholder="电量" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">类型</label>
+                    <select class="form-control" id="houseTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">围墙</label>
+                    <select class="form-control" id="wallSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">状况</label>
+                    <select class="form-control" id="landTypeSelect"></select>
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">付款</label>
+                    <select class="form-control" id="housePayTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">地段</label>
+                    <select class="form-control" id="shopAreaSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">装修</label>
+                    <select class="form-control" id="decorationTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">配套</label>
+                    <select class="form-control" id="supportingSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">付佣</label>
+                    <select class="form-control" id="commissionPayTypeSelect"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-6 follow-record">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'></table>
+                    </div>
+                </div>
+                <div class="col-md-6 owner-info display">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="ownerTxt" class="form-control" name="entrustID" data-validate="required" placeholder="业主" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="ownerPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="手机" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="contactsTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系人" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="contactPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=""></div>
+                <div class="col-sm-6">
+                    <textarea class="form-control" cols="5" id="remarksTxt" placeholder="备注"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-2">
+                <button class="btn follow-record-panel-show" type="button">写跟进</button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn  owner-show" type="button">看业主</button>
+                <button class="btn  follow-record-show" type="button">看跟进</button>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"><button class="btn" type="button" id="fileUp">上传图片</button></div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <button class="btn" type="button" id="addCustomer">添加</button>
+                    <button class="btn" type="button" id="editCustomer">修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="follow-record-panel">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-10">客源跟进<span class="follow-record-title"></span> </div>
+                <div class="col-md-2"><a class="follow-record-panel-close" href="javascript:void(0);">X</a></div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-8">
+
+                    <div class="form-group">
+                        <label for="field-1" class="control-label">时间方式</label>
+
+                        <input type="text" class="form-control" id="txtSysTime" value="（系统时间）" disabled>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label class="control-label"></label>
+
+
+
+                        <select class="form-control" id="followType"></select>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="control-label">跟进部门</label>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ($) {
+                                $("#followDepartment").selectBoxIt().on('open', function () {
+                                    // Adding Custom Scrollbar
+                                    $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                });
+                            });
+                        </script>
+
+                        <select class="form-control" id="followDepartment"></select>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label"></label>
+
+                        <script type="text/javascript">
+                            jQuery(document).ready(function ($) {
+                                $("#followStaff").selectBoxIt().on('open', function () {
+                                    // Adding Custom Scrollbar
+                                    $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                });
+                            });
+                        </script>
+
+                        <select class="form-control" id="followStaff"></select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group no-margin">
+                        <label for="field-7" class="control-label">跟进内容</label>
+
+                        <textarea class="form-control autogrow" id="followContent" placeholder=""></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="txtNextNotice" class="control-label">下次提醒</label>
+
+                        <input type="text" class="form-control" id="txtNextNotice" placeholder="">
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label for="txtNoticeRange" class="control-label">提醒范围</label>
+
+                        <input type="text" class="form-control" id="txtNoticeRange" value="本部" disabled placeholder="Address">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="form-group">
+                        <label for="field-4" class="control-label">提醒内容</label>
+
+                        <input type="text" class="form-control" id="txtNoticeContent" placeholder="Boston" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-2"><button class="btn btn-primary follow-record-save">保存</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input id="customerSearchObj" type="hidden" value="@ViewBag.Customer" />
+
+<!-- Main Footer -->
+<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+<!-- Or class "fixed" to  always fix the footer to the end of page -->
+
+<script type="text/javascript">
+</script>
+<link rel="stylesheet" href="/Scripts/daterangepicker/daterangepicker-bs3.css">
+<link rel="stylesheet" href="/Scripts/select2/select2.css">
+<link rel="stylesheet" href="/Scripts/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="/Scripts/multiselect/css/multi-select.css">
+<link rel="stylesheet" href="~/Scripts/dropzone/css/dropzone.css">
+
+<!-- Bottom Scripts -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/TweenMax.min.js"></script>
+<script src="~/Scripts/resizeable.js"></script>
+<script src="~/Scripts/joinable.js"></script>
+<script src="~/Scripts/xenon-api.js"></script>
+<script src="~/Scripts/moment.min.js"></script>
+
+<!-- Imported scripts on this page -->
+<script src="/Scripts/daterangepicker/daterangepicker.js"></script>
+<script src="/Scripts/datepicker/bootstrap-datepicker.js"></script>
+<script src="/Scripts/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="~/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/Scripts/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="/Scripts/select2/select2.min.js" charset="UTF-8"></script>
+<script src="/Scripts/jquery-ui/jquery-ui.min.js"></script>
+<script src="/Scripts/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="/Scripts/tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="/Scripts/typeahead.bundle.js"></script>
+<script src="/Scripts/handlebars.min.js"></script>
+<script src="/Scripts/multiselect/js/jquery.multi-select.js"></script>
+<script src="~/Scripts/dropzone/dropzone.min.js"></script>
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/Scripts/xenon-custom.js"></script>
+<script src="~/Scripts/defeng/Common.js" charset="UTF-8"></script>
+<script src="~/Scripts/defeng/customer.js" charset="UTF-8"></script>
+
