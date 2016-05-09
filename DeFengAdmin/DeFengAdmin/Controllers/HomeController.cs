@@ -46,7 +46,7 @@ namespace DeFengAdmin.Controllers
         //注册 
         public ActionResult StaffRegister() {
             var request = Request;
-            var name = request["name"] != null ? Convert.ToString(request["name"]) : "";
+            var account = request["account"] != null ? Convert.ToString(request["account"]) : "";
             var password1 = request["passWord"] != null ? Convert.ToString(request["passWord"]) : "";
             var idCard = request["idCard"] != null ? Convert.ToString(request["idCard"]) : "";
             var phone = request["phone"] != null ? Convert.ToString(request["phone"]) : "";
@@ -54,7 +54,7 @@ namespace DeFengAdmin.Controllers
             password = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(password1, "MD5");
             Staff staff = new Staff()
             {
-                Name = name,
+                Account = account,
                 Password = password,
                 IdCard = idCard,
                 Phone = phone
@@ -62,36 +62,28 @@ namespace DeFengAdmin.Controllers
             Staff_BLL bll = new Staff_BLL();
             bll.Register(staff);
             return View();
-            //if ((bll.Register(staff)) > 0)
-            //{
-            //    //重复的用户名
-            //    return 1;
-            //}
-            //else
-            //{
-            //    return 0;
-            //}
+         
         }
         //验证用户名是否已注册
         public int CheckUserName()
         {
             var request = Request;
-            var name = request["name"] != null ? Convert.ToString(request["name"]) : ""; 
-                Staff staff = new Staff()
-                {
-                    Name = name,
-                };
-                Staff_BLL bll = new Staff_BLL();
-                bll.CheckUserName(staff);
-                if ((bll.Register(staff)) > 0)
-                {
-                    //重复的用户名
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+            var account = request["account"] != null ? Convert.ToString(request["account"]) : "";
+            Staff staff = new Staff()
+            {
+                Account = account,
+            };
+            Staff_BLL bll = new Staff_BLL();
+            bll.CheckUserName(account);
+            if ((bll.CheckUserName(account) > 0))
+            {
+                //已存在用户名
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
         }
 
 
@@ -99,13 +91,13 @@ namespace DeFengAdmin.Controllers
         public int UserLogin()
         {
             var request = Request;
-            var name = request["name"] != null ? Convert.ToString(request["name"]) : "";
+            var account = request["account"] != null ? Convert.ToString(request["account"]) : "";
             var password1 = request["password"] != null ? Convert.ToString(request["password"]) : "";
             string password;
             password = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(password1, "MD5");
             Staff staff = new Staff()
             {
-                Name = name,
+                Account = account,
                 Password = password,
             };
             Staff_BLL bll = new Staff_BLL();
@@ -123,7 +115,7 @@ namespace DeFengAdmin.Controllers
                 }
                 else
                 {
-                    Session["@name"] = name;
+                    Session["@account"] = account;
                     Session["@password"] = password;
                     return 2;
                 }
