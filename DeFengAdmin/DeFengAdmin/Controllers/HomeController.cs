@@ -31,10 +31,10 @@ namespace DeFengAdmin.Controllers
 
             return View();
         }
-        
+
         public ActionResult Register()
         {
-            
+
             return View();
         }
         public ActionResult Information()
@@ -44,7 +44,8 @@ namespace DeFengAdmin.Controllers
 
 
         //注册 
-        public ActionResult StaffRegister() {
+        public int StaffRegister()
+        {
             var request = Request;
             var account = request["account"] != null ? Convert.ToString(request["account"]) : "";
             var password1 = request["passWord"] != null ? Convert.ToString(request["passWord"]) : "";
@@ -60,9 +61,9 @@ namespace DeFengAdmin.Controllers
                 Phone = phone
             };
             Staff_BLL bll = new Staff_BLL();
-            bll.Register(staff);
-            return View();
-         
+            var status = bll.Register(staff);
+     
+            return status;
         }
         //验证用户名是否已注册
         public int CheckUserName()
@@ -123,11 +124,12 @@ namespace DeFengAdmin.Controllers
             }
         }
 
-       
-        
+
+
 
         //个人信息
-        public ActionResult StaffInformation() {
+        public ActionResult StaffInformation()
+        {
             var request = Request;
             var staffNumber = request["staffNumber"] != null ? Convert.ToString(request["staffNumber"]) : "";
             var staffName = request["staffName"] != null ? Convert.ToString(request["staffName"]) : "";
@@ -230,7 +232,7 @@ namespace DeFengAdmin.Controllers
             return View();
         }
 
-       
+
 
     }
 }
