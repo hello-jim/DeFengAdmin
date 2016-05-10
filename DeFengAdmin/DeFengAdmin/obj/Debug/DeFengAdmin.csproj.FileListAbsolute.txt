@@ -174,7 +174,6 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.G
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
 D:\Project_GIT_LIZIDEEP\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\ApplicationInsights.config
@@ -264,3 +263,4 @@ D:\Project_GIT_LIZIDEEP\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.S
 D:\Project_GIT_LIZIDEEP\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
 D:\Project_GIT_LIZIDEEP\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_GIT_LIZIDEEP\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache

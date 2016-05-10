@@ -134,6 +134,7 @@ namespace DeFengAdmin.Controllers
             var staffNumber = request["staffNumber"] != null ? Convert.ToString(request["staffNumber"]) : "";
             var staffName = request["staffName"] != null ? Convert.ToString(request["staffName"]) : "";
             var birthdayType = request["birthdayType"] != null ? Convert.ToString(request["birthdayType"]) : "";
+            var idCard = request["idCard"] != null ? Convert.ToString(request["idCard"]) : "";
             var submitHouseDate = request["submitHouseDate"] != null ? Convert.ToString(request["submitHouseDate"]) : "";
             var sex = request["sex"] != null ? Convert.ToString(request["sex"]) : "";
             var age = request["age"] != null ? Convert.ToString(request["age"]) : "";
@@ -182,6 +183,7 @@ namespace DeFengAdmin.Controllers
                 StaffNumber = staffNumber,
                 StaffName = staffName,
                 BirthdayType = birthdayType,
+                IdCard = idCard,
                 SubmitHouseDate = submitHouseDate,
                 Sex = sex,
                 Age = age,

@@ -83,6 +83,7 @@
                     staffNumber: $(form).find('#staffNumber').val(),
                     staffName: $("#staffName").val(),
                     birthdayType: $('#birthdayType').val(),
+                    idCard: $('#idCard').val(),
                     submitHouseDate: $('#submitHouseDate').val(),
                     sex: $("input[name='sex']:checked").val(),
                     age: $('#age').val(),

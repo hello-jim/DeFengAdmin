@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>无标题文档</title>
+    <title>个人信息</title>
     @*<link rel="stylesheet" href="/Content/fonts/fontawesome/css/font-awesome.min.css">*@
 
   
@@ -18,247 +18,437 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="row">
-                <div class="col-sm-12 form-main">
-                    
-                    <!-- Errors container -->
-                    <div class="errors-container">
+
+                <h3 align="center">请填写个人信息</h3>
+                <form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
+                    <div class="fallback">
+                        <input name="file" type="file" multiple />
                     </div>
+                </form>
 
-
-                    <h3 align="center" style="color:#313030">请填写个人信息</h3>
-                    <!--图片上传-->
-                    @*<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
-                        <div class="fallback">
-                            <input name="file" type="file" multiple />
-                        </div>
-                    </form>*@
-                    <!--图片上传结束-->
-
-                    <form method="post" role="form" id="Information" class="login-form fade-in-effect">
-
-                        <div class="form-group" style="width:100%">
-                            <div class="form-number font-size-form" style="color:#313030"><p>编&nbsp;&nbsp;&nbsp;&nbsp;号:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="staffNumber" id="staffNumber" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="staffName" id="staffName" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>生日类别:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="birthdayType" id="birthdayType" autocomplete="off" style="font-size:15px;" />
+                <form method="post" role="form" id="Information" class="login-form fade-in-effect">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p> 编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</p>
                         </div>
 
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="staffNumber" id="staffNumber" autocomplete="off" />
+                        </div>
 
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form" for="idCard"><p>身份证:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="idCard" id="idCard" autocomplete="off" style="font-size:15px;" />
+                        <div class="col-md-1">
+                            <p> 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</p>
+                        </div>
 
-                            <div class="form-number font-size-form"><p>出生年月:</p></div>
-                            <div class="form-group input-append date form_datetime">
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="staffName" id="staffName" autocomplete="off" />
+                        </div>
+
+                        <div class="col-md-1">
+                            <p>生日类别:</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark form-number" name="birthdayType" id="birthdayType" autocomplete="off" />
+                        </div>
+
+                    </div>
+                    @*<div class="row">
+                        <div class="spacing"></div>
+                     </div>*@
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>身&nbsp;&nbsp;份&nbsp;&nbsp;证:</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark form-number" name="idCard" id="idCard" autocomplete="off" />
+                        </div>
+
+                        <div class="col-md-1">
+                            <p>出生年月</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="date form_datetime">
                                 <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
                                 <span class="add-on"><i class="icon-remove"></i></span>
                                 <span class="add-on"><i class="icon-calendar"></i></span>
                             </div>
-                            <div class="form-number font-size-form" style="margin-top:10px;"><p>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</p></div>
-                            <input id="r1" type="radio" name="sex" value="男" class="s-forms" style="margin-top:10px;" />男
-                            <input id="r2" type="radio" name="sex" value="女" style="margin-top:10px;" />女
+                        </div>
+                        <div class="col-md-1">
+                            <p>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</p>
+                        </div>
+                        <div class="col-md-1">
+                            @*<input type="text" class="form-control input-dark form-number" name="sex" id="sex" autocomplete="off" />*@
+                            <div class="col-md-0">
+                                <input id="r1" type="radio" name="sex" value="男" class="s-forms" />
+                            </div>
+                            <div class="col-sm-2">
+                                <p>男</p>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="col-md-0">
+                                <input id="r2" type="radio" name="sex" value="女" />
+                            </div>
+                            <div class="col-sm-2">
+                                <p> 女</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>年&nbsp;&nbsp;&nbsp;&nbsp;龄</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="age" id="age" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="birthday" id="birthday" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>婚姻状况</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="birthday" id="birthday" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>年&nbsp;&nbsp;&nbsp;&nbsp;龄</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="age" id="age" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="birthday" id="birthday" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="education" id="education" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="education" id="education" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="major" id="major" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>血&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="bloodType" id="bloodType" autocomplete="off" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>入职时间</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="entry_time" id="entry_time" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>入职状态</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="entry_status" id="entry_status" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>试用期</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control input-dark" name="probation" id="probation" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control input-dark" name="height" id="height" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>试用薪金</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="probation_salary" id="probation_salary" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>转正薪金</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="salary" id="salary" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>政治面貌</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="politics" id="politics" autocomplete="off" />
+                        </div>               
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="title" id="title" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp族</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="nation" id="nation" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>邮箱地址</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="email" id="email" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>移动电话</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="phone" id="phone" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>住宅电话</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="tel" id="tel" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>办公电话</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="officTel" id="officTel" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>户口类别</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="accountType" id="accountType" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>户口所在地</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control input-dark" name="accountAddress" id="accountAddress" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>籍贯</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="place_origin" id="place_origin" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>现住址</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control input-dark" name="address" id="address" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>应聘渠道</p>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control input-dark" name="application_method" id="application_method" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"><p>家庭成员</p></div>
+                        <div class="col-md-2"><p>关系</p></div>
+                        <div class="col-md-2"><p>职业</p></div>
+                        <div class="col-md-4"><p>所在单位地址</p></div>
+                        <div class="col-md-2"><p>联系电话</p></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                        <input type="text" class="form-control input-dark form-number" name="family_members" id="family_members" autocomplete="off" />
+                        </div>
+                        <div class="col-md-2">
+                        <input type="text" class="form-control input-dark form-number" name="family_relationship" id="family_relationship" autocomplete="off" />
+                        </div>
+                        <div class="col-md-2">
+                        <input type="text" class="form-control input-dark form-number" name="family_occupation" id="family_occupation" autocomplete="off"/>
+                        </div>
+                        <div class="col-md-4">
+                        <input type="text" class="form-control input-dark form-number" name="family_company" id="family_company" autocomplete="off" />
+                        </div>
+                        <div class="col-md-2">
+                        <input type="text" class="form-control input-dark form-number" name="family_contact" id="family_contact" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>入职单位</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="entry_unit" id="entry_unit" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>入职部门</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control input-dark" name="entry_department" id="entry_department" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>岗位</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control input-dark" name="entry_position" id="entry_position" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>直属领导</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control input-dark" name="leader" id="leader" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>兼职部门</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="part_time_job" id="part_time_job" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>兼职岗位</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control input-dark" name="part_time_position" id="part_time_position" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1"><p>声明</p></div>
+                        <div class="col-sm-8">
+                        <div class="row"><p>1、员工需对所填写的内容和所提供的资料实质性负责。</p></div>
+                        <div class="row"><p>2、员工入职15天后签订劳动合同，若员工入职后15日内辞职/自动离职，公司不予结算工资。</p></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>分行经理</p>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control input-dark" name="branch_manager" id="branch_manager" autocomplete="off" />
+                        </div>
+                     </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>现场经理</p>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control input-dark" name="site_manager" id="site_manager" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>人事部文员</p>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control input-dark" name="hr_clerk" id="hr_clerk" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>人事部经理</p>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control input-dark" name="hr_manager" id="hr_manager" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>总经理</p>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control input-dark" name="general_manager" id="general_manager" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <p>分配权限</p>
+                        </div>
+                        <div class="col-sm-1">
+                           <p>登录名</p>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control input-dark" name="login_name" id="login_name" autocomplete="off" />
+                        </div>
+                        <div class="col-sm-1">
+                            <p>访问权限</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control input-dark" name="access_authority" id="access_authority" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            </div>
+                            <div class="col-md-5">
+                                <button type="submit">
+                                    <i class="fa-lock"></i>
+                                    增加
+                                </button>
+                            </div>
                         </div>
 
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>年&nbsp;&nbsp;&nbsp;&nbsp;龄:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="age" id="age" autocomplete="off" style="font-size:15px;" />
+                </form>
+            </div>
+        </div>
+             </div>               
 
-                            <div class="form-number font-size-form"><p>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="birthday" id="birthday" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>婚姻状况:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="marital" id="marital" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>学&nbsp;&nbsp;&nbsp;&nbsp;历:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="education" id="education" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="major" id="major" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>血&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="bloodType" id="bloodType" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>入职时间:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="entry_time" id="entry_time" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>入职状态:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="entry_status" id="entry_status" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>试用期:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="probation" id="probation" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>身高:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="height" id="height" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>试用薪金:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="probation_salary" id="probation_salary" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>转正薪金:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="salary" id="salary" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>政治面貌:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="politics" id="politics" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="title" id="title" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="nation" id="nation" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>邮箱地址:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="email" id="email" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>移动电话:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="phone" id="phone" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>住宅电话:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="tel" id="tel" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>办公电话:</p></div>
-                            <input type="text" class="form-control input-dark f orm-number" name="officTel" id="officTel" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>户口类别:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="accountType" id="accountType" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>户口所在地:</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="accountAddress" id="accountAddress" autocomplete="off" style="font-size:15px;" />
-
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>籍贯：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="place_origin" id="place_origin" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>现住址：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="address" id="address" autocomplete="off" style="font-size:15px;" />
-
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>应聘渠道：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="application_method" id="application_method" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group permissions" style="float:left;width:100%;font-size:14px;">
-                            <p>家庭成员：</p>
-                            <div class="form-number font-size-form" style="font-size:13px;"><p>家庭成员</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="family_members" id="family_members" autocomplete="off" style="font-size:15px;" />
-                            <div class="form-number font-size-form" style="font-size:13px;"><p>关系</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="family_relationship" id="family_relationship" autocomplete="off" style="font-size:15px;" />
-                            <div class="form-number font-size-form" style="font-size:13px;"><p>职业</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="family_occupation" id="family_occupation" autocomplete="off" style="font-size:15px;" />
-                            <div class="form-number font-size-form" style="font-size:13px;"><p>所在单位</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="family_company" id="family_company" autocomplete="off" style="font-size:15px;" />
-                            <div class="form-number font-size-form" style="font-size:13px;"><p>联系电话</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="family_contact" id="family_contact" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <!-- <div class="form-group form-group-top" style="float:left;width:100%">
-                             <ul class="list-form">
-                             <li style="font-size:24px"><p>家庭成员</p><input type="text" class="form-control input-dark form-number form-home" name="phone" id="phone" autocomplete="off" /></li>
-                             <li style="font-size:24px"><p>关系</p><input type="text" class="form-control input-dark form-number  form-home" name="phone" id="phone" autocomplete="off" /></li>
-                             <li style="font-size:24px"><p>职业</p><input type="text" class="form-control input-dark form-number  form-home" name="phone" id="phone" autocomplete="off" /></li>
-                             <li style="font-size:24px"><p>所在单位</p><input type="text" class="form-control input-dark form-number  form-home" name="phone" id="phone" autocomplete="off" /></li>
-                             <li style="font-size:24px"> <p>联系电话</p><input type="text" class="form-control input-dark form-number  form-home" name="phone" id="phone" autocomplete="off" /></li>
-                             </ul>
-                         </div>-->
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>入职单位：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="entry_unit" id="entry_unit" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>入职部门：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="entry_department" id="entry_department" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>岗位：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="entry_position" id="entry_position" autocomplete="off" style="font-size:15px;" />
-
-                            <div class="form-number font-size-form"><p>直属领导：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="leader" id="leader" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>兼职部门：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="part_time_job" id="part_time_job" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>兼职岗位：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="part_time_position" id="part_time_position" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>声&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</p></div>
-                            <div class="form-control input-dark form-number" style="height:50%" />
-                            <p>
-                                1、员工需对所填写的内容和所提供的资料实质性负责。<br>
-                                2、员工入职15天后签订劳动合同，若员工入职后15日内辞职/自动离职，公司不予结算工资。
-                            </p>
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>分行经理：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="branch_manager" id="branch_manager" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>现场经理：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="site_manager" id="site_manager" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>人事部文员：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="hr_clerk" id="hr_clerk" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>人事部经理：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="hr_manager" id="hr_manager" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group" style="float:left;width:100%">
-                            <div class="form-number font-size-form"><p>总&nbsp;&nbsp;经&nbsp;&nbsp;理：</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="general_manager" id="general_manager" autocomplete="off" style="font-size:15px;" />
-                        </div>
-
-                        <div class="form-group permissions font-size-form" style="float:left;width:100%;font-size:14px;">
-                            <p>分配权限：</p>
-                            <div class="form-number font-size-form" style="font-size:13px;"><p>登录名</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="login_name" id="login_name" autocomplete="off" style="font-size:13px;" />
-                            <div class="form-number font-size-form " style="font-size:13px;"><p>访问权限</p></div>
-                            <input type="text" class="form-control input-dark form-number" name="access_authority" id="access_authority" autocomplete="off" style="font-size:13px;" />
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-dark  btn-block text-left">
-                                <i class="fa-lock"></i>
-                                注册
-                            </button>
-                        </div>
-
-                        <div class="login-footer" style="float:left">
-                        </div>
-                    </form>
+                            @*<div class="login-footer" style="float:left">
+                            </div>
+                </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
     <!-- Bottom Scripts -->
 
 
