@@ -1,0 +1,1473 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" href="~/Content/css/House.css" />
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css" />
+<!-- Responsive Table -->
+<link rel="stylesheet" href="/Content/css/xenon-components.css">
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"></h3>
+           
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#proxyStartDateSearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="proxyStartDateSearchSelect">
+                                <option value="-1">全部</option>
+                                <option value="0">今天</option>
+                                <option value="3">最近三天</option>
+                                <option value="7">最近七天</option>
+                                <option value="15">最近半月</option>
+                                <option value="30">最近一个月</option>
+                                <option value="90">最近三个月</option>
+                                <option value="180">最近半年</option>
+                                <option value="-1">全部</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#houseSaleDateSearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="houseSaleDateSearchSelect">
+                                <option value="-1">出售</option>
+                                <option value="0">今日售房</option>
+                                <option value="3">最近三天</option>
+                                <option value="7">最近七天</option>
+                                <option value="15">最近半月</option>
+                                <option value="30">最近一个月</option>
+                                <option value="90">最近三个月</option>
+                                <option value="180">最近半年</option>
+                                <option value="-1">全部</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#houseLeaseDateSearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="houseLeaseDateSearchSelect">
+                                <option value="-1">出租</option>
+                                <option value="0">今日租房</option>
+                                <option value="3">最近三天</option>
+                                <option value="7">最近七天</option>
+                                <option value="15">最近半月</option>
+                                <option value="30">最近一个月</option>
+                                <option value="90">最近三个月</option>
+                                <option value="180">最近半年</option>
+                                <option value="-1">全部</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#houseStatusSearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="houseStatusSearchSelect">
+                                <option value="-1">状态</option>
+                                <option value="1">暂缓</option>
+                                <option value="2">无效</option>
+                                <option value="3">我售</option>
+                                <option value="4">我租</option>
+                                <option value="5">已租</option>
+                                <option value="6">预定</option>
+                                <option value="7">已售</option>
+                                <option value="8">未知</option>
+                                <option value="9">有效</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#houseQualitySearchSelect").selectBoxIt().on('open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+                                    });
+                                });
+                            </script>
+
+                            <select class="form-control" id="houseQualitySearchSelect">
+                                <option value="-1">优质房</option>
+                                <option value="1">优质房</option>
+                                <option value="2">普通房</option>
+                                <option value="3">聚焦房</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group search_select">
+                            <label class="control-label">省</label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#provinceSearchSelect").select2({
+                                        placeholder: 'Select your country...',
+                                        allowClear: true
+                                    }).on('select2-open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+
+                                });
+                            </script>
+
+                            <select class="form-control search_select" id="provinceSearchSelect">
+                                <option>请选择</option>
+                            </select>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group search_select">
+                            <label class="control-label">城市</label>
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#citySearchSelect").select2({
+                                        placeholder: 'Select your country...',
+                                        allowClear: true
+                                    }).on('select2-open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+
+                                });
+                            </script>
+
+                            <select class="form-control search_select" id="citySearchSelect">
+                                <option>请选择</option>
+                            </select>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">城区</label>
+
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#districtSearchSelect").select2({
+                                        placeholder: 'Choose your favorite US Countries',
+                                        allowClear: true
+                                    }).on('select2-open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+
+                                });
+                            </script>
+
+                            <select class="form-control" id="districtSearchSelect" multiple></select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label">片区</label>
+
+
+                            <script type="text/javascript">
+                                jQuery(document).ready(function ($) {
+                                    $("#areaSearchSelect").select2({
+                                        placeholder: 'Choose your favorite US Countries',
+                                        allowClear: true
+                                    }).on('select2-open', function () {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+
+                                });
+                            </script>
+
+                            <select class="form-control" id="areaSearchSelect" multiple></select>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="multipleSearchDiv" class="row display">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">交易类型</label>
+
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function ($) {
+                                        $("#transactionTypeSearchSelect").select2({
+                                            placeholder: 'Select your country...',
+                                            allowClear: true
+                                        }).on('select2-open', function () {
+                                            // Adding Custom Scrollbar
+                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                        });
+
+                                    });
+                                </script>
+
+                                <select class="form-control search_select" id="transactionTypeSearchSelect"></select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">状态</label>
+
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function ($) {
+                                        $("#houseStatusJoinSearchSelect").select2({
+                                            placeholder: 'Select your country...',
+                                            allowClear: true
+                                        }).on('select2-open', function () {
+                                            // Adding Custom Scrollbar
+                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                        });
+
+                                    });
+                                </script>
+
+                                <select class="form-control search_select" id="houseStatusJoinSearchSelect"></select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">房屋使用类型</label>
+
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function ($) {
+                                        $("#houseUseTypeSearchSelect").select2({
+                                            placeholder: 'Select your country...',
+                                            allowClear: true
+                                        }).on('select2-open', function () {
+                                            // Adding Custom Scrollbar
+                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                        });
+
+                                    });
+                                </script>
+
+                                <select class="form-control search_select" id="houseUseTypeSearchSelect">
+                                    <option>请选择</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">房屋类型</label>
+
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function ($) {
+                                        $("#houseTypeSearchSelect").select2({
+                                            placeholder: 'Select your country...',
+                                            allowClear: true
+                                        }).on('select2-open', function () {
+                                            // Adding Custom Scrollbar
+                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                        });
+
+                                    });
+                                </script>
+
+                                <select class="form-control search_select" id="houseTypeSearchSelect">
+                                    <option value="">请选择</option>
+                                </select>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group search_select">
+                                <label class="control-label">房屋朝向</label>
+
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function ($) {
+                                        $("#orientationSearchSelect").select2({
+                                            placeholder: 'Select your country...',
+                                            allowClear: true
+                                        }).on('select2-open', function () {
+                                            // Adding Custom Scrollbar
+                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                        });
+
+                                    });
+                                </script>
+
+                                <select class="form-control search_select" id="orientationSearchSelect">
+                                    <option>请选择</option>
+                                </select>
+
+
+                            </div>
+                        </div>
+
+
+                        @*<div class="col-md-2">
+                                <div class="form-group search_select">
+                                    <label class="control-label">房型</label>
+
+                                    <script type="text/javascript">
+                                        jQuery(document).ready(function ($) {
+                                            $("#roomhCountSearchSelect").select2({
+                                                placeholder: 'Select your country...',
+                                                allowClear: true
+                                            }).on('select2-open', function () {
+                                                // Adding Custom Scrollbar
+                                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                            });
+
+                                        });
+                                    </script>
+
+                                    <select class="form-control search_select" id="roomhCountSearchSelect">
+                                        <option>请选择</option>
+                                        <option value="1">单间</option>
+                                        <option value="2">1房</option>
+                                        <option value="3">2房</option>
+                                        <option value="4">3房</option>
+                                        <option value="5">4房</option>
+                                        <option value="6">5房</option>
+                                        <option value="7">单间+1房</option>
+                                        <option value="8">1-2房</option>
+                                        <option value="9">2-3房</option>
+                                        <option value="10">3-4房</option>
+                                        <option value="11">4-5房</option>
+                                        <option value="12">6房以上</option>
+                                    </select>
+
+
+                                </div>
+                            </div>*@
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4 font_size search_txt">
+                                    <span>价格:</span>
+                                    <input id="salePriceFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="salePriceToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                </div>
+                                <div class="col-md-4 font_size search_txt">
+                                    <span>面积:</span>
+                                    <input id="houseSizeFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="houseSizeToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                </div>
+                                <div class="col-md-4 font_size search_txt">
+                                    <span> 楼层:</span>
+                                    <input id="floorFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="floorToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <button id="multipleSearchItem" class="btn btn-white" type="button">更多查询条件</button>
+                            <button id="search" type="button" class="btn btn-success">查询</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-body">
+                <div id="loadImg" class="row display">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-6"><img src="~/Content/images/load3.gif" /></div>
+
+                </div>
+
+                <div class="btn-toolbar">
+                    <div class="btn-group focus-btn-group">
+                        <div class="panel-options">
+
+                            <a href="#">
+
+                                <span class="expand-icon table-add" id="addHousePanel">+</span>
+                            </a>&nbsp;
+                            <a href="#" data-toggle="">
+                                <span id="deleteHouse" class="table-add">&times;</span>
+                            </a>
+                        </div>
+                    </div><div class="btn-group dropdown-btn-group pull-right">
+
+                        @*<button class="btn btn-default">Display all</button>*@
+                        @*<button id="addHousePanel" class="btn btn-white" type="button">添加房源</button>*@
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle table-col-Select">自选列 <span class="caret"></span></button>
+                        <ul class="table-col-menu dropdown-menu"></ul>
+                    </div>
+                </div>
+                <div id="houseTabelDiv" class="table-responsive" data-pattern="priority-columns" data-focus-btn-icon="fa-asterisk" data-sticky-table-header="true" data-add-display-all-btn="true" data-add-focus-btn="true">
+                    <table id='houseTable' cellspacing='0' class='table table-small-font table-bordered table-striped'>
+                        <thead>
+                            <tr>
+                                <th class="col-select">选择</th>
+                                <th class='colHouseID' data-priority='1'>房源编号</th>
+                                <th class='colTransactionType' data-priority='3'>交易</th>
+                                <th class='colDistrict' data-priority='1'>城区</th>
+                                <th class='colArea' data-priority='3'>片区</th>
+                                <th class='colResidentialDistrict' data-priority='3'>楼盘字典</th>
+                                <th class='colResidentialDistrictAddr' data-priority='3'>楼盘地址</th>
+                                <th class='colHousePosition' data-priority='6'>栋楼位置</th>
+                                <th class='colHouseNumber' data-priority='6'>房号</th>
+                                <th class='colTotalFloor' data-priority='6'>总层</th>
+                                <th class='colHouseType1' data-priority='6'>房型</th>
+                                <th class='colHouseSize' data-priority='6'>面积</th>
+                                <th class='colHouseUseSize' data-priority='6'>套内</th>
+                                <th class='colOrientation' data-priority='6'>朝向</th>
+                                <th class='colSaleTotalPrice' data-priority='6'>售总价</th>
+                                <th class='colSaleUnitPrice' data-priority='6'>售单价</th>
+                                <th class='colLeaseTotalPrice' data-priority='6'>租总价</th>
+                                <th class='colLeaseUnitPrice' data-priority='6'>租单价</th>
+                                <th class='colProxyStartDate' data-priority='6'>委托日</th>
+                                <th class='colLookHouseType' data-priority='6'>看房</th>
+                                <th class='colDepartment' data-priority='6'>部门</th>
+                                <th class='colStaff' data-priority='6'>员工</th>
+                                <th class='colHouseStatus' data-priority='6'>状态</th>
+                                <th class='colHousingLetter' data-priority='6'>公私</th>
+                                <th class='colHouseSource' data-priority='6'>来源</th>
+                                @*<th class='colImgCount' data-priority='6'>图片</th>*@
+                                <th class='colLastFollwDate' data-priority='6'>最后跟进日</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <script type="text/javascript">
+                    // This JavaScript Will Replace Checkboxes in dropdown toggles
+                    jQuery(document).ready(function ($) {
+                        setTimeout(function () {
+                            $(".checkbox-row input").addClass('cbr');
+                            cbr_replace();
+                        }, 0);
+                    });
+                </script>
+
+                <div class="album-images row">
+
+                    <!-- Album Image -->
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="album-image">
+                            <a href="#" class="thumb" data-action="edit">
+                                <img src="~/Content/images/album-img-1.png" class="img-responsive" />
+                            </a>
+
+                            <a href="#" class="name">
+                                <span>IMG_007.jpg</span>
+                                <em>28 September 2014</em>
+                            </a>
+
+                            <div class="image-options">
+                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
+                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
+                            </div>
+
+                            <div class="image-checkbox">
+                                <input type="checkbox" class="cbr" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Album Image -->
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="album-image">
+                            <a href="#" class="thumb" data-action="edit">
+                                <img src="assets/images/album-img-2.png" class="img-responsive" />
+                            </a>
+
+                            <a href="#" class="name">
+                                <span>IMG_008.jpg</span>
+                                <em>20 September 2014</em>
+                            </a>
+
+                            <div class="image-options">
+                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
+                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
+                            </div>
+
+                            <div class="image-checkbox">
+                                <input type="checkbox" class="cbr" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Album Image -->
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="album-image">
+                            <a href="#" class="thumb" data-action="edit">
+                                <img src="assets/images/album-img-3.png" class="img-responsive" />
+                            </a>
+
+                            <a href="#" class="name">
+                                <span>IMG_060.jpg</span>
+                                <em>03 September 2014</em>
+                            </a>
+
+                            <div class="image-options">
+                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
+                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
+                            </div>
+
+                            <div class="image-checkbox">
+                                <input type="checkbox" class="cbr" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Album Image -->
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="album-image">
+                            <a href="#" class="thumb" data-action="edit">
+                                <img src="assets/images/album-img-4.png" class="img-responsive" />
+                            </a>
+
+                            <a href="#" class="name">
+                                <span>IMG_1008.jpg</span>
+                                <em>23 August 2014</em>
+                            </a>
+
+                            <div class="image-options">
+                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
+                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
+                            </div>
+
+                            <div class="image-checkbox">
+                                <input type="checkbox" class="cbr" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Album Image -->
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="album-image">
+                            <a href="#" class="thumb" data-action="edit">
+                                <img src="assets/images/album-img-5.png" class="img-responsive" />
+                            </a>
+
+                            <a href="#" class="name">
+                                <span>IMG_023.jpg</span>
+                                <em>30 July 2014</em>
+                            </a>
+
+                            <div class="image-options">
+                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
+                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
+                            </div>
+
+                            <div class="image-checkbox">
+                                <input type="checkbox" class="cbr" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Album Image -->
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="album-image">
+                            <a href="#" class="thumb" data-action="edit">
+                                <img src="assets/images/album-img-6.png" class="img-responsive" />
+                            </a>
+
+                            <a href="#" class="name">
+                                <span>IMG_012.jpg</span>
+                                <em>16 July 2014</em>
+                            </a>
+
+                            <div class="image-options">
+                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
+                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
+                            </div>
+
+                            <div class="image-checkbox">
+                                <input type="checkbox" class="cbr" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Album Image -->
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="album-image">
+                            <a href="#" class="thumb" data-action="edit">
+                                <img src="assets/images/album-img-7.png" class="img-responsive" />
+                            </a>
+
+                            <a href="#" class="name">
+                                <span>IMG_207.jpg</span>
+                                <em>25 June 2014</em>
+                            </a>
+
+                            <div class="image-options">
+                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
+                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
+                            </div>
+
+                            <div class="image-checkbox">
+                                <input type="checkbox" class="cbr" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Album Image -->
+                    <div class="col-md-3 col-sm-4 col-xs-6">
+                        <div class="album-image">
+                            <a href="#" class="thumb" data-action="edit">
+                                <img src="assets/images/album-img-8.png" class="img-responsive" />
+                            </a>
+
+                            <a href="#" class="name">
+                                <span>IMG_002.jpg</span>
+                                <em>24 August 2013</em>
+                            </a>
+
+                            <div class="image-options">
+                                <a href="#" data-action="edit"><i class="fa-pencil"></i></a>
+                                <a href="#" data-action="trash"><i class="fa-trash"></i></a>
+                            </div>
+
+                            <div class="image-checkbox">
+                                <input type="checkbox" class="cbr" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="housePanelDiv display">
+    <div class="panel">
+        <div class="row">
+            <input id="houseID" value="0" type="hidden" />
+            <div class="col-md-11"></div>
+            <div class="col-md-1 housePanelClose"><a id="houserPanelClose" href="javascript:void(0);">x</a></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">城市</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#provinceSelect").select2({
+
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="provinceSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">城市</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#citySelect").select2({
+
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="citySelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">城区</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#districtSelect").select2({
+
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="districtSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">片区</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#areaSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="areaSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">楼盘字典</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#residentialDistrictSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="residentialDistrictSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="editHousePosition">栋楼位置</label>
+                    <input class="form-control" name="editHousePosition" id="housePositionTxt" data-validate="required" placeholder="栋楼位置" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="houseNumber">栋楼位置</label>
+                    <input class="form-control" name="houseNumber" id="houseNumberTxt" data-validate="required" placeholder="房号" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="floor">楼层</label>
+                    <input class="form-control" name="floor" id="floorTxt" data-validate="required" placeholder="楼层" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="totalFloor">总层</label>
+                    <input class="form-control" name="totalFloor" id="totalFloorTxt" data-validate="required" placeholder="总层" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="roomCount">房</label>
+                    <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="hallCount">厅</label>
+                    <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="toiletCount">卫</label>
+                    <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="balconyCount">阳台</label>
+                    <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">用途</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#houseUseTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="houseUseTypeSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">房源资质</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#houseQualitySelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="houseQualitySelect"></select>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="houseSize">面积</label>
+                    <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="面积" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="houseUseSize">套内</label>
+                    <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="套内" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">朝向</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#orientationSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="orientationSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">类型</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#houseTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="houseTypeSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">建房年代</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#houseCreateDateSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="houseCreateDateSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">盘符</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#housingLetterSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="housingLetterSelect"></select>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">交易</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#transactionTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="transactionTypeSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">状态</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#houseStatusSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="houseStatusSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="saleTotalPrice">售价</label>
+                    <input id="saleTotalPriceTxt" class="form-control" name="saleTotalPrice" data-validate="required" placeholder="售价" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="minSalePrice">底价</label>
+                    <input id="minSalePriceTxt" class="form-control" name="minSalePrice" data-validate="required" placeholder="底价" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">包税费</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#taxPayTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="taxPayTypeSelect"></select>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="leaseTotalPrice">租价</label>
+                    <input id="leaseTotalPriceTxt" class="form-control" name="leaseTotalPrice" data-validate="required" placeholder="租价" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="minLeasePrice">底价</label>
+                    <input id="minLeasePriceTxt" class="form-control" name="minLeasePrice" data-validate="required" placeholder="底价" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="proxyStartDate">委托</label>
+                    <input id="proxyStartDate" class="form-control" name="proxyStartDate" data-validate="required" placeholder="位置" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">委托方式</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#entrustTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="entrustTypeSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="managementPrice">管理费</label>
+                    <input id="managementPriceTxt" class="form-control" name="managementPrice" data-validate="required" placeholder="管理费" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group input-append date form_datetime">
+                    <label class="control-label" for="submitHouseDate">交房</label>
+                    <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" placeholder="交房日期" readonly />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="entrustID">委托编号</label>
+                    <input id="entrustIDTxt" class="form-control" name="entrustID" data-validate="required" placeholder="委托编号" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">来源</label>
+
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#sourceSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="sourceSelect"></select>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">现状</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#currentSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="currentSelect"></select>
+
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">产权</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#propertyOwnSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="propertyOwnSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">装修</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#decorationTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="decorationTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">证件</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#houseDocumentTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="houseDocumentTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">配套</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#supportingSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="supportingSelect" multiple></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">付款</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#housePayTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="housePayTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">家具</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#furnitureSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="furnitureSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">付佣</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#commissionPayTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="commissionPayTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">家电</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#applianceSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="applianceSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label">看房</label>
+                    <script type="text/javascript">
+                        jQuery(document).ready(function ($) {
+                            $("#lookHouseTypeSelect").select2({
+                                placeholder: 'Choose your favorite US Countries',
+                                allowClear: true
+                            }).on('select2-open', function () {
+                                // Adding Custom Scrollbar
+                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                            });
+
+                        });
+                    </script>
+
+                    <select class="form-control" id="lookHouseTypeSelect"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-5">
+                    <textarea class="form-control" cols="5" id="field-5" placeholder="备注"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-5">
+                    <textarea class="form-control" cols="5" id="field-5" placeholder="备注"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <button class="btn display" type="button">写跟进</button>
+
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <button class="btn display" type="button" id="addHouse">添加</button>
+                    <button class="btn display" type="button" id="editHouse">修改</button>
+                    <button class="btn display" type="button" id="fileUp">上传图片</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="imgPanellDiv panel panel-default display">
+
+    <div class="panel-heading">
+        <div class="panel-title">
+            上传房源图片
+        </div>
+        <a href="javascript:void(0);">X</a>
+    </div>
+    <div class="album-images row"></div>
+    <div class="panel-body">
+
+        <!-- Auto initialization -->
+        <form id="imgFrom" class="dropzone dz-clickable" action="/House/AddImg">
+            <div class="dz-default dz-message">
+                <input name="houseID" type="hidden" value="10" />
+                <span>点击此处上传图片</span>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+
+<!-- Main Footer -->
+<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+<!-- Or class "fixed" to  always fix the footer to the end of page -->
+
+<script type="text/javascript">
+</script>
+<link rel="stylesheet" href="/Scripts/daterangepicker/daterangepicker-bs3.css">
+<link rel="stylesheet" href="/Scripts/select2/select2.css">
+<link rel="stylesheet" href="/Scripts/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="/Scripts/multiselect/css/multi-select.css">
+<link rel="stylesheet" href="~/Scripts/dropzone/css/dropzone.css">
+
+<!-- Bottom Scripts -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/TweenMax.min.js"></script>
+<script src="~/Scripts/resizeable.js"></script>
+<script src="~/Scripts/joinable.js"></script>
+<script src="~/Scripts/xenon-api.js"></script>
+<script src="~/Scripts/xenon-toggles.js"></script>
+<script src="~/Scripts/moment.min.js"></script>
+
+<!-- Imported scripts on this page -->
+<script src="/Scripts/daterangepicker/daterangepicker.js"></script>
+<script src="/Scripts/datepicker/bootstrap-datepicker.js"></script>
+<script src="/Scripts/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="~/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/Scripts/colorpicker/bootstrap-colorpicker.min.js"></script>
+<script src="/Scripts/select2/select2.min.js"></script>
+<script src="/Scripts/jquery-ui/jquery-ui.min.js"></script>
+<script src="/Scripts/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="/Scripts/tagsinput/bootstrap-tagsinput.min.js"></script>
+<script src="/Scripts/typeahead.bundle.js"></script>
+<script src="/Scripts/handlebars.min.js"></script>
+<script src="/Scripts/multiselect/js/jquery.multi-select.js"></script>
+<script src="~/Scripts/dropzone/dropzone.min.js"></script>
+
+<!-- JavaScripts initializations and stuff -->
+<script src="/Scripts/xenon-custom.js"></script>
+<script src="~/Scripts/defeng/Common.js" charset=“UTF-8”></script>
+<script src="~/Scripts/defeng/customer.js" charset=“UTF-8”></script>
+

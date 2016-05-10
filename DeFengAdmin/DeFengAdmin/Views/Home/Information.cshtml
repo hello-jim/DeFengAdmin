@@ -1,31 +1,21 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Information";
 }
 
 <!doctype html>
-<html>
+
 <head>
     <meta charset="utf-8">
     <title>无标题文档</title>
-    <link rel="stylesheet" href="/Content/fonts/linecons/css/linecons.css">
-    <link rel="stylesheet" href="/Content/fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/Content/css/xenon-core.css">
-    <link rel="stylesheet" href="/Content/css/xenon-forms.css">
-    <link rel="stylesheet" href="/Content/css/custom.css">
-    <link rel="stylesheet" href="~/Content/css/xenon-components.css">
-    <link rel="stylesheet" href="~/Content/css/xenon-skins.css">
-    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    @*<link rel="stylesheet" href="/Content/fonts/fontawesome/css/font-awesome.min.css">*@
 
-    <link rel="stylesheet" href="/Scripts/dropzone/css/dropzone.css">
-    <link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css">
-    <script src="~/Scripts/defeng/information.js"></script>
+  
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="~/Scripts/dropzone/dropzone.min.js"></script>
 
 </head>
-<body class="page-body login-page">
-    <div class="settings-pane-inner">
+<link rel="stylesheet" href="/Scripts/dropzone/css/dropzone.css">
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css"> 
+    <div class="row">
         <div class="panel panel-default">
             <div class="row">
                 <div class="col-sm-12 form-main">
@@ -37,11 +27,11 @@
 
                     <h3 align="center" style="color:#313030">请填写个人信息</h3>
                     <!--图片上传-->
-                    <form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
+                    @*<form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
                         <div class="fallback">
                             <input name="file" type="file" multiple />
                         </div>
-                    </form>
+                    </form>*@
                     <!--图片上传结束-->
 
                     <form method="post" role="form" id="Information" class="login-form fade-in-effect">
@@ -273,7 +263,7 @@
 
 
 
-
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
     <script src="~/Scripts/jquery-validate/jquery.validate.min.js"></script>
 
 
@@ -300,6 +290,7 @@
     <script src="/Scripts/handlebars.min.js"></script>
     <script src="/Scripts/multiselect/js/jquery.multi-select.js"></script>
     <script src="~/Scripts/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/defeng/information.js"></script>
     @*<script src="~/Scripts/defeng/register.js"></script>*@
     <script type="text/javascript">
         $(document).ready(function () {
@@ -318,5 +309,4 @@
 
     </script>
     <!-- JavaScripts initializations and stuff -->
-</body>
-</html>
+
