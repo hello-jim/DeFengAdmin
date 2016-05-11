@@ -116,10 +116,12 @@ namespace DeFengAdmin.Controllers
                 }
                 else
                 {
-                    Session["@account"] = account;
-                    Session["@password"] = password;
+                    //Session["@account"] = account;
+                    //Session["@password"] = password;
+                    Session["staff"] = staff;
                     return 2;
                 }
+              
 
             }
         }
@@ -128,110 +130,120 @@ namespace DeFengAdmin.Controllers
 
 
         //个人信息
-        public ActionResult StaffInformation()
+        public int StaffInformation()
         {
-            var request = Request;
-            var staffNumber = request["staffNumber"] != null ? Convert.ToString(request["staffNumber"]) : "";
-            var staffName = request["staffName"] != null ? Convert.ToString(request["staffName"]) : "";
-            var birthdayType = request["birthdayType"] != null ? Convert.ToString(request["birthdayType"]) : "";
-            var idCard = request["idCard"] != null ? Convert.ToString(request["idCard"]) : "";
-            var submitHouseDate = request["submitHouseDate"] != null ? Convert.ToString(request["submitHouseDate"]) : "";
-            var sex = request["sex"] != null ? Convert.ToString(request["sex"]) : "";
-            var age = request["age"] != null ? Convert.ToString(request["age"]) : "";
-            var birthday = request["birthday"] != null ? Convert.ToString(request["birthday"]) : "";
-            var marital = request["marital"] != null ? Convert.ToString(request["marital"]) : "";
-            var education = request["education"] != null ? Convert.ToString(request["education"]) : "";
-            var major = request["major"] != null ? Convert.ToString(request["major"]) : "";
-            var bloodType = request["bloodType"] != null ? Convert.ToString(request["bloodType"]) : "";
-            var entry_time = request["entry_time"] != null ? Convert.ToString(request["entry_time"]) : "";
-            var entry_status = request["entry_status"] != null ? Convert.ToString(request["entry_status"]) : "";
-            var probation = request["probation"] != null ? Convert.ToString(request["probation"]) : "";
-            var height = request["height"] != null ? Convert.ToString(request["height"]) : "";
-            var probation_salary = request["probation_salary"] != null ? Convert.ToString(request["probation_salary"]) : "";
-            var salary = request["salary"] != null ? Convert.ToString(request["salary"]) : "";
-            var politics = request["politics"] != null ? Convert.ToString(request["politics"]) : "";
-            var title = request["title"] != null ? Convert.ToString(request["title"]) : "";
-            var nation = request["nation"] != null ? Convert.ToString(request["nation"]) : "";
-            var email = request["email"] != null ? Convert.ToString(request["email"]) : "";
-            var tel = request["tel"] != null ? Convert.ToString(request["tel"]) : "";
-            var officTel = request["officTel"] != null ? Convert.ToString(request["officTel"]) : "";
-            var accountType = request["accountType"] != null ? Convert.ToString(request["accountType"]) : "";
-            var accountAddress = request["accountAddress"] != null ? Convert.ToString(request["accountAddress"]) : "";
-            var place_origin = request["place_origin"] != null ? Convert.ToString(request["place_origin"]) : "";
-            var address = request["address"] != null ? Convert.ToString(request["address"]) : "";
-            var application_method = request["application_method"] != null ? Convert.ToString(request["application_method"]) : "";
-            var family_members = request["family_members"] != null ? Convert.ToString(request["family_members"]) : "";
-            var family_relationship = request["family_relationship"] != null ? Convert.ToString(request["family_relationship"]) : "";
-            var family_occupation = request["family_occupation"] != null ? Convert.ToString(request["family_occupation"]) : "";
-            var family_company = request["family_company"] != null ? Convert.ToString(request["family_company"]) : "";
-            var family_contact = request["family_contact"] != null ? Convert.ToString(request["family_contact"]) : "";
-            var entry_unit = request["entry_unit"] != null ? Convert.ToString(request["entry_unit"]) : "";
-            var entry_department = request["entry_department"] != null ? Convert.ToString(request["entry_department"]) : "";
-            var entry_position = request["entry_position"] != null ? Convert.ToString(request["entry_position"]) : "";
-            var leader = request["leader"] != null ? Convert.ToString(request["leader"]) : "";
-            var part_time_job = request["part_time_job"] != null ? Convert.ToString(request["part_time_job"]) : "";
-            var part_time_position = request["part_time_position"] != null ? Convert.ToString(request["part_time_position"]) : "";
-            var branch_manager = request["branch_manager"] != null ? Convert.ToString(request["branch_manager"]) : "";
-            var site_manager = request["site_manager"] != null ? Convert.ToString(request["site_manager"]) : "";
-            var hr_clerk = request["hr_clerk"] != null ? Convert.ToString(request["hr_clerk"]) : "";
-            var hr_manager = request["hr_manager"] != null ? Convert.ToString(request["hr_manager"]) : "";
-            var general_manager = request["general_manager"] != null ? Convert.ToString(request["general_manager"]) : "";
-            var login_name = request["login_name"] != null ? Convert.ToString(request["login_name"]) : "";
-            var access_authority = request["access_authority"] != null ? Convert.ToString(request["access_authority"]) : "";
-            Staff staff = new Staff()
+            var s = (Staff)Session["staff"];
+            
+            if (s != null)
             {
-                StaffNumber = staffNumber,
-                StaffName = staffName,
-                BirthdayType = birthdayType,
-                IdCard = idCard,
-                SubmitHouseDate = submitHouseDate,
-                Sex = sex,
-                Age = age,
-                Birthday = birthday,
-                Marital = marital,
-                Education = education,
-                Major = major,
-                BloodType = bloodType,
-                Entry_time = entry_time,
-                Entry_status = entry_status,
-                Probation = probation,
-                Height = height,
-                Probation_salary = probation_salary,
-                Salary = salary,
-                Politics = politics,
-                Title = title,
-                Nation = nation,
-                Email = email,
-                Tel = tel,
-                OfficTel = officTel,
-                AccountType = accountType,
-                AccountAddress = accountAddress,
-                Place_origin = place_origin,
-                Address = address,
-                Application_method = application_method,
-                Family_members = family_members,
-                Family_relationship = family_relationship,
-                Family_occupation = family_occupation,
-                Family_company = family_company,
-                Family_contact = family_contact,
-                Entry_unit = entry_unit,
-                Entry_department = entry_department,
-                Entry_position = entry_position,
-                Leader = leader,
-                Part_time_job = part_time_job,
-                Part_time_position = part_time_position,
-                Branch_manager = branch_manager,
-                Site_manager = site_manager,
-                Hr_clerk = hr_clerk,
-                Hr_manager = hr_manager,
-                General_manager = general_manager,
-                Login_name = login_name,
-                Access_authority = access_authority
+                var request = Request;
+                var account = s.Account;
+                var staffNumber = request["staffNumber"] != null ? Convert.ToString(request["staffNumber"]) : "";
+                var staffName = request["staffName"] != null ? Convert.ToString(request["staffName"]) : "";
+                var birthdayType = request["birthdayType"] != null ? Convert.ToString(request["birthdayType"]) : "";
+                var idCard = request["idCard"] != null ? Convert.ToString(request["idCard"]) : "";
+                var submitHouseDate = request["submitHouseDate"] != null ? Convert.ToString(request["submitHouseDate"]) : "";
+                var sex = request["sex"] != null ? Convert.ToString(request["sex"]) : "";
+                var age = request["age"] != null ? Convert.ToString(request["age"]) : "";
+                var birthday = request["birthday"] != null ? Convert.ToString(request["birthday"]) : "";
+                var marital = request["marital"] != null ? Convert.ToString(request["marital"]) : "";
+                var education = request["education"] != null ? Convert.ToString(request["education"]) : "";
+                var major = request["major"] != null ? Convert.ToString(request["major"]) : "";
+                var bloodType = request["bloodType"] != null ? Convert.ToString(request["bloodType"]) : "";
+                var entry_time = request["entry_time"] != null ? Convert.ToString(request["entry_time"]) : "";
+                var entry_status = request["entry_status"] != null ? Convert.ToString(request["entry_status"]) : "";
+                var probation = request["probation"] != null ? Convert.ToString(request["probation"]) : "";
+                var height = request["height"] != null ? Convert.ToString(request["height"]) : "";
+                var probation_salary = request["probation_salary"] != null ? Convert.ToString(request["probation_salary"]) : "";
+                var salary = request["salary"] != null ? Convert.ToString(request["salary"]) : "";
+                var politics = request["politics"] != null ? Convert.ToString(request["politics"]) : "";
+                var title = request["title"] != null ? Convert.ToString(request["title"]) : "";
+                var nation = request["nation"] != null ? Convert.ToString(request["nation"]) : "";
+                var email = request["email"] != null ? Convert.ToString(request["email"]) : "";
+                var tel = request["tel"] != null ? Convert.ToString(request["tel"]) : "";
+                var officTel = request["officTel"] != null ? Convert.ToString(request["officTel"]) : "";
+                var accountType = request["accountType"] != null ? Convert.ToString(request["accountType"]) : "";
+                var accountAddress = request["accountAddress"] != null ? Convert.ToString(request["accountAddress"]) : "";
+                var place_origin = request["place_origin"] != null ? Convert.ToString(request["place_origin"]) : "";
+                var address = request["address"] != null ? Convert.ToString(request["address"]) : "";
+                var application_method = request["application_method"] != null ? Convert.ToString(request["application_method"]) : "";
+                var family_members = request["family_members"] != null ? Convert.ToString(request["family_members"]) : "";
+                var family_relationship = request["family_relationship"] != null ? Convert.ToString(request["family_relationship"]) : "";
+                var family_occupation = request["family_occupation"] != null ? Convert.ToString(request["family_occupation"]) : "";
+                var family_company = request["family_company"] != null ? Convert.ToString(request["family_company"]) : "";
+                var family_contact = request["family_contact"] != null ? Convert.ToString(request["family_contact"]) : "";
+                var entry_unit = request["entry_unit"] != null ? Convert.ToString(request["entry_unit"]) : "";
+                var entry_department = request["entry_department"] != null ? Convert.ToString(request["entry_department"]) : "";
+                var entry_position = request["entry_position"] != null ? Convert.ToString(request["entry_position"]) : "";
+                var leader = request["leader"] != null ? Convert.ToString(request["leader"]) : "";
+                var part_time_job = request["part_time_job"] != null ? Convert.ToString(request["part_time_job"]) : "";
+                var part_time_position = request["part_time_position"] != null ? Convert.ToString(request["part_time_position"]) : "";
+                var branch_manager = request["branch_manager"] != null ? Convert.ToString(request["branch_manager"]) : "";
+                var site_manager = request["site_manager"] != null ? Convert.ToString(request["site_manager"]) : "";
+                var hr_clerk = request["hr_clerk"] != null ? Convert.ToString(request["hr_clerk"]) : "";
+                var hr_manager = request["hr_manager"] != null ? Convert.ToString(request["hr_manager"]) : "";
+                var general_manager = request["general_manager"] != null ? Convert.ToString(request["general_manager"]) : "";
+                var login_name = request["login_name"] != null ? Convert.ToString(request["login_name"]) : "";
+                var access_authority = request["access_authority"] != null ? Convert.ToString(request["access_authority"]) : "";
+                Staff staff = new Staff()
+                {
+                    Account = account,
+                    StaffNumber = staffNumber,
+                    StaffName = staffName,
+                    BirthdayType = birthdayType,
+                    IdCard = idCard,
+                    SubmitHouseDate = submitHouseDate,
+                    Sex = sex,
+                    Age = age,
+                    Birthday = birthday,
+                    Marital = marital,
+                    Education = education,
+                    Major = major,
+                    BloodType = bloodType,
+                    Entry_time = entry_time,
+                    Entry_status = entry_status,
+                    Probation = probation,
+                    Height = height,
+                    Probation_salary = probation_salary,
+                    Salary = salary,
+                    Politics = politics,
+                    Title = title,
+                    Nation = nation,
+                    Email = email,
+                    Tel = tel,
+                    OfficTel = officTel,
+                    AccountType = accountType,
+                    AccountAddress = accountAddress,
+                    Place_origin = place_origin,
+                    Address = address,
+                    Application_method = application_method,
+                    Family_members = family_members,
+                    Family_relationship = family_relationship,
+                    Family_occupation = family_occupation,
+                    Family_company = family_company,
+                    Family_contact = family_contact,
+                    Entry_unit = entry_unit,
+                    Entry_department = entry_department,
+                    Entry_position = entry_position,
+                    Leader = leader,
+                    Part_time_job = part_time_job,
+                    Part_time_position = part_time_position,
+                    Branch_manager = branch_manager,
+                    Site_manager = site_manager,
+                    Hr_clerk = hr_clerk,
+                    Hr_manager = hr_manager,
+                    General_manager = general_manager,
+                    Login_name = login_name,
+                    Access_authority = access_authority
 
-            };
-            Staff_BLL bll = new Staff_BLL();
-            bll.Information(staff);
-            return View();
+                };
+                Staff_BLL bll = new Staff_BLL();
+                bll.Information(staff);
+                return 1;
+            }
+            else {
+                return 0;
+            }
         }
 
 

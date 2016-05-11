@@ -116,37 +116,24 @@
                             <p>婚姻状况</p>
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control input-dark" name="birthday" id="birthday" autocomplete="off" />
+                            <input type="text" class="form-control input-dark" name="marital" id="marital" autocomplete="off" />
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-1">
-                            <p>年&nbsp;&nbsp;&nbsp;&nbsp;龄</p>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control input-dark" name="age" id="age" autocomplete="off" />
-                        </div>
-                        <div class="col-md-1">
-                            <p>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</p>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control input-dark" name="birthday" id="birthday" autocomplete="off" />
-                        </div>
-                        <div class="col-md-1">
-                            <p>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>
-                        </div>
-                        <div class="col-sm-3">
-                            <input type="text" class="form-control input-dark" name="education" id="education" autocomplete="off" />
-                        </div>
-                    </div>
 
                     <div class="row">
                         <div class="col-md-1">
                             <p>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control input-dark" name="education" id="education" autocomplete="off" />
+                            <select name="education" id="education">
+                                <option value="大专" name="education">大专</option>
+                                <option value="本科" name="education">本科</option>
+                                <option value="重本" name="education">重本</option>
+                                <option value="研究生" name="education">研究生</option>
+                                <option value="硕士" name="education">硕士</option>
+                            </select>  
+                            @*<input type="text" class="form-control input-dark" name="education" id="education" autocomplete="off" />*@
                         </div>
                         <div class="col-md-1">
                             <p>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业</p>
@@ -288,7 +275,14 @@
                             <p>应聘渠道</p>
                         </div>
                         <div class="col-sm-11">
-                            <input type="text" class="form-control input-dark" name="application_method" id="application_method" autocomplete="off" />
+                            <select name="application_method" id="application_method">
+                                <option value="人才市场" name="application_method">人才市场</option>
+                                <option value="网上招聘" name="application_method">网上招聘</option>
+                                <option value="外部张贴" name="application_method">外部张贴</option>
+                                <option value="登报招聘" name="application_method">登报招聘</option>
+                                <option value="内部推荐" name="application_method">内部推荐</option>
+                            </select> 
+                            @*<input type="text" class="form-control input-dark" name="application_method" id="application_method" autocomplete="off" />*@
                         </div>
                     </div>
 
