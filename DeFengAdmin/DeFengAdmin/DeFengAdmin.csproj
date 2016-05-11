@@ -1047,6 +1047,7 @@
     <Content Include="Scripts\rwd-table\index.html" />
     <Content Include="Scripts\rwd-table\js\rwd-table.js" />
     <Content Include="Scripts\rwd-table\js\rwd-table.min.js" />
+    <Content Include="Scripts\sample.js" />
     <Content Include="Scripts\select2\index.html" />
     <Content Include="Scripts\select2\select2-bootstrap.css" />
     <Content Include="Scripts\select2\select2-spinner.gif" />
