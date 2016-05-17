@@ -1,0 +1,511 @@
+﻿@{
+    ViewBag.Title = "Information";
+}
+
+<!doctype html>
+
+<head>
+    <meta charset="utf-8">
+    <title>个人信息</title>
+    @*<link rel="stylesheet" href="/Content/fonts/fontawesome/css/font-awesome.min.css">*@
+
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<link rel="stylesheet" href="/Scripts/dropzone/css/dropzone.css">
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css"> 
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="row">
+
+                <h3 align="center">请填写个人信息</h3>
+                <form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
+                    <div class="fallback">
+                        <input name="file" type="file" multiple />
+                    </div>
+                </form>
+
+                <form method="post" role="form" id="Information" class="login-form fade-in-effect">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p> 编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="staffNumber" id="staffNumber" autocomplete="off" />
+                        </div>
+
+                        <div class="col-md-1">
+                            <p> 姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="staffName" id="staffName" autocomplete="off" />
+                        </div>
+
+                        <div class="col-md-1">
+                            <p>生日类别:</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark form-number" name="birthdayType" id="birthdayType" autocomplete="off" />
+                        </div>
+
+                    </div>
+                    @*<div class="row">
+                        <div class="spacing"></div>
+                     </div>*@
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>身&nbsp;&nbsp;份&nbsp;&nbsp;证:</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark form-number" name="idCard" id="idCard" autocomplete="off" />
+                        </div>
+
+                        <div class="col-md-1">
+                            <p>出生年月</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="date form_datetime">
+                                <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                                <span class="add-on"><i class="icon-remove"></i></span>
+                                <span class="add-on"><i class="icon-calendar"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <p>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</p>
+                        </div>
+                        <div class="col-md-1">
+                            @*<input type="text" class="form-control input-dark form-number" name="sex" id="sex" autocomplete="off" />*@
+                            <div class="col-md-0">
+                                <input id="r1" type="radio" name="sex" value="男" class="s-forms" />
+                            </div>
+                            <div class="col-sm-2">
+                                <p>男</p>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="col-md-0">
+                                <input id="r2" type="radio" name="sex" value="女" />
+                            </div>
+                            <div class="col-sm-2">
+                                <p> 女</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>年&nbsp;&nbsp;&nbsp;&nbsp;龄</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="age" id="age" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="birthday" id="birthday" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>婚姻状况</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="marital" id="marital" autocomplete="off" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <select name="education" id="education">
+                                <option value="大专" name="education">大专</option>
+                                <option value="本科" name="education">本科</option>
+                                <option value="重本" name="education">重本</option>
+                                <option value="研究生" name="education">研究生</option>
+                                <option value="硕士" name="education">硕士</option>
+                            </select>  
+                            @*<input type="text" class="form-control input-dark" name="education" id="education" autocomplete="off" />*@
+                        </div>
+                        <div class="col-md-1">
+                            <p>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="major" id="major" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>血&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="bloodType" id="bloodType" autocomplete="off" />
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>入职时间</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="entry_time" id="entry_time" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>入职状态</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="entry_status" id="entry_status" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>试用期</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control input-dark" name="probation" id="probation" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>身&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control input-dark" name="height" id="height" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>试用薪金</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="probation_salary" id="probation_salary" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>转正薪金</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="salary" id="salary" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>政治面貌</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="politics" id="politics" autocomplete="off" />
+                        </div>               
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="title" id="title" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp族</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="nation" id="nation" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>邮箱地址</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="email" id="email" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>移动电话</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="phone" id="phone" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>住宅电话</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="tel" id="tel" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>办公电话</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="officTel" id="officTel" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>户口类别</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="accountType" id="accountType" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>户口所在地</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control input-dark" name="accountAddress" id="accountAddress" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>籍贯</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="place_origin" id="place_origin" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>现住址</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control input-dark" name="address" id="address" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>应聘渠道</p>
+                        </div>
+                        <div class="col-sm-11">
+                            <select name="application_method" id="application_method">
+                                <option value="人才市场" name="application_method">人才市场</option>
+                                <option value="网上招聘" name="application_method">网上招聘</option>
+                                <option value="外部张贴" name="application_method">外部张贴</option>
+                                <option value="登报招聘" name="application_method">登报招聘</option>
+                                <option value="内部推荐" name="application_method">内部推荐</option>
+                            </select> 
+                            @*<input type="text" class="form-control input-dark" name="application_method" id="application_method" autocomplete="off" />*@
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1"><p>家庭成员</p></div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control input-dark form-number" name="family_members" id="family_members" autocomplete="off" />
+                        </div>
+                        <div class="col-md-0"><p>关系</p></div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control input-dark form-number" name="family_relationship" id="family_relationship" autocomplete="off" />
+                        </div>
+                        <div class="col-md-0"><p>职业</p></div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control input-dark form-number" name="family_occupation" id="family_occupation" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1"><p>所在单位地址</p></div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control input-dark form-number" name="family_company" id="family_company" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1"><p>成员联系电话</p></div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control input-dark form-number" name="family_contact" id="family_contact" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    @*<div class="row">
+                        <div class="col-md-2">
+                        <input type="text" class="form-control input-dark form-number" name="family_members" id="family_members" autocomplete="off" />
+                        </div>
+                        <div class="col-md-2">
+                        <input type="text" class="form-control input-dark form-number" name="family_relationship" id="family_relationship" autocomplete="off" />
+                        </div>
+                        <div class="col-md-2">
+                        <input type="text" class="form-control input-dark form-number" name="family_occupation" id="family_occupation" autocomplete="off"/>
+                        </div>
+                        <div class="col-md-4">
+                        <input type="text" class="form-control input-dark form-number" name="family_company" id="family_company" autocomplete="off" />
+                        </div>
+                        <div class="col-md-2">
+                        <input type="text" class="form-control input-dark form-number" name="family_contact" id="family_contact" autocomplete="off" />
+                        </div>
+                    </div>*@
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>入职单位</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="entry_unit" id="entry_unit" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>入职部门</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control input-dark" name="entry_department" id="entry_department" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>岗位</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control input-dark" name="entry_position" id="entry_position" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>直属领导</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="text" class="form-control input-dark" name="leader" id="leader" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>兼职部门</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control input-dark" name="part_time_job" id="part_time_job" autocomplete="off" />
+                        </div>
+                        <div class="col-md-1">
+                            <p>兼职岗位</p>
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control input-dark" name="part_time_position" id="part_time_position" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1"><p>声明</p></div>
+                        <div class="col-sm-8">
+                        <div class="row"><p>1、员工需对所填写的内容和所提供的资料实质性负责。</p></div>
+                        <div class="row"><p>2、员工入职15天后签订劳动合同，若员工入职后15日内辞职/自动离职，公司不予结算工资。</p></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>分行经理</p>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control input-dark" name="branch_manager" id="branch_manager" autocomplete="off" />
+                        </div>
+                     </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>现场经理</p>
+                        </div>
+                        <div class="col-md-11">
+                            <input type="text" class="form-control input-dark" name="site_manager" id="site_manager" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>人事部文员</p>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control input-dark" name="hr_clerk" id="hr_clerk" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>人事部经理</p>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control input-dark" name="hr_manager" id="hr_manager" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p>总经理</p>
+                        </div>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control input-dark" name="general_manager" id="general_manager" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <p>分配权限</p>
+                        </div>
+                        <div class="col-sm-1">
+                           <p>登录名</p>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" class="form-control input-dark" name="login_name" id="login_name" autocomplete="off" />
+                        </div>
+                        <div class="col-sm-1">
+                            <p>访问权限</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control input-dark" name="access_authority" id="access_authority" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            </div>
+                            <div class="col-md-5">
+                                <button type="submit">
+                                    <i class="fa-lock"></i>
+                                    增加
+                                </button>
+                            </div>
+                        </div>
+
+                </form>
+            </div>
+        </div>
+             </div>               
+
+                            @*<div class="login-footer" style="float:left">
+                            </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <!-- Bottom Scripts -->
+
+
+
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/jquery-validate/jquery.validate.min.js"></script>
+
+
+    <!-- JavaScripts initializations and stuff -->
+    @*<script type="text/javascript" src="~/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+        <script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>*@
+    <script src="~/Scripts/xenon-custom.js"></script>
+    <script src="~/Scripts/card.js"></script>
+    <script src="~/Scripts/validata.js"></script>
+    <!--<script src="~/Scripts/wysithtml5/lib/js/bootstrap.min.js"></script>-->
+    <!-- Imported scripts on this page -->
+    <script src="/Scripts/daterangepicker/daterangepicker.js"></script>
+    <script src="/Scripts/datepicker/bootstrap-datepicker.js"></script>
+    <script src="/Scripts/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <script src="/Scripts/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script src="/Scripts/select2/select2.min.js"></script>
+    <script src="/Scripts/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/Scripts/selectboxit/jquery.selectBoxIt.min.js"></script>
+    <script src="/Scripts/tagsinput/bootstrap-tagsinput.min.js"></script>
+    <script src="/Scripts/typeahead.bundle.js"></script>
+    <script src="/Scripts/handlebars.min.js"></script>
+    <script src="/Scripts/multiselect/js/jquery.multi-select.js"></script>
+    <script src="~/Scripts/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/defeng/information.js"></script>
+    @*<script src="~/Scripts/defeng/register.js"></script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.form_datetime').datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                // weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+        });
+
+    </script>
+    <!-- JavaScripts initializations and stuff -->
+

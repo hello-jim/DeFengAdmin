@@ -2566,3 +2566,12 @@ input[type="checkbox"].iswitch-xlg.touch:hover:checked:before {
     text-indent: 0;
   }
 }
+.spacing {
+    width:6%;
+}
+.spacing-1 {
+    width:4.2%;
+}
+.spacing-2 {
+    width:5%;
+}

@@ -3293,7 +3293,7 @@ button.toast-close-button {
   margin: 0 auto;
 }
 .lockscreen-page {
-  background: #2c2e2f;
+  background: #dbd8d8;
   color: #fff;
   padding-top: 250px;
 }
@@ -5449,7 +5449,8 @@ button.toast-close-button {
   animation-direction: alternate;
 }
 .xe-widget.xe-weather .xe-background.xe-background-animated lesshat-selector {
-  -lh-property: 0; } 
+  -lh-property: 0; 
+} 
 @-webkit-keyframes weatherBgMove{ 0% { left: 0%; } 50% { left: 10%; } 100% { left: 0%; }}
 @-moz-keyframes weatherBgMove{ 0% { left: 0%; } 50% { left: 10%; } 100% { left: 0%; }}
 @-o-keyframes weatherBgMove{ 0% { left: 0%; } 50% { left: 10%; } 100% { left: 0%; }}
@@ -5721,7 +5722,7 @@ button.toast-close-button {
 .xe-widget.xe-map-stats .xe-details .xe-map-data .xe-label {
   font-size: 14px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1300px) {
   .xe-widget.xe-map-stats {
     display: block;
   }
@@ -5733,4 +5734,92 @@ button.toast-close-button {
     width: 100%;
     display: block;
   }
+}
+.form-group-new {
+      width:100%;
+      margin-top:30px;
+     -webkit-transition: all 220ms ease-in-out;
+     -moz-transition: all 220ms ease-in-out;
+     -o-transition: all 220ms ease-in-out;
+     transition: all 220ms ease-in-out;
+}
+.row-new {
+    width:1200px;
+    color:#ffffff;
+    margin:0 auto 0 auto;
+}
+.form-group-new1 {
+     width:100%;
+     -webkit-transition: all 220ms ease-in-out;
+     -moz-transition: all 220ms ease-in-out;
+     -o-transition: all 220ms ease-in-out;
+     transition: all 220ms ease-in-out;
+    
+}
+.form-home {
+    margin-right:0px;
+}
+.form-home-font {
+    margin-right:100px;
+}
+.form-home-phone {
+    margin-left:130px;
+
+}
+.form-group-tst {
+    margin-top:-10px;
+}
+
+.form-group-top{
+    margin-top:10px;
+}
+.form-font{
+    padding-top:3px;
+}
+.form-main {
+    margin:auto 30px auto auto; 
+}
+.list-form li{
+    float:left;
+    list-style:none;
+    width:20%;
+    margin-left:-10px;
+}
+.permissions {
+     border-style:solid;
+     border-width:1px; 
+     border-color:#dddada;
+}
+.photo-fr {
+    width:120px;
+    height:150px;
+}
+.photo-d {
+    width:200px;
+    height:200px;
+}
+.s-form {
+    font-size:12px;
+    width:100px;
+}
+.font-size-form {
+    margin-top:4px;
+}
+.new-background {
+    background-color:#c1bcbc;
+}
+.new-font {
+    margin:10% 10% auto 10%;
+}
+.new-size {
+    width:35%;
+    height:35%;
+}
+.new-background1 {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background:#ffffff;
+}
+.new-font-size {
+    font-size:14px;
 }
