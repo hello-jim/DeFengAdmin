@@ -175,6 +175,12 @@ $(document).ready(function () {
                 });
         }
     });
+
+    $("#houseMatchCustomer").on("click", function () {
+        var matchHouse = $(".col-select.cbr-checked")[0];
+        var matchHouseObj = $.parseJSON($(matchHouse).parents("tr").attr("houseJson"));
+        ShowMatchPanel(type, matchHouseObj);
+    });
 });
 
 function GetSameOwnerHouseObj(tr) {
@@ -252,9 +258,6 @@ function GetHouseUnitPrice(totalPrice, size) {
 function GetHouseType1(roomCount, hallCount, toiletCount, balconyCount) {
     return roomCount + "-" + hallCount + "-" + toiletCount + "-" + balconyCount;
 }
-
-//获取系统配置
-
 
 function InitPageIndex() {
     $(".paginate_button").on("click", function () {
@@ -463,10 +466,10 @@ function HouseTableDoubleClick() {
 function GetHouseObj() {
     var house = new Object();
     house.ID = $("#houseID").val();
-    var province = new Object();
-    province.ID = $("#provinceSelect").val();
-    house.Province = province;
-    //城
+    //var province = new Object();
+    //province.ID = $("#provinceSelect").val();
+    //house.Province = province;
+    // 城
     var city = new Object();
     city.ID = $("#citySelect").val();
     house.City = city;
@@ -743,10 +746,11 @@ function InitEditHouseData(obj) {
 function HouseAdd() {
     $("#addHousePanel").on("click", function () {
         ShowHousePanel("addHouse");
-        InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", "", true);
+        //  InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", "", true);
+        InitCity("#citySelect", 19, "#districtSelect", "#areaSelect", true, "");
         InitResidentialDistrict("#residentialDistrictSelect", "", true);
         InitHouseType("#houseTypeSelect", "", true);
-        InitHouseUseType("#houseTypeSelect", "", true);
+        InitHouseUseType("#houseUseTypeSelect", "", true);
         InitOrientation("#orientationSelect", "", true);
         InitHousingLetter("#housingLetterSelect", "", true);
         InitHouseQuality("#houseQualitySelect", "", true);
@@ -994,3 +998,52 @@ function ShowFollowRecordPanel() {
     InitFollowRecord();
 }
 
+function GetMatchObj() {
+    var house = new Object();
+    var transactionType = new Object();
+    if (!$(".match-check[checkType=transactionType]").hasClass("cbr-checked")) {
+        transactionType.ID = 0;
+    } else {
+        transactionType.ID = $("#matchTransactionTypeSelect").val();
+    }
+    var district = new Object();
+    if (!$(".match-check[checkType=district]").hasClass("cbr-checked")) {
+        district.ID = 0;
+    } else {
+        district.ID = $("#matchDistrictelect").val();
+    }
+    var area = new Object();
+    if (!$(".match-check[checkType=area]").hasClass("cbr-checked")) {
+        area.ID = 0;
+    } else {
+        area.ID = ("#matchAreaSelect").val();
+    }
+    var residentialDistrict = new Object();
+    if (!$(".match-check[checkType=area]").hasClass("cbr-checked")) {
+        area.ID = 0;
+    } else {
+        residentialDistrict.ID = $("#matchResidentialDistrictSelect").val();
+    }
+    var houseUseType = new Object();
+    if (!$(".match-check[checkType=houseUseType]").hasClass("cbr-checked")) {
+        houseUseType.ID = 0;
+    } else {
+        houseUseType.ID = $("#matchHouseUseTypeSelect").val();
+    }
+    if (!$(".match-check[checkType=houseSize]").hasClass("cbr-checked")) {
+        house.HouseSize = $("#matchHouseSize").val();
+    } else {
+        house.HouseSize = 0;
+    }
+    if (!$(".match-check[checkType=houseSize]").hasClass("cbr-checked")) {
+        house.SaleTotalPrice = $("#matchPrice").val();
+    } else {
+        house.SaleTotalPrice = 0;
+    }
+
+    house.ResidentialDistrict = residentialDistrict;
+    house.Area = area;
+    house.District = district;
+    house.TransactionType = transactionType;
+    return house;
+}

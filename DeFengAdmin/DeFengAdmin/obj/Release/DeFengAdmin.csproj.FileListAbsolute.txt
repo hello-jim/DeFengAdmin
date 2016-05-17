@@ -85,3 +85,4 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.M
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Release\DeFengAdmin.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Release\DeFengAdmin.pdb
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Release\DeFengAdmin.csprojResolveAssemblyReference.cache

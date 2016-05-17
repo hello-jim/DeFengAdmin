@@ -15,7 +15,8 @@ namespace DeFengAdmin.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var customer = HttpContext.Request.Form.Count == 0 ? "" : HttpContext.Request.Form["customer"];
+            var house = HttpContext.Request.Form.Count == 0 ? "" : HttpContext.Request.Form["house"];
+            var customer = "";
             ViewBag.Customer = customer;
             return View();
         }

@@ -1762,7 +1762,7 @@ function GetTotalPageCount(totalCount, maxCount) {
     var totalPageCount = totalCount / maxCount;
     var numberArr = totalPageCount.toString().split(".");
     var number = numberArr.length > 1 ? parseInt(numberArr[1]) : 0;
-    if (number >= 5) {
+    if (number >= 1) {
         totalPageCount++;
     }
     return parseInt(totalPageCount);
@@ -1859,9 +1859,17 @@ function InitContrast() {
         $("#contrastLookHouseType" + i).text(obj.LookHouseType.TypeName);//看房
         $("#contrastEntrustType" + i).text(obj.EntrustType.TypeName);//委托
         $("#contrastOwnerName" + i).text(obj.OwnerName);//业主
-        $("#contrastRemarks"+i).text(obj.Remarks);//备注
+        $("#contrastRemarks" + i).text(obj.Remarks);//备注
         // $("#contrast").text();//归属
     }
+}
 
+
+function ShowMatchPanel(type, obj) {
+    $("." + type + "-Match-panel").show();
+    InitTransactionType(id, firstText, async);
+    $("#match-submit").on("click", function () {
+
+    });
 }
 

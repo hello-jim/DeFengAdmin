@@ -175,6 +175,10 @@ $(document).ready(function () {
                 });
         }
     });
+
+    $("#houseMatchCustomer").on("click", function () {
+
+    });
 });
 
 function GetSameOwnerHouseObj(tr) {
@@ -463,10 +467,10 @@ function HouseTableDoubleClick() {
 function GetHouseObj() {
     var house = new Object();
     house.ID = $("#houseID").val();
-    var province = new Object();
-    province.ID = $("#provinceSelect").val();
-    house.Province = province;
-    //城
+    //var province = new Object();
+    //province.ID = $("#provinceSelect").val();
+    //house.Province = province;
+   // 城
     var city = new Object();
     city.ID = $("#citySelect").val();
     house.City = city;
@@ -743,10 +747,11 @@ function InitEditHouseData(obj) {
 function HouseAdd() {
     $("#addHousePanel").on("click", function () {
         ShowHousePanel("addHouse");
-        InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", "", true);
+        //  InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", "", true);
+        InitCity("#citySelect", 19, "#districtSelect", "#areaSelect", true, "");
         InitResidentialDistrict("#residentialDistrictSelect", "", true);
         InitHouseType("#houseTypeSelect", "", true);
-        InitHouseUseType("#houseTypeSelect", "", true);
+        InitHouseUseType("#houseUseTypeSelect", "", true);
         InitOrientation("#orientationSelect", "", true);
         InitHousingLetter("#housingLetterSelect", "", true);
         InitHouseQuality("#houseQualitySelect", "", true);
@@ -994,3 +999,25 @@ function ShowFollowRecordPanel() {
     InitFollowRecord();
 }
 
+function GetMatchObj() {
+    var house = new Object();
+    var transactionType = new Object();
+    transactionType.ID = $("#matchTransactionTypeSelect").val();
+
+    var city = new Object();
+    city.ID=$("#matchCitySelect").val();
+   
+    var district = new Object();
+    district.ID = ("#matchDistrictSelect").val();
+
+    var residentialDistrict = new Object();
+    residentialDistrict.ID = $("#matchResidentialDistrictSelect").val();
+  
+    var houseUseType = new Object();
+    houseUseType.ID = $("#matchHouseUseTypeSelect").val();
+
+    house.HouseSize = $("#matchHouseSize").val();
+    house = $("#matchPrice").val();
+
+    house.TransactionType = transactionType;
+}

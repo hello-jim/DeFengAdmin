@@ -236,8 +236,8 @@ namespace DeFengAdmin.Controllers
         /// </summary>
         public void HouseMatchCustomer()
         {
-            var customer = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["customer"] : "";
-            Response.Redirect("/Customer/Index?customer=" + customer);
+            var house = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["house"] : "";
+            Response.Redirect("/Customer/Index?house=" + house);
         }
 
         public string SameOwnerHouse()

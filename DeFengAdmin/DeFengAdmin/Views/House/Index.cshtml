@@ -175,17 +175,17 @@
 
 
                             @*<script type="text/javascript">
-                                jQuery(document).ready(function ($) {
-                                    $("#districtSearchSelect").select2({
-                                        placeholder: 'Choose your favorite US Countries',
-                                        allowClear: true
-                                    }).on('select2-open', function () {
-                                        // Adding Custom Scrollbar
-                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                    });
+                                    jQuery(document).ready(function ($) {
+                                        $("#districtSearchSelect").select2({
+                                            placeholder: 'Choose your favorite US Countries',
+                                            allowClear: true
+                                        }).on('select2-open', function () {
+                                            // Adding Custom Scrollbar
+                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                        });
 
-                                });
-                            </script>*@
+                                    });
+                                </script>*@
 
                             <select class="form-control" id="districtSearchSelect" multiple></select>
 
@@ -425,6 +425,9 @@
                             <a href="#" data-toggle="">
                                 <span id="deleteHouse" class="table-add">&times;</span>
                             </a>
+                            <a href="#" data-toggle="">
+                                <span id="houseMatchCustomer" class="table-add">房配客</span>
+                            </a>
                         </div>
                     </div><div class="btn-group dropdown-btn-group pull-right">
 
@@ -494,28 +497,7 @@
             <div class="col-md-1 housePanelClose"><a id="houserPanelClose" href="javascript:void(0);">x</a></div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">城市</label>
 
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#provinceSelect").select2({
-
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="provinceSelect"></select>
-
-                </div>
-            </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">城市</label>
@@ -1374,8 +1356,165 @@
     </div>
 </div>
 
+<div class="house-Match-panel">
+    <!-- 房配客 -->
+    <div class="col-sm-6 col-sm-6-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">房配客</h3>
+                <div class="panel-options">
+                    <a href="#" data-toggle="panel">
+                        <span class="expand-icon">+</span>
+                    </a>
+                    <a href="#" data-toggle="remove">
+                        &times;
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
 
-<input id="houseSearchObj" type="hidden" value="@ViewBag.House" />
+                <form role="form">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced col-select' checkType="transactionType"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">交易</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+
+                                <select class="form-control" id="matchTransactionTypeSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">城区</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchDistrictSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">片区</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchAreaSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">楼盘</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchResidentialDistrictSelect">
+                                    <option></option>
+                                    <option>五月花花园</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">用途</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchHouseUseTypeSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <label class="control-label">房型</label>
+                            <select class="form-control" id="s2example-6">
+                                <option></option>
+                                <option>全部</option>
+                                <option>单间</option>
+                                <option>1房</option>
+                                <option>2房</option>
+                                <option>3房</option>
+                                <option>4房</option>
+                                <option>5房</option>
+                                <option>6房</option>
+                            </select>
+                        </div>*@
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">面积</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm input-group-minimal">
+                                    <span class="input-group-addon"></span>
+                                    <input id="matchHouseSize" type="text" class="form-control area" placeholder="88" />
+                                    <span class="square" style="bottom:-2px;right:5px;">㎡</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">价格</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm input-group-minimal">
+                                    <span class="input-group-addon"></span>
+                                    <input id="matchPrice" type="text" class="form-control" placeholder="110" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button id="cancel-fpk" class="btn btn-white" type="button">取消</button>        
+                            </div>
+                        </div>
+                        <div class="col-md-4 ensure">
+                            <div class="form-group">
+                                <button id="match-submit" type="button" class="btn btn-success">开始匹配</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    <input id="houseSearchObj" type="hidden" value='@ViewBag.House' />
+}
+
 
 <!-- Main Footer -->
 <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->

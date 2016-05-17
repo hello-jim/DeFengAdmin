@@ -1,20 +1,24 @@
 ﻿jQuery(document).ready(function ($) {
     $("#account").on("blur", function () {
         var checkUserName = $("#account").val();
-        $.post("/Home/CheckUserName",
-            {
-                account: checkUserName
-            },
-            function (data) {
-                if (data==1) {
-                    $("#gradeInfo").html("<font color=\"red\">您输入的用户名存在！请重新输入！</font>");
-                } 
-                else {
-                    $("#gradeInfo").html('<img src="/Content/images/symbol-check.png" style="width:30px;height:30px"/>');
-                }
-            })
-            }),
-        
+        var re = /^[0-9a-zA-Z]*$/g;   //判断字符串是否为数字     //判断正整数 /^[1-9]+[0-9]*]*$/  
+        if (!re.test(checkUserName)) {
+            $("#gradeInfo").html("<font color=\"red\">输入的账号不能含有标点符号！</font>");
+        } else {
+            $.post("/Home/CheckUserName",
+                {
+                    account: checkUserName
+                },
+                function (data) {
+                    if (data == 1) {
+                        $("#gradeInfo").html("<font color=\"red\">您输入的用户名存在！请重新输入！</font>");
+                    }
+                    else {
+                        $("#gradeInfo").html('<img src="/Content/images/symbol-check.png" style="width:30px;height:30px"/>');
+                    }
+                })
+        }
+    }),   
         // Reveal Login form
        setTimeout(function () { $(".fade-in-effect").addClass('in'); }, 1);
         // Validation and Ajax action
@@ -22,46 +26,43 @@
             rules: {
                 account: {
                     required: true,
-                    digits: true
                 },
 
                 password: {
                     required: true,
-                    minlength: 3,
+                    minlength: 6,
                 },
                 passwd1: {
                     required: true,
-                    minlength: 3,
+                    minlength: 6,
                     equalTo: "#password"
                 },
-                idCard: {
-                    required: true,
-                    IdCardNo: "*请输入正确的身份证号"
-                },
+                //idCard: {
+                //    required: true,
+                //    IdCardNo: "*请输入正确的身份证号"
+                //},
                 phone: {
                     required: true,
                     isMobile: true
                 }
-            },
-                           
+            },     
             messages: {
                 account: {
                     required: '*账号不能为空.',
-                    digits: '只能输入数字',
                 },
                 password: {
                     required: '*密码不能为空.',
-                    minlength: "*密码不能小于3个字符"
+                    minlength: "*密码不能小于6个字符"
                 },
                 passwd1: {
                     required: '*确认密码不能为空.',
-                    minlength: "*密码不能小于3个字符",
+                    minlength: "*密码不能小于6个字符",
                     equalTo: "*密码不一致"
                 },
-                idCard: {
-                    required: '*身份证不能为空.',
-                    IdCardNo: "*请输入正确的身份证号"
-                },
+                //idCard: {
+                //    required: '*身份证不能为空.',
+                //    IdCardNo: "*请输入正确的身份证号"
+                //},
                 phone: {
                     required: '*电话号码不能为空.',
                     isPhone: "*请输入一个有效的联系电话"
@@ -100,7 +101,7 @@
                         do_login: true,
                         account: $(form).find('#account').val(),
                         password: $(form).find('#password').val(),
-                        idCard: $(form).find('#idCard').val(),
+                        //idCard: $(form).find('#idCard').val(),
                         phone: $(form).find('#phone').val(),
                     },
                     success: function (data) {
@@ -109,8 +110,7 @@
                             window.location.href = '/Home/index';
                         }
                         else {
-                            alert("用户名已存在");
-                                              
+                            alert("用户名已存在");                  
                         }
                     }
         

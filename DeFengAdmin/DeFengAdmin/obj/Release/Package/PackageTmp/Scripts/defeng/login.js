@@ -62,11 +62,13 @@
                         alert("账号不存在");
                     }
                     else {
-                        if (data == 1) {
-                            alert("密码错误");
+                        if (data == 2) {
+                            window.location.href = '/Home/Information';
                         }
                         else {
-                            alert("登录成功");
+                            if (data == 1) {
+                                alert("密码错误");
+                            }
                         }
 
                     }

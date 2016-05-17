@@ -56,7 +56,7 @@
                             </script>
 
                             <select class="form-control" id="houseSaleDateSearchSelect">
-                                <option value="-1">出售</option>
+                                <option value="-1">全部</option>
                                 <option value="0">今日售房</option>
                                 <option value="3">最近三天</option>
                                 <option value="7">最近七天</option>
@@ -64,7 +64,6 @@
                                 <option value="30">最近一个月</option>
                                 <option value="90">最近三个月</option>
                                 <option value="180">最近半年</option>
-                                <option value="-1">全部</option>
                             </select>
 
                         </div>
@@ -83,7 +82,7 @@
                             </script>
 
                             <select class="form-control" id="houseLeaseDateSearchSelect">
-                                <option value="-1">出租</option>
+                                <option value="-1">全部</option>
                                 <option value="0">今日租房</option>
                                 <option value="3">最近三天</option>
                                 <option value="7">最近七天</option>
@@ -91,9 +90,7 @@
                                 <option value="30">最近一个月</option>
                                 <option value="90">最近三个月</option>
                                 <option value="180">最近半年</option>
-                                <option value="-1">全部</option>
                             </select>
-
                         </div>
                     </div>
                     <div class="col-md-2">
@@ -150,30 +147,6 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group search_select">
-                            <label class="control-label">省</label>
-
-                            <script type="text/javascript">
-                                jQuery(document).ready(function ($) {
-                                    $("#provinceSearchSelect").select2({
-                                        placeholder: 'Select your country...',
-                                        allowClear: true
-                                    }).on('select2-open', function () {
-                                        // Adding Custom Scrollbar
-                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                    });
-
-                                });
-                            </script>
-
-                            <select class="form-control search_select" id="provinceSearchSelect">
-                                <option>请选择</option>
-                            </select>
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="form-group search_select">
                             <label class="control-label">城市</label>
 
                             <script type="text/javascript">
@@ -201,18 +174,18 @@
                             <label class="control-label">城区</label>
 
 
-                            <script type="text/javascript">
-                                jQuery(document).ready(function ($) {
-                                    $("#districtSearchSelect").select2({
-                                        placeholder: 'Choose your favorite US Countries',
-                                        allowClear: true
-                                    }).on('select2-open', function () {
-                                        // Adding Custom Scrollbar
-                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                                    });
+                            @*<script type="text/javascript">
+                                    jQuery(document).ready(function ($) {
+                                        $("#districtSearchSelect").select2({
+                                            placeholder: 'Choose your favorite US Countries',
+                                            allowClear: true
+                                        }).on('select2-open', function () {
+                                            // Adding Custom Scrollbar
+                                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                        });
 
-                                });
-                            </script>
+                                    });
+                                </script>*@
 
                             <select class="form-control" id="districtSearchSelect" multiple></select>
 
@@ -452,6 +425,9 @@
                             <a href="#" data-toggle="">
                                 <span id="deleteHouse" class="table-add">&times;</span>
                             </a>
+                            <a href="#" data-toggle="">
+                                <span id="houseMatchCustomer" class="table-add">房配客</span>
+                            </a>
                         </div>
                     </div><div class="btn-group dropdown-btn-group pull-right">
 
@@ -521,28 +497,7 @@
             <div class="col-md-1 housePanelClose"><a id="houserPanelClose" href="javascript:void(0);">x</a></div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">城市</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#provinceSelect").select2({
-
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="provinceSelect"></select>
-
-                </div>
-            </div>
+         
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">城市</label>
@@ -557,7 +512,6 @@
                                 // Adding Custom Scrollbar
                                 $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
                             });
-
                         });
                     </script>
 
@@ -595,7 +549,7 @@
                     <script type="text/javascript">
                         jQuery(document).ready(function ($) {
                             $("#areaSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
+                                placeholder: '',
                                 allowClear: true
                             }).on('select2-open', function () {
                                 // Adding Custom Scrollbar
@@ -1192,15 +1146,37 @@
         <div class="row">
             <div class="form-group">
                 <div class="col-md-6 follow-record">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'></table>
+                    </div>
                 </div>
                 <div class="col-md-6 owner-info display">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input id="entrustIDTxt" class="form-control" name="entrustID" data-validate="required" placeholder="委托编号" />
+                                <input id="ownerTxt" class="form-control" name="entrustID" data-validate="required" placeholder="业主" />
                             </div>
                         </div>
-                    </div>               
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="ownerPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="手机" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <input id="contactsTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系人" />
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="contactPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class=""></div>
                 <div class="col-sm-6">
@@ -1216,8 +1192,8 @@
                 <button class="btn display follow-record-panel-show" type="button">写跟进</button>
             </div>
             <div class="col-md-2">
-                <button class="btn display owner-show" type="button">看业主</button>
-                <button class="btn display follow-record-show" type="button">看跟进</button>
+                <button class="btn  owner-show" type="button">看业主</button>
+                <button class="btn  follow-record-show" type="button">看跟进</button>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-2"><button class="btn display" type="button" id="fileUp">上传图片</button></div>
@@ -1380,7 +1356,103 @@
     </div>
 </div>
 
+<div class="house-Match-panel">
+    <!-- 房配客 -->
+    <div class="col-sm-6 col-sm-6-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">房配客</h3>
+                <div class="panel-options">
+                    <a href="#" data-toggle="panel">
+                        <span class="expand-icon">+</span>
+                    </a>
+                    <a href="#" data-toggle="remove">
+                        &times;
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
 
+                <form role="form">
+
+                    <div class="form-group">
+                        <label class="control-label">交易</label>
+                        <select class="form-control" id="matchTransactionTypeSelect"></select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">城区</label>
+                        <select class="form-control" id="matchCitySelect"></select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">片区</label>
+                        <select class="form-control" id="matchDistrictSelect"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">楼盘</label>
+                        <select class="form-control" id="matchResidentialDistrictSelect">
+                            <option></option>
+                            <option>五月花花园</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">用途</label>
+                        <select class="form-control" id="matchHouseUseTypeSelect"></select>
+                    </div>
+
+                    @*<div class="form-group">
+                            <label class="control-label">房型</label>
+                            <select class="form-control" id="s2example-6">
+                                <option></option>
+                                <option>全部</option>
+                                <option>单间</option>
+                                <option>1房</option>
+                                <option>2房</option>
+                                <option>3房</option>
+                                <option>4房</option>
+                                <option>5房</option>
+                                <option>6房</option>
+                            </select>
+                        </div>*@
+
+                    <div class="form-group">
+                        <label class="control-label">面积</label>
+
+                        <div class="input-group input-group-sm input-group-minimal">
+                            <span class="input-group-addon"></span>
+                            <input id="matchHouseSize" type="text" class="form-control area" placeholder="88" />
+                            <span class="square" style="bottom:-2px;right:5px;">㎡</span>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">价格</label>
+                        <div class="input-group input-group-sm input-group-minimal">
+                            <span class="input-group-addon"></span>
+                            <input id="matchPrice" type="text" class="form-control" placeholder="110" />
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 ensure">
+                            <div class="form-group">
+                                <button id="cancel-fpk" class="btn btn-white" type="button">取消</button>
+                                <button id="match-submit" type="button" class="btn btn-success">开始匹配</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    <input id="houseSearchObj" type="hidden" value='@ViewBag.House' />
+}
 
 
 <!-- Main Footer -->
@@ -1402,7 +1474,6 @@
 <script src="~/Scripts/resizeable.js"></script>
 <script src="~/Scripts/joinable.js"></script>
 <script src="~/Scripts/xenon-api.js"></script>
-<script src="~/Scripts/xenon-toggles.js"></script>
 <script src="~/Scripts/moment.min.js"></script>
 
 <!-- Imported scripts on this page -->

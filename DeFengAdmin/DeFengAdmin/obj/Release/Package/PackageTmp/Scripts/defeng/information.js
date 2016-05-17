@@ -83,12 +83,13 @@
                     staffNumber: $(form).find('#staffNumber').val(),
                     staffName: $("#staffName").val(),
                     birthdayType: $('#birthdayType').val(),
+                    idCard: $('#idCard').val(),
                     submitHouseDate: $('#submitHouseDate').val(),
                     sex: $("input[name='sex']:checked").val(),
                     age: $('#age').val(),
                     birthday: $(form).find('#birthday').val(),
                     marital: $(form).find('#marital').val(),
-                    education: $(form).find('#education').val(),
+                    education: $("#education").val(),
                     major: $(form).find('#major').val(),
                     bloodType: $(form).find('#bloodType').val(),
                     entry_time: $(form).find('#entry_time').val(),
@@ -127,28 +128,20 @@
                     login_name: $(form).find('#login_name').val(),
                     access_authority: $(form).find('#access_authority').val(),
                 },
-                success: function (resp) {
-                    show_loading_bar({
-                        delay: .5,
-                        pct: 100,
-                        finish: function () {
-
-                            // Redirect after successful login page (when progress bar reaches 100%)
-                            if (resp.accessGranted) {
-                                window.location.href = 'dashboard-1.html';
-                            }
-                            else {
-                                toastr.error("You have entered wrong password, please try again. User and password is <strong>demo/demo</strong> :)", "Invalid Login!", opts);
-                                $passwd.select();
-                            }
-                        }
-                    });
-
-                }
-            });
-
-        }
+                success: function (data) {   
+                    if (data==1)
+                    {
+                        alert("插入成功")
+                                
+                    }
+                    else {
+                        alert("插入失败")
+            }
+            }
     });
+
+}
+});
 
     // Set Form focus
     $("form#Information .form-group:has(.form-control):first .form-control").focus();

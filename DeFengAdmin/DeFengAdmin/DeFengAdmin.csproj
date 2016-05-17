@@ -229,6 +229,7 @@
   <ItemGroup>
     <Content Include="App_Data\SysConfKey.xml" />
     <Content Include="Content\css\customer.css" />
+    <Content Include="Scripts\card.js" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -273,6 +274,10 @@
     <Content Include="Scripts\defeng\group.js" />
     <Content Include="Scripts\defeng\house.js" />
     <Content Include="Content\css\jquery.treeview.css" />
+    <Content Include="Scripts\defeng\information.js" />
+    <Content Include="Scripts\defeng\login.js" />
+    <Content Include="Scripts\defeng\register.js" />
+    <Content Include="Scripts\dialog.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.treeview.js" />
     <Content Include="Content\fonts\elusive\css\animation.css" />
@@ -1024,6 +1029,10 @@
     <Content Include="Scripts\jquery-validate\localization\methods_pt.js" />
     <Content Include="Scripts\jquery-validate\localization\methods_pt.min.js" />
     <Content Include="Scripts\jquery.mousewheel.js" />
+    <Content Include="Scripts\jstext\jquery.corner.js" />
+    <Content Include="Scripts\jstext\jquery.js" />
+    <Content Include="Scripts\jstext\jVal.css" />
+    <Content Include="Scripts\jstext\jVal.js" />
     <Content Include="Scripts\jvectormap\index.html" />
     <Content Include="Scripts\jvectormap\jquery-jvectormap-1.1.1.css" />
     <Content Include="Scripts\jvectormap\jquery-jvectormap-1.1.1.min.js" />
@@ -1189,6 +1198,7 @@
     <Content Include="Scripts\uikit\vendor\spectrum\spectrum.css" />
     <Content Include="Scripts\uikit\vendor\spectrum\spectrum.js" />
     <Content Include="Scripts\uikit\vendor\spectrum\test.html" />
+    <Content Include="Scripts\validata.js" />
     <Content Include="Scripts\wysihtml5\index.html" />
     <Content Include="Scripts\wysihtml5\lib\css\bootstrap-responsive.css" />
     <Content Include="Scripts\wysihtml5\lib\css\bootstrap-responsive.min.css" />
@@ -1407,6 +1417,7 @@
     <Content Include="Content\data\login-check.php" />
     <Content Include="Content\data\crop-image.php" />
     <Content Include="Content\data\.DS_Store" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Project_Readme.html" />
     <Content Include="Content\.DS_Store" />
     <Content Include="Content\fonts\.DS_Store" />
@@ -1710,6 +1721,8 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <None Include="Properties\PublishProfiles\DeFengAdmin.pubxml" />
+    <Content Include="Views\Home\userLogin.cshtml" />
+    <Content Include="Views\Home\Information.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\dx.all.d.ts" />

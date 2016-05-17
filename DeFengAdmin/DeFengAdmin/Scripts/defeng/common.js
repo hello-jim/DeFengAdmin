@@ -1762,7 +1762,7 @@ function GetTotalPageCount(totalCount, maxCount) {
     var totalPageCount = totalCount / maxCount;
     var numberArr = totalPageCount.toString().split(".");
     var number = numberArr.length > 1 ? parseInt(numberArr[1]) : 0;
-    if (number >= 5) {
+    if (number >= 1) {
         totalPageCount++;
     }
     return parseInt(totalPageCount);
@@ -1859,9 +1859,43 @@ function InitContrast() {
         $("#contrastLookHouseType" + i).text(obj.LookHouseType.TypeName);//看房
         $("#contrastEntrustType" + i).text(obj.EntrustType.TypeName);//委托
         $("#contrastOwnerName" + i).text(obj.OwnerName);//业主
-        $("#contrastRemarks"+i).text(obj.Remarks);//备注
+        $("#contrastRemarks" + i).text(obj.Remarks);//备注
         // $("#contrast").text();//归属
     }
+}
 
+
+function ShowMatchPanel(type, obj) {
+    var scrollTop = $(document).scrollTop();
+    $("." + type.toLowerCase() + "-Match-panel").css("top", scrollTop + 400 + "px");
+    $("." + type.toLowerCase() + "-Match-panel").show();
+    InitTransactionType("#matchTransactionTypeSelect", "", false);
+    $("#matchTransactionTypeSelect [value=" + obj.TransactionType.ID + "]").attr("selected", "selected");
+    $("#matchTransactionTypeSelect").prev().find("a span")[0].innerText = obj.TransactionType.TransactionTypeName;
+
+    InitDistrict("#matchDistrictSelect", 195, "#matchAreaSelect", "", false, "");
+    $("#matchDistrictSelect [value=" + obj.District.ID + "]").attr("selected", "selected");
+    $("#matchDistrictSelect").prev().find("a span")[0].innerText = obj.District.Name;
+    $("#matchAreaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
+    $("#matchAreaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
+    InitResidentialDistrict("#matchResidentialDistrictSelect", "", false);
+    $("#matchResidentialDistrictSelect [value=" + obj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+    $("#matchResidentialDistrictSelect").prev().find("a span")[0].innerText = obj.ResidentialDistrict.Name;
+    InitHouseUseType("#matchHouseUseTypeSelect", "", false);
+    $("#matchHouseUseTypeSelect [value=" + obj.HouseUseType.ID + "]").attr("selected", "selected");
+    $("#matchHouseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
+    $("#matchHouseSize").val(obj.HouseSize);
+    $("#matchPrice").val(obj.SaleTotalPrice);
+    $("#match-submit").on("click", function () {
+        var house = GetMatchObj();
+        var houseJson = JSON.stringify(house);
+        $.post("/" + type + "/" + type + "Match" + (type == "House" ? "Customer" : "House"),
+        {
+            house: houseJson
+        },
+        function (data) {
+
+        });
+    });
 }
 
