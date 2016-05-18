@@ -231,15 +231,6 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
-        /// <summary>
-        ///房配客
-        /// </summary>
-        public void HouseMatchCustomer()
-        {
-            var house = HttpContext.Request.Form.Count != 0 ? HttpContext.Request.Form["house"] : "";
-            Response.Redirect("/Customer/Index?house=" + house);
-        }
-
         public string SameOwnerHouse()
         {
             House_BLL bll = new House_BLL();

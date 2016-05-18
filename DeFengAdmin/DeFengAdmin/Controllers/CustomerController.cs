@@ -15,9 +15,58 @@ namespace DeFengAdmin.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var house = HttpContext.Request.Form.Count == 0 ? "" : HttpContext.Request.Form["house"];
-            var customer = "";
-            ViewBag.Customer = customer;
+            var house = HttpContext.Request["house"] != null ? JsonConvert.DeserializeObject<House>(HttpContext.Request["house"]) : null;
+            var customer = new Customer();
+            if (house != null)
+            {
+                switch (house.TransactionType.ID)
+                {
+                    case 1:
+                        customer.CustomerTransactionType = new CustomerTransactionType
+                        {
+                            ID = 2
+                        };
+                        break;
+                    case 2:
+                        customer.CustomerTransactionType = new CustomerTransactionType
+                        {
+                            ID = 1
+                        };
+                        break;
+                }
+                if (house.District.ID != 0)
+                {
+                    customer.District = new District
+                    {
+                        Name = "" + house.District.ID + ""
+                    };
+                }          
+                if (house.Area.ID != 0)
+                {
+                    customer.Area = new Area
+                    {
+                        AreaName = "" + house.Area.ID + ""
+                    };
+                }
+               
+                if (house.ResidentialDistrict.ID != 0)
+                {
+                    customer.ResidentialDistrict = new ResidentialDistrict
+                    {
+                        ID = house.ResidentialDistrict.ID
+                    };
+                }
+                if (house.HouseUseType.ID != 0)
+                {
+                    customer.HouseUseType = new HouseUseType
+                    {
+                        ID = house.HouseUseType.ID
+                    };
+                }           
+                customer.HouseSize = house.HouseSize;
+                customer.Price = house.SaleTotalPrice;
+            }
+            ViewBag.Customer = JsonConvert.SerializeObject(customer);
             return View();
         }
 

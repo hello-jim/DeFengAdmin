@@ -348,7 +348,6 @@ function GetHouseLeaseDateObj() {
     var house = new Object();
     house.TransactionType = transactionType;
     house.proxyStartDate = proxyStartDate;
-
     return house;
 }
 
@@ -1010,17 +1009,17 @@ function GetMatchObj() {
     if (!$(".match-check[checkType=district]").hasClass("cbr-checked")) {
         district.ID = 0;
     } else {
-        district.ID = $("#matchDistrictelect").val();
+        district.ID = $("#matchDistrictSelect").val();
     }
     var area = new Object();
     if (!$(".match-check[checkType=area]").hasClass("cbr-checked")) {
         area.ID = 0;
     } else {
-        area.ID = ("#matchAreaSelect").val();
+        area.ID = $("#matchAreaSelect").val();
     }
     var residentialDistrict = new Object();
     if (!$(".match-check[checkType=area]").hasClass("cbr-checked")) {
-        area.ID = 0;
+        residentialDistrict.ID = 0;
     } else {
         residentialDistrict.ID = $("#matchResidentialDistrictSelect").val();
     }
@@ -1031,19 +1030,20 @@ function GetMatchObj() {
         houseUseType.ID = $("#matchHouseUseTypeSelect").val();
     }
     if (!$(".match-check[checkType=houseSize]").hasClass("cbr-checked")) {
+        house.HouseSize = 0;      
+    } else {
         house.HouseSize = $("#matchHouseSize").val();
-    } else {
-        house.HouseSize = 0;
     }
-    if (!$(".match-check[checkType=houseSize]").hasClass("cbr-checked")) {
-        house.SaleTotalPrice = $("#matchPrice").val();
+    if (!$(".match-check[checkType=price]").hasClass("cbr-checked")) {
+        house.SaleTotalPrice = 0;      
     } else {
-        house.SaleTotalPrice = 0;
+        house.SaleTotalPrice = $("#matchPrice").val();
     }
 
     house.ResidentialDistrict = residentialDistrict;
     house.Area = area;
     house.District = district;
     house.TransactionType = transactionType;
+    house.HouseUseType = houseUseType;
     return house;
 }

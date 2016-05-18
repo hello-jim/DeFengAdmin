@@ -1148,7 +1148,7 @@ function InitDisplayStatus(type) {
     $(".table-col-Select").on("click", function () {
         $(".table-col-menu").toggle();
     });
-    $(".cbr-replaced").on("click", function () {
+    $(".col-select").on("click", function () {
         var thisObj = $(this);
         var checked = $(thisObj).hasClass("cbr-checked");
         var col = $(thisObj).attr("col");
@@ -1829,7 +1829,7 @@ function InitDelete(type) {
             }
             else {
                 return;
-            }
+            }0
         } else {
             return;
         }
@@ -1886,16 +1886,33 @@ function ShowMatchPanel(type, obj) {
     $("#matchHouseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
     $("#matchHouseSize").val(obj.HouseSize);
     $("#matchPrice").val(obj.SaleTotalPrice);
+    $(".match-check").on("click", function () {
+        var thisObj = $(this);
+        var checked = $(thisObj).hasClass("cbr-checked");
+        var col = $(thisObj).attr("col");
+        if (checked) {
+            $(".col" + col).hide();
+            $(thisObj).removeClass("cbr-checked");
+        }
+        else {
+            $(".col" + col).show();
+            $(thisObj).addClass("cbr-checked");
+        }
+    });
     $("#match-submit").on("click", function () {
-        var house = GetMatchObj();
-        var houseJson = JSON.stringify(house);
-        $.post("/" + type + "/" + type + "Match" + (type == "House" ? "Customer" : "House"),
-        {
-            house: houseJson
-        },
-        function (data) {
-
-        });
+        var obj = GetMatchObj();
+        var json= JSON.stringify(obj);
+        location.href = "/Customer/Index?house=" + json;
+        //var houseJson = JSON.stringify(house);
+        //$.ajax({
+        //    url: "/" + type + "/" + type + "Match" + (type == "House" ? "Customer" : "House"),
+        //    data: { house: houseJson },
+        //    async: false,
+        //    success: function (data) {
+               
+        //    }
+        //});
+       
     });
 }
 

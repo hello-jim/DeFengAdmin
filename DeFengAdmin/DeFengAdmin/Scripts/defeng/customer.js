@@ -2,8 +2,20 @@
 customerMaxCount = GetSysConf("customerMaxCount");
 type = "Customer";
 $(document).ready(function () {
-    var customerSearchVal = $("#houseSearchObj").val();
+    var customerSearchVal = $("#customerSearchObj").val();
     if (customerSearchVal != "") {
+        var initCustomerObj = $.parseJSON(customerSearchVal);
+        $("#customerTransactionTypeSelect [value=" + initCustomerObj.CustomerTransactionType.ID + "]").attr("selected", "selected");
+        $("#customerTransactionTypeSelect").prev().find("a span")[0].innerText = initCustomerObj.CustomerTransactionType.TypeName;
+        $("#districtSelect [value=" + initCustomerObj.District.ID + "]").attr("selected", "selected");
+        $("#districtSelect").prev().find("a span")[0].innerText = initCustomerObj.District.Name;
+        $("#areaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
+        $("#areaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
+        $("#residentialDistrictSelect [value=" + obj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+        $("#residentialDistrictSelect").prev().find("a span")[0].innerText = obj.ResidentialDistrict.Name;
+        $("#houseUseTypeSelect [value=" + obj.HouseUseType.ID + "]").attr("selected", "selected");
+        $("#houseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
+
         $(".pageCount").remove();
         BeforeHouseDataLoading();
         $.post("/Customer/Search",
