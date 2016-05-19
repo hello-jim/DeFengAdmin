@@ -346,6 +346,9 @@
                             <a href="#" data-toggle="">
                                 <span id="deleteCustomer" class="table-add">&times;</span>
                             </a>
+                            <a href="javascript:void(0)" data-toggle="">
+                                <span id="customerMatchHouse">客配房</span>
+                            </a>
                         </div>
                     </div><div class="btn-group dropdown-btn-group pull-right">
 
@@ -768,6 +771,181 @@
                     <button class="btn" type="button" id="addCustomer">添加</button>
                     <button class="btn" type="button" id="editCustomer">修改</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="customer-match-panel">
+    <!-- 客配房 -->
+    <div class="col-sm-6 col-sm-6-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">客配房</h3>
+                <div class="panel-options">
+                    <a href="#" data-toggle="panel">
+                        <span class="expand-icon">+</span>
+                    </a>
+                    <a href="javascript:void(0)" class="match-panel-close">
+                        X
+                    </a>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <form role="form">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced cbr-checked' checkType="customerTransactionType"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">交易</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchCustomerTransactionTypeSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced cbr-checked' checkType="district"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">城区</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchDistrictSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced cbr-checked' checkType="area"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">片区</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchAreaSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced cbr-checked' checkType="residentialDistrict"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">楼盘</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchResidentialDistrictSelect">
+                                    <option></option>
+                                    <option>五月花花园</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced cbr-checked' checkType="houseUseType"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">用途</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchHouseUseTypeSelect"></select>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            <label class="control-label">房型</label>
+                            <select class="form-control" id="s2example-6">
+                                <option></option>
+                                <option>全部</option>
+                                <option>单间</option>
+                                <option>1房</option>
+                                <option>2房</option>
+                                <option>3房</option>
+                                <option>4房</option>
+                                <option>5房</option>
+                                <option>6房</option>
+                            </select>
+                        </div>*@
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced cbr-checked' checkType="houseSize"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">面积</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm input-group-minimal">
+                                        <span class="input-group-addon"></span>
+                                        <input id="matchHouseSizeFrom" type="text" class="form-control area" placeholder="㎡" />
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm input-group-minimal">
+                                        <span class="input-group-addon"></span>
+                                        <input id="matchHouseSizeTo" type="text" class="form-control area" placeholder="㎡" />
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced cbr-checked' checkType="price"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">价格</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm input-group-minimal">
+                                        <span class="input-group-addon"></span>
+                                        <input id="matchPriceFrom" type="text" class="form-control" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
+                           <div class="col-md-6">
+                               <div class="form-group">
+                                   <div class="input-group input-group-sm input-group-minimal">
+                                       <span class="input-group-addon"></span>
+                                       <input id="matchPriceTo" type="text" class="form-control" placeholder="" />
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button id="cancel-fpk" class="btn btn-white" type="button">取消</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ensure">
+                            <div class="form-group">
+                                <button id="match-submit" type="button" class="btn btn-success">开始匹配</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

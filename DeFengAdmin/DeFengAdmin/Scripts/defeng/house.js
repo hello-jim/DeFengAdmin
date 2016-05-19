@@ -4,6 +4,32 @@ type = "House";
 $(document).ready(function () {
     var houseSearchVal = $("#houseSearchObj").val();
     if (houseSearchVal != "") {
+        var initHouseObj = $.parseJSON(houseSearchVal);
+        if (initHouseObj.TransactionType != null) {
+            $("#transactionTypeSelect [value=" + initHouseObj.TransactionType.ID + "]").attr("selected", "selected");
+            $("#transactionTypeSelect").prev().find("a span")[0].innerText = initHouseObj.TransactionType.TransactionTypeName;
+        }
+        if (initHouseObj.District != null) {
+            $("#districtSelect [value=" + initHouseObj.District.ID + "]").attr("selected", "selected");
+            $("#districtSelect").prev().find("a span")[0].innerText = initHouseObj.District.Name;
+        }
+        if (initHouseObj.Area) {
+            $("#areaSelect [value=" + initHouseObj.Area.ID + "]").attr("selected", "selected");
+            $("#areaSelect").prev().find("a span")[0].innerText = initHouseObj.Area.AreaName;
+        }
+        if (initHouseObj.ResidentialDistrict != null) {
+            $("#residentialDistrictSelect [value=" + initHouseObj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+            $("#residentialDistrictSelect").prev().find("a span")[0].innerText = initHouseObj.ResidentialDistrict.Name;
+        }
+        if (initHouseObj.HouseUseType != null) {
+            $("#houseUseTypeSelect [value=" + initHouseObj.HouseUseType.ID + "]").attr("selected", "selected");
+            $("#houseUseTypeSelect").prev().find("a span")[0].innerText = initHouseObj.HouseUseType.TypeName;
+        }
+        
+        $("#houseSizeFromSearchTxt").val(initHouseObj.HouseSizeFrom);
+        $("#houseSizeToSearchTxt").val(initHouseObj.HouseSizeTo);
+        $("#priceFromSearchTxt").val(initHouseObj.PriceFrom);
+        $("#priceToSearchTxt").val(initHouseObj.PriceTo);
         $(".pageCount").remove();
         BeforeHouseDataLoading();
         $.post("/House/Search",
@@ -177,9 +203,12 @@ $(document).ready(function () {
     });
 
     $("#houseMatchCustomer").on("click", function () {
-        var matchHouse = $(".col-select.cbr-checked")[0];
-        var matchHouseObj = $.parseJSON($(matchHouse).parents("tr").attr("houseJson"));
-        ShowMatchPanel(type, matchHouseObj);
+        var matchHouse = $(".col-select.cbr-checked");
+        if (matchHouse.length > 0) {
+            var matchHouseObj = $.parseJSON($(matchHouse[0]).parents("tr").attr("houseJson"));
+            ShowMatchPanel(type);
+            InitMatchData(matchHouseObj);
+        }
     });
 });
 
@@ -394,8 +423,8 @@ function GetJointSearchObj() {
     if (orientation.ID == 0) {
         orientation = null;
     }
-    var salePriceFrom = $("#salePriceFromTxt").val() != "" ? $("#salePriceFromTxt").val() : 0;
-    var salePriceTo = $("#salePriceToTxt").val() != "" ? $("#salePriceToTxt").val() : 0;
+    var salePriceFrom = $("#priceFromTxt").val() != "" ? $("#priceFromTxt").val() : 0;
+    var salePriceTo = $("#priceToTxt").val() != "" ? $("#priceToTxt").val() : 0;
     var houseSizeFrom = $("#houseSizeFromTxt").val() != "" ? $("#houseSizeFromTxt").val() : 0;
     var houseSizeTo = $("#houseSizeToTxt").val() != "" ? $("#houseSizeToTxt").val() : 0;
     var floorFrom = $("#floorFromTxt").val() != "" ? $("#floorFromTxt").val() : 0;
@@ -441,7 +470,10 @@ function HouseTableDoubleClick() {
         InitFurniture("#furnitureSelect", "", false);
         InitAppliance("#applianceSelect", "", false);
         InitLookHouseType("#lookHouseTypeSelect", "", false);
+        InitCountry("#nationalitySelect","",false);
         InitEditHouseData(obj);
+        $("#submitHouseDate").val(DateTimeConvert_yyyyMMdd(new Date()));
+        $("#proxyStartDate").val(DateTimeConvert_yyyyMMdd(new Date()));
         $("#editHouse").unbind("click");
         $("#editHouse").on("click", function () {
             var thisObj = this;
@@ -596,6 +628,20 @@ function GetHouseObj() {
     var lookHouseType = new Object();
     lookHouseType.ID = $("#lookHouseTypeSelect").val() != null ? $("#lookHouseTypeSelect").val().toString() : "0";
     house.LookHouseType = lookHouseType;
+    //业主名称
+    house.OwnerName = $("#ownerNameTxt").val() != "" ? $("#ownerNameTxt").val() : "";
+    //业主电话
+    house.OwnerPhone = $("#ownerPhoneTxt").val() != "" ? $("#ownerPhoneTxt").val() : "";
+    //联系人
+    house.Contacts = $("#contactsTxt").val() != "" ? $("#contactsTxt").val() : "";
+    //联系人电话
+    house.ContactPhone = $("#contactPhoneTxt").val() != "" ? $("#contactPhoneTxt").val() : "";
+    //联系人电话
+    house.HousePropertyCertificate = $("#housePropertyCertificateTxt").val() != "" ? $("#housePropertyCertificateTxt").val() : "";
+    //国籍
+    var nationality = new Object();
+    nationality.ID = $("#nationalitySelect").val() != null ? $("#nationalitySelect").val() : 0;
+    house.Nationality = nationality;
     return house;
 }
 
@@ -614,12 +660,11 @@ function InitEditHouseData(obj) {
         $(".owner-show").show();
     });
     $("#houseID").val(obj.ID);
-    var arr = { "pro": obj.Province.ID, "city": obj.City.ID, "district": obj.District.ID, "area": obj.Area.ID };
+    var arr = {"city": obj.City.ID, "district": obj.District.ID, "area": obj.Area.ID };
 
     //省
-    InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", false, arr);
-    $("#provinceSelect [value=" + obj.Province.ID + "]").attr("selected", "selected");
-    $("#provinceSelect").prev().find("a span")[0].innerText = $("#provinceSelect :selected").text();
+    InitCity("#citySelect", 19, "#districtSelect", "#areaSelect", false, arr);
+  
     //城
     $("#citySelect [value=" + obj.City.ID + "]").attr("selected", "selected");
     $("#citySelect").prev().find("a span")[0].innerText = $("#citySelect :selected").text();
@@ -768,6 +813,9 @@ function HouseAdd() {
         InitFurniture("#furnitureSelect", "", true);
         InitAppliance("#applianceSelect", "", true);
         InitLookHouseType("#lookHouseTypeSelect", "", true);
+        InitCountry("#nationalitySelect", "", true);
+        $("#submitHouseDate").val(DateTimeConvert_yyyyMMdd(new Date()));
+        $("#proxyStartDate").val(DateTimeConvert_yyyyMMdd(new Date()));
         $("#addHouse").on("click", function () {
             var house = GetHouseObj();
             var houseJson = JSON.stringify(house);
@@ -1030,12 +1078,12 @@ function GetMatchObj() {
         houseUseType.ID = $("#matchHouseUseTypeSelect").val();
     }
     if (!$(".match-check[checkType=houseSize]").hasClass("cbr-checked")) {
-        house.HouseSize = 0;      
+        house.HouseSize = 0;
     } else {
         house.HouseSize = $("#matchHouseSize").val();
     }
     if (!$(".match-check[checkType=price]").hasClass("cbr-checked")) {
-        house.SaleTotalPrice = 0;      
+        house.SaleTotalPrice = 0;
     } else {
         house.SaleTotalPrice = $("#matchPrice").val();
     }
@@ -1046,4 +1094,23 @@ function GetMatchObj() {
     house.TransactionType = transactionType;
     house.HouseUseType = houseUseType;
     return house;
+}
+
+function InitMatchData(obj) {
+    InitTransactionType("#matchTransactionTypeSelect", "", false);
+    $("#matchTransactionTypeSelect [value=" + obj.TransactionType.ID + "]").attr("selected", "selected");
+    $("#matchTransactionTypeSelect").prev().find("a span")[0].innerText = obj.TransactionType.TransactionTypeName;
+    InitDistrict("#matchDistrictSelect", 195, "#matchAreaSelect", "", false, "");
+    $("#matchDistrictSelect [value=" + obj.District.ID + "]").attr("selected", "selected");
+    $("#matchDistrictSelect").prev().find("a span")[0].innerText = obj.District.Name;
+    $("#matchAreaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
+    $("#matchAreaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
+    InitResidentialDistrict("#matchResidentialDistrictSelect", "", false);
+    $("#matchResidentialDistrictSelect [value=" + obj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+    $("#matchResidentialDistrictSelect").prev().find("a span")[0].innerText = obj.ResidentialDistrict.Name;
+    InitHouseUseType("#matchHouseUseTypeSelect", "", false);
+    $("#matchHouseUseTypeSelect [value=" + obj.HouseUseType.ID + "]").attr("selected", "selected");
+    $("#matchHouseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
+    $("#matchHouseSize").val(obj.HouseSize);
+    $("#matchPrice").val(obj.SaleTotalPrice);
 }

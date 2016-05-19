@@ -95,7 +95,7 @@
     float: right;
 }
 
-.house-Match-panel {
+.house-match-panel {
     position: absolute;
     z-index: 99998;
     display: none;

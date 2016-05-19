@@ -5,17 +5,28 @@ $(document).ready(function () {
     var customerSearchVal = $("#customerSearchObj").val();
     if (customerSearchVal != "") {
         var initCustomerObj = $.parseJSON(customerSearchVal);
-        $("#customerTransactionTypeSelect [value=" + initCustomerObj.CustomerTransactionType.ID + "]").attr("selected", "selected");
-        $("#customerTransactionTypeSelect").prev().find("a span")[0].innerText = initCustomerObj.CustomerTransactionType.TypeName;
-        $("#districtSelect [value=" + initCustomerObj.District.ID + "]").attr("selected", "selected");
-        $("#districtSelect").prev().find("a span")[0].innerText = initCustomerObj.District.Name;
-        $("#areaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
-        $("#areaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
-        $("#residentialDistrictSelect [value=" + obj.ResidentialDistrict.ID + "]").attr("selected", "selected");
-        $("#residentialDistrictSelect").prev().find("a span")[0].innerText = obj.ResidentialDistrict.Name;
-        $("#houseUseTypeSelect [value=" + obj.HouseUseType.ID + "]").attr("selected", "selected");
-        $("#houseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
-
+        if(initCustomerObj.CustomerTransactionType != null){
+            $("#customerTransactionTypeSelect [value=" + initCustomerObj.CustomerTransactionType.ID + "]").attr("selected", "selected");
+            $("#customerTransactionTypeSelect").prev().find("a span")[0].innerText = initCustomerObj.CustomerTransactionType.TypeName;
+        }
+        if (initCustomerObj.District != null) {
+            $("#districtSelect [value=" + initCustomerObj.District.ID + "]").attr("selected", "selected");
+            $("#districtSelect").prev().find("a span")[0].innerText = initCustomerObj.District.Name;
+        }
+        if (initCustomerObj.Area != null) {
+            $("#areaSelect [value=" + initCustomerObj.Area.ID + "]").attr("selected", "selected");
+            $("#areaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
+        }
+        if (initCustomerObj.ResidentialDistrict) {
+            $("#residentialDistrictSelect [value=" + initCustomerObj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+            $("#residentialDistrictSelect").prev().find("a span")[0].innerText = initCustomerObj.ResidentialDistrict.Name;
+        }
+        if (initCustomerObj.HouseUseType != null) {
+            $("#houseUseTypeSelect [value=" + initCustomerObj.HouseUseType.ID + "]").attr("selected", "selected");
+            $("#houseUseTypeSelect").prev().find("a span")[0].innerText = initCustomerObj.HouseUseType.TypeName;
+        }
+        $("#houseSizeFromSearchTxt").val(initCustomerObj.HouseSizeFrom);
+        $("#priceFromSearchTxt").val();
         $(".pageCount").remove();
         BeforeHouseDataLoading();
         $.post("/Customer/Search",
@@ -140,8 +151,13 @@ $(document).ready(function () {
                 searchAction = "customerStatus";
             });
     });
-    $("").on("click", function () {
-        $("").show();
+    $("#customerMatchHouse").on("click", function () {
+        var matchCustomer = $(".col-select.cbr-checked");
+        if (matchCustomer.length > 0) {
+            var matchCustomerObj = $.parseJSON($(matchCustomer[0]).parents("tr").attr("customerJson"));
+            ShowMatchPanel(type);
+            InitMatchData(matchCustomerObj);
+        }
     });
 });
 
@@ -1047,3 +1063,80 @@ function HideTableCol() {
         $(".col" + objArr[i].attributes["col"].value).hide();
     }
 }
+
+function GetMatchObj() {
+    var customer = new Object();
+    var customerTransactionType = new Object();
+    if (!$(".match-check[checkType=customerTransactionType]").hasClass("cbr-checked")) {
+        customerTransactionType.ID = 0;
+    } else {
+        customerTransactionType.ID = $("#matchCustomerTransactionTypeSelect").val();
+    }
+    var district = new Object();
+    if (!$(".match-check[checkType=district]").hasClass("cbr-checked")) {
+        district.ID = 0;
+    } else {
+        district.ID = $("#matchDistrictSelect").val();
+    }
+    var area = new Object();
+    if (!$(".match-check[checkType=area]").hasClass("cbr-checked")) {
+        area.ID = 0;
+    } else {
+        area.ID = $("#matchAreaSelect").val();
+    }
+    var residentialDistrict = new Object();
+    if (!$(".match-check[checkType=area]").hasClass("cbr-checked")) {
+        residentialDistrict.ID = 0;
+    } else {
+        residentialDistrict.ID = $("#matchResidentialDistrictSelect").val();
+    }
+    var houseUseType = new Object();
+    if (!$(".match-check[checkType=houseUseType]").hasClass("cbr-checked")) {
+        houseUseType.ID = 0;
+    } else {
+        houseUseType.ID = $("#matchHouseUseTypeSelect").val();
+    }
+    if (!$(".match-check[checkType=houseSize]").hasClass("cbr-checked")) {
+        customer.HouseSizeFrom = 0;
+        customer.HouseSizeTo = 0;
+    } else {
+        customer.HouseSizeFrom = $("#matchHouseSizeFrom").val();
+        customer.HouseSizeTo = $("#matchHouseSizeTo").val();
+    }
+    if (!$(".match-check[checkType=price]").hasClass("cbr-checked")) {
+        customer.PriceFrom = 0;
+        customer.PriceTo = 0;
+    } else {
+        customer.PriceFrom = $("#matchPriceFrom").val();
+        customer.PriceTo = $("#matchPriceTo").val();
+    }
+
+    customer.ResidentialDistrict = residentialDistrict;
+    customer.Area = area;
+    customer.District = district;
+    customer.CustomerTransactionType = customerTransactionType;
+    customer.HouseUseType = houseUseType;
+    return customer;
+}
+
+function InitMatchData(obj) {
+    InitCustomerTransactionType("#matchCustomerTransactionTypeSelect", "", false);
+    $("#matchCustomerTransactionTypeSelect [value=" + obj.CustomerTransactionType.ID + "]").attr("selected", "selected");
+    $("#matchCustomerTransactionTypeSelect").prev().find("a span")[0].innerText = obj.CustomerTransactionType.TypeName;
+    InitDistrict("#matchDistrictSelect", 195, "#matchAreaSelect", "", false, "");
+    $("#matchDistrictSelect [value=" + obj.District.ID + "]").attr("selected", "selected");
+    $("#matchDistrictSelect").prev().find("a span")[0].innerText = obj.District.Name;
+    $("#matchAreaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
+    $("#matchAreaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
+    InitResidentialDistrict("#matchResidentialDistrictSelect", "", false);
+    $("#matchResidentialDistrictSelect [value=" + obj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+    $("#matchResidentialDistrictSelect").prev().find("a span")[0].innerText = obj.ResidentialDistrict.Name;
+    InitHouseUseType("#matchHouseUseTypeSelect", "", false);
+    $("#matchHouseUseTypeSelect [value=" + obj.HouseUseType.ID + "]").attr("selected", "selected");
+    $("#matchHouseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
+    $("#matchHouseSizeFrom").val(obj.HouseSizeFrom);
+    $("#matchHouseSizeTo").val(obj.HouseSizeTo);
+    $("#matchPriceFrom").val(obj.PriceFrom);
+    $("#matchPriceTo").val(obj.PriceTo);
+}
+

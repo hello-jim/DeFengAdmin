@@ -63,10 +63,13 @@ namespace DeFengAdmin.Controllers
                         ID = house.HouseUseType.ID
                     };
                 }           
-                customer.HouseSize = house.HouseSize;
-                customer.Price = house.SaleTotalPrice;
+                customer.HouseSizeFrom = house.HouseSizeFrom;
+                customer.HouseSizeTo = house.HouseSizeTo;
+                customer.PriceFrom = house.PriceFrom;
+                customer.PriceTo = house.PriceTo;
+                ViewBag.Customer = JsonConvert.SerializeObject(customer);
             }
-            ViewBag.Customer = JsonConvert.SerializeObject(customer);
+            ViewBag.Customer = "";
             return View();
         }
 

@@ -377,13 +377,13 @@
                             <div class="row">
                                 <div class="col-md-4 font_size search_txt">
                                     <span>价格:</span>
-                                    <input id="salePriceFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
-                                    <input id="salePriceToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                    <input id="priceFromTxt" type="text" placeholder="万" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="priceToTxt" type="text" placeholder="万" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
                                 </div>
                                 <div class="col-md-4 font_size search_txt">
                                     <span>面积:</span>
-                                    <input id="houseSizeFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
-                                    <input id="houseSizeToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                    <input id="houseSizeFromTxt" type="text" placeholder="㎡" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="houseSizeToTxt" type="text" placeholder="㎡" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
                                 </div>
                                 <div class="col-md-4 font_size search_txt">
                                     <span> 楼层:</span>
@@ -418,15 +418,14 @@
                     <div class="btn-group focus-btn-group">
                         <div class="panel-options">
 
-                            <a href="#">
-
+                            <a href="javascript:void(0)">
                                 <span class="expand-icon table-add" id="addHousePanel">+</span>
                             </a>&nbsp;
-                            <a href="#" data-toggle="">
+                            <a href="javascript:void(0)" data-toggle="">
                                 <span id="deleteHouse" class="table-add">&times;</span>
                             </a>
-                            <a href="#" data-toggle="">
-                                <span id="houseMatchCustomer" class="table-add">房配客</span>
+                            <a href="javascript:void(0)" data-toggle="">
+                                <span id="houseMatchCustomer">房配客</span>
                             </a>
                         </div>
                     </div><div class="btn-group dropdown-btn-group pull-right">
@@ -686,13 +685,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="houseSize">面积</label>
-                    <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="面积" />
+                    <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="houseUseSize">套内</label>
-                    <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="套内" />
+                    <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="㎡" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -832,13 +831,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="saleTotalPrice">售价</label>
-                    <input id="saleTotalPriceTxt" class="form-control" name="saleTotalPrice" data-validate="required" placeholder="售价" />
+                    <input id="saleTotalPriceTxt" class="form-control" name="saleTotalPrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="minSalePrice">底价</label>
-                    <input id="minSalePriceTxt" class="form-control" name="minSalePrice" data-validate="required" placeholder="底价" />
+                    <input id="minSalePriceTxt" class="form-control" name="minSalePrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -868,26 +867,26 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="leaseTotalPrice">租价</label>
-                    <input id="leaseTotalPriceTxt" class="form-control" name="leaseTotalPrice" data-validate="required" placeholder="租价" />
+                    <input id="leaseTotalPriceTxt" class="form-control" name="leaseTotalPrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="minLeasePrice">底价</label>
-                    <input id="minLeasePriceTxt" class="form-control" name="minLeasePrice" data-validate="required" placeholder="底价" />
+                    <input id="minLeasePriceTxt" class="form-control" name="minLeasePrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-group">
+                <div class="form-group input-append date form_datetime">
                     <label class="control-label" for="proxyStartDate">委托</label>
-                    <input id="proxyStartDate" class="form-control" name="proxyStartDate" data-validate="required" placeholder="位置" />
+                    <input id="proxyStartDate" class="form-control" name="proxyStartDate" readonly data-validate="required" placeholder="委托日期" />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">委托方式</label>
-
-
                     <script type="text/javascript">
                         jQuery(document).ready(function ($) {
                             $("#entrustTypeSelect").select2({
@@ -900,7 +899,6 @@
 
                         });
                     </script>
-
                     <select class="form-control" id="entrustTypeSelect"></select>
 
                 </div>
@@ -1141,7 +1139,7 @@
 
                     <select class="form-control" id="lookHouseTypeSelect"></select>
                 </div>
-            </div>
+            </div>          
         </div>
         <div class="row">
             <div class="form-group">
@@ -1150,11 +1148,11 @@
                         <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'></table>
                     </div>
                 </div>
-                <div class="col-md-6 owner-info display">
+                <div class="col-md-6 owner-info ">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input id="ownerTxt" class="form-control" name="entrustID" data-validate="required" placeholder="业主" />
+                                <input id="ownerNameTxt" class="form-control" name="entrustID" data-validate="required" placeholder="业主" />
                             </div>
                         </div>
                         <div class="col-md-1"></div>
@@ -1174,6 +1172,18 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <input id="contactPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="housePropertyCertificate">房产证</label>
+                                <input id="housePropertyCertificateTxt" class="form-control" name="housePropertyCertificate" data-validate="required" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label">国籍</label>
+                                <select class="form-control" id="nationalitySelect"></select>
                             </div>
                         </div>
                     </div>
@@ -1356,7 +1366,7 @@
     </div>
 </div>
 
-<div class="house-Match-panel">
+<div class="house-match-panel">
     <!-- 房配客 -->
     <div class="col-sm-6 col-sm-6-1">
         <div class="panel panel-default">
@@ -1366,8 +1376,8 @@
                     <a href="#" data-toggle="panel">
                         <span class="expand-icon">+</span>
                     </a>
-                    <a href="#" data-toggle="remove">
-                        &times;
+                    <a href="javascript:void(0)" class="match-panel-close">
+                        X
                     </a>
                 </div>
             </div>
@@ -1485,18 +1495,18 @@
                             <div class="form-group">
                                 <div class="input-group input-group-sm input-group-minimal">
                                     <span class="input-group-addon"></span>
-                                    <input id="matchPrice" type="text" class="form-control" placeholder="110" />
+                                    <input id="matchPrice" type="text" class="form-control" placeholder="㎡" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            
+
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <button id="cancel-fpk" class="btn btn-white" type="button">取消</button>        
+                                <button id="cancel-fpk" class="btn btn-white" type="button">取消</button>
                             </div>
                         </div>
                         <div class="col-md-4 ensure">
