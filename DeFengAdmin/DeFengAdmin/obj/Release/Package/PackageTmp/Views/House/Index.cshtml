@@ -106,7 +106,7 @@
                                 });
                             </script>
 
-                            <select class="form-control" id="houseStatusSearchSelect">
+                            <select class="form-control" id="houseStatusSearchSelect" selectType="houseStatus">
                                 <option value="-1">状态</option>
                                 <option value="1">暂缓</option>
                                 <option value="2">无效</option>
@@ -134,7 +134,7 @@
                                 });
                             </script>
 
-                            <select class="form-control" id="houseQualitySearchSelect">
+                            <select class="form-control" id="houseQualitySearchSelect" selectType="houseQuality">
                                 <option value="-1">优质房</option>
                                 <option value="1">优质房</option>
                                 <option value="2">普通房</option>
@@ -233,7 +233,7 @@
                                     });
                                 </script>
 
-                                <select class="form-control search_select" id="transactionTypeSearchSelect"></select>
+                                <select class="form-control search_select" id="transactionTypeSearchSelect" selectType="transactionType"></select>
 
 
                             </div>
@@ -255,7 +255,7 @@
                                     });
                                 </script>
 
-                                <select class="form-control search_select" id="houseStatusJoinSearchSelect"></select>
+                                <select class="form-control search_select" id="houseStatusJoinSearchSelect" selectType="houseStatus"></select>
 
 
                             </div>
@@ -277,7 +277,7 @@
                                     });
                                 </script>
 
-                                <select class="form-control search_select" id="houseUseTypeSearchSelect">
+                                <select class="form-control search_select" id="houseUseTypeSearchSelect" selectType="houseUseType">
                                     <option>请选择</option>
                                 </select>
 
@@ -301,7 +301,7 @@
                                     });
                                 </script>
 
-                                <select class="form-control search_select" id="houseTypeSearchSelect">
+                                <select class="form-control search_select" id="houseTypeSearchSelect" selectType="houseType">
                                     <option value="">请选择</option>
                                 </select>
 
@@ -377,13 +377,13 @@
                             <div class="row">
                                 <div class="col-md-4 font_size search_txt">
                                     <span>价格:</span>
-                                    <input id="salePriceFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
-                                    <input id="salePriceToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                    <input id="priceFromTxt" type="text" placeholder="万" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="priceToTxt" type="text" placeholder="万" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
                                 </div>
                                 <div class="col-md-4 font_size search_txt">
                                     <span>面积:</span>
-                                    <input id="houseSizeFromTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
-                                    <input id="houseSizeToTxt" type="text" placeholder="" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
+                                    <input id="houseSizeFromTxt" type="text" placeholder="㎡" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">-
+                                    <input id="houseSizeToTxt" type="text" placeholder="㎡" data-validate="number,minlength[1]" name="min_field" class="form-control" aria-invalid="true" aria-describedby="min_field-error">
                                 </div>
                                 <div class="col-md-4 font_size search_txt">
                                     <span> 楼层:</span>
@@ -418,15 +418,14 @@
                     <div class="btn-group focus-btn-group">
                         <div class="panel-options">
 
-                            <a href="#">
-
+                            <a href="javascript:void(0)">
                                 <span class="expand-icon table-add" id="addHousePanel">+</span>
                             </a>&nbsp;
-                            <a href="#" data-toggle="">
+                            <a href="javascript:void(0)" data-toggle="">
                                 <span id="deleteHouse" class="table-add">&times;</span>
                             </a>
-                            <a href="#" data-toggle="">
-                                <span id="houseMatchCustomer" class="table-add">房配客</span>
+                            <a href="javascript:void(0)" data-toggle="">
+                                <span id="houseMatchCustomer">房配客</span>
                             </a>
                         </div>
                     </div><div class="btn-group dropdown-btn-group pull-right">
@@ -497,7 +496,7 @@
             <div class="col-md-1 housePanelClose"><a id="houserPanelClose" href="javascript:void(0);">x</a></div>
         </div>
         <div class="row">
-         
+
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">城市</label>
@@ -655,7 +654,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="houseUseTypeSelect"></select>
+                    <select class="form-control" id="houseUseTypeSelect" selectType="houseUseType"></select>
 
                 </div>
             </div>
@@ -677,7 +676,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="houseQualitySelect"></select>
+                    <select class="form-control" id="houseQualitySelect" selectType="houseQuality"></select>
 
                 </div>
             </div>
@@ -686,13 +685,13 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="houseSize">面积</label>
-                    <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="面积" />
+                    <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="houseUseSize">套内</label>
-                    <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="套内" />
+                    <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="㎡" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -735,30 +734,16 @@
                         });
                     </script>
 
-                    <select class="form-control" id="houseTypeSelect"></select>
+                    <select class="form-control" id="houseTypeSelect" selectType="houseType"></select>
 
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">建房年代</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#houseCreateDateSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="houseCreateDateSelect"></select>
-
+                <div class="form-group input-append date form_datetime_yyyy">
+                    <label class="control-label" for="houseCreateDate">建房年代</label>
+                    <input id="houseCreateDateTxt" class="form-control" name="houseCreateDate" data-validate="required" placeholder="建房年代" readonly />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
             </div>
             <div class="col-md-2">
@@ -779,7 +764,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="housingLetterSelect"></select>
+                    <select class="form-control" id="housingLetterSelect" selectType="housingLetter"></select>
 
                 </div>
             </div>
@@ -803,7 +788,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="transactionTypeSelect"></select>
+                    <select class="form-control" id="transactionTypeSelect" selectType="transactionType"></select>
 
                 </div>
             </div>
@@ -825,20 +810,26 @@
                         });
                     </script>
 
-                    <select class="form-control" id="houseStatusSelect"></select>
+                    <select class="form-control" id="houseStatusSelect" selectType="houseStatus"></select>
 
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="saleTotalPrice">售价</label>
-                    <input id="saleTotalPriceTxt" class="form-control" name="saleTotalPrice" data-validate="required" placeholder="售价" />
+                    <input id="saleTotalPriceTxt" class="form-control" name="saleTotalPrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="minSalePrice">底价</label>
-                    <input id="minSalePriceTxt" class="form-control" name="minSalePrice" data-validate="required" placeholder="底价" />
+                    <input id="minSalePriceTxt" class="form-control" name="minSalePrice" data-validate="required" placeholder="万" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="originalPrice">原购价</label>
+                    <input id="originalPriceTxt" class="form-control" name="originalPrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -868,26 +859,26 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="leaseTotalPrice">租价</label>
-                    <input id="leaseTotalPriceTxt" class="form-control" name="leaseTotalPrice" data-validate="required" placeholder="租价" />
+                    <input id="leaseTotalPriceTxt" class="form-control" name="leaseTotalPrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="minLeasePrice">底价</label>
-                    <input id="minLeasePriceTxt" class="form-control" name="minLeasePrice" data-validate="required" placeholder="底价" />
+                    <input id="minLeasePriceTxt" class="form-control" name="minLeasePrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-group">
+                <div class="form-group input-append date form_datetime">
                     <label class="control-label" for="proxyStartDate">委托</label>
-                    <input id="proxyStartDate" class="form-control" name="proxyStartDate" data-validate="required" placeholder="位置" />
+                    <input id="proxyStartDate" class="form-control" name="proxyStartDate" readonly data-validate="required" placeholder="委托日期" />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">委托方式</label>
-
-
                     <script type="text/javascript">
                         jQuery(document).ready(function ($) {
                             $("#entrustTypeSelect").select2({
@@ -900,7 +891,6 @@
 
                         });
                     </script>
-
                     <select class="form-control" id="entrustTypeSelect"></select>
 
                 </div>
@@ -1141,7 +1131,7 @@
 
                     <select class="form-control" id="lookHouseTypeSelect"></select>
                 </div>
-            </div>
+            </div>          
         </div>
         <div class="row">
             <div class="form-group">
@@ -1150,11 +1140,11 @@
                         <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'></table>
                     </div>
                 </div>
-                <div class="col-md-6 owner-info display">
+                <div class="col-md-6 owner-info ">
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <input id="ownerTxt" class="form-control" name="entrustID" data-validate="required" placeholder="业主" />
+                                <input id="ownerNameTxt" class="form-control" name="entrustID" data-validate="required" placeholder="业主" />
                             </div>
                         </div>
                         <div class="col-md-1"></div>
@@ -1174,6 +1164,18 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <input id="contactPhoneTxt" class="form-control" name="entrustID" data-validate="required" placeholder="联系" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label" for="housePropertyCertificate">房产证</label>
+                                <input id="housePropertyCertificateTxt" class="form-control" name="housePropertyCertificate" data-validate="required" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label class="control-label">国籍</label>
+                                <select class="form-control" id="nationalitySelect"></select>
                             </div>
                         </div>
                     </div>
@@ -1333,7 +1335,7 @@
         </div>
     </div>
 </div>
-<div class="imgPanellDiv panel panel-default display">
+<div class="imgPanellDiv panel panel-default">
 
     <div class="panel-heading">
         <div class="panel-title">
@@ -1345,7 +1347,7 @@
     <div class="panel-body">
 
         <!-- Auto initialization -->
-        <form id="imgFrom" class="dropzone dz-clickable" action="/House/AddImg">
+        <form  class="dropzone dz-clickable" action="/House/AddImg">
             <div class="dz-default dz-message">
                 <input name="houseID" type="hidden" value="10" />
                 <span>点击此处上传图片</span>
@@ -1356,7 +1358,7 @@
     </div>
 </div>
 
-<div class="house-Match-panel">
+<div class="house-match-panel">
     <!-- 房配客 -->
     <div class="col-sm-6 col-sm-6-1">
         <div class="panel panel-default">
@@ -1366,43 +1368,83 @@
                     <a href="#" data-toggle="panel">
                         <span class="expand-icon">+</span>
                     </a>
-                    <a href="#" data-toggle="remove">
-                        &times;
+                    <a href="javascript:void(0)" class="match-panel-close">
+                        X
                     </a>
                 </div>
             </div>
             <div class="panel-body">
 
                 <form role="form">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced' checkType="transactionType"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">交易</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
 
-                    <div class="form-group">
-                        <label class="control-label">交易</label>
-                        <select class="form-control" id="matchTransactionTypeSelect"></select>
+                                <select class="form-control" id="matchTransactionTypeSelect" selectType="transactionType"></select>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label">城区</label>
-                        <select class="form-control" id="matchCitySelect"></select>
-
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced' checkType="district"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">城区</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchDistrictSelect"></select>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label">片区</label>
-                        <select class="form-control" id="matchDistrictSelect"></select>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced' checkType="area"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">片区</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchAreaSelect"></select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">楼盘</label>
-                        <select class="form-control" id="matchResidentialDistrictSelect">
-                            <option></option>
-                            <option>五月花花园</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced' checkType="residentialDistrict"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">楼盘</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchResidentialDistrictSelect">
+                                    <option></option>
+                                    <option>五月花花园</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label">用途</label>
-                        <select class="form-control" id="matchHouseUseTypeSelect"></select>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced' checkType="houseUseType"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">用途</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <select class="form-control" id="matchHouseUseTypeSelect" selectType="houseUseType"></select>
+                            </div>
+                        </div>
                     </div>
-
                     @*<div class="form-group">
                             <label class="control-label">房型</label>
                             <select class="form-control" id="s2example-6">
@@ -1417,29 +1459,50 @@
                                 <option>6房</option>
                             </select>
                         </div>*@
-
-                    <div class="form-group">
-                        <label class="control-label">面积</label>
-
-                        <div class="input-group input-group-sm input-group-minimal">
-                            <span class="input-group-addon"></span>
-                            <input id="matchHouseSize" type="text" class="form-control area" placeholder="88" />
-                            <span class="square" style="bottom:-2px;right:5px;">㎡</span>
+                    <div class="row">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced' checkType="houseSize"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
                         </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">价格</label>
-                        <div class="input-group input-group-sm input-group-minimal">
-                            <span class="input-group-addon"></span>
-                            <input id="matchPrice" type="text" class="form-control" placeholder="110" />
+                        <div class="col-md-2">
+                            <label class="control-label">面积</label>
                         </div>
-
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm input-group-minimal">
+                                    <span class="input-group-addon"></span>
+                                    <input id="matchHouseSize" type="text" class="form-control area" placeholder="88" />
+                                    <span class="square" style="bottom:-2px;right:5px;">㎡</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2 ensure">
+                        <div class="col-md-1">
+                            <div class='match-check cbr-replaced' checkType="price"><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="control-label">价格</label>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm input-group-minimal">
+                                    <span class="input-group-addon"></span>
+                                    <input id="matchPrice" type="text" class="form-control" placeholder="㎡" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <button id="cancel-fpk" class="btn btn-white" type="button">取消</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ensure">
+                            <div class="form-group">
                                 <button id="match-submit" type="button" class="btn btn-success">开始匹配</button>
                             </div>
                         </div>

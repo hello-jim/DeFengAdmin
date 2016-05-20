@@ -1,4 +1,5 @@
-﻿function GetSysConf(key) {
+﻿//获取系统配置
+function GetSysConf(key) {
     var value = "";
     $.ajax({
         url: "/Common/GetSysConf",
@@ -1148,7 +1149,7 @@ function InitDisplayStatus(type) {
     $(".table-col-Select").on("click", function () {
         $(".table-col-menu").toggle();
     });
-    $(".cbr-replaced").on("click", function () {
+    $(".col-select").on("click", function () {
         var thisObj = $(this);
         var checked = $(thisObj).hasClass("cbr-checked");
         var col = $(thisObj).attr("col");
@@ -1829,7 +1830,7 @@ function InitDelete(type) {
             }
             else {
                 return;
-            }
+            } 0
         } else {
             return;
         }
@@ -1865,11 +1866,47 @@ function InitContrast() {
 }
 
 
-function ShowMatchPanel(type, obj) {
-    $("." + type + "-Match-panel").show();
-    InitTransactionType(id, firstText, async);
-    $("#match-submit").on("click", function () {
+function ShowMatchPanel(type) {
+    var scrollTop = $(document).scrollTop();
+    var lowerType = type.toLowerCase();
+    $("." + lowerType + "-match-panel").css("top", scrollTop + 400 + "px");
+    $("." + lowerType + "-match-panel").show();
+    $(".match-check").unbind("click").on("click", function () {
+        var thisObj = $(this);
+        var checked = $(thisObj).hasClass("cbr-checked");
+        var col = $(thisObj).attr("col");
+        if (checked) {
+            $(".col" + col).hide();
+            $(thisObj).removeClass("cbr-checked");
+        }
+        else {
+            $(".col" + col).show();
+            $(thisObj).addClass("cbr-checked");
+        }
+    });
+    $(".match-panel-close").unbind("click").on("click", function () {
+        $("." + lowerType + "-match-panel").hide();
+    });
+    $("#match-submit").unbind("click").on("click", function () {
+        var obj = GetMatchObj();
+        var json = JSON.stringify(obj);
+        location.href = "/" + (type == "House" ? "Customer" : "House") + "/Index?" + lowerType + "=" + json;
+    });
+}
 
+function InitCheckBox() {
+    $(".cbr-replaced").unbind("click").on("click", function () {
+        var thisObj = $(this);
+        var checked = $(thisObj).hasClass("cbr-checked");
+        var col = $(thisObj).attr("col");
+        if (checked) {
+            $(".col" + col).hide();
+            $(thisObj).removeClass("cbr-checked");
+        }
+        else {
+            $(".col" + col).show();
+            $(thisObj).addClass("cbr-checked");
+        }
     });
 }
 

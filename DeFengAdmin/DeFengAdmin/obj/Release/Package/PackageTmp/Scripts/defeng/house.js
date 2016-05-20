@@ -2,8 +2,35 @@
 houseMaxCount = GetSysConf("houseMaxCount");
 type = "House";
 $(document).ready(function () {
+  
     var houseSearchVal = $("#houseSearchObj").val();
     if (houseSearchVal != "") {
+        var initHouseObj = $.parseJSON(houseSearchVal);
+        if (initHouseObj.TransactionType != null) {
+            $("#transactionTypeSelect [value=" + initHouseObj.TransactionType.ID + "]").attr("selected", "selected");
+            $("#transactionTypeSelect").prev().find("a span")[0].innerText = initHouseObj.TransactionType.TransactionTypeName;
+        }
+        if (initHouseObj.District != null) {
+            $("#districtSelect [value=" + initHouseObj.District.ID + "]").attr("selected", "selected");
+            $("#districtSelect").prev().find("a span")[0].innerText = initHouseObj.District.Name;
+        }
+        if (initHouseObj.Area) {
+            $("#areaSelect [value=" + initHouseObj.Area.ID + "]").attr("selected", "selected");
+            $("#areaSelect").prev().find("a span")[0].innerText = initHouseObj.Area.AreaName;
+        }
+        if (initHouseObj.ResidentialDistrict != null) {
+            $("#residentialDistrictSelect [value=" + initHouseObj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+            $("#residentialDistrictSelect").prev().find("a span")[0].innerText = initHouseObj.ResidentialDistrict.Name;
+        }
+        if (initHouseObj.HouseUseType != null) {
+            $("#houseUseTypeSelect [value=" + initHouseObj.HouseUseType.ID + "]").attr("selected", "selected");
+            $("#houseUseTypeSelect").prev().find("a span")[0].innerText = initHouseObj.HouseUseType.TypeName;
+        }
+        
+        $("#houseSizeFromSearchTxt").val(initHouseObj.HouseSizeFrom);
+        $("#houseSizeToSearchTxt").val(initHouseObj.HouseSizeTo);
+        $("#priceFromSearchTxt").val(initHouseObj.PriceFrom);
+        $("#priceToSearchTxt").val(initHouseObj.PriceTo);
         $(".pageCount").remove();
         BeforeHouseDataLoading();
         $.post("/House/Search",
@@ -19,7 +46,7 @@ $(document).ready(function () {
                 searchAction = "jointSearch";
             });
     }
-
+    HouseAdd();
     $("#main-menu li").removeClass("active");
     $(".house-menu").addClass("opened active");
     InitCity("#citySearchSelect", 19, "#districtSearchSelect", "#areaSearchSelect", true, "");
@@ -29,8 +56,7 @@ $(document).ready(function () {
     InitHouseType("#houseTypeSearchSelect", "全部", true);
     InitHouseStatus("#houseStatusJoinSearchSelect", "全部", true);//联合搜索
     InitHouseStatus("#houseStatusSearchSelect", "全部", true);
-    HouseAdd();
-    InitFileUp();
+   
     InitTableSort("#houseTable");
     InitTableColChecked("HouseTableColChecked", ".table-col-menu", false);
     InitDisplayStatus("House");
@@ -177,7 +203,12 @@ $(document).ready(function () {
     });
 
     $("#houseMatchCustomer").on("click", function () {
-
+        var matchHouse = $(".col-select.cbr-checked");
+        if (matchHouse.length > 0) {
+            var matchHouseObj = $.parseJSON($(matchHouse[0]).parents("tr").attr("houseJson"));
+            ShowMatchPanel(type);
+            InitMatchData(matchHouseObj);
+        }
     });
 });
 
@@ -257,11 +288,8 @@ function GetHouseType1(roomCount, hallCount, toiletCount, balconyCount) {
     return roomCount + "-" + hallCount + "-" + toiletCount + "-" + balconyCount;
 }
 
-//获取系统配置
-
-
 function InitPageIndex() {
-    $(".paginate_button").on("click", function () {
+    $(".paginate_button").unbind("click").on("click", function () {
         $(".paginate_button.active").removeClass("active");
         $(this).addClass("active");
         BeforeHouseDataLoading();
@@ -349,7 +377,6 @@ function GetHouseLeaseDateObj() {
     var house = new Object();
     house.TransactionType = transactionType;
     house.proxyStartDate = proxyStartDate;
-
     return house;
 }
 
@@ -396,8 +423,8 @@ function GetJointSearchObj() {
     if (orientation.ID == 0) {
         orientation = null;
     }
-    var salePriceFrom = $("#salePriceFromTxt").val() != "" ? $("#salePriceFromTxt").val() : 0;
-    var salePriceTo = $("#salePriceToTxt").val() != "" ? $("#salePriceToTxt").val() : 0;
+    var salePriceFrom = $("#priceFromTxt").val() != "" ? $("#priceFromTxt").val() : 0;
+    var salePriceTo = $("#priceToTxt").val() != "" ? $("#priceToTxt").val() : 0;
     var houseSizeFrom = $("#houseSizeFromTxt").val() != "" ? $("#houseSizeFromTxt").val() : 0;
     var houseSizeTo = $("#houseSizeToTxt").val() != "" ? $("#houseSizeToTxt").val() : 0;
     var floorFrom = $("#floorFromTxt").val() != "" ? $("#floorFromTxt").val() : 0;
@@ -421,8 +448,9 @@ function GetJointSearchObj() {
 
 
 function HouseTableDoubleClick() {
-    $(".houseTabTr").on("dblclick", function () {
+    $(".houseTabTr").unbind("dblclick").on("dblclick", function () {
         ShowHousePanel("editHouse");
+        InitFileUp();
         var obj = $.parseJSON($(this).attr("houseJson"));
         InitResidentialDistrict("#residentialDistrictSelect", "", false);
         InitHouseType("#houseTypeSelect", "", false);
@@ -443,9 +471,11 @@ function HouseTableDoubleClick() {
         InitFurniture("#furnitureSelect", "", false);
         InitAppliance("#applianceSelect", "", false);
         InitLookHouseType("#lookHouseTypeSelect", "", false);
+        InitCountry("#nationalitySelect","",false);
         InitEditHouseData(obj);
-        $("#editHouse").unbind("click");
-        $("#editHouse").on("click", function () {
+        $("#submitHouseDate").val(DateTimeConvert_yyyyMMdd(new Date()));
+        $("#proxyStartDate").val(DateTimeConvert_yyyyMMdd(new Date()));
+        $("#editHouse").unbind("click").on("click", function () {
             var thisObj = this;
             $(thisObj).attr("disabled", "disabled");
             var house = GetHouseObj();
@@ -470,7 +500,7 @@ function GetHouseObj() {
     //var province = new Object();
     //province.ID = $("#provinceSelect").val();
     //house.Province = province;
-   // 城
+    // 城
     var city = new Object();
     city.ID = $("#citySelect").val();
     house.City = city;
@@ -510,6 +540,8 @@ function GetHouseObj() {
     var houseQuality = new Object();
     houseQuality.ID = $("#houseQualitySelect").val();
     house.HouseQuality = houseQuality;
+
+    house.HouseCreateDate = $("#houseCreateDateTxt").val();
     //面积
     house.HouseSize = $("#houseSizeTxt").val() != "" ? $("#houseSizeTxt").val() : 0;
     //套内
@@ -534,10 +566,11 @@ function GetHouseObj() {
     var houseStatus = new Object();
     houseStatus.ID = $("#houseStatusSelect").val();
     house.HouseStatus = houseStatus;
-    //销售总价
+    //价格
     house.SaleTotalPrice = $("#saleTotalPriceTxt").val() != "" ? $("#saleTotalPriceTxt").val() : 0;
     //底价
     house.MinSalePrice = $("#minSalePriceTxt").val() != "" ? $("#minSalePriceTxt").val() : 0;
+    house.OriginalPrice = $("#originalPriceTxt").val() != "" ? $("#originalPriceTxt").val() : 0;
     //税费支付类型
     var taxPayType = new Object();
     taxPayType.ID = $("#taxPayTypeSelect").val();
@@ -598,30 +631,43 @@ function GetHouseObj() {
     var lookHouseType = new Object();
     lookHouseType.ID = $("#lookHouseTypeSelect").val() != null ? $("#lookHouseTypeSelect").val().toString() : "0";
     house.LookHouseType = lookHouseType;
+    //业主名称
+    house.OwnerName = $("#ownerNameTxt").val() != "" ? $("#ownerNameTxt").val() : "";
+    //业主电话
+    house.OwnerPhone = $("#ownerPhoneTxt").val() != "" ? $("#ownerPhoneTxt").val() : "";
+    //联系人
+    house.Contacts = $("#contactsTxt").val() != "" ? $("#contactsTxt").val() : "";
+    //联系人电话
+    house.ContactPhone = $("#contactPhoneTxt").val() != "" ? $("#contactPhoneTxt").val() : "";
+    //联系人电话
+    house.HousePropertyCertificate = $("#housePropertyCertificateTxt").val() != "" ? $("#housePropertyCertificateTxt").val() : "";
+    //国籍
+    var nationality = new Object();
+    nationality.ID = $("#nationalitySelect").val() != null ? $("#nationalitySelect").val() : 0;
+    house.Nationality = nationality;
     return house;
 }
 
 //初始化编辑房源
 function InitEditHouseData(obj) {
-    $(".owner-show").on("click", function () {
+    $(".owner-show").unbind("click").on("click", function () {
         $(this).hide();
         $(".owner-info").show();
         $(".follow-record").hide();
         $(".follow-record-show").show();
     });
-    $(".follow-record-show").on("click", function () {
+    $(".follow-record-show").unbind("click").on("click", function () {
         $(this).hide();
         $(".owner-info").hide();
         $(".follow-record").show();
         $(".owner-show").show();
     });
     $("#houseID").val(obj.ID);
-    var arr = { "pro": obj.Province.ID, "city": obj.City.ID, "district": obj.District.ID, "area": obj.Area.ID };
+    var arr = {"city": obj.City.ID, "district": obj.District.ID, "area": obj.Area.ID };
 
     //省
-    InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", false, arr);
-    $("#provinceSelect [value=" + obj.Province.ID + "]").attr("selected", "selected");
-    $("#provinceSelect").prev().find("a span")[0].innerText = $("#provinceSelect :selected").text();
+    InitCity("#citySelect", 19, "#districtSelect", "#areaSelect", false, arr);
+  
     //城
     $("#citySelect [value=" + obj.City.ID + "]").attr("selected", "selected");
     $("#citySelect").prev().find("a span")[0].innerText = $("#citySelect :selected").text();
@@ -731,7 +777,7 @@ function InitEditHouseData(obj) {
     $("#ownerPhoneTxt").val(obj.OwnerPhone);
     $("#contactsTxt").val(obj.Contacts);
     $("#contactPhoneTxt").val(obj.ContactPhone);
-    $("#editSave").on("click", function () {
+    $("#editSave").unbind("click").on("click", function () {
         var house = GetHouseObj();
         var houseJosn = JSON.stringify(house);
         $.post("/House/UpdateHouse",
@@ -745,7 +791,7 @@ function InitEditHouseData(obj) {
 
 //初始化添加房源
 function HouseAdd() {
-    $("#addHousePanel").on("click", function () {
+    $("#addHousePanel").unbind("click").on("click", function () {
         ShowHousePanel("addHouse");
         //  InitProvince("#provinceSelect", "#citySelect", "#districtSelect", "#areaSelect", "", true);
         InitCity("#citySelect", 19, "#districtSelect", "#areaSelect", true, "");
@@ -770,7 +816,10 @@ function HouseAdd() {
         InitFurniture("#furnitureSelect", "", true);
         InitAppliance("#applianceSelect", "", true);
         InitLookHouseType("#lookHouseTypeSelect", "", true);
-        $("#addHouse").on("click", function () {
+        InitCountry("#nationalitySelect", "", true);
+        $("#submitHouseDate").val(DateTimeConvert_yyyyMMdd(new Date()));
+        $("#proxyStartDate").val(DateTimeConvert_yyyyMMdd(new Date()));
+        $("#addHouse").unbind("click").on("click", function () {
             var house = GetHouseObj();
             var houseJson = JSON.stringify(house);
             $.post("/House/AddHouse",
@@ -787,7 +836,6 @@ function HouseAdd() {
 
 //房源面板
 function ShowHousePanel(action) {
-    $(".housePanelDiv *").unbind("click");
     InitHousePanelClose();
     $('.form_datetime').datetimepicker({
         format: 'yyyy-mm-dd',
@@ -798,6 +846,17 @@ function ShowHousePanel(action) {
         todayHighlight: 1,
         startView: 2,
         minView: 2,
+        forceParse: 0
+    });
+    $('.form_datetime_yyyy').datetimepicker({
+        format: 'yyyy',
+        language: 'zh-CN',
+        // weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 4,
+        minView: 4,
         forceParse: 0
     });
     $(".housePanelDiv").show();
@@ -819,7 +878,7 @@ function ShowHousePanel(action) {
         $("#addHouse").show();
     }
     $("#" + action + "").removeClass("display");
-    $(".follow-record-panel-show").on("click", function () {
+    $(".follow-record-panel-show").unbind("click").on("click", function () {
         $(".follow-record-panel").css("top", scrollTop + 500 + "px");
         ShowFollowRecordPanel();
     });
@@ -827,13 +886,13 @@ function ShowHousePanel(action) {
 
 //初始化图片上传
 function InitFileUp() {
-    $("#fileUp").on("click", function () {
-        $(".img-panel-close").on("click", function () {
+    $("#fileUp").unbind("click").on("click", function () {
+        $(".img-panel-close").unbind("click").on("click", function () {
             $(".imgPanellDiv").hide();
         });
-
+        $(".imgPanellDiv").show();
         $("input[name='houseID']").val($("#houseID").val());
-        $(".imgPanellDiv").removeClass("display");
+      
         var scrollTop = $(document).scrollTop();
         $(".imgPanellDiv").css("top", scrollTop + 50 + "px");
         var id = $("#houseID").val();
@@ -855,14 +914,14 @@ function InitFileUp() {
                         imagesHtml += "<em></em>";
                         imagesHtml += "</a>";
                         imagesHtml += "<div class='image-options'>";
-                        imagesHtml += "<a href='#' data-action='trash'><i class='fa-trash img-delete' imgID=" + json[i].ID + "></i></a>";
+                        imagesHtml += "<a href='javascript:void(0)' data-action='trash'><i class='fa-trash img-delete' imgID=" + json[i].ID + "></i></a>";
                         imagesHtml += "</div>";
                         imagesHtml += "</div>";
                         imagesHtml += "</div>";
                     }
-                    imagesHtml += "</div></div>"
+                    imagesHtml += "</div></div>";
                     $(".album-images").html(imagesHtml);
-                    $(".img-delete").on("click", function () {
+                    $(".img-delete").unbind("click").on("click", function () {
                         var thisObj = this;
                         var imgID = $(thisObj).attr("imgID");
                         $.post("/House/DeleteHouseImage",
@@ -883,7 +942,7 @@ function InitFileUp() {
 }
 
 function InitHousePanelClose() {
-    $("#houserPanelClose").on("click", function () {
+    $("#houserPanelClose").unbind("click").on("click", function () {
         $(".housePanelDiv").hide();
     });
 }
@@ -905,7 +964,7 @@ function AfterHouseDataLoading() {
 }
 
 function InitTableColSelect() {
-    $("#houseTable tbody .col-select").on("click", function () {
+    $("#houseTable tbody .col-select").unbind("click").on("click", function () {
         var thisObj = this;
         var checked = $(thisObj).hasClass("cbr-checked");
         if (checked) {
@@ -922,12 +981,12 @@ function InitTableColSelect() {
 
 //初始化跟进记录面板
 function InitFollowRecord() {
-    $(".follow-record-panel-close").on("click", function () {
+    $(".follow-record-panel-close").unbind("click").on("click", function () {
         $(".follow-record-panel").hide();
     });
 
     //添加
-    $(".follow-record-save").on("click", function () {
+    $(".follow-record-save").unbind("click").on("click", function () {
         var saveBtn = this;
         $(saveBtn).attr("disabled", "disabled");
         var record = GetFollowRecordObj("house");
@@ -944,7 +1003,7 @@ function InitFollowRecord() {
             });
     });
     //编辑
-    $(".follow-record-edit").on("click", function () {
+    $(".follow-record-edit").unbind("click").on("click", function () {
         var thisObj = this;
         var record = GetFollowRecordObj("house");
         record.ID = $(thisObj).attr("recordID");
@@ -959,7 +1018,7 @@ function InitFollowRecord() {
             });
     });
     //删除
-    $(".follow-record-delete").on("click", function () {
+    $(".follow-record-delete").unbind("click").on("click", function () {
         var thisObj = this;
         var recordID = $(thisObj).attr("recordID");
         $.post("",
@@ -993,7 +1052,7 @@ function GetFollowRecordObj() {
 }
 
 function ShowFollowRecordPanel() {
-    $(".follow-record-panel *").unbind("click");
+  
     InitFollowType("#followType", "", true);
     $(".follow-record-panel").show();
     InitFollowRecord();
@@ -1002,22 +1061,69 @@ function ShowFollowRecordPanel() {
 function GetMatchObj() {
     var house = new Object();
     var transactionType = new Object();
-    transactionType.ID = $("#matchTransactionTypeSelect").val();
-
-    var city = new Object();
-    city.ID=$("#matchCitySelect").val();
-   
+    if (!$(".match-check[checkType=transactionType]").hasClass("cbr-checked")) {
+        transactionType.ID = 0;
+    } else {
+        transactionType.ID = $("#matchTransactionTypeSelect").val();
+    }
     var district = new Object();
-    district.ID = ("#matchDistrictSelect").val();
-
+    if (!$(".match-check[checkType=district]").hasClass("cbr-checked")) {
+        district.ID = 0;
+    } else {
+        district.ID = $("#matchDistrictSelect").val();
+    }
+    var area = new Object();
+    if (!$(".match-check[checkType=area]").hasClass("cbr-checked")) {
+        area.ID = 0;
+    } else {
+        area.ID = $("#matchAreaSelect").val();
+    }
     var residentialDistrict = new Object();
-    residentialDistrict.ID = $("#matchResidentialDistrictSelect").val();
-  
+    if (!$(".match-check[checkType=area]").hasClass("cbr-checked")) {
+        residentialDistrict.ID = 0;
+    } else {
+        residentialDistrict.ID = $("#matchResidentialDistrictSelect").val();
+    }
     var houseUseType = new Object();
-    houseUseType.ID = $("#matchHouseUseTypeSelect").val();
+    if (!$(".match-check[checkType=houseUseType]").hasClass("cbr-checked")) {
+        houseUseType.ID = 0;
+    } else {
+        houseUseType.ID = $("#matchHouseUseTypeSelect").val();
+    }
+    if (!$(".match-check[checkType=houseSize]").hasClass("cbr-checked")) {
+        house.HouseSize = 0;
+    } else {
+        house.HouseSize = $("#matchHouseSize").val();
+    }
+    if (!$(".match-check[checkType=price]").hasClass("cbr-checked")) {
+        house.SaleTotalPrice = 0;
+    } else {
+        house.SaleTotalPrice = $("#matchPrice").val();
+    }
 
-    house.HouseSize = $("#matchHouseSize").val();
-    house = $("#matchPrice").val();
-
+    house.ResidentialDistrict = residentialDistrict;
+    house.Area = area;
+    house.District = district;
     house.TransactionType = transactionType;
+    house.HouseUseType = houseUseType;
+    return house;
+}
+
+function InitMatchData(obj) {
+    InitTransactionType("#matchTransactionTypeSelect", "", false);
+    $("#matchTransactionTypeSelect [value=" + obj.TransactionType.ID + "]").attr("selected", "selected");
+    $("#matchTransactionTypeSelect").prev().find("a span")[0].innerText = obj.TransactionType.TransactionTypeName;
+    InitDistrict("#matchDistrictSelect", 195, "#matchAreaSelect", "", false, "");
+    $("#matchDistrictSelect [value=" + obj.District.ID + "]").attr("selected", "selected");
+    $("#matchDistrictSelect").prev().find("a span")[0].innerText = obj.District.Name;
+    $("#matchAreaSelect [value=" + obj.Area.ID + "]").attr("selected", "selected");
+    $("#matchAreaSelect").prev().find("a span")[0].innerText = obj.Area.AreaName;
+    InitResidentialDistrict("#matchResidentialDistrictSelect", "", false);
+    $("#matchResidentialDistrictSelect [value=" + obj.ResidentialDistrict.ID + "]").attr("selected", "selected");
+    $("#matchResidentialDistrictSelect").prev().find("a span")[0].innerText = obj.ResidentialDistrict.Name;
+    InitHouseUseType("#matchHouseUseTypeSelect", "", false);
+    $("#matchHouseUseTypeSelect [value=" + obj.HouseUseType.ID + "]").attr("selected", "selected");
+    $("#matchHouseUseTypeSelect").prev().find("a span")[0].innerText = obj.HouseUseType.TypeName;
+    $("#matchHouseSize").val(obj.HouseSize);
+    $("#matchPrice").val(obj.SaleTotalPrice);
 }

@@ -1,4 +1,5 @@
-﻿function GetSysConf(key) {
+﻿//获取系统配置
+function GetSysConf(key) {
     var value = "";
     $.ajax({
         url: "/Common/GetSysConf",
@@ -1890,6 +1891,22 @@ function ShowMatchPanel(type) {
         var obj = GetMatchObj();
         var json = JSON.stringify(obj);
         location.href = "/" + (type == "House" ? "Customer" : "House") + "/Index?" + lowerType + "=" + json;
+    });
+}
+
+function InitCheckBox() {
+    $(".cbr-replaced").unbind("click").on("click", function () {
+        var thisObj = $(this);
+        var checked = $(thisObj).hasClass("cbr-checked");
+        var col = $(thisObj).attr("col");
+        if (checked) {
+            $(".col" + col).hide();
+            $(thisObj).removeClass("cbr-checked");
+        }
+        else {
+            $(".col" + col).show();
+            $(thisObj).addClass("cbr-checked");
+        }
     });
 }
 

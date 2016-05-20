@@ -106,7 +106,7 @@
                                 });
                             </script>
 
-                            <select class="form-control" id="houseStatusSearchSelect">
+                            <select class="form-control" id="houseStatusSearchSelect" selectType="houseStatus">
                                 <option value="-1">状态</option>
                                 <option value="1">暂缓</option>
                                 <option value="2">无效</option>
@@ -134,7 +134,7 @@
                                 });
                             </script>
 
-                            <select class="form-control" id="houseQualitySearchSelect">
+                            <select class="form-control" id="houseQualitySearchSelect" selectType="houseQuality">
                                 <option value="-1">优质房</option>
                                 <option value="1">优质房</option>
                                 <option value="2">普通房</option>
@@ -233,7 +233,7 @@
                                     });
                                 </script>
 
-                                <select class="form-control search_select" id="transactionTypeSearchSelect"></select>
+                                <select class="form-control search_select" id="transactionTypeSearchSelect" selectType="transactionType"></select>
 
 
                             </div>
@@ -255,7 +255,7 @@
                                     });
                                 </script>
 
-                                <select class="form-control search_select" id="houseStatusJoinSearchSelect"></select>
+                                <select class="form-control search_select" id="houseStatusJoinSearchSelect" selectType="houseStatus"></select>
 
 
                             </div>
@@ -277,7 +277,7 @@
                                     });
                                 </script>
 
-                                <select class="form-control search_select" id="houseUseTypeSearchSelect">
+                                <select class="form-control search_select" id="houseUseTypeSearchSelect" selectType="houseUseType">
                                     <option>请选择</option>
                                 </select>
 
@@ -301,7 +301,7 @@
                                     });
                                 </script>
 
-                                <select class="form-control search_select" id="houseTypeSearchSelect">
+                                <select class="form-control search_select" id="houseTypeSearchSelect" selectType="houseType">
                                     <option value="">请选择</option>
                                 </select>
 
@@ -654,7 +654,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="houseUseTypeSelect"></select>
+                    <select class="form-control" id="houseUseTypeSelect" selectType="houseUseType"></select>
 
                 </div>
             </div>
@@ -676,7 +676,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="houseQualitySelect"></select>
+                    <select class="form-control" id="houseQualitySelect" selectType="houseQuality"></select>
 
                 </div>
             </div>
@@ -734,30 +734,16 @@
                         });
                     </script>
 
-                    <select class="form-control" id="houseTypeSelect"></select>
+                    <select class="form-control" id="houseTypeSelect" selectType="houseType"></select>
 
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">建房年代</label>
-
-
-                    <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#houseCreateDateSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                    </script>
-
-                    <select class="form-control" id="houseCreateDateSelect"></select>
-
+                <div class="form-group input-append date form_datetime_yyyy">
+                    <label class="control-label" for="houseCreateDate">建房年代</label>
+                    <input id="houseCreateDateTxt" class="form-control" name="houseCreateDate" data-validate="required" placeholder="建房年代" readonly />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
             </div>
             <div class="col-md-2">
@@ -778,7 +764,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="housingLetterSelect"></select>
+                    <select class="form-control" id="housingLetterSelect" selectType="housingLetter"></select>
 
                 </div>
             </div>
@@ -802,7 +788,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="transactionTypeSelect"></select>
+                    <select class="form-control" id="transactionTypeSelect" selectType="transactionType"></select>
 
                 </div>
             </div>
@@ -824,7 +810,7 @@
                         });
                     </script>
 
-                    <select class="form-control" id="houseStatusSelect"></select>
+                    <select class="form-control" id="houseStatusSelect" selectType="houseStatus"></select>
 
                 </div>
             </div>
@@ -838,6 +824,12 @@
                 <div class="form-group">
                     <label class="control-label" for="minSalePrice">底价</label>
                     <input id="minSalePriceTxt" class="form-control" name="minSalePrice" data-validate="required" placeholder="万" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="originalPrice">原购价</label>
+                    <input id="originalPriceTxt" class="form-control" name="originalPrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -1343,7 +1335,7 @@
         </div>
     </div>
 </div>
-<div class="imgPanellDiv panel panel-default display">
+<div class="imgPanellDiv panel panel-default">
 
     <div class="panel-heading">
         <div class="panel-title">
@@ -1355,7 +1347,7 @@
     <div class="panel-body">
 
         <!-- Auto initialization -->
-        <form id="imgFrom" class="dropzone dz-clickable" action="/House/AddImg">
+        <form  class="dropzone dz-clickable" action="/House/AddImg">
             <div class="dz-default dz-message">
                 <input name="houseID" type="hidden" value="10" />
                 <span>点击此处上传图片</span>
@@ -1394,7 +1386,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
 
-                                <select class="form-control" id="matchTransactionTypeSelect"></select>
+                                <select class="form-control" id="matchTransactionTypeSelect" selectType="transactionType"></select>
                             </div>
                         </div>
                     </div>
@@ -1449,7 +1441,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <select class="form-control" id="matchHouseUseTypeSelect"></select>
+                                <select class="form-control" id="matchHouseUseTypeSelect" selectType="houseUseType"></select>
                             </div>
                         </div>
                     </div>

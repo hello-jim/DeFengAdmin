@@ -462,7 +462,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">交易</label>
-                    <select class="form-control" id="customerTransactionTypeSelect"></select>
+                    <select class="form-control" id="customerTransactionTypeSelect" selectType="customerTransactionType"></select>
                 </div>
             </div>
             <div class="col-md-2">
@@ -470,6 +470,12 @@
                     <label class="control-label">状态</label>
                     <select class="form-control" id="customerStatusSelect"></select>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-5"> <span>私客</span>  <div class="cbr-replaced cbr-checked private-customer-check"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                    <div class="col-md-5"> 优质客 <div class="cbr-replaced cbr-checked quality-customer-check"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                </div>           
             </div>
             <div class="col-md-2">
                 <div class="form-group">
@@ -511,6 +517,12 @@
                 <div class="form-group">
                     <label class="control-label">片区</label>
                     <select class="form-control" id="areaSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="balconyCount">地址</label>
+                    <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -592,6 +604,7 @@
                     <span class="add-on"><i class="icon-calendar"></i></span>
                 </div>
             </div>
+
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">来源</label>
@@ -765,7 +778,7 @@
                 <button class="btn  follow-record-show" type="button">看跟进</button>
             </div>
             <div class="col-md-2"></div>
-            <div class="col-md-2"><button class="btn" type="button" id="fileUp">上传图片</button></div>
+
             <div class="col-md-2">
                 <div class="form-group">
                     <button class="btn" type="button" id="addCustomer">添加</button>
@@ -775,7 +788,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="customer-match-panel">
     <!-- 客配房 -->
@@ -804,7 +816,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
-                                <select class="form-control" id="matchCustomerTransactionTypeSelect"></select>
+                                <select class="form-control" id="matchCustomerTransactionTypeSelect" selectType="customerTransactionType"></select>
                             </div>
                         </div>
                     </div>
@@ -890,7 +902,7 @@
                                     <div class="input-group input-group-sm input-group-minimal">
                                         <span class="input-group-addon"></span>
                                         <input id="matchHouseSizeFrom" type="text" class="form-control area" placeholder="㎡" />
-                                      
+
                                     </div>
                                 </div>
                             </div>
@@ -899,7 +911,7 @@
                                     <div class="input-group input-group-sm input-group-minimal">
                                         <span class="input-group-addon"></span>
                                         <input id="matchHouseSizeTo" type="text" class="form-control area" placeholder="㎡" />
-                                      
+
                                     </div>
                                 </div>
                             </div>
@@ -921,14 +933,14 @@
                                     </div>
                                 </div>
                             </div>
-                           <div class="col-md-6">
-                               <div class="form-group">
-                                   <div class="input-group input-group-sm input-group-minimal">
-                                       <span class="input-group-addon"></span>
-                                       <input id="matchPriceTo" type="text" class="form-control" placeholder="" />
-                                   </div>
-                               </div>
-                           </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="input-group input-group-sm input-group-minimal">
+                                        <span class="input-group-addon"></span>
+                                        <input id="matchPriceTo" type="text" class="form-control" placeholder="" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -1115,10 +1127,11 @@
 <script src="/Scripts/typeahead.bundle.js"></script>
 <script src="/Scripts/handlebars.min.js"></script>
 <script src="/Scripts/multiselect/js/jquery.multi-select.js"></script>
+<script src="~/Scripts/defeng/Common.js" charset="UTF-8"></script>
 <script src="~/Scripts/dropzone/dropzone.min.js"></script>
 
 <!-- JavaScripts initializations and stuff -->
 <script src="/Scripts/xenon-custom.js"></script>
-<script src="~/Scripts/defeng/Common.js" charset="UTF-8"></script>
+
 <script src="~/Scripts/defeng/customer.js" charset="UTF-8"></script>
 

@@ -5,7 +5,7 @@ $(document).ready(function () {
     var customerSearchVal = $("#customerSearchObj").val();
     if (customerSearchVal != "") {
         var initCustomerObj = $.parseJSON(customerSearchVal);
-        if(initCustomerObj.CustomerTransactionType != null){
+        if (initCustomerObj.CustomerTransactionType != null) {
             $("#customerTransactionTypeSelect [value=" + initCustomerObj.CustomerTransactionType.ID + "]").attr("selected", "selected");
             $("#customerTransactionTypeSelect").prev().find("a span")[0].innerText = initCustomerObj.CustomerTransactionType.TypeName;
         }
@@ -53,6 +53,7 @@ $(document).ready(function () {
     InitDisplayStatus(type);
     InitTableSort("#customer-table");
     InitDelete(type);
+   
     $("#main-menu li").removeClass("active");
     $(".customer-menu").addClass("opened active");
     InitCustomerAdd();
@@ -265,10 +266,10 @@ function GetJointSearchObj() {
     customer.CustomerStatus = customerStatus;
     customer.Orientation = orientation;
     if (privatePublice == 1) {
-        customer.isPubliceCustomer = true;
+        customer.IsPubliceCustomer = true;
     }
     else if (privatePublice == 2) {
-        customer.isPrivateCustomer = true;
+        customer.IsPrivateCustomer = true;
     }
     customer.PriceFrom = salePriceFrom;
     customer.PriceTo = salePriceTo;
@@ -348,6 +349,8 @@ function GetCustomerObj() {
     var customerStatus = new Object();
     customerStatus.ID = $("#customerStatusSelect").val() != null ? $("#customerStatusSelect").val() : 0;
     customer.CustomerStatus = customerStatus;
+    customer.IsPrivateCustomer = $(".private-customer-check").hasClass("cbr-checked");
+    customer.IsQualityCustomer = $(".quality-customer-check").hasClass("cbr-checked");
     //交易
     var customerTransactionType = new Object();
     customerTransactionType.ID = $("#customerTransactionTypeSelect").val() != null ? $("#customerTransactionTypeSelect").val() : 0;
@@ -530,6 +533,7 @@ function ShowCustomerPanel(action) {
     $(".customer-panel-close a").on("click", function () {
         $(".customer-panel").hide();
     });
+    InitCheckBox();
     $('.form_datetime').datetimepicker({
         format: 'yyyy-mm-dd',
         language: 'zh-CN',
