@@ -41,7 +41,10 @@ namespace DeFengAdmin.Controllers
         {
             return View();
         }
-
+        public ActionResult Login()
+        {
+            return View();
+        }
 
         //注册 
         public int StaffRegister()
@@ -87,7 +90,7 @@ namespace DeFengAdmin.Controllers
             }
         }
 
-
+        
         //登录
         public int UserLogin()
         {
@@ -170,6 +173,7 @@ namespace DeFengAdmin.Controllers
                 var family_members = request["family_members"] != null ? Convert.ToString(request["family_members"]) : "";
                 var family_relationship = request["family_relationship"] != null ? Convert.ToString(request["family_relationship"]) : "";
                 var family_occupation = request["family_occupation"] != null ? Convert.ToString(request["family_occupation"]) : "";
+                var landscape = request["landscape"] != null ? Convert.ToString(request["landscape"]) : "";
                 var family_company = request["family_company"] != null ? Convert.ToString(request["family_company"]) : "";
                 var family_contact = request["family_contact"] != null ? Convert.ToString(request["family_contact"]) : "";
                 var entry_unit = request["entry_unit"] != null ? Convert.ToString(request["entry_unit"]) : "";
@@ -220,6 +224,7 @@ namespace DeFengAdmin.Controllers
                     Family_members = family_members,
                     Family_relationship = family_relationship,
                     Family_occupation = family_occupation,
+                    Landscape= landscape,
                     Family_company = family_company,
                     Family_contact = family_contact,
                     Entry_unit = entry_unit,
@@ -238,8 +243,14 @@ namespace DeFengAdmin.Controllers
 
                 };
                 Staff_BLL bll = new Staff_BLL();
-                bll.Information(staff);
-                return 1;
+                var status=bll.Information(staff);
+                if (status > 0)
+                {
+                    return 1;
+                }
+                else {
+                    return 2;
+                }
             }
             else {
                 return 0;

@@ -229,6 +229,7 @@
   <ItemGroup>
     <Content Include="App_Data\SysConfKey.xml" />
     <Content Include="Content\css\customer.css" />
+    <Content Include="Content\css\myStyle.css" />
     <Content Include="Scripts\card.js" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -1723,6 +1724,7 @@
     <None Include="Properties\PublishProfiles\DeFengAdmin.pubxml" />
     <Content Include="Views\Home\userLogin.cshtml" />
     <Content Include="Views\Home\Information.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\dx.all.d.ts" />
