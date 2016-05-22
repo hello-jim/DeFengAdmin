@@ -217,6 +217,7 @@
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseController.cs" />
+    <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1405,6 +1406,7 @@
     <Folder Include="Content\images\house\" />
     <Folder Include="Scripts\datetimepicker\locales\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Organization\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
