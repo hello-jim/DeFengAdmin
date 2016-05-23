@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DeFeng.BLL;
 using DeFeng.Model;
 using DeFeng.Model.Global;
+using Newtonsoft.Json;
 namespace DeFengAdmin.Controllers
 {
     public class OrganizationController : Controller
@@ -144,7 +145,7 @@ namespace DeFengAdmin.Controllers
             Post_BLL bll = new Post_BLL();
             try
             {
-                var id = Request["ID"] != null ? Convert.ToInt32(Request["ID"]) : 0;
+                var id = Request["postID"] != null ? Convert.ToInt32(Request["postID"]) : 0;
                 result = bll.DeletePost(id);
                 bll = null;
             }
@@ -153,6 +154,26 @@ namespace DeFengAdmin.Controllers
                 bll = null;
             }
             return result;
+        }
+
+        public string GetStaffByDepartment()
+        {
+            var list = new List<Staff>();
+            var json = "";
+            Staff_BLL bll = new Staff_BLL();
+            try
+            {
+                var departmentID = Request["departmentID"] != null ? Convert.ToInt32(Request["departmentID"]) : 0;
+                list = bll.GetStaffByDepartment(departmentID);
+                json = JsonConvert.SerializeObject(list);
+                bll = null;
+            }
+            catch (Exception ex)
+            {
+                bll = null;
+
+            }
+            return json;
         }
     }
 }

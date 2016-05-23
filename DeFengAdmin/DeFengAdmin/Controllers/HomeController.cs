@@ -62,7 +62,7 @@ namespace DeFengAdmin.Controllers
             };
             Staff_BLL bll = new Staff_BLL();
             var status = bll.Register(staff);
-     
+
             return status;
         }
         //验证用户名是否已注册
@@ -121,7 +121,7 @@ namespace DeFengAdmin.Controllers
                     Session["staff"] = staff;
                     return 2;
                 }
-              
+
 
             }
         }
@@ -133,7 +133,7 @@ namespace DeFengAdmin.Controllers
         public int StaffInformation()
         {
             var s = (Staff)Session["staff"];
-            
+
             if (s != null)
             {
                 var request = Request;
@@ -142,20 +142,20 @@ namespace DeFengAdmin.Controllers
                 var staffName = request["staffName"] != null ? Convert.ToString(request["staffName"]) : "";
                 var birthdayType = request["birthdayType"] != null ? Convert.ToString(request["birthdayType"]) : "";
                 var idCard = request["idCard"] != null ? Convert.ToString(request["idCard"]) : "";
-                var submitHouseDate = request["submitHouseDate"] != null ? Convert.ToString(request["submitHouseDate"]) : "";
-                var sex = request["sex"] != null ? Convert.ToString(request["sex"]) : "";
-                var age = request["age"] != null ? Convert.ToString(request["age"]) : "";
+                var dateBirth = request["submitHouseDate"] != null ? Convert.ToDateTime(request["submitHouseDate"]) : new DateTime();
+                var sex = request["sex"] != null ? Convert.ToInt32(request["sex"]) : 0;
+                var age = request["age"] != null ? Convert.ToInt32(request["age"]) : 0;
                 var birthday = request["birthday"] != null ? Convert.ToString(request["birthday"]) : "";
                 var marital = request["marital"] != null ? Convert.ToString(request["marital"]) : "";
                 var education = request["education"] != null ? Convert.ToString(request["education"]) : "";
                 var major = request["major"] != null ? Convert.ToString(request["major"]) : "";
                 var bloodType = request["bloodType"] != null ? Convert.ToString(request["bloodType"]) : "";
-                var entry_time = request["entry_time"] != null ? Convert.ToString(request["entry_time"]) : "";
+                var entry_time = request["entry_time"] != null ? Convert.ToDateTime(request["entry_time"]) : new DateTime();
                 var entry_status = request["entry_status"] != null ? Convert.ToString(request["entry_status"]) : "";
                 var probation = request["probation"] != null ? Convert.ToString(request["probation"]) : "";
                 var height = request["height"] != null ? Convert.ToString(request["height"]) : "";
-                var probation_salary = request["probation_salary"] != null ? Convert.ToString(request["probation_salary"]) : "";
-                var salary = request["salary"] != null ? Convert.ToString(request["salary"]) : "";
+                var probation_salary = request["probation_salary"] != null ? Convert.ToDecimal(request["probation_salary"]) : 0;
+                var salary = request["salary"] != null ? Convert.ToDecimal(request["salary"]) : 0;
                 var politics = request["politics"] != null ? Convert.ToString(request["politics"]) : "";
                 var title = request["title"] != null ? Convert.ToString(request["title"]) : "";
                 var nation = request["nation"] != null ? Convert.ToString(request["nation"]) : "";
@@ -192,7 +192,7 @@ namespace DeFengAdmin.Controllers
                     StaffName = staffName,
                     BirthdayType = birthdayType,
                     IdCard = idCard,
-                    SubmitHouseDate = submitHouseDate,
+                    DateBirth = dateBirth,
                     Sex = sex,
                     Age = age,
                     Birthday = birthday,
