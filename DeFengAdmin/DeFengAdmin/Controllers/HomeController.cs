@@ -13,7 +13,7 @@ namespace DeFengAdmin.Controllers
     public class HomeController : Controller
     {
 
-        public ActionResult Index()
+        public ActionResult Login()
         {
             return View();
         }
@@ -41,8 +41,15 @@ namespace DeFengAdmin.Controllers
         {
             return View();
         }
-        public ActionResult Login()
+        public ActionResult index()
         {
+            return View();
+        }
+        public ActionResult Office()
+        {
+            return View();
+        }
+        public ActionResult Institutions() {
             return View();
         }
 

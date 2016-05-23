@@ -6171,4 +6171,34 @@ button.close {
     display: none !important;
   }
 }
+.fillet {
+ font-family: Arial;
+ border-radius: 8px;
+}
+.img_size {
+    width:7px;
+    height:7px;
+}
+
+
+
+.theme-buy{margin-top:7%;text-align:center;}
+.theme-signin{font-size:15px;}
+.theme-popover-mask{z-index:1;position:absolute;left:0;top:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);-moz-opacity:0.5;display:none;}
+.theme-popover{z-index:9;position:absolute;top:25%;left:50%;width:660px;height:360px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#fff;display:none;box-shadow:0 0 10px #666;background:#fff;}
+.theme-poptit{border-bottom:1px solid #ddd;padding:12px;position:relative;height:24px;}
+.theme-poptit .close{float:right;color:#999;padding:5px;margin:-2px -5px -5px;font:bold 14px/14px simsun;text-shadow:0 1px 0 #ddd}
+.theme-poptit .close:hover{color:#444;}
+.theme-popbod{padding:60px 15px;color:#444;height:148px;}
+.dform{padding:80px 60px 40px;text-align:center;}
+.theme-signin{margin: -50px -20px -50px 90px;text-align:left;font-size: 14px;}
+.theme-signin h4{color:#999;font-weight:100;margin-bottom: 20px;font-size: 12px;}
+.theme-signin li{padding-left: 80px;margin-bottom: 15px;}
+.theme-signin li strong{float: left;margin-left: -80px;width: 80px;text-align: right;line-height: 32px;}
+.theme-signin .btn{margin-bottom: 10px;}
+.theme-signin p{font-size: 12px;color: #999;}
+
+*{margin:0;padding:0;list-style-type:none;}
+
+
 

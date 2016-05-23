@@ -229,7 +229,6 @@
   <ItemGroup>
     <Content Include="App_Data\SysConfKey.xml" />
     <Content Include="Content\css\customer.css" />
-    <Content Include="Content\css\myStyle.css" />
     <Content Include="Scripts\card.js" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -276,8 +275,10 @@
     <Content Include="Scripts\defeng\house.js" />
     <Content Include="Content\css\jquery.treeview.css" />
     <Content Include="Scripts\defeng\information.js" />
+    <Content Include="Scripts\defeng\jquery.login.js" />
     <Content Include="Scripts\defeng\login.js" />
     <Content Include="Scripts\defeng\register.js" />
+    <Content Include="Content\css\style.css" />
     <Content Include="Scripts\dialog.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.treeview.js" />
@@ -1725,6 +1726,8 @@
     <Content Include="Views\Home\userLogin.cshtml" />
     <Content Include="Views\Home\Information.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Office.cshtml" />
+    <Content Include="Views\Home\Institutions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\dx.all.d.ts" />
