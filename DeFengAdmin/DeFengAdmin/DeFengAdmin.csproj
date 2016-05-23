@@ -277,8 +277,10 @@
     <Content Include="Scripts\defeng\house.js" />
     <Content Include="Content\css\jquery.treeview.css" />
     <Content Include="Scripts\defeng\information.js" />
+    <Content Include="Scripts\defeng\jquery.login.js" />
     <Content Include="Scripts\defeng\login.js" />
     <Content Include="Scripts\defeng\register.js" />
+    <Content Include="Content\css\style.css" />
     <Content Include="Scripts\dialog.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.treeview.js" />
@@ -1660,6 +1662,9 @@
     <None Include="Properties\PublishProfiles\DeFengAdmin.pubxml" />
     <Content Include="Views\Home\userLogin.cshtml" />
     <Content Include="Views\Home\Information.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Office.cshtml" />
+    <Content Include="Views\Home\Institutions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
