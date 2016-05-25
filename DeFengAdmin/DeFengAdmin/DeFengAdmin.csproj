@@ -230,6 +230,7 @@
   <ItemGroup>
     <Content Include="App_Data\SysConfKey.xml" />
     <Content Include="Content\css\customer.css" />
+    <Content Include="Content\css\organization.css" />
     <Content Include="Scripts\card.js" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -281,6 +282,72 @@
     <Content Include="Scripts\defeng\login.js" />
     <Content Include="Scripts\defeng\register.js" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.android.holo-dark.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.android.holo-light.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.common.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.dark.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.exporter.dark.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.exporter.light.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.ios.default.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.ios7.default.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.light.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.spa.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.win8.black.css" />
+    <Content Include="Scripts\devexpress-web-14.1\css\dx.win8.white.css" />
+    <Content Include="Scripts\devexpress-web-14.1\index.html" />
+    <Content Include="Scripts\devexpress-web-14.1\js\dx.chartjs.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\dx.chartjs.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\dx.exporter.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\dx.exporter.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\dx.webappjs.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\dx.webappjs.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\globalize.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\globalize.min.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\jquery-1.11.1.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\jquery-2.1.1.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\knockout-3.1.0.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\knockout-3.1.0.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\localization\dx.webappjs.de.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\localization\dx.webappjs.fr.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\localization\dx.webappjs.ja.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\localization\dx.webappjs.ru.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-core.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-core.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-framework.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-framework.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-charts.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-charts.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-core.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-core.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-gauges.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-gauges.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-rangeselector.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-rangeselector.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-sparklines.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-sparklines.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-vectormap.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-viz-vectormap.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-widgets-base.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-widgets-base.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-widgets-web.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\modules\dx.module-widgets-web.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-data\africa.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-data\canada.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-data\eurasia.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-data\europe.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-data\usa.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-data\world.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-utils\dx.vectormaputils.debug.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-utils\dx.vectormaputils.js" />
+    <Content Include="Scripts\devexpress-web-14.1\js\vectormap-utils\dx.vectormaputils.node.js" />
+    <Content Include="Scripts\devexpress-web-14.1\layouts\Desktop\DesktopLayout.css" />
+    <Content Include="Scripts\devexpress-web-14.1\layouts\Desktop\DesktopLayout.html" />
+    <Content Include="Scripts\devexpress-web-14.1\layouts\Desktop\DesktopLayout.js" />
+    <Content Include="Scripts\devexpress-web-14.1\layouts\Empty\EmptyLayout.css" />
+    <Content Include="Scripts\devexpress-web-14.1\layouts\Empty\EmptyLayout.html" />
+    <Content Include="Scripts\devexpress-web-14.1\layouts\Empty\EmptyLayout.js" />
     <Content Include="Scripts\dialog.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.treeview.js" />
@@ -988,7 +1055,7 @@
     <Content Include="Scripts\multiselect\index.html" />
     <Content Include="Scripts\multiselect\js\index.html" />
     <Content Include="Scripts\multiselect\js\jquery.multi-select.js" />
-    <Content Include="Scripts\organization.js" />
+    <Content Include="Scripts\defeng\organization.js" />
     <Content Include="Scripts\resizeable.js" />
     <Content Include="Scripts\rwd-table\css\rwd-table.css" />
     <Content Include="Scripts\rwd-table\css\rwd-table.min.css" />
@@ -1344,7 +1411,6 @@
     <Folder Include="Content\images\house\" />
     <Folder Include="Scripts\datetimepicker\locales\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Organization\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -1665,9 +1731,18 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Office.cshtml" />
     <Content Include="Views\Home\Institutions.cshtml" />
+    <Content Include="Views\Organization\Index.cshtml" />
+    <Content Include="Scripts\devexpress-web-14.1\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\dx.all.d.ts" />
+    <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\dx.chartjs.d.ts" />
+    <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\dx.webappjs.d.ts" />
+    <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\globalize.d.ts" />
+    <TypeScriptCompile Include="Scripts\devexpress-web-14.1\ts\jquery.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

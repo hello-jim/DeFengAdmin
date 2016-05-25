@@ -17,13 +17,15 @@ namespace DeFengAdmin.Controllers
             return View();
         }
 
-        public List<Department> LoadDepartment()
+        public string LoadDepartment()
         {
-            List<Department> departmentList = new List<Department>();
+            var json = "";
             Department_BLL bll = new Department_BLL();
             try
             {
+                List<Department> departmentList = new List<Department>();
                 departmentList = bll.LoadDepartment();
+                json = JsonConvert.SerializeObject(departmentList);
                 bll = null;
             }
             catch (Exception ex)
@@ -34,7 +36,7 @@ namespace DeFengAdmin.Controllers
                 log.Type = LogType.Error;
                 GlobalQueue.LogGlobalQueue.Enqueue(log);
             }
-            return departmentList;
+            return json;
         }
 
         public bool AddDepartment()
@@ -43,7 +45,23 @@ namespace DeFengAdmin.Controllers
             Department_BLL bll = new Department_BLL();
             try
             {
-                result = bll.AddDepartment(null);
+                var staff = Session["staff"] != null ? (Staff)Session["staff"] : null;
+                //if (staff != null)
+                //{
+                var department = Request["department"] != null ? JsonConvert.DeserializeObject<Department>(Request["department"]) : null;
+                //department.LastUpdateStaff = new Staff
+                //{
+                //    ID = staff.ID
+                //};
+                //department.CreateStaff = new Staff
+                //{
+                //    ID = staff.ID
+                //};
+                if (department != null)
+                {
+                    result = bll.AddDepartment(department);
+                }
+                //  }              
                 bll = null;
             }
             catch (Exception ex)
@@ -63,7 +81,23 @@ namespace DeFengAdmin.Controllers
             Department_BLL bll = new Department_BLL();
             try
             {
-                result = bll.UpdateDepartment(null);
+                var staff = Session["staff"] != null ? (Staff)Session["staff"] : null;
+                //if (staff != null)
+                //{
+                var department = Request["department"] != null ? JsonConvert.DeserializeObject<Department>(Request["department"]) : null;
+                //department.LastUpdateStaff = new Staff
+                //{
+                //    ID = staff.ID
+                //};
+                //department.CreateStaff = new Staff
+                //{
+                //    ID = staff.ID
+                //};
+                if (department != null)
+                {
+                    result = bll.UpdateDepartment(department);
+                }
+                //  }              
                 bll = null;
             }
             catch (Exception ex)
@@ -79,9 +113,18 @@ namespace DeFengAdmin.Controllers
             Department_BLL bll = new Department_BLL();
             try
             {
-                var id = Request["ID"] != null ? Convert.ToInt32(Request["ID"]) : 0;
-                result = bll.DeleteDepartment(id);
-                bll = null;
+                var idStrArr = Request.Form.Count != 0 ? Request.Form[0].Split(',') : null;
+                if (idStrArr != null)
+                {
+                    List<int> idArr = new List<int>();
+                    for (int i = 0; i < idStrArr.Count(); i++)
+                    {
+                        idArr.Add(Convert.ToInt32(idStrArr[i]));
+                    }
+                    result = bll.DeleteDepartment(idArr);
+                    bll = null;
+                }
+
             }
             catch (Exception ex)
             {

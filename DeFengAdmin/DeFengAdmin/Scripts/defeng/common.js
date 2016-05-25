@@ -1149,7 +1149,7 @@ function InitDisplayStatus(type) {
     $(".table-col-Select").on("click", function () {
         $(".table-col-menu").toggle();
     });
-    $(".col-select").on("click", function () {
+    $(".col-select").unbind("click").on("click", function () {
         var thisObj = $(this);
         var checked = $(thisObj).hasClass("cbr-checked");
         var col = $(thisObj).attr("col");
