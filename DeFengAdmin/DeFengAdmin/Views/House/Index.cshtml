@@ -592,7 +592,7 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label" for="houseNumber">栋楼位置</label>
+                    <label class="control-label" for="houseNumber">房号</label>
                     <input class="form-control" name="houseNumber" id="houseNumberTxt" data-validate="required" placeholder="房号" />
                 </div>
             </div>
@@ -685,7 +685,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label class="control-label" for="height">层高</label>
-                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="阳台" />
+                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="m" />
                     </div>
                 </div>
             </div>
@@ -743,13 +743,13 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label class="control-label" for="level">级别</label>
-                        <input class="form-control" name="level" id="LevelTxt" data-validate="required" placeholder="级别" />
+                        <select class="form-control"></select>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="ziboCity">实率</label>
-                        <input class="form-control" name="ziboCity" id="ziboCityTxt" data-validate="required" placeholder="实率" />
+                        <label class="control-label" for="realRate">实率</label>
+                        <input class="form-control" name="RealRate" id="realRate" data-validate="required" placeholder="实率" />
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -764,19 +764,19 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label class="control-label" for="commission">位置</label>
-                        <input class="form-control" name="commission" id="CommissionTxt" data-validate="required" placeholder="厅" />
+                        <select class="form-control"></select>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label class="control-label" for="ziboCity">进深</label>
-                        <input class="form-control" name="ziboCity" id="ziboCityTxt" data-validate="required" placeholder="卫" />
+                        <input class="form-control" name="ziboCity" id="ziboCityTxt" data-validate="required" placeholder="m" />
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label class="control-label" for="height">层高</label>
-                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="阳台" />
+                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="m" />
                     </div>
                 </div>
             </div>
@@ -819,7 +819,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         <label class="control-label" for="level">级别</label>
-                        <input class="form-control" name="level" id="LevelTxt" data-validate="required" placeholder="级别" />
+                        <select class="form-control"></select>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -1031,6 +1031,7 @@
                                 // Adding Custom Scrollbar
                                 $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
                             });
+
                         });
                         </script>
 
@@ -1064,20 +1065,20 @@
             <div class="div4" style="display:none">
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="office">面积</label>
-                        <input id="OfficeTxt" class="form-control" name="office" data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="houseSize">面积</label>
+                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="Clearing ">套内</label>
-                        <input id="ClearingTxt" class="form-control" name="Clearing " data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="Clearing">套内</label>
+                        <input id="ClearingTxt" class="form-control" name="Clearing" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label class="control-label" for="total">状况</label>
-                        <input id="totalTxt" class="form-control" name="total" data-validate="required" placeholder="层" />
+                        <select class="form-control"></select>
                     </div>
                 </div>
             </div>
@@ -1122,14 +1123,14 @@
             <div class="div6" style="display:none">
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="office">面积</label>
-                        <input id="OfficeTxt" class="form-control" name="office" data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="houseSize">面积</label>
+                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="Clearing ">套内</label>
-                        <input id="ClearingTxt" class="form-control" name="Clearing " data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="withinSize">套内</label>
+                        <input id="WithinSizeTxt" class="form-control" name="withinSize" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -1149,8 +1150,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="Within ">门宽</label>
-                        <input id="Within Txt" class="form-control" name="Within " data-validate="required" placeholder="m" />
+                        <label class="control-label" for="doorWide">门宽</label>
+                        <input id="doorWideTxt" class="form-control" name="doorWide " data-validate="required" placeholder="m" />
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -1170,8 +1171,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="Clearing ">空地</label>
-                        <input id="ClearingTxt" class="form-control" name="Clearing " data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="Clearing">空地</label>
+                        <input id="ClearingTxt" class="form-control" name="Clearing" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -1191,8 +1192,8 @@
             <div class="div9" style="display:none">
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="office">面积</label>
-                        <input id="OfficeTxt" class="form-control" name="office" data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="houseSize">面积</label>
+                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -1239,8 +1240,8 @@
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="Clearing ">空地</label>
-                        <input id="ClearingTxt" class="form-control" name="Clearing " data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="Clearing">空地</label>
+                        <input id="ClearingTxt" class="form-control" name="Clearing" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -1260,20 +1261,20 @@
             <div class="div12" style="display:none">
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="office">面积</label>
-                        <input id="OfficeTxt" class="form-control" name="office" data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="houseSize">面积</label>
+                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="Clearing ">包月</label>
-                        <input id="ClearingTxt" class="form-control" name="Clearing " data-validate="required" placeholder="㎡" />
+                        <label class="control-label" for="monthly">包月</label>
+                        <input id="monthlyTxt" class="form-control" name="monthly" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <label class="control-label" for="total">排量</label>
-                        <input id="totalTxt" class="form-control" name="total" data-validate="required" placeholder="层" />
+                        <label class="control-label" for="displacement">排量</label>
+                        <select class="form-control"></select>
                     </div>
                 </div>
             </div>
@@ -1425,6 +1426,12 @@
             </div>
             <div class="col-md-2">
                 <div class="form-group">
+                    <label class="control-label" for="unitPrice">单价</label>
+                    <input id="unitPriceTxt" class="form-control" name="unitPrice" data-validate="required" placeholder="元/m²" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
                     <label class="control-label" for="minSalePrice">底价</label>
                     <input id="minSalePriceTxt" class="form-control" name="minSalePrice" data-validate="required" placeholder="万" />
                 </div>
@@ -1496,6 +1503,12 @@
                 <div class="form-group">
                     <label class="control-label" for="leaseTotalPrice">租价</label>
                     <input id="leaseTotalPriceTxt" class="form-control" name="leaseTotalPrice" data-validate="required" placeholder="元/月" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label class="control-label" for="unitPrice">单价</label>
+                    <input id="unitPriceTxt" class="form-control" name="unitPrice" data-validate="required" placeholder="元/m²" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -1704,11 +1717,11 @@
         </div>
         <div class="row">
             <div class="form-group">
-                <div class="col-md-6 follow-record">
+                <div class="col-md-6 owner-info ">
                     @*<div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                     <table cellspacing='0' class='table table-bordered table-striped dataTable no-footer'></table>
                 </div>*@
-                    <div class="col-md-5 follow-record">
+                    <div class="col-md-5">
                         <div class="row">
                             <div class="form-group">
                                 <input id="ownerNameTxt" class="form-control" name="ownerName" data-validate="required" placeholder="业主" />
@@ -1732,7 +1745,7 @@
                         </div>
                     </div>
                     <div class="col-md-0">&nbsp;</div>
-                    <div class="col-md-6 owner-info">
+                    <div class="col-md-6">
                         <div class="row">
                             <div class="form-group">
                                 <input id="ownerPhoneTxt" class="form-control" name="ownerPhone" data-validate="required" placeholder="手机" />
@@ -1744,8 +1757,9 @@
                             </div>
                         </div>
                     </div>
+      
                 </div>
-                <div class="col-md-6 owner-info ">
+                <div class="col-md-6">
                     <div class="row">
                         <div class="col-sm-8">
                             <textarea placeholder="备注" id="field-5" cols="5" class="form-control"></textarea>
@@ -1763,21 +1777,21 @@
                     </div>*@
                     </div>
                     <div class="row">
-                        <div class="col-md-5 follow-record">
+                        <div class="col-md-5">
                             <label class="control-label">员工</label>
                             <select class="form-control" id="nationalitySelect"></select>
                         </div>
-                        <div class="col-md-3 owner-info">
+                        <div class="col-md-3">
                             <label class="control-label">&nbsp;</label>
                             <select class="form-control" id="nationalitySelect"></select>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5 follow-record">
+                        <div class="col-md-5">
                             <label class="control-label">员工</label>
                             <select class="form-control" id="nationalitySelect"></select>
                         </div>
-                        <div class="col-md-3 owner-info">
+                        <div class="col-md-3">
                             <label class="control-label">&nbsp;</label>
                             <select class="form-control" id="nationalitySelect"></select>
                         </div>
@@ -1786,18 +1800,18 @@
                
             </div>
         </div>
+        <div class="row">&nbsp;</div>
         <div class="row">
             <div class="col-md-2">
-
+                <select class="form-control"></select>
             </div>
             <div class="col-md-2">
                 <button class="btn display follow-record-panel-show" type="button">写跟进</button>
             </div>
             <div class="col-md-2">
-                <button class="btn  owner-show" type="button">看业主</button>
-                <button class="btn  follow-record-show" type="button">看跟进</button>
+                <button class="btn  owner-show" type="button" >看业主</button>
+                <button class="btn  follow-record-show" type="button" >看跟进</button>
             </div>
-            <div class="col-md-2"></div>
             <div class="col-md-2"><button class="btn display" type="button" id="fileUp">上传图片</button></div>
             <div class="col-md-2">
                 <div class="form-group">

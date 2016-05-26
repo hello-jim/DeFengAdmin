@@ -1019,7 +1019,6 @@ function HouseAdd() {
                     
             }
         })
-    
 }
 
 //房源面板
@@ -1121,7 +1120,6 @@ function InitFileUp() {
                                     $(thisObj).parents(".img-div").remove();
                                 }
                             });
-
                     });
                 }
             }
