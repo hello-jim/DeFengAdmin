@@ -421,6 +421,10 @@ function GetCustomerObj() {
     var shopLocation = new Object();
     shopLocation.ID = $("#shopLocationSelect").val() != null ? $("#shopLocationSelect").val() : 0;
     customer.ShopLocation = shopLocation;
+    //地段
+    var shopArea = new Object();
+    shopArea.ID = $("#shopAreaSelect").val() != null ? $("#shopAreaSelect").val() : 0;
+    customer.ShopArea = shopArea;
     //行业
     customer.Industry = $("#industryTxt").val() != "" ? $("#industryTxt").val() : 0;
     //围墙
@@ -808,6 +812,9 @@ function CustomerTableDoubleClick() {
         $("#decorationTypeSelect [value=" + obj.DecorationType.ID + "]").attr("selected", "selected");
         $("#decorationTypeSelect").prev().find("a span")[0].innerText = obj.DecorationType.TypeName;
         InitHouseDocumentType("#houseDocumentTypeSelect", " ", false);
+        //配套
+        InitMultipleSelectData("#supportingSelect", obj.Supporting);
+       
         //佣金支付
         InitCommissionPayType("#commissionPayTypeSelect", " ", false);
         $("#commissionPayTypeSelect [value=" + obj.CommissionPayType.ID + "]").attr("selected", "selected");
@@ -825,6 +832,8 @@ function CustomerTableDoubleClick() {
         $("#carParkSelect [value=" + obj.CarPark.ID + "]").attr("selected", "selected");
         $("#carParkSelect").prev().find("a span")[0].innerText = obj.CarPark.Name;
         InitGrade("#gradeSelect", " ", false);
+        $("#gradeSelect [value=" + obj.Grade.ID + "]").attr("selected", "selected");
+        $("#gradeSelect").prev().find("a span")[0].innerText = obj.Grade.GradeName;
         //意向
         InitIntention("#intentionSelect", " ", false);
         $("#intentionSelect [value=" + obj.Intention.ID + "]").attr("selected", "selected");
