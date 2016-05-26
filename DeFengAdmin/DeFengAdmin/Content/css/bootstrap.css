@@ -6199,6 +6199,29 @@ button.close {
 .theme-signin p{font-size: 12px;color: #999;}
 
 *{margin:0;padding:0;list-style-type:none;}
+.newfrom {
+ /*float:right; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+      font-size:13px; 
+      color:#999999*/
+    font-family: Georgia, "Times New Roman", Times, serif;font-size: 12px;color: #333;
+/*font-size:13.5px;*/
+    /*flood-color:#ffffff;*/
+}
+.newfrom a:hover {
+    color:#71b7e6;
+}
+.bgColor {
+    /*background:#71b7e6;*/
+    background-image:url(/Content/images/biaoqian.png);
+    width:150px;
+    height:35px;
+    background-size:150px 35px;
+    padding-top:8px;
+    padding-bottom:8px;
+    font-family:Courier New, Courier, monospace;
+    color:#ddd;
+    
+}
 
 
 
