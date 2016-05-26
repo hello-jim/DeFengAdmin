@@ -22,19 +22,19 @@
       <publishTime>03/10/2016 09:27:58</publishTime>
     </File>
     <File Include="bin/DeFeng.BLL.dll">
-      <publishTime>05/19/2016 17:27:06</publishTime>
+      <publishTime>05/26/2016 17:42:08</publishTime>
     </File>
     <File Include="bin/DeFeng.Common.dll">
       <publishTime>04/15/2016 17:15:18</publishTime>
     </File>
     <File Include="bin/DeFeng.DAL.dll">
-      <publishTime>05/19/2016 17:27:06</publishTime>
+      <publishTime>05/26/2016 17:42:08</publishTime>
     </File>
     <File Include="bin/DeFeng.Model.dll">
-      <publishTime>05/19/2016 17:27:05</publishTime>
+      <publishTime>05/26/2016 17:42:08</publishTime>
     </File>
     <File Include="bin/DeFengAdmin.dll">
-      <publishTime>05/20/2016 16:22:04</publishTime>
+      <publishTime>05/26/2016 17:46:53</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/10/2016 09:27:50</publishTime>
@@ -181,7 +181,7 @@
       <publishTime>03/10/2016 09:34:23</publishTime>
     </File>
     <File Include="Content/css/bootstrap.css">
-      <publishTime>05/17/2016 08:52:11</publishTime>
+      <publishTime>05/24/2016 09:08:18</publishTime>
     </File>
     <File Include="Content/css/bootstrap.min.css">
       <publishTime>05/17/2016 08:52:11</publishTime>
@@ -195,11 +195,17 @@
     <File Include="Content/css/jquery.treeview.css">
       <publishTime>03/16/2016 09:33:23</publishTime>
     </File>
+    <File Include="Content/css/organization.css">
+      <publishTime>05/25/2016 17:34:50</publishTime>
+    </File>
     <File Include="Content/css/screen.css">
       <publishTime>03/16/2016 09:13:46</publishTime>
     </File>
     <File Include="Content/css/Site.css">
       <publishTime>03/10/2016 09:27:44</publishTime>
+    </File>
+    <File Include="Content/css/style.css">
+      <publishTime>05/24/2016 09:08:18</publishTime>
     </File>
     <File Include="Content/css/xenon-components.css">
       <publishTime>05/17/2016 08:52:11</publishTime>
@@ -1099,7 +1105,7 @@
       <publishTime>03/10/2016 09:34:24</publishTime>
     </File>
     <File Include="Scripts/ckeditor/config.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 09:08:18</publishTime>
     </File>
     <File Include="Scripts/ckeditor/contents.css">
       <publishTime>03/10/2016 09:34:24</publishTime>
@@ -2230,226 +2236,235 @@
       <publishTime>04/09/2016 09:09:34</publishTime>
     </File>
     <File Include="Scripts/defeng/common.js">
-      <publishTime>05/20/2016 15:53:16</publishTime>
+      <publishTime>05/26/2016 17:34:06</publishTime>
     </File>
     <File Include="Scripts/defeng/customer.js">
-      <publishTime>05/20/2016 15:54:49</publishTime>
+      <publishTime>05/26/2016 17:45:08</publishTime>
     </File>
     <File Include="Scripts/defeng/group.js">
-      <publishTime>03/17/2016 09:43:30</publishTime>
+      <publishTime>05/20/2016 17:45:58</publishTime>
+    </File>
+    <File Include="Scripts/defeng/home.js">
+      <publishTime>05/24/2016 09:07:15</publishTime>
     </File>
     <File Include="Scripts/defeng/house.js">
-      <publishTime>05/20/2016 16:19:39</publishTime>
+      <publishTime>05/26/2016 15:33:00</publishTime>
     </File>
     <File Include="Scripts/defeng/information.js">
-      <publishTime>05/17/2016 08:52:11</publishTime>
+      <publishTime>05/24/2016 09:08:18</publishTime>
+    </File>
+    <File Include="Scripts/defeng/jquery.login.js">
+      <publishTime>05/24/2016 09:08:18</publishTime>
     </File>
     <File Include="Scripts/defeng/login.js">
       <publishTime>05/17/2016 08:52:11</publishTime>
+    </File>
+    <File Include="Scripts/defeng/organization.js">
+      <publishTime>05/26/2016 09:38:09</publishTime>
     </File>
     <File Include="Scripts/defeng/register.js">
       <publishTime>05/17/2016 08:52:11</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/.DS_Store">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.android.holo-dark.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.android.holo-light.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.common.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.dark.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.exporter.dark.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.exporter.light.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.ios.default.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.ios7.default.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.light.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.spa.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.win8.black.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/css/dx.win8.white.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/index.html">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/dx.chartjs.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/dx.chartjs.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/dx.exporter.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/dx.exporter.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/dx.webappjs.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/dx.webappjs.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/globalize.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/globalize.min.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/jquery-1.11.1.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/jquery-1.11.1.min.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/jquery-2.1.1.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/jquery-2.1.1.min.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/knockout-3.1.0.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/knockout-3.1.0.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/localization/dx.webappjs.de.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/localization/dx.webappjs.fr.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/localization/dx.webappjs.ja.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/localization/dx.webappjs.ru.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-core.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-core.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-framework.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-framework.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-charts.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-charts.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-core.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-core.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-gauges.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-gauges.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-rangeselector.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-rangeselector.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-sparklines.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-sparklines.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-vectormap.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-viz-vectormap.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-widgets-base.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-widgets-base.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-widgets-web.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/modules/dx.module-widgets-web.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-data/africa.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-data/canada.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-data/eurasia.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-data/europe.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-data/usa.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-data/world.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-utils/dx.vectormaputils.debug.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-utils/dx.vectormaputils.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/js/vectormap-utils/dx.vectormaputils.node.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/layouts/Desktop/DesktopLayout.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/layouts/Desktop/DesktopLayout.html">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/layouts/Desktop/DesktopLayout.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/layouts/Empty/EmptyLayout.css">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/layouts/Empty/EmptyLayout.html">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/layouts/Empty/EmptyLayout.js">
-      <publishTime>03/10/2016 09:34:24</publishTime>
+      <publishTime>05/24/2016 10:25:52</publishTime>
     </File>
     <File Include="Scripts/dialog.js">
       <publishTime>05/17/2016 08:52:11</publishTime>
@@ -4183,7 +4198,7 @@
       <publishTime>03/10/2016 09:34:24</publishTime>
     </File>
     <File Include="Views/Customer/Index.cshtml">
-      <publishTime>05/20/2016 15:59:56</publishTime>
+      <publishTime>05/26/2016 15:27:49</publishTime>
     </File>
     <File Include="Views/Department/Index.cshtml">
       <publishTime>03/16/2016 15:06:25</publishTime>
@@ -4369,10 +4384,13 @@
       <publishTime>04/01/2016 10:21:06</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/17/2016 08:52:11</publishTime>
+      <publishTime>05/24/2016 09:08:18</publishTime>
     </File>
     <File Include="Views/Home/Information.cshtml">
-      <publishTime>05/17/2016 08:52:11</publishTime>
+      <publishTime>05/24/2016 09:08:18</publishTime>
+    </File>
+    <File Include="Views/Home/Institutions.cshtml">
+      <publishTime>05/24/2016 09:30:14</publishTime>
     </File>
     <File Include="Views/Home/layout-boxed-horizontal-menu.html">
       <publishTime>03/25/2016 14:33:31</publishTime>
@@ -4455,6 +4473,9 @@
     <File Include="Views/Home/layout-without-submenu-toggle.html">
       <publishTime>03/25/2016 14:33:31</publishTime>
     </File>
+    <File Include="Views/Home/Login.cshtml">
+      <publishTime>05/24/2016 09:08:18</publishTime>
+    </File>
     <File Include="Views/Home/mailbox-compose.html">
       <publishTime>03/25/2016 14:33:31</publishTime>
     </File>
@@ -4464,8 +4485,11 @@
     <File Include="Views/Home/mailbox-message.html">
       <publishTime>03/25/2016 14:33:31</publishTime>
     </File>
+    <File Include="Views/Home/Office.cshtml">
+      <publishTime>05/24/2016 09:08:18</publishTime>
+    </File>
     <File Include="Views/Home/Register.cshtml">
-      <publishTime>05/17/2016 08:54:15</publishTime>
+      <publishTime>05/24/2016 09:08:18</publishTime>
     </File>
     <File Include="Views/Home/skin-aero.html">
       <publishTime>03/25/2016 14:33:31</publishTime>
@@ -4582,7 +4606,10 @@
       <publishTime>05/17/2016 08:52:11</publishTime>
     </File>
     <File Include="Views/House/Index.cshtml">
-      <publishTime>05/20/2016 16:19:53</publishTime>
+      <publishTime>05/26/2016 15:26:24</publishTime>
+    </File>
+    <File Include="Views/Organization/Index.cshtml">
+      <publishTime>05/25/2016 17:56:54</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>03/10/2016 09:27:50</publishTime>

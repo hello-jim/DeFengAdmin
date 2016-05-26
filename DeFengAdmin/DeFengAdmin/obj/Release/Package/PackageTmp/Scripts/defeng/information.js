@@ -112,6 +112,7 @@
                     family_members: $(form).find('#family_members').val(),
                     family_relationship: $(form).find('#family_relationship').val(),
                     family_occupation: $(form).find('#family_occupation').val(),
+                    landscape: $(form).find('#landscape').val(),
                     family_company: $(form).find('#family_company').val(),
                     family_contact: $(form).find('#family_contact').val(),
                     entry_unit: $(form).find('#entry_unit').val(),
@@ -131,11 +132,11 @@
                 success: function (data) {   
                     if (data==1)
                     {
-                        alert("插入成功")
+                        alert("添加成功")
                                 
                     }
                     else {
-                        alert("插入失败")
+                        alert("添加失败")
             }
             }
     });

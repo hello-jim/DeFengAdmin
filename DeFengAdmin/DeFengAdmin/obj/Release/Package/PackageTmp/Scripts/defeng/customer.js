@@ -383,8 +383,10 @@ function GetCustomerObj() {
     var nationality = new Object();
     nationality.ID = $("#nationalitySelect").val() != null ? $("#nationalitySelect").val() : 0;
     customer.Nationality = nationality;
-    //委托结束日期
-    customer.EntrustOverDate = $("#entrustOverDateTxt").val() != "" ? $("#entrustOverDateTxt").val() : 0;
+    //期限
+    var entrustOverDate = new Object();
+    entrustOverDate.ID = $("#entrustOverDateSelect").val() != "" ? $("#entrustOverDateSelect").val() : 0;;
+    customer.EntrustOverDate = entrustOverDate;
     customer.Floor = $("#floorTxt").val() != "" ? $("#floorTxt").val() : 0;//楼层
     //装修
     var decorationType = new Object();
@@ -421,6 +423,10 @@ function GetCustomerObj() {
     var shopLocation = new Object();
     shopLocation.ID = $("#shopLocationSelect").val() != null ? $("#shopLocationSelect").val() : 0;
     customer.ShopLocation = shopLocation;
+    //地段
+    var shopArea = new Object();
+    shopArea.ID = $("#shopAreaSelect").val() != null ? $("#shopAreaSelect").val() : 0;
+    customer.ShopArea = shopArea;
     //行业
     customer.Industry = $("#industryTxt").val() != "" ? $("#industryTxt").val() : 0;
     //围墙
@@ -512,6 +518,7 @@ function InitCustomerAdd() {
         InitLandPlan("#landPlanSelect", " ", true);
         InitShopArea("#shopAreaSelect", " ", true);
         InitShopLocation("#shopLocationSelect", " ", true);
+        InitEntrustOverDate("#entrustOverDateSelect", "", true);
         $("#entrustStartDateTxt").val(DateTimeConvert_yyyyMMdd(new Date()));
         $("#addCustomer").on("click", function () {
             var customer = GetCustomerObj();
@@ -808,11 +815,16 @@ function CustomerTableDoubleClick() {
         $("#decorationTypeSelect [value=" + obj.DecorationType.ID + "]").attr("selected", "selected");
         $("#decorationTypeSelect").prev().find("a span")[0].innerText = obj.DecorationType.TypeName;
         InitHouseDocumentType("#houseDocumentTypeSelect", " ", false);
+        //配套
+        InitSupporting("#supportingSelect", " ", false);
+        InitMultipleSelectData("#supportingSelect", obj.Supporting);
+        InitEntrustOverDate("#entrustOverDateSelect", "", false);
+        $("#entrustOverDateSelect [value=" + obj.EntrustOverDate.ID + "]").attr("selected", "selected");
+        $("#entrustOverDateSelect").prev().find("a span")[0].innerText = obj.EntrustOverDate.Name;
         //佣金支付
         InitCommissionPayType("#commissionPayTypeSelect", " ", false);
-        $("#commissionPayTypeSelect [value=" + obj.CommissionPayType.ID + "]").attr("selected", "selected");
+        $("#commissionPayTypeSelect [value=" + obj.CommissionPayType.ID + "]").attr("selected", "selected");     
         $("#commissionPayTypeSelect").prev().find("a span")[0].innerText = obj.CommissionPayType.TypeName;
-        InitSupporting("#supportingSelect", " ", false);
         //支付方式
         InitHousePayType("#housePayTypeSelect", " ", false);
         $("#housePayTypeSelect [value=" + obj.HousePayType.ID + "]").attr("selected", "selected");
@@ -825,6 +837,8 @@ function CustomerTableDoubleClick() {
         $("#carParkSelect [value=" + obj.CarPark.ID + "]").attr("selected", "selected");
         $("#carParkSelect").prev().find("a span")[0].innerText = obj.CarPark.Name;
         InitGrade("#gradeSelect", " ", false);
+        $("#gradeSelect [value=" + obj.Grade.ID + "]").attr("selected", "selected");
+        $("#gradeSelect").prev().find("a span")[0].innerText = obj.Grade.GradeName;
         //意向
         InitIntention("#intentionSelect", " ", false);
         $("#intentionSelect [value=" + obj.Intention.ID + "]").attr("selected", "selected");

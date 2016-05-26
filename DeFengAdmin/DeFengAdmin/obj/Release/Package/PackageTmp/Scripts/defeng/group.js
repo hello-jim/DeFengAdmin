@@ -24,8 +24,7 @@ function InitGroup() {
                 persist: "cookie",
                 cookieId: "treeview-black"
             });
-     
-
+    
         });
 }
 

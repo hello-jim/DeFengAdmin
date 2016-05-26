@@ -1071,14 +1071,49 @@ function InitShopLocation(id, firstText, async) {
     });
 }
 
-function InitMultipleSelectData(id, arr) {
+function InitEntrustOverDate(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadEntrustOverDate",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].Name + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
+function InitMultipleSelectData(id, arr) {  
     if (arr) {
+        arr = arr.split(",");     
+        $(id).prev().find("ul li").remove();
         for (var i = 0; i < arr.length; i++) {
             var selectedID = id + " option[value=" + arr[i] + "]";
             $(selectedID).attr("selected", "selected");
             var li = "<li class='select2-search-choice'>    <div>" + $(selectedID).text() + "</div>    <a tabindex='-1' class='select2-search-choice-close' href='#'></a></li>";
-            $(selectedID).prev().find("ul").append(li);
+            $(id).prev().find("ul").append(li);           
         }
+        $(id).select2({
+            placeholder: 'Select your country...',
+            allowClear: true
+        }).on('select2-open', function () {
+            // Adding Custom Scrollbar
+            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+        });
     }
 }
 
@@ -1149,7 +1184,7 @@ function InitDisplayStatus(type) {
     $(".table-col-Select").on("click", function () {
         $(".table-col-menu").toggle();
     });
-    $(".col-select").on("click", function () {
+    $(".table-col-menu .cbr-replaced").unbind("click").on("click", function () {
         var thisObj = $(this);
         var checked = $(thisObj).hasClass("cbr-checked");
         var col = $(thisObj).attr("col");

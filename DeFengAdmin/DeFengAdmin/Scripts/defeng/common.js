@@ -1071,6 +1071,32 @@ function InitShopLocation(id, firstText, async) {
     });
 }
 
+function InitEntrustOverDate(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadEntrustOverDate",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].Name + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).select2({
+                placeholder: 'Select your country...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+        }
+    });
+}
+
 function InitMultipleSelectData(id, arr) {  
     if (arr) {
         arr = arr.split(",");     

@@ -20,11 +20,14 @@
             <div class="row">
 
                 <h3 align="center">请填写个人信息</h3>
-                <form action="/file-upload" class="dropzone" id="my-awesome-dropzone">
+                <div class="row">
+                <form action="/file-upload" class="dropzone" id="my-awesome-dropzone" >
                     <div class="fallback">
+                       
                         <input name="file" type="file" multiple />
                     </div>
                 </form>
+                </div>
 
                 <form method="post" role="form" id="Information" class="login-form fade-in-effect">
                     <div class="row">
@@ -79,24 +82,17 @@
                         <div class="col-md-1">
                             <p>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</p>
                         </div>
-                        <div class="col-md-1">
-                            @*<input type="text" class="form-control input-dark form-number" name="sex" id="sex" autocomplete="off" />*@
-                            <div class="col-md-0">
-                                <input id="r1" type="radio" name="sex" value="男" class="s-forms" />
-                            </div>
-                            <div class="col-sm-2">
-                                <p>男</p>
-                            </div>
+                        <label class="radio-inline">
+                            </label>
+                        <label class="radio-inline">
+                            <input type="radio" checked="" name="sex" value="男">
+                            男
+                        </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sex"  value="女">
+                                女
+                            </label>          
                         </div>
-                        <div class="col-md-1">
-                            <div class="col-md-0">
-                                <input id="r2" type="radio" name="sex" value="女" />
-                            </div>
-                            <div class="col-sm-2">
-                                <p> 女</p>
-                            </div>
-                        </div>
-                    </div>
 
 
                     <div class="row">
@@ -125,16 +121,19 @@
                         <div class="col-md-1">
                             <p>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</p>
                         </div>
-                        <div class="col-sm-3">
-                            <select name="education" id="education">
-                                <option value="大专" name="education">大专</option>
-                                <option value="本科" name="education">本科</option>
-                                <option value="重本" name="education">重本</option>
-                                <option value="研究生" name="education">研究生</option>
-                                <option value="硕士" name="education">硕士</option>
-                            </select>  
-                            @*<input type="text" class="form-control input-dark" name="education" id="education" autocomplete="off" />*@
+
+                        <div class="col-md-3">
+                            <select class="form-control" id="education">
+                                <option></option>
+                                <option value="大专">大专</option>
+                                <option value="本科">本科</option>
+                                <option value="重本">重本</option>
+                                <option value="研究生">研究生</option>
+                                <option value="硕士">硕士</option>
+                            </select>
+
                         </div>
+
                         <div class="col-md-1">
                             <p>专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业</p>
                         </div>
@@ -275,57 +274,49 @@
                             <p>应聘渠道</p>
                         </div>
                         <div class="col-sm-11">
-                            <select name="application_method" id="application_method">
+                            <select class="form-control" id="application_method">
+                                <option></option>
                                 <option value="人才市场" name="application_method">人才市场</option>
                                 <option value="网上招聘" name="application_method">网上招聘</option>
                                 <option value="外部张贴" name="application_method">外部张贴</option>
                                 <option value="登报招聘" name="application_method">登报招聘</option>
                                 <option value="内部推荐" name="application_method">内部推荐</option>
                             </select> 
-                            @*<input type="text" class="form-control input-dark" name="application_method" id="application_method" autocomplete="off" />*@
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-1"><p>家庭成员</p></div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <input type="text" class="form-control input-dark form-number" name="family_members" id="family_members" autocomplete="off" />
                         </div>
-                        <div class="col-md-0"><p>关系</p></div>
-                        <div class="col-md-2">
+                        <div class="col-md-1"><p>关系</p></div>
+                        <div class="col-md-3">
                             <input type="text" class="form-control input-dark form-number" name="family_relationship" id="family_relationship" autocomplete="off" />
                         </div>
-                        <div class="col-md-0"><p>职业</p></div>
-                        <div class="col-md-2">
+                        <div class="col-md-1"><p>成员职业</p></div>
+                        <div class="col-md-3">
                             <input type="text" class="form-control input-dark form-number" name="family_occupation" id="family_occupation" autocomplete="off" />
                         </div>
-                        <div class="col-md-1"><p>所在单位地址</p></div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"><p>政治面貌</p></div>
                         <div class="col-md-3">
-                            <input type="text" class="form-control input-dark form-number" name="family_company" id="family_company" autocomplete="off" />
+                            <input type="text" class="form-control input-dark form-number" name="landscape" id="landscape" autocomplete="off" />
                         </div>
-                        <div class="col-md-1"><p>成员联系电话</p></div>
-                        <div class="col-md-2">
-                            <input type="text" class="form-control input-dark form-number" name="family_contact" id="family_contact" autocomplete="off" />
-                        </div>
+                    <div class="col-md-1">
+                        <p>成员单位地址</p>
+                    </div>
+                    <div class="col-md-3">
+                    <input type="text" class="form-control input-dark form-number" name="family_company" id="family_company" autocomplete="off" />
+                    </div>
+                    <div class="col-md-1"><p>成员联系电话</p></div>
+                    <div class="col-md-3">
+                    <input type="text" class="form-control input-dark form-number" name="family_contact" id="family_contact" autocomplete="off" />
                     </div>
 
-                    @*<div class="row">
-                        <div class="col-md-2">
-                        <input type="text" class="form-control input-dark form-number" name="family_members" id="family_members" autocomplete="off" />
-                        </div>
-                        <div class="col-md-2">
-                        <input type="text" class="form-control input-dark form-number" name="family_relationship" id="family_relationship" autocomplete="off" />
-                        </div>
-                        <div class="col-md-2">
-                        <input type="text" class="form-control input-dark form-number" name="family_occupation" id="family_occupation" autocomplete="off"/>
-                        </div>
-                        <div class="col-md-4">
-                        <input type="text" class="form-control input-dark form-number" name="family_company" id="family_company" autocomplete="off" />
-                        </div>
-                        <div class="col-md-2">
-                        <input type="text" class="form-control input-dark form-number" name="family_contact" id="family_contact" autocomplete="off" />
-                        </div>
-                    </div>*@
+                    </div>
 
                     <div class="row">
                         <div class="col-md-1">
@@ -372,8 +363,8 @@
                     <div class="row">
                         <div class="col-md-1"><p>声明</p></div>
                         <div class="col-sm-8">
-                        <div class="row"><p>1、员工需对所填写的内容和所提供的资料实质性负责。</p></div>
-                        <div class="row"><p>2、员工入职15天后签订劳动合同，若员工入职后15日内辞职/自动离职，公司不予结算工资。</p></div>
+                        <div class="row"><div class="col-md-0"></div><div class="col-md-10"><p>1、员工需对所填写的内容和所提供的资料实质性负责。</p></div></div>
+                        <div class="row"><div class="col-md-0"></div><div class="col-md-10"><p>2、员工入职15天后签订劳动合同，若员工入职后15日内辞职/自动离职，公司不予结算工资。</p></div></div>
                         </div>
                     </div>
 
@@ -436,20 +427,19 @@
                         </div>
                     </div>
                     <div class="row">
+                        <p></p>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             </div>
                             <div class="col-md-5">
-                                <button type="submit">
-                                    <i class="fa-lock"></i>
-                                    增加
-                                </button>
+                                <button class="btn btn-gray btn-single" type="submit">增加</button>
                             </div>
                         </div>
 
                 </form>
             </div>
-        </div>
-             </div>               
+        </div></div>               
 
                             @*<div class="login-footer" style="float:left">
                             </div>

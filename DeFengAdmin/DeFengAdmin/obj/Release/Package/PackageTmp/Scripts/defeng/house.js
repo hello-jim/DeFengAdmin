@@ -2,7 +2,7 @@
 houseMaxCount = GetSysConf("houseMaxCount");
 type = "House";
 $(document).ready(function () {
-  
+
     var houseSearchVal = $("#houseSearchObj").val();
     if (houseSearchVal != "") {
         var initHouseObj = $.parseJSON(houseSearchVal);
@@ -26,7 +26,7 @@ $(document).ready(function () {
             $("#houseUseTypeSelect [value=" + initHouseObj.HouseUseType.ID + "]").attr("selected", "selected");
             $("#houseUseTypeSelect").prev().find("a span")[0].innerText = initHouseObj.HouseUseType.TypeName;
         }
-        
+
         $("#houseSizeFromSearchTxt").val(initHouseObj.HouseSizeFrom);
         $("#houseSizeToSearchTxt").val(initHouseObj.HouseSizeTo);
         $("#priceFromSearchTxt").val(initHouseObj.PriceFrom);
@@ -56,7 +56,7 @@ $(document).ready(function () {
     InitHouseType("#houseTypeSearchSelect", "全部", true);
     InitHouseStatus("#houseStatusJoinSearchSelect", "全部", true);//联合搜索
     InitHouseStatus("#houseStatusSearchSelect", "全部", true);
-   
+
     InitTableSort("#houseTable");
     InitTableColChecked("HouseTableColChecked", ".table-col-menu", false);
     InitDisplayStatus("House");
@@ -454,8 +454,10 @@ function HouseTableDoubleClick() {
         var obj = $.parseJSON($(this).attr("houseJson"));
         InitResidentialDistrict("#residentialDistrictSelect", "", false);
         InitHouseType("#houseTypeSelect", "", false);
+        InitHouseUseType("#houseUseTypeSelect", "", false);
         InitHousingLetter("#housingLetterSelect", "", false);
         InitHouseQuality("#houseQualitySelect", "", false);
+        InitOrientation("#orientationSelect", "", false);
         InitTransactionType("#transactionTypeSelect", "", false);
         InitHouseStatus("#houseStatusSelect", "", false);
         InitTaxPayType("#taxPayTypeSelect", "", false);
@@ -471,7 +473,7 @@ function HouseTableDoubleClick() {
         InitFurniture("#furnitureSelect", "", false);
         InitAppliance("#applianceSelect", "", false);
         InitLookHouseType("#lookHouseTypeSelect", "", false);
-        InitCountry("#nationalitySelect","",false);
+        InitCountry("#nationalitySelect", "", false);
         InitEditHouseData(obj);
         $("#submitHouseDate").val(DateTimeConvert_yyyyMMdd(new Date()));
         $("#proxyStartDate").val(DateTimeConvert_yyyyMMdd(new Date()));
@@ -548,35 +550,35 @@ function GetHouseObj() {
     house.HouseUseSize = $("#houseUseSizeTxt").val() != "" ? $("#houseUseSizeTxt").val() : 0;
     //朝向
     var orientation = new Object();
-    orientation.ID = $("#orientationSelect").val();
+    orientation.ID = $("#orientationSelect").val() != "" ? $("#orientationSelect").val() : 0;
     house.Orientation = orientation;
     //类型
     var houseType = new Object();
-    houseType.ID = $("#houseTypeSelect").val();
+    houseType.ID = $("#houseTypeSelect").val() != "" ? $("#houseTypeSelect").val() : 0;
     house.HouseType = houseType;
     //盘符
     var housingLetter = new Object();
-    housingLetter.ID = $("#housingLetterSelect").val();
+    housingLetter.ID = $("#housingLetterSelect").val() != "" ? $("#housingLetterSelect").val() : 0;
     house.HousingLetter = housingLetter;
     //交易
     var transactionType = new Object();
-    transactionType.ID = $("#transactionTypeSelect").val();
+    transactionType.ID = $("#transactionTypeSelect").val() != "" ? $("#transactionTypeSelect").val() : 0;
     house.TransactionType = transactionType;
     //状态
     var houseStatus = new Object();
-    houseStatus.ID = $("#houseStatusSelect").val();
+    houseStatus.ID = $("#houseStatusSelect").val() != "" ? $("#houseStatusSelect").val() : 0;
     house.HouseStatus = houseStatus;
     //价格
-    house.SaleTotalPrice = $("#saleTotalPriceTxt").val() != "" ? $("#saleTotalPriceTxt").val() : 0;
+    house.Price = $("#saleTotalPriceTxt").val() != "" ? $("#saleTotalPriceTxt").val() : 0;
     //底价
-    house.MinSalePrice = $("#minSalePriceTxt").val() != "" ? $("#minSalePriceTxt").val() : 0;
+    house.MinPrice = $("#minSalePriceTxt").val() != "" ? $("#minSalePriceTxt").val() : 0;
     house.OriginalPrice = $("#originalPriceTxt").val() != "" ? $("#originalPriceTxt").val() : 0;
     //税费支付类型
     var taxPayType = new Object();
     taxPayType.ID = $("#taxPayTypeSelect").val();
     house.TaxPayType = taxPayType;
     //租价
-    house.LeaseTotalPrice = $("#leaseTotalPriceTxt").val() != "" ? $("#leaseTotalPriceTxt").val() : 0;
+    house.LeasePrice = $("#leaseTotalPriceTxt").val() != "" ? $("#leaseTotalPriceTxt").val() : 0;
     //底价
     house.MinLeasePrice = $("#minLeasePriceTxt").val() != "" ? $("#minLeasePriceTxt").val() : 0;
     //委托方式
@@ -663,11 +665,11 @@ function InitEditHouseData(obj) {
         $(".owner-show").show();
     });
     $("#houseID").val(obj.ID);
-    var arr = {"city": obj.City.ID, "district": obj.District.ID, "area": obj.Area.ID };
+    var arr = { "city": obj.City.ID, "district": obj.District.ID, "area": obj.Area.ID };
 
     //省
     InitCity("#citySelect", 19, "#districtSelect", "#areaSelect", false, arr);
-  
+
     //城
     $("#citySelect [value=" + obj.City.ID + "]").attr("selected", "selected");
     $("#citySelect").prev().find("a span")[0].innerText = $("#citySelect :selected").text();
@@ -688,6 +690,8 @@ function InitEditHouseData(obj) {
     $("#totalFloorTxt").val(obj.TotalFloor);
     //房间
     $("#roomCountTxt").val(obj.RoomCount);
+    //房号
+    $("#houseNumberTxt").val(obj.HouseNumber);
     //厅
     $("#hallCountTxt").val(obj.HallCount);
     //卫
@@ -720,14 +724,14 @@ function InitEditHouseData(obj) {
     $("#houseStatusSelect [value=" + obj.HouseStatus.ID + "]").attr("selected", "selected");
     $("#houseStatusSelect").prev().find("a span")[0].innerText = $("#houseStatusSelect :selected").text();
     //销售总价
-    $("#saleTotalPriceTxt").val(obj.SaleTotalPrice);
+    $("#saleTotalPriceTxt").val(obj.Price);
     //底价
-    $("#minSalePriceTxt").val(obj.MinSalePrice);
+    $("#minSalePriceTxt").val(obj.MinPrice);
     //税费支付类型
     $("#taxPayTypeSelect [value=" + obj.TaxPayType.ID + "]").attr("selected", "selected");
     $("#taxPayTypeSelect").prev().find("a span")[0].innerText = $("#taxPayTypeSelect :selected").text();
     //租价
-    $("#leaseTotalPriceTxt").val(obj.LeaseTotalPrice);
+    $("#leaseTotalPriceTxt").val(obj.LeasePrice);
     //底价
     $("#minLeasePriceTxt").val(obj.MinLeasePrice);
     //委托方式
@@ -755,7 +759,7 @@ function InitEditHouseData(obj) {
     $("#houseDocumentTypeSelect [value=" + (obj.HouseDocumentType != null ? obj.HouseDocumentType.ID : 0) + "]").attr("selected", "selected");
     $("#houseDocumentTypeSelect").prev().find("a span")[0].innerText = $("#houseDocumentTypeSelect :selected").text();
     //配套
-    InitMultipleSelectData("#supportingSelect", obj.Supporting.ItemValue);
+    InitMultipleSelectData("#supportingSelect", obj.Supporting);
     //付款
     $("#housePayTypeSelect [value=" + (obj.HousePayType != null ? obj.HousePayType.ID : 0) + "]").attr("selected", "selected");
     $("#housePayTypeSelect").prev().find("a span")[0].innerText = $("#housePayTypeSelect :selected").text();
@@ -892,7 +896,7 @@ function InitFileUp() {
         });
         $(".imgPanellDiv").show();
         $("input[name='houseID']").val($("#houseID").val());
-      
+
         var scrollTop = $(document).scrollTop();
         $(".imgPanellDiv").css("top", scrollTop + 50 + "px");
         var id = $("#houseID").val();
@@ -1052,7 +1056,7 @@ function GetFollowRecordObj() {
 }
 
 function ShowFollowRecordPanel() {
-  
+
     InitFollowType("#followType", "", true);
     $(".follow-record-panel").show();
     InitFollowRecord();

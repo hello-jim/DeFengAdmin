@@ -699,6 +699,22 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
-        
+        public string LoadEntrustOverDate()
+        {
+            var result = "";
+            try
+            {
+                EntrustOverDate_BLL bll = new EntrustOverDate_BLL();
+                var list = bll.LoadEntrustOverDate();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
+
     }
 }
