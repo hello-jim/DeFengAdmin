@@ -420,243 +420,380 @@
         </div>
 
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label class="control-label" for="customerName">客户</label>
                     <input class="form-control" name="customerName" id="customerNameTxt" data-validate="required" placeholder="客户" />
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="contacts">联系人</label>
-                    <input class="form-control" name="contacts" id="contactsTxt" data-validate="required" placeholder="联系人" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="idCard">身份证</label>
-                    <input class="form-control" name="idCard" id="idCardTxt" data-validate="required" placeholder="身份证" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="presentAddress">现住址</label>
-                    <input class="form-control" name="presentAddress" id="presentAddressTxt" data-validate="required" placeholder="现住址" />
-                </div>
-            </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label class="control-label" for="contactsPhone">手机</label>
                     <input class="form-control" name="contactsPhone" id="customerPhoneTxt" data-validate="required" placeholder="手机" />
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="customerNumber">客源编号</label>
+                    <input class="form-control" data-validate="required" placeholder="【自动编号】" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label" for="contacts">联系人</label>
+                    <input class="form-control" name="contacts" id="contactsTxt" data-validate="required" placeholder="联系人" />
+                </div>
+            </div>
+            <div class="col-md-3">
                 <div class="form-group">
                     <label class="control-label" for="toiletCount">联系</label>
                     <input class="form-control" name="toiletCount" id="contactsPhoneTxt" data-validate="required" placeholder="联系" />
                 </div>
             </div>
-
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <label class="control-label">交易</label>
-                    <select class="form-control" id="customerTransactionTypeSelect" selectType="customerTransactionType"></select>
+                    <label class="control-label">等级</label>
+                    <select class="form-control" id="gradeSelect"></select>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <label class="control-label">状态</label>
-                    <select class="form-control" id="customerStatusSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-5"> <span>私客</span>  <div class="cbr-replaced cbr-checked private-customer-check"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
-                    <div class="col-md-5"> 优质客 <div class="cbr-replaced cbr-checked quality-customer-check"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
-                </div>           
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="roomCount">房</label>
-                    <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="hallCount">厅</label>
-                    <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="toiletCount">卫</label>
-                    <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="balconyCount">阳台</label>
-                    <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">城市</label>
-                    <select class="form-control" id="citySelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">城区</label>
-                    <select class="form-control" id="districtSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">片区</label>
-                    <select class="form-control" id="areaSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="balconyCount">地址</label>
-                    <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">楼盘字典</label>
-                    <select class="form-control" id="residentialDistrictSelect"></select>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="workerCount">员工</label>
-                    <input class="form-control" name="workerCount" id="workerCountTxt" data-validate="required" placeholder="员工" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="dormCount">宿舍</label>
-                    <input class="form-control" name="dormCount" id="dormCountTxt" data-validate="required" placeholder="宿舍" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="officeCount">办公</label>
-                    <input class="form-control" name="officeCount" id="officeCountTxt" data-validate="required" placeholder="办公" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="clearingCount">空地</label>
-                    <input class="form-control" name="clearingCount" id="clearingCountTxt" data-validate="required" placeholder="空地" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">级别</label>
-                    <select class="form-control" id="officeLevelSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">位置</label>
-                    <select class="form-control" id="shopLocationSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">规划</label>
-                    <select class="form-control" id="landPlanSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">停车场</label>
-                    <select class="form-control" id="carParkSelect"></select>
+                    <label class="control-label" for="presentAddress">现住址</label>
+                    <input class="form-control" name="presentAddress" id="presentAddressTxt" data-validate="required" placeholder="现住址" />
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label" for="houseSize">面积</label>
-                    <input id="houseSizeFromTxt" class="form-control" name="houseSizeFrom" data-validate="required" placeholder="面积" />-
-                    <input id="houseSizeToTxt" class="form-control" name="houseSizeTo" data-validate="required" placeholder="面积" />
+                    <label class="control-label" for="idCard">身份证</label>
+                    <input class="form-control" name="idCard" id="idCardTxt" data-validate="required" placeholder="身份证" />
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="form-group">
-                    <label class="control-label" for="houseUseSize">价格</label>
-                    <input id="priceFromTxt" class="form-control" name="priceFrom" data-validate="required" placeholder="From" />-
-                    <input id="priceToTxt" class="form-control" name="priceTo" data-validate="required" placeholder="To" />
+                    <label class="control-label">类别</label>
+                    <select class="form-control" id="customerTypeSelect"></select>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="form-group input-append date form_datetime">
-                    <label class="control-label" for="entrustStartDate">委托日期</label>
-                    <input id="entrustStartDateTxt" class="form-control" name="entrustStartDate" data-validate="required" placeholder="委托日期" readonly />
-                    <span class="add-on"><i class="icon-remove"></i></span>
-                    <span class="add-on"><i class="icon-calendar"></i></span>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">意向</label>
+                    <select class="form-control" id="intentionSelect"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label" for="presentAddress">现住址</label>
+                    <input class="form-control" name="presentAddress" id="presentAddressTxt" data-validate="required" placeholder="现住址" />
+                </div>
+            </div>
+           
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">国籍</label>
+                    <select class="form-control" id="nationalitySelect"></select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="control-label">期限</label>
+                    <select class="form-control" id="entrustOverDateSelect"></select>
                 </div>
             </div>
 
-            <div class="col-md-2">
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+               <div class="row">
+               <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label">来源</label>
-                    <select class="form-control" id="sourceSelect"></select>
+                    <label class="control-label">交易</label>
+                    <select class="form-control" id="customerTransactionTypeSelect" selectType="customerTransactionType"></select>
+                </div>
+                </div>
+                 <div class="col-md-6">
+                       <div class="form-group">
+                           <label class="control-label">状态</label>
+                           <select class="form-control" id="customerStatusSelect"></select>
+                       </div>
+                     </div>
+                   <div class="col-md-5">
+                       <div class="row"><label class="control-label">&nbsp;</label></div>
+                       <div class="row">
+                           <div class="col-md-4"> <span>私客</span>  <div class="cbr-replaced cbr-checked private-customer-check"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                           <div class="col-md-5"> 优质客 <div class="cbr-replaced cbr-checked quality-customer-check"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                       </div>
+                       <div class="row"><label class="control-label">&nbsp;</label></div>
+                   </div>
+                 </div>
+            
+                <div class="row">
+                    <div class="col-md-10">
+                    <div class="form-group">
+                        <label class="control-label" for="balconyCount">地址</label>
+                        <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="地址" />
+                    </div>
+                </div>
+               </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="roomCount">房</label>
+                            <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="hallCount">厅</label>
+                            <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="toiletCount">卫</label>
+                            <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label" for="balconyCount">阳台</label>
+                            <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" for="houseSize">面积</label>
+                            <input id="houseSizeFromTxt" class="form-control" name="houseSizeFrom" data-validate="required" placeholder="面积" />-
+                            <input id="houseSizeToTxt" class="form-control" name="houseSizeTo" data-validate="required" placeholder="面积" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group input-append date form_datetime">
+                            <label class="control-label" for="entrustStartDate">委托日期</label>
+                            <input id="entrustStartDateTxt" class="form-control" name="entrustStartDate" data-validate="required" placeholder="委托日期" readonly />
+                            <span class="add-on"><i class="icon-remove"></i></span>
+                            <span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" for="houseUseSize">价格</label>
+                            <input id="priceFromTxt" class="form-control" name="priceFrom" data-validate="required" placeholder="From" />-
+                            <input id="priceToTxt" class="form-control" name="priceTo" data-validate="required" placeholder="To" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">来源</label>
+                            <select class="form-control" id="sourceSelect"></select>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <div class="col-md-6">
+                <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label">用途</label>
+                        <select class="form-control" id="houseUseTypeSelect"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="floor">楼层</label>
+                        <input class="form-control" name="floor" id="floorTxt" data-validate="required" placeholder="楼层" />
+                    </div>
                 </div>
             </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">类型</label>
+                            <select class="form-control" id="houseTypeSelect"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">朝向</label>
+                            <select class="form-control" id="houseTypeSelect"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">装修</label>
+                            <select class="form-control" id="decorationTypeSelect"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">付款</label>
+                            <select class="form-control" id="housePayTypeSelect"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">配套</label>
+                            <select class="form-control" id="supportingSelect"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">付佣</label>
+                            <select class="form-control" id="commissionPayTypeSelect"></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea class="form-control" cols="6" id="remarksTxt" placeholder="备注"></textarea>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="">&nbsp;</label>
+                                <input class="form-control" name="" id="" data-validate="required" placeholder="员工" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="">&nbsp;</label>
+                                <input class="form-control" name="" id="" data-validate="required" placeholder="员工" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="">&nbsp;</label>
+                                <input class="form-control" name="" id="" data-validate="required" placeholder="员工" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label" for="">&nbsp;</label>
+                                <input class="form-control" name="" id="" data-validate="required" placeholder="员工" />
+                            </div>
+                        </div>
+                    </div>
+
+                
+
+            </div>
+        </div>
+       
+        
+       
+       
+        
+        
+
+       
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">城市</label>
+                <select class="form-control" id="citySelect"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">城区</label>
+                <select class="form-control" id="districtSelect"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">片区</label>
+                <select class="form-control" id="areaSelect"></select>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">楼盘字典</label>
+                <select class="form-control" id="residentialDistrictSelect"></select>
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label" for="workerCount">员工</label>
+                <input class="form-control" name="workerCount" id="workerCountTxt" data-validate="required" placeholder="员工" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label" for="dormCount">宿舍</label>
+                <input class="form-control" name="dormCount" id="dormCountTxt" data-validate="required" placeholder="宿舍" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label" for="officeCount">办公</label>
+                <input class="form-control" name="officeCount" id="officeCountTxt" data-validate="required" placeholder="办公" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label" for="clearingCount">空地</label>
+                <input class="form-control" name="clearingCount" id="clearingCountTxt" data-validate="required" placeholder="空地" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">级别</label>
+                <select class="form-control" id="officeLevelSelect"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">位置</label>
+                <select class="form-control" id="shopLocationSelect"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">规划</label>
+                <select class="form-control" id="landPlanSelect"></select>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="control-label">停车场</label>
+                <select class="form-control" id="carParkSelect"></select>
+            </div>
+        </div>
+
+        <div class="row">
+           
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">委托方式</label>
                     <select class="form-control" id="entrustTypeSelect"></select>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">等级</label>
-                    <select class="form-control" id="gradeSelect"></select>
-                </div>
-            </div>
+
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">类别</label>
-                    <select class="form-control" id="customerTypeSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">意向</label>
-                    <select class="form-control" id="intentionSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">国籍</label>
-                    <select class="form-control" id="nationalitySelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">期限</label>
-                    <select class="form-control" id="entrustOverDateSelect"></select>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">用途</label>
-                    <select class="form-control" id="houseUseTypeSelect"></select>
-                </div>
-            </div>
+
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label" for="park">停车</label>
@@ -675,12 +812,7 @@
                     <input id="electricityTxt" class="form-control" name="electricity" data-validate="required" placeholder="电量" />
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">类型</label>
-                    <select class="form-control" id="houseTypeSelect"></select>
-                </div>
-            </div>
+
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">围墙</label>
@@ -696,34 +828,13 @@
 
             <div class="col-md-2">
                 <div class="form-group">
-                    <label class="control-label">付款</label>
-                    <select class="form-control" id="housePayTypeSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
                     <label class="control-label">地段</label>
                     <select class="form-control" id="shopAreaSelect"></select>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">装修</label>
-                    <select class="form-control" id="decorationTypeSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">配套</label>
-                    <select class="form-control" id="supportingSelect" multiple></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">付佣</label>
-                    <select class="form-control" id="commissionPayTypeSelect"></select>
-                </div>
-            </div>
+           
+           
+            
         </div>
         <div class="row">
             <div class="form-group">
@@ -761,9 +872,7 @@
                     </div>
                 </div>
                 <div class=""></div>
-                <div class="col-sm-6">
-                    <textarea class="form-control" cols="5" id="remarksTxt" placeholder="备注"></textarea>
-                </div>
+                
             </div>
         </div>
         <div class="row">
@@ -775,7 +884,7 @@
             </div>
             <div class="col-md-2">
                 <button class="btn  owner-show" type="button">看业主</button>
-                <button class="btn  follow-record-show" type="button">看跟进</button>
+                <button class="btn  follow-record-show" type="button">看客户</button>
             </div>
             <div class="col-md-2"></div>
 

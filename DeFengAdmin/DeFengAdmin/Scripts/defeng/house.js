@@ -489,6 +489,7 @@ function HouseTableDoubleClick() {
                 function (data) {
                     if (data == "1") {
                         alert("success");
+                        $(".housePanelDiv").hide();
                     }
                     $(thisObj).removeAttr("disabled");
                 });
@@ -832,197 +833,198 @@ function HouseAdd() {
                 }, function (data) {
                     if (data == "1") {
                         alert("success");
+                        $(".housePanelDiv").hide();
                     }
                 });
         });
     });
 
-        $("#houseUseTypeSelect").on("click", function () {
-            var checkHouseUseType = $("#houseUseTypeSelect").val();
-            switch (checkHouseUseType) {
-                //住宅
-                case "1":
-                    $(".div1").show();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //商住
-                case "2":
-                    $(".div2").show();
-                    $(".div1").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //商铺
-                case "3":
-                    $(".div3").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //地皮
-                case "4":
-                    $(".div4").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //其他
-                case "5":
-                    $(".div5").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
+    $("#houseUseTypeSelect").on("click", function () {
+        var checkHouseUseType = $("#houseUseTypeSelect").val();
+        switch (checkHouseUseType) {
+            //住宅
+            case "1":
+                $(".div1").show();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //商住
+            case "2":
+                $(".div2").show();
+                $(".div1").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //商铺
+            case "3":
+                $(".div3").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //地皮
+            case "4":
+                $(".div4").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //其他
+            case "5":
+                $(".div5").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
                 //写字楼
-                case "6":
-                    $(".div6").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //网点
-                case "7":
-                    $(".div7").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //厂房
-                case "8":
-                    $(".div8").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //写厂
-                case "9":
-                    $(".div9").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //辅厂
-                case "10":
-                    $(".div10").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div11").hide();
-                    $(".div12").hide();
-                    break;
-                    //仓库
-                case "11":
-                    $(".div11").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div12").hide();
-                    break;
-                    //车位
-                case "12":
-                    $(".div12").show();
-                    $(".div1").hide();
-                    $(".div2").hide();
-                    $(".div3").hide();
-                    $(".div4").hide();
-                    $(".div5").hide();
-                    $(".div6").hide();
-                    $(".div7").hide();
-                    $(".div8").hide();
-                    $(".div9").hide();
-                    $(".div10").hide();
-                    $(".div11").hide();
-                    break;
-                    
-            }
-        })
+            case "6":
+                $(".div6").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //网点
+            case "7":
+                $(".div7").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //厂房
+            case "8":
+                $(".div8").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //写厂
+            case "9":
+                $(".div9").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //辅厂
+            case "10":
+                $(".div10").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div11").hide();
+                $(".div12").hide();
+                break;
+                //仓库
+            case "11":
+                $(".div11").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div12").hide();
+                break;
+                //车位
+            case "12":
+                $(".div12").show();
+                $(".div1").hide();
+                $(".div2").hide();
+                $(".div3").hide();
+                $(".div4").hide();
+                $(".div5").hide();
+                $(".div6").hide();
+                $(".div7").hide();
+                $(".div8").hide();
+                $(".div9").hide();
+                $(".div10").hide();
+                $(".div11").hide();
+                break;
+
+        }
+    })
 }
 
 //房源面板

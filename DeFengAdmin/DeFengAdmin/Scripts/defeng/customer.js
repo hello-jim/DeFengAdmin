@@ -529,6 +529,7 @@ function InitCustomerAdd() {
                 }, function (data) {
                     if (data == "1") {
                         alert("success");
+                        $(".customer-panel").hide();
                     }
                 });
         });
@@ -877,6 +878,7 @@ function CustomerTableDoubleClick() {
                 function (data) {
                     if (data == "1") {
                         alert("success");
+                        $(".customer-panel").hide();
                     }
                     $(thisObj).removeAttr("disabled");
                 });

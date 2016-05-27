@@ -133,14 +133,14 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
-        public List<Post> GetPost()
+        public List<Post> GetPostByDepartment()
         {
             var list = new List<Post>();
             Post_BLL bll = new Post_BLL();
             try
             {
                 var departmentID = Request["departmentID"] != null ? Convert.ToInt32(Request["departmentID"]) : 0;
-                list = bll.GetPost(departmentID);
+                list = bll.GetPostByDepartment(departmentID);
                 bll = null;
             }
             catch (Exception ex)
@@ -148,6 +148,20 @@ namespace DeFengAdmin.Controllers
                 bll = null;
             }
             return list;
+        }
+
+        public string GetPost()
+        {
+            var result = "";
+            Post_BLL bll = new Post_BLL();
+            try
+            {
+                var list = bll.GetPost();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            { }
+            return result;
         }
 
         public bool AddPost()

@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    InitPostEvent();
     InitDepartmentEvent();
     InitDepartment(".department-treeview");
     $('#add').click(function () {
@@ -40,6 +39,8 @@
                 break;
             case "jobs":
                 InitDepartment(".post-department-treeview");
+                InitPost();
+                // GetPost();
                 $(".post-department-treeview").show();
                 $(".department-treeview").hide();
                 $("#tab2").show();
@@ -88,6 +89,71 @@ function InitDepartment(element) {
         });
 }
 
+function InitPost() {
+    $.post("/Organization/GetPost",
+       function (data) {
+           var json = $.parseJSON(data);
+           $("#postJsonHidden").val(data);
+           CreatePostTabel(json);
+       });
+    $(".post-add-btn").unbind("click").on("click", function () {
+        $('.theme-popover-mask').show();
+        $('.theme-popover-mask').height($(document).height());
+        $('.post-addAndEdit-panel').slideDown(200);
+    });
+
+    $(".post-add").unbind("click").on("click", function () {
+        var post = GetPostObj();
+        var postJson = JSON.stringify(post);
+        $.post("/Organization/AddPost",
+          {
+              post: postJson
+          },
+          function (data) {
+              if (data == "1") {
+
+              }
+          });
+    });
+
+    $(".post-update").unbind("click").on("click", function () {
+        var post = GetPostObj();
+        var postJson = JSON.stringify(post);
+        $.post("/Organization/UpdatePost",
+          {
+              post: postJson
+          },
+          function (data) {
+
+          });
+    });
+
+    $(".post-delete").unbind("click").on("click", function () {
+        $.post("/Organization/DeletePost",
+                 {
+                     postID: postID
+                 },
+                function (data) {
+
+                });
+    });
+}
+
+function CreatePostTabel(json) {
+    var html = "";
+    for (var i = 0; i < json.length; i++) {
+        html += "<tr postID='" + json[i].ID + "' postName='" + json[i].PostName + "'  describe='" + json[i].Describe + "' isEnable='" + json[i].IsEnable + "'  postGrade='" + json[i].PostGrade + "' >";
+        html += "<td>" + "<div  class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
+        html += "<td>" + (i + 1) + "</td>";
+        html += "<td>" + json[i].PostName + "</td>";
+        html += "<td>" + json[i].PostGrade + "</td>";
+        html += "<td>" + (json[i].IsEnable == true ? "是" : "否") + "</td>";
+        html += "</tr>";
+    }
+    $(".post-table tbody").html(html);
+    InitCheckBox();
+}
+
 function CreateDepartmentTable(childrenDepartmentArr) {
     var html = "";
     for (var i = 0; i < childrenDepartmentArr.length; i++) {
@@ -121,41 +187,7 @@ function InitDepartmentData(obj) {
     $("isEnableSelect").val($(obj).attr(""));
 }
 
-function InitPostEvent() {
-    $(".post-add").unbind("click").on("click", function () {
-        var post = GetPostObj();
-        var postJson = JSON.stringify(post);
-        $.post("/Organization/AddPost",
-          {
-              post: postJson
-          },
-          function (data) {
 
-          });
-    });
-
-    $(".post-update").unbind("click").on("click", function () {
-        var post = GetPostObj();
-        var postJson = JSON.stringify(post);
-        $.post("/Organization/UpdatePost",
-          {
-              post: postJson
-          },
-          function (data) {
-
-          });
-    });
-
-    $(".post-delete").unbind("click").on("click", function () {
-        $.post("/Organization/DeletePost",
-                 {
-                     postID: postID
-                 },
-                function (data) {
-
-                });
-    });
-}
 
 function InitDepartmentEvent() {
     $(".department-add").unbind("click").on("click", function () {
@@ -236,12 +268,14 @@ function GetDepartmentObj() {
 
 function GetPostObj() {
     var post = new Object();
-    post.ID = $("#postHide").val();
+    post.ID = $("#postID").val();
+    post.PostName = $("#postNameTxt").val();
     post.PostName = $("#postNameTxt").val();
     var department = new Object();
-    department.ID = $("#post");
+    department.ID = $("#postDepID").val();
     post.Department = department;
     post.IsEnable = $("#postIsEnableSelect").val() == "1";
+    return post;
 }
 
 function GetStaffByDepartment(departmentID) {
@@ -254,23 +288,7 @@ function GetStaffByDepartment(departmentID) {
         });
 }
 
-function GetPost(departmentID) {
-    var departmentID = $().val();
-    $.post("/Organization/GetPost",
-      {
-          departmentID: departmentID
-      },
-      function (data) {
 
-      });
-}
-
-function InitPost() {
-    $("/Organization/LoadPost",
-        function (data) {
-
-    })
-}
 
 function CreatePostTable(json) {
     var html = "";
