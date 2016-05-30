@@ -30,42 +30,42 @@
         var btnType = $(this).attr("btnType");
         switch (btnType) {
             case "department":
-                InitDepartmentTreeView(".department-treeview");
                 $(".department-treeview").show();
                 $(".post-department-treeview").hide();
                 $(".staff-department-treeview").hide();
                 $("#tab1").show();
                 $("#tab2").hide();
                 $("#tab3").hide();
+                InitDepartment();
                 break;
             case "jobs":
-                InitDepartmentTreeView(".post-department-treeview");
                 $(".post-department-treeview").show();
                 $(".department-treeview").hide();
                 $(".staff-department-treeview").hide();
-                InitPost();
                 $("#tab2").show();
                 $("#tab1").hide();
                 $("#tab3").hide();
+                InitPost();
                 break;
             case "personnel":
-                InitDepartmentTreeView(".staff-department-treeview");
                 $(".post-department-treeview").hide();
                 $(".department-treeview").hide();
                 $(".staff-department-treeview").show();
-                InitStaff();
                 $("#tab3").show();
                 $("#tab1").hide();
                 $("#tab2").hide();
+                InitStaff();
                 break;
         }
     });
 });
 
-function InitDepartmentTreeView(element) {
+function InitDepartmentTreeView(element, async) {
     $("" + element + " ul *").remove();
-    $.post("/Organization/LoadDepartment",
-        function (data) {
+    $.ajax({
+        url: "/Organization/LoadDepartment",
+        async: async,
+        success: function (data) {
             var departmentList = $.parseJSON(data);
             for (var i = 0; i < departmentList.length;) {
                 var childrenHtml = "";
@@ -83,23 +83,40 @@ function InitDepartmentTreeView(element) {
                 persist: "cookie",
                 cookieId: "treeview-black"
             });
-        });
+        }
+    });
+    $.post("/Organization/LoadDepartment");
 }
 
 function InitDepartment() {
-    InitDepartmentTreeView(".department-treeview");
+    InitDepartmentTreeView(".department-treeview", false);
     $(".department-treeview ul a").unbind("click").on("click", function () {
         var thisObj = $(this);
         var departmentID = $(thisObj).attr("departmentID2");
         var level = parseInt($(thisObj).attr("level")) + 1;
         $("#parentID").val(departmentID);
         $("#level").val(level);
-        var childrenDepartmentArr = $("" + element + " ul [parentID=" + departmentID + "]");
+        var childrenDepartmentArr = $(".department-treeview ul [parentID=" + departmentID + "]");
         CreateDepartmentTable(childrenDepartmentArr);
     });
 }
 
 function InitPost() {
+    InitDepartmentTreeView(".post-department-treeview", false);
+    $(".post-department-treeview ul a").unbind("click").on("click", function () {
+        var thisObj = $(this);
+        var departmentID = $(thisObj).attr("departmentID2");
+        $("#postDepID").val(departmentID);
+        var postJsonStr = $("#postJsonHidden").val();
+
+        if (postJsonStr != "") {
+            var postJson = $.parseJSON(postJsonStr);
+            var filterarray = $.grep(postJson, function (value) {
+               return value.Department.ID == departmentID;
+            });
+            CreatePostTabel(filterarray);
+        }
+    });
     $.post("/Organization/GetPost",
        function (data) {
            var json = $.parseJSON(data);
@@ -254,7 +271,7 @@ function InitDepartmentEvent() {
 function CreatePostTabel(json) {
     var html = "";
     for (var i = 0; i < json.length; i++) {
-        html += "<tr postID='" + json[i].ID + "' postName='" + json[i].PostName + "'  describe='" + json[i].Describe + "' isEnable='" + json[i].IsEnable + "' postDepID=" + json[i].Department.ID + "  postGrade='" + json[i].PostGrade + "' >";
+        html += "<tr postID='" + json[i].ID + "' postName='" + json[i].PostName + "'  description='" + json[i].Description + "' isEnable=" + json[i].IsEnable + " postDepID=" + json[i].Department.ID + "  postGrade='" + json[i].PostGrade + "' >";
         html += "<td>" + "<div  class='cbr-replaced col-post-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
         html += "<td>" + (i + 1) + "</td>";
         html += "<td>" + json[i].PostName + "</td>";
@@ -285,7 +302,7 @@ function CreateDepartmentTable(childrenDepartmentArr) {
 function CreateStaffTable(json) {
     var html = "";
     for (var i = 0; i < json.length; i++) {
-        html += "<tr>";
+        html += "<tr staffID="+json[i].ID+">";
         html += "<td>" + "<div  class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
         html += "<td>" + (i + 1) + "</td>";
         html += "<td>" + json[i].StaffName + "</td>";
@@ -295,8 +312,8 @@ function CreateStaffTable(json) {
         html += "<td>" + (json[i].IsEnable == 1 ? "是" : "否") + "</td>";
         html += "</tr>";
     }
+    $(".staff-table tbody").html(html);
     InitCheckBox();
-    return html;
 }
 
 //获取下级部门
@@ -320,9 +337,13 @@ function InitPostData(obj) {
     $("#postID").val($(obj).attr("postID"));
     $("#postNameTxt").val($(obj).attr("postName"));
     $("#postDepID").val($(obj).attr("postDepID"));
-    $("#postIsEnableSelect").val($(obj).attr("postIsEnable"));
-    $("#postDescriptionTxt").val($(obj).attr("describe"));
-    $("postGradeTxt").val($(obj).attr("postGrade"));
+    $("#postIsEnableSelect").val(Number($(obj).attr("isenable")=="true"));
+    $("#postDescriptionTxt").val($(obj).attr("description"));
+    $("#postGradeTxt").val($(obj).attr("postGrade"));
+}
+
+function InitStaffData() {
+    
 }
 
 function GetDepartmentObj() {
@@ -337,10 +358,10 @@ function GetDepartmentObj() {
 
 function GetPostObj() {
     var post = new Object();
-    post.ID = $("#postID").val();
+    post.ID = $("#postID").val() != "" ? $("#postID").val() : 0;
     post.PostName = $("#postNameTxt").val();
     post.Description = $("#postDescriptionTxt").val();
-    post.PostGrade = $("postGradeTxt").val();
+    post.PostGrade = $("#postGradeTxt").val();
     var department = new Object();
     department.ID = $("#postDepID").val();
     post.Department = department;
@@ -350,7 +371,7 @@ function GetPostObj() {
 
 function GetStaff() {
     var staff = new Object();
-    staff.ID = $("#staffID").val();
+    staff.ID = $("#staffID").val() != "" ? $("#staffID").val() : 0;
     staff.StaffName = $("#staffNameTxt").val();
     staff.Sex = $("#sexSelect").val();
     staff.Age = $("#ageTxt").val();
@@ -376,12 +397,27 @@ function GetStaffByDepartment(departmentID) {
 }
 
 function InitStaff() {
+    InitDepartmentTreeView(".staff-department-treeview", false);
     $.post("/Organization/GetStaff",
         function (data) {
-            CreateStaffTable();
+            $("#staffJsonHidden").val(data);
             var json = $.parseJSON(data);
             CreateStaffTable(json);
         });
+    $(".staff-department-treeview ul a").unbind("click").on("click", function () {
+        var thisObj = $(this);
+        var departmentID = $(thisObj).attr("departmentID2");
+        //$("#DepID").val(departmentID);
+        var staffJsonStr = $("#staffJsonHidden").val();
+
+        if (staffJsonStr != "") {
+            var staffJson = $.parseJSON(staffJsonStr);
+            var filterarray = $.grep(staffJson, function (value) {
+                return value.Department.ID == departmentID;
+            });
+            CreateStaffTable(filterarray);
+        }
+    });
     $(".staff-update-btn").unbind("click").on("click", function () {
         var objArr = $(".col-staff-select.cbr-checked");
         if (objArr.length > 0) {
@@ -413,7 +449,7 @@ function InitStaff() {
             if (isDelete) {
                 var idArr = new Array();
                 for (var i = 0; i < objArr.length; i++) {
-                    idArr.push($(objArr[i]).parents("tr").attr("postID"));
+                    idArr.push($(objArr[i]).parents("tr").attr("staffID"));
                 }
                 $.post("/Organization/DeleteStaff",
                     {

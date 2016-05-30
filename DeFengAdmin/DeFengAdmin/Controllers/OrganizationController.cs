@@ -169,7 +169,8 @@ namespace DeFengAdmin.Controllers
             var result = false;
             try
             {
-                result = bll.AddPost(null);
+                var post = Request["post"] != null ? JsonConvert.DeserializeObject<Post>(Request["post"]) : null;
+                result = bll.AddPost(post);
                 bll = null;
             }
             catch (Exception ex)
