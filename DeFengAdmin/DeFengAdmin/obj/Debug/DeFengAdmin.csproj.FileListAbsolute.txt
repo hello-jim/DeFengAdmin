@@ -102,7 +102,6 @@ D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\roslyn\System.Reflection.
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\roslyn\vbc.exe
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\roslyn\VBCSCompiler.exe
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\roslyn\VBCSCompiler.exe.config
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.dll.config
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.dll
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Antlr3.Runtime.dll
@@ -265,3 +264,16 @@ D:\Project_V2\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojRe
 D:\Project_V2\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_V2\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\mscorlib.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\System.Net.Http.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\System.Net.Http.WebRequest.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\System.Net.Http.xml
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\System.Net.Http.WebRequest.xml
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\zh-Hans\mscorlib.resources.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\zh-Hans\System.Net.Http.resources.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\zh-Hans\System.Net.Http.WebRequest.resources.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\normidna.nlp
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\normnfc.nlp
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\normnfd.nlp
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\normnfkc.nlp
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\normnfkd.nlp

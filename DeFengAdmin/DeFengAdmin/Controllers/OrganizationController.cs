@@ -124,7 +124,6 @@ namespace DeFengAdmin.Controllers
                     result = bll.DeleteDepartment(idArr);
                     bll = null;
                 }
-
             }
             catch (Exception ex)
             {
@@ -202,9 +201,17 @@ namespace DeFengAdmin.Controllers
             Post_BLL bll = new Post_BLL();
             try
             {
-                var id = Request["postID"] != null ? Convert.ToInt32(Request["postID"]) : 0;
-                result = bll.DeletePost(id);
-                bll = null;
+                var idStrArr = Request.Form.Count != 0 ? Request.Form[0].Split(',') : null;
+                if (idStrArr != null)
+                {
+                    List<int> idArr = new List<int>();
+                    for (int i = 0; i < idStrArr.Count(); i++)
+                    {
+                        idArr.Add(Convert.ToInt32(idStrArr[i]));
+                    }
+                    result = bll.DeletePost(idArr);
+                    bll = null;
+                }
             }
             catch (Exception ex)
             {
@@ -232,5 +239,47 @@ namespace DeFengAdmin.Controllers
             }
             return json;
         }
+
+        public string GetStaff()
+        {
+            var json = "";
+            try
+            {
+                Staff_BLL bll = new Staff_BLL();
+                var list = bll.GetStaff();
+                json = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return json;
+        }
+
+        public bool DeleteStaff()
+        {
+            var result = false;
+            Staff_BLL bll = new Staff_BLL();
+            try
+            {
+                var idStrArr = Request.Form.Count != 0 ? Request.Form[0].Split(',') : null;
+                if (idStrArr != null)
+                {
+                    List<int> idArr = new List<int>();
+                    for (int i = 0; i < idStrArr.Count(); i++)
+                    {
+                        idArr.Add(Convert.ToInt32(idStrArr[i]));
+                    }
+                    result = bll.DeleteStaff(idArr);
+                    bll = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return result;
+        }
+
     }
 }

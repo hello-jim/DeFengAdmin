@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     InitDepartmentEvent();
-    InitDepartment(".department-treeview");
+    InitDepartment();
     $('#add').click(function () {
         $('.theme-popover-mask').show();
         $('.theme-popover-mask').height($(document).height());
@@ -30,24 +30,30 @@
         var btnType = $(this).attr("btnType");
         switch (btnType) {
             case "department":
-                InitDepartment(".department-treeview");
+                InitDepartmentTreeView(".department-treeview");
                 $(".department-treeview").show();
                 $(".post-department-treeview").hide();
+                $(".staff-department-treeview").hide();
                 $("#tab1").show();
                 $("#tab2").hide();
                 $("#tab3").hide();
                 break;
             case "jobs":
-                InitDepartment(".post-department-treeview");
-                InitPost();
-                // GetPost();
+                InitDepartmentTreeView(".post-department-treeview");
                 $(".post-department-treeview").show();
                 $(".department-treeview").hide();
+                $(".staff-department-treeview").hide();
+                InitPost();
                 $("#tab2").show();
                 $("#tab1").hide();
                 $("#tab3").hide();
                 break;
             case "personnel":
+                InitDepartmentTreeView(".staff-department-treeview");
+                $(".post-department-treeview").hide();
+                $(".department-treeview").hide();
+                $(".staff-department-treeview").show();
+                InitStaff();
                 $("#tab3").show();
                 $("#tab1").hide();
                 $("#tab2").hide();
@@ -56,7 +62,7 @@
     });
 });
 
-function InitDepartment(element) {
+function InitDepartmentTreeView(element) {
     $("" + element + " ul *").remove();
     $.post("/Organization/LoadDepartment",
         function (data) {
@@ -77,16 +83,20 @@ function InitDepartment(element) {
                 persist: "cookie",
                 cookieId: "treeview-black"
             });
-            $("" + element + " ul a").unbind("click").on("click", function () {
-                var thisObj = $(this);
-                var departmentID = $(thisObj).attr("departmentID2");
-                var level = parseInt($(thisObj).attr("level")) + 1;
-                $("#parentID").val(departmentID);
-                $("#level").val(level);
-                var childrenDepartmentArr = $("" + element + " ul [parentID=" + departmentID + "]");
-                CreateDepartmentTable(childrenDepartmentArr);
-            });
         });
+}
+
+function InitDepartment() {
+    InitDepartmentTreeView(".department-treeview");
+    $(".department-treeview ul a").unbind("click").on("click", function () {
+        var thisObj = $(this);
+        var departmentID = $(thisObj).attr("departmentID2");
+        var level = parseInt($(thisObj).attr("level")) + 1;
+        $("#parentID").val(departmentID);
+        $("#level").val(level);
+        var childrenDepartmentArr = $("" + element + " ul [parentID=" + departmentID + "]");
+        CreateDepartmentTable(childrenDepartmentArr);
+    });
 }
 
 function InitPost() {
@@ -100,6 +110,18 @@ function InitPost() {
         $('.theme-popover-mask').show();
         $('.theme-popover-mask').height($(document).height());
         $('.post-addAndEdit-panel').slideDown(200);
+    });
+
+    $(".post-update-btn").unbind("click").on("click", function () {
+        var objArr = $(".col-post-select.cbr-checked");
+        if (objArr.length > 0) {
+            var selectTr = $(objArr[0]).parents("tr");
+            InitPostData(selectTr);
+        }
+        $('.theme-popover-mask').show();
+        $('.theme-popover-mask').height($(document).height());
+        $('.post-addAndEdit-panel').slideDown(200);
+
     });
 
     $(".post-add").unbind("click").on("click", function () {
@@ -129,65 +151,38 @@ function InitPost() {
     });
 
     $(".post-delete").unbind("click").on("click", function () {
+        var objArr = $(".col-post-select.cbr-checked");
+        if (objArr.length > 0) {
+            var isDelete = confirm("确定要删除吗？");
+            if (isDelete) {
+                var idArr = new Array();
+                for (var i = 0; i < objArr.length; i++) {
+                    idArr.push($(objArr[i]).parents("tr").attr("postID"));
+                }
+                $.post("/Organization/DeletePost",
+                    {
+                        idArr: idArr
+                    },
+                    function (data) {
+                        if (data) {
+                            $(".col-post-select.cbr-checked").parents("tr").remove();
+                        }
+                    });
+            }
+            else {
+                return;
+            } 0
+        } else {
+        }
         $.post("/Organization/DeletePost",
-                 {
-                     postID: postID
-                 },
-                function (data) {
+          {
+              departmentID: departmentID
+          },
+          function (data) {
 
-                });
+          });
     });
 }
-
-function CreatePostTabel(json) {
-    var html = "";
-    for (var i = 0; i < json.length; i++) {
-        html += "<tr postID='" + json[i].ID + "' postName='" + json[i].PostName + "'  describe='" + json[i].Describe + "' isEnable='" + json[i].IsEnable + "'  postGrade='" + json[i].PostGrade + "' >";
-        html += "<td>" + "<div  class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
-        html += "<td>" + (i + 1) + "</td>";
-        html += "<td>" + json[i].PostName + "</td>";
-        html += "<td>" + json[i].PostGrade + "</td>";
-        html += "<td>" + (json[i].IsEnable == true ? "是" : "否") + "</td>";
-        html += "</tr>";
-    }
-    $(".post-table tbody").html(html);
-    InitCheckBox();
-}
-
-function CreateDepartmentTable(childrenDepartmentArr) {
-    var html = "";
-    for (var i = 0; i < childrenDepartmentArr.length; i++) {
-        html += "<tr depID='" + $(childrenDepartmentArr[i]).attr("departmentID2") + "' departmentName='" + $(childrenDepartmentArr[i]).attr("departmentName") + "'  describe='" + $(childrenDepartmentArr[i]).attr("describe") + "' isEnable='" + $(childrenDepartmentArr[i]).attr("isEnable") + "' parentID='" + $(childrenDepartmentArr[i]).attr("parentID") + "' level='" + $(childrenDepartmentArr[i]).attr("level") + "' >";
-        html += "<td>" + "<div  class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
-        html += "<td>" + i + 1 + "</td>";
-        html += "<td>" + $(childrenDepartmentArr[i]).attr("departmentName") + "</td>";
-        html += "<td>" + $(childrenDepartmentArr[i]).attr("describe") + "</td>";
-        html += "<td>" + $(childrenDepartmentArr[i]).attr("departmentID2") + "</td>";
-        html += "<td>" + $(childrenDepartmentArr[i]).attr("isEnable") + "</td>";
-        html += "</tr>";
-    }
-    $("#departmentTabel tbody").html(html);
-    InitCheckBox();
-}
-
-//获取子Obj
-function GetChildrenObj(ID, obj) {
-    var childrenObj = obj.filter(function (item, index) {
-        if (item.Parent == ID)
-            return true;
-    });
-    return childrenObj;
-}
-
-function InitDepartmentData(obj) {
-    $("#depID").val($(obj).attr("depID"));
-    $("#departmentNameTxt").val($(obj).attr("departmentName"));
-    $("#parentID").val($(obj).attr("parentID"));//上级
-    $("#level").val($(obj).attr("level"));
-    $("isEnableSelect").val($(obj).attr(""));
-}
-
-
 
 function InitDepartmentEvent() {
     $(".department-add").unbind("click").on("click", function () {
@@ -256,6 +251,80 @@ function InitDepartmentEvent() {
     });
 }
 
+function CreatePostTabel(json) {
+    var html = "";
+    for (var i = 0; i < json.length; i++) {
+        html += "<tr postID='" + json[i].ID + "' postName='" + json[i].PostName + "'  describe='" + json[i].Describe + "' isEnable='" + json[i].IsEnable + "' postDepID=" + json[i].Department.ID + "  postGrade='" + json[i].PostGrade + "' >";
+        html += "<td>" + "<div  class='cbr-replaced col-post-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
+        html += "<td>" + (i + 1) + "</td>";
+        html += "<td>" + json[i].PostName + "</td>";
+        html += "<td>" + json[i].PostGrade + "</td>";
+        html += "<td>" + (json[i].IsEnable == true ? "是" : "否") + "</td>";
+        html += "</tr>";
+    }
+    $(".post-table tbody").html(html);
+    InitCheckBox();
+}
+
+function CreateDepartmentTable(childrenDepartmentArr) {
+    var html = "";
+    for (var i = 0; i < childrenDepartmentArr.length; i++) {
+        html += "<tr depID='" + $(childrenDepartmentArr[i]).attr("departmentID2") + "' departmentName='" + $(childrenDepartmentArr[i]).attr("departmentName") + "'  describe='" + $(childrenDepartmentArr[i]).attr("describe") + "' isEnable='" + $(childrenDepartmentArr[i]).attr("isEnable") + "' parentID='" + $(childrenDepartmentArr[i]).attr("parentID") + "' level='" + $(childrenDepartmentArr[i]).attr("level") + "' >";
+        html += "<td>" + "<div  class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
+        html += "<td>" + i + 1 + "</td>";
+        html += "<td>" + $(childrenDepartmentArr[i]).attr("departmentName") + "</td>";
+        html += "<td>" + $(childrenDepartmentArr[i]).attr("describe") + "</td>";
+        html += "<td>" + $(childrenDepartmentArr[i]).attr("departmentID2") + "</td>";
+        html += "<td>" + $(childrenDepartmentArr[i]).attr("isEnable") + "</td>";
+        html += "</tr>";
+    }
+    $("#departmentTabel tbody").html(html);
+    InitCheckBox();
+}
+
+function CreateStaffTable(json) {
+    var html = "";
+    for (var i = 0; i < json.length; i++) {
+        html += "<tr>";
+        html += "<td>" + "<div  class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
+        html += "<td>" + (i + 1) + "</td>";
+        html += "<td>" + json[i].StaffName + "</td>";
+        html += "<td>" + json[i].Department.DepartmentName + "</td>";
+        html += "<td>" + json[i].Post.PostName + "</td>";
+        html += "<td>" + (json[i].Sex == 1 ? "男" : "女") + "</td>";
+        html += "<td>" + (json[i].IsEnable == 1 ? "是" : "否") + "</td>";
+        html += "</tr>";
+    }
+    InitCheckBox();
+    return html;
+}
+
+//获取下级部门
+function GetChildrenObj(ID, obj) {
+    var childrenObj = obj.filter(function (item, index) {
+        if (item.Parent == ID)
+            return true;
+    });
+    return childrenObj;
+}
+
+function InitDepartmentData(obj) {
+    $("#depID").val($(obj).attr("depID"));
+    $("#departmentNameTxt").val($(obj).attr("departmentName"));
+    $("#parentID").val($(obj).attr("parentID"));//上级
+    $("#level").val($(obj).attr("level"));
+    $("isEnableSelect").val($(obj).attr(""));
+}
+
+function InitPostData(obj) {
+    $("#postID").val($(obj).attr("postID"));
+    $("#postNameTxt").val($(obj).attr("postName"));
+    $("#postDepID").val($(obj).attr("postDepID"));
+    $("#postIsEnableSelect").val($(obj).attr("postIsEnable"));
+    $("#postDescriptionTxt").val($(obj).attr("describe"));
+    $("postGradeTxt").val($(obj).attr("postGrade"));
+}
+
 function GetDepartmentObj() {
     var department = new Object();
     department.ID = $("#depID").val() != "" ? $("#depID").val() : 0;
@@ -270,12 +339,30 @@ function GetPostObj() {
     var post = new Object();
     post.ID = $("#postID").val();
     post.PostName = $("#postNameTxt").val();
-    post.PostName = $("#postNameTxt").val();
+    post.Description = $("#postDescriptionTxt").val();
+    post.PostGrade = $("postGradeTxt").val();
     var department = new Object();
     department.ID = $("#postDepID").val();
     post.Department = department;
     post.IsEnable = $("#postIsEnableSelect").val() == "1";
     return post;
+}
+
+function GetStaff() {
+    var staff = new Object();
+    staff.ID = $("#staffID").val();
+    staff.StaffName = $("#staffNameTxt").val();
+    staff.Sex = $("#sexSelect").val();
+    staff.Age = $("#ageTxt").val();
+    staff.IdCard = $("#idCardTxt").val();
+    staff.OfficTel = $("#officTelTxt").val();
+    staff.Phone = $("#phoneTxt").val();
+    staff.Email = $("#emailTxt").val();
+    staff.DateBirth = $("#dateBirthTxt").val();
+    staff.IsEnable = $("#staffIsEnableSelect").val();
+    staff.Leader.ID = $("#leader").val();
+    staff.Password = $("#passwordTxt").val();
+    return staff;
 }
 
 function GetStaffByDepartment(departmentID) {
@@ -288,14 +375,66 @@ function GetStaffByDepartment(departmentID) {
         });
 }
 
+function InitStaff() {
+    $.post("/Organization/GetStaff",
+        function (data) {
+            CreateStaffTable();
+            var json = $.parseJSON(data);
+            CreateStaffTable(json);
+        });
+    $(".staff-update-btn").unbind("click").on("click", function () {
+        var objArr = $(".col-staff-select.cbr-checked");
+        if (objArr.length > 0) {
+            var selectTr = $(objArr[0]).parents("tr");
+            InitPostData(selectTr);
+        }
+        $('.theme-popover-mask').show();
+        $('.theme-popover-mask').height($(document).height());
+        $('.staff-addAndEdit-panel').slideDown(200);
 
+    });
 
-function CreatePostTable(json) {
-    var html = "";
-    for (var i = 0; i < json.length; i++) {
-        html += "";
-    }
+    $(".staff-update").unbind("click").on("click", function () {
+        var post = GetPostObj();
+        var postJson = JSON.stringify(post);
+        $.post("/Organization/UpdateStaff",
+          {
+              post: postJson
+          },
+          function (data) {
+
+          });
+    });
+
+    $(".staff-delete").unbind("click").on("click", function () {
+        var objArr = $(".col-staff-select.cbr-checked");
+        if (objArr.length > 0) {
+            var isDelete = confirm("确定要删除吗？");
+            if (isDelete) {
+                var idArr = new Array();
+                for (var i = 0; i < objArr.length; i++) {
+                    idArr.push($(objArr[i]).parents("tr").attr("postID"));
+                }
+                $.post("/Organization/DeleteStaff",
+                    {
+                        idArr: idArr
+                    },
+                    function (data) {
+                        if (data) {
+                            $(".col-staff-select.cbr-checked").parents("tr").remove();
+                        }
+                    });
+            }
+            else {
+                return;
+            }
+        } else {
+        }
+
+    });
 }
+
+
 
 
 
