@@ -107,7 +107,7 @@
                     success: function (data) {
                         // Redirect after successful login page (when progress bar reaches 100%)
                         if (data == 1) {
-                            window.location.href = '/Home/index';
+                            window.location.href = '/Home/Login';
                         }
                         else {
                             alert("用户名已存在");                  
