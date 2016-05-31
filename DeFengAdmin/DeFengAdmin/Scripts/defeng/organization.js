@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿var allDepName = "";
+
+$(document).ready(function () {
     InitDepartmentEvent();
     InitDepartment();
     $('#add').click(function () {
@@ -177,6 +179,7 @@ function InitPost() {
 
 function InitDepartmentEvent() {
     $(".department-add").unbind("click").on("click", function () {
+        $("#allParentDep").val(GetAllParentDepartment($(obj).attr("parentID")));
         var department = GetDepartmentObj();
         var departmentJson = JSON.stringify(department);
         $.post("/Organization/AddDepartment",
@@ -276,7 +279,7 @@ function CreateDepartmentTable(childrenDepartmentArr) {
 function CreateStaffTable(json) {
     var html = "";
     for (var i = 0; i < json.length; i++) {
-        html += "<tr staffID="+json[i].ID+">";
+        html += "<tr staffID=" + json[i].ID + ">";
         html += "<td>" + "<div  class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
         html += "<td>" + (i + 1) + "</td>";
         html += "<td>" + json[i].StaffName + "</td>";
@@ -303,21 +306,22 @@ function InitDepartmentData(obj) {
     $("#depID").val($(obj).attr("depID"));
     $("#departmentNameTxt").val($(obj).attr("departmentName"));
     $("#parentID").val($(obj).attr("parentID"));//上级
+    $("#allParentDep").val(GetAllParentDepartment($(obj).attr("parentID"), $(obj).attr("departmentName")));
     $("#level").val($(obj).attr("level"));
-    $("isEnableSelect").val(Number($(obj).attr("isEnable") == "是"));
+    $("#isEnableSelect").val(Number($(obj).attr("isEnable") == "是"));
 }
 
 function InitPostData(obj) {
     $("#postID").val($(obj).attr("postID"));
     $("#postNameTxt").val($(obj).attr("postName"));
     $("#postDepID").val($(obj).attr("postDepID"));
-    $("#postIsEnableSelect").val(Number($(obj).attr("isenable")=="true"));
+    $("#postIsEnableSelect").val(Number($(obj).attr("isenable") == "true"));
     $("#postDescriptionTxt").val($(obj).attr("description"));
     $("#postGradeTxt").val($(obj).attr("postGrade"));
 }
 
 function InitStaffData() {
-    
+
 }
 
 function GetDepartmentObj() {
@@ -444,8 +448,31 @@ function InitStaff() {
     });
 }
 
-function GetAllParentDepartment(parentID) {
-    
+/*
+获取选择部门的祖先部门 
+*/
+function GetAllParentDepartment(parentID, depName) {
+    allDepName = "";
+    allDepName = GetParentDepartment(parentID);
+    allDepName = allDepName.substring(0, allDepName.lastIndexOf('/'));
+    var depNameArr = allDepName.split('/');
+    allDepName = "";
+    for (var i = depNameArr.length-1; i != -1; i--) {
+        allDepName += depNameArr[i] + "/";
+    }
+    allDepName += depName;
+    return allDepName;
+}
+/*
+获取上级部门
+*/
+function GetParentDepartment(parentID) {
+    var dep = $(".department-treeview ul a[departmentid2=" + parentID + "]");
+    if (dep.length > 0) {
+        allDepName += $(dep).attr("departmentName") + "/";
+        GetParentDepartment($(dep).attr("parentID"));
+    }
+    return allDepName;
 }
 
 
