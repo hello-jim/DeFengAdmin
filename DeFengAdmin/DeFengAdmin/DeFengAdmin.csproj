@@ -231,6 +231,8 @@
   <ItemGroup>
     <Content Include="App_Data\SysConfKey.xml" />
     <Content Include="Content\css\customer.css" />
+    <Content Include="Content\css\home.css" />
+    <Content Include="Content\css\office.css" />
     <Content Include="Content\css\organization.css" />
     <Content Include="Scripts\card.js" />
     <Content Include="Scripts\datetimepicker\bootstrap-datetimepicker.min.css" />

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css">
-
+<link rel="stylesheet" href="~/Content/css/office.css" />
 <div class="panel panel-default">
     <div class="row">
         <div class="row">&nbsp;</div>
@@ -65,7 +65,7 @@
                     <img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>发送范围：</span>
                 </div>
                 <div class="row">
-                    <input type="button" class="form-control input-dark" name="title" id="scope"  href="javascript:;" readonly/>
+                    <input type="button" class="form-control input-dark" name="title" id="scope" href="javascript:;" readonly />
                 </div>
 
                 <div class="row">&nbsp;</div>
@@ -159,29 +159,27 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                            1
+
                                         </div>
-                                        </div>
+                                    </div>
                                     <div class="row">&nbsp;</div>
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
-                                        </div>
-                                        </div>
+
+                                        <select id="staffSelect" class="range" multiple></select>
+
+                                    </div>
                                 </div>
 
-<input id="depJson" type="hidden" />
-<input id="postJson" type="hidden" />
-<input id="staffJson" type="hidden" />
-
-<script src="~/Scripts/jquery-1.11.1.min.js"></script>
-<script src="/scripts/daterangepicker/daterangepicker.js"></script>
-<script src="/scripts/datepicker/bootstrap-datepicker.js"></script>
-<script src="/scripts/timepicker/bootstrap-timepicker.min.js"></script>
-<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
+                            </div>
+                            <div id="profile" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        3
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="messages" class="tab-pane">
 
                                 <div class="row">
                                     <div class="col-md-10">
@@ -195,13 +193,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                        4
                                     </div>
                                 </div>
                                 <div class="row">&nbsp;</div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                        <select id="selected-range" multiple></select>
                                     </div>
                                 </div>
                             </div>
@@ -220,13 +218,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                        5
                                     </div>
                                 </div>
                                 <div class="row">&nbsp;</div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                        <select id="selected-range" multiple></select>
                                     </div>
                                 </div>
 
@@ -242,14 +240,7 @@
                         <div class="row">&nbsp;</div>
                         <div class="row">&nbsp;</div>
                         <div class="row">&nbsp;</div>
-                        <div class="row">
-                            <i class="fa fa-arrow-up"></i>
-                        </div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">
-                            <i class="fa fa-arrow-down"></i>
-                        </div>
-                        <div class="row">&nbsp;</div>
+
                         <div class="row">
                             <i class="fa fa-arrow-right"></i>
                         </div>
@@ -265,7 +256,7 @@
 
                 <div class="row">&nbsp;</div>
                 <div class="row">&nbsp;</div>
-                <div class="row panel">
+                <div class="row">
                     <div class="col-md-3">已选对象</div>
                     <div class="col-md-0">[0]</div>
                     <div class="col-md-4"></div>
@@ -274,39 +265,39 @@
                             设为常用组
                         </button>
                     </div>
-                    <div class="row">
-                        <textarea class="form-control" rows="19" cols="3" id="field-5"></textarea>
-                    </div>
-                </div>
 
+                </div>
+                <div class="row">
+                    <select id="selected-range" multiple></select>
+                </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 
-    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
-    <script src="/scripts/daterangepicker/daterangepicker.js"></script>
-    <script src="/scripts/datepicker/bootstrap-datepicker.js"></script>
-    <script src="/scripts/timepicker/bootstrap-timepicker.min.js"></script>
-    <script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="~/Scripts/defeng/office.js"></script>
-    <script src="~/Scripts/jquery.treeview.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('.form_datetime').datetimepicker({
-                format: 'yyyy-mm-dd',
-                language: 'zh-CN',
-                // weekStart: 1,
-                todayBtn: 1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-                minView: 2,
-                forceParse: 0
-            });
+<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<script src="/scripts/daterangepicker/daterangepicker.js"></script>
+<script src="/scripts/datepicker/bootstrap-datepicker.js"></script>
+<script src="/scripts/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="~/Scripts/defeng/office.js"></script>
+<script src="~/Scripts/jquery.treeview.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.form_datetime').datetimepicker({
+            format: 'yyyy-mm-dd',
+            language: 'zh-CN',
+            // weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
         });
+    });
 
-    </script>
+</script>

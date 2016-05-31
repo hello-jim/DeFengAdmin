@@ -44,9 +44,9 @@ function GetAnnouncement() {
 
 function InitPushRange() {
     InitDepartmentTreeView(".post-department-treeview", false);
-    $(".").on("click", function (data) {
+    $(".fa-arrow-right").on("click", function (data) {
        
-       $()
+        $("#selected-range").append($(".range :selected"));
     });
     $(".department-treeview ul a").unbind("dblclick").on("dblclick", function () {
         var thisObj = $(this);
@@ -60,9 +60,9 @@ function InitPushRange() {
         var staffJsonStr = $("#staffJson").val();
         var staffJson = staffJsonStr != "" ? $.parseJSON(staffJsonStr) : "";
         if (staffJson != "") {
-            CreateStaffOption("", staffJson);
+            CreateStaffOption("#staffSelect", staffJson);
             $(".  option").unbind("dblclick").on("dblclick", function () {
-                $(".").append($(this).attr("value"));
+                $(".").append($(this));
             });
         }
     });
