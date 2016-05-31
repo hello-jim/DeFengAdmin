@@ -1945,3 +1945,29 @@ function InitCheckBox() {
     });
 }
 
+function InitDepartmentTreeView(element, async) {
+    $("" + element + " ul *").remove();
+    $.ajax({
+        url: "/Organization/LoadDepartment",
+        async: async,
+        success: function (data) {
+            var departmentList = $.parseJSON(data);
+            for (var i = 0; i < departmentList.length;) {
+                var childrenHtml = "";
+                if (GetChildrenObj(departmentList[i].ID, departmentList).length > 0) {
+                    childrenHtml += "<li><span><a href='javascript:void(0);' level='" + departmentList[i].Level + "'  isEnable='" + (departmentList[i].IsEnable == true ? "是" : "否") + "' describe='" + departmentList[i].Describe + "' departmentName='" + departmentList[i].DepartmentName + "' departmentID2='" + departmentList[i].ID + "' parentID='" + departmentList[i].Parent + "'>" + departmentList[i].DepartmentName + "</a></span><ul departmentID='" + departmentList[i].ID + "'><li></li></ul></li>";
+                }
+                else {
+                    childrenHtml += "<li departmentID='" + departmentList[i].ID + "'><span><a href='javascript:void(0);' level='" + departmentList[i].Level + "' isEnable='" + (departmentList[i].IsEnable == true ? "是" : "否") + "' describe='" + departmentList[i].Describe + "' departmentName='" + departmentList[i].DepartmentName + "' departmentID2='" + departmentList[i].ID + "' parentID='" + departmentList[i].Parent + "'>" + departmentList[i].DepartmentName + "</a></span></li>";
+                }
+                $("[departmentID=" + departmentList[i].Parent + "]").append(childrenHtml);
+                departmentList.shift();
+            }
+            $(element).treeview({
+                control: "#treecontrol",
+                persist: "cookie",
+                cookieId: "treeview-black"
+            });
+        }
+    });
+}

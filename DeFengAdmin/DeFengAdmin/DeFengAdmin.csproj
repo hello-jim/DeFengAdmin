@@ -327,6 +327,7 @@
     <Content Include="Scripts\defeng\information.js" />
     <Content Include="Scripts\defeng\jquery.login.js" />
     <Content Include="Scripts\defeng\login.js" />
+    <Content Include="Scripts\defeng\office.js" />
     <Content Include="Scripts\defeng\register.js" />
     <Content Include="Content\css\style.css" />
     <Content Include="Scripts\devexpress-web-14.1\css\dx.android.holo-dark.css" />
