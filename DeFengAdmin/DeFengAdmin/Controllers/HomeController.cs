@@ -49,10 +49,12 @@ namespace DeFengAdmin.Controllers
         {
             return View();
         }
-        public ActionResult Institutions() {
+        public ActionResult Institutions()
+        {
             return View();
         }
-        public ActionResult ProcessCenter() {
+        public ActionResult ProcessCenter()
+        {
             return View();
         }
 
@@ -100,7 +102,7 @@ namespace DeFengAdmin.Controllers
             }
         }
 
-        
+
         //登录
         public int UserLogin()
         {
@@ -138,9 +140,6 @@ namespace DeFengAdmin.Controllers
 
             }
         }
-
-
-
 
         //个人信息
         public int StaffInformation()
@@ -234,7 +233,7 @@ namespace DeFengAdmin.Controllers
                     Family_members = family_members,
                     Family_relationship = family_relationship,
                     Family_occupation = family_occupation,
-                    Landscape= landscape,
+                    Landscape = landscape,
                     Family_company = family_company,
                     Family_contact = family_contact,
                     Entry_unit = entry_unit,
@@ -253,7 +252,7 @@ namespace DeFengAdmin.Controllers
 
                 };
                 Staff_BLL bll = new Staff_BLL();
-                var status=bll.Information(staff);
+                var status = bll.Information(staff);
                 if (status > 0)
                 {
                     return 1;
@@ -267,7 +266,30 @@ namespace DeFengAdmin.Controllers
             }
         }
 
+        public bool CreateAnnouncement()
+        {
+            var result = false;
+            var idList = new List<int>();
+            try
+            {
+                Staff_BLL bll = new Staff_BLL();
+                Announcement_BLL announcementBll = new Announcement_BLL();
+                var list = bll.GetStaffByDepartment(1);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (idList.Contains(list[i].ID))
+                    {
+                        idList.Add(list[i].ID);
+                    }
+                }
+               
 
+            }
+            catch (Exception ex)
+            {
 
+            }
+            return result;
+        }
     }
 }
