@@ -10,6 +10,25 @@
 
             });
     });
+
+    $('#scope').click(function () {
+        $('.office-theme-popover-mask').show();
+        $('.theme-popover-mask').height($(document).height());
+        $('.department-addAndEdit-panel').slideDown(200);
+    });
+    $('.department-update-btn').click(function () {
+        $('.office-theme-popover-mask').show();
+        $('.department-addAndEdit-panel').slideDown(200);
+        var objArr = $(".col-select.cbr-checked");
+        if (objArr.length > 0) {
+            var selectTr = $(objArr[0]).parents("tr");
+            InitDepartmentData(selectTr);
+        }
+    });
+    $('.theme-poptit .close').click(function () {
+        $('.theme-popover-mask').hide();
+        $('.office-theme-popover').slideUp(200);
+    });
 });
 
 
@@ -32,3 +51,4 @@ function InitPushRange() {
     });
 
 }
+
