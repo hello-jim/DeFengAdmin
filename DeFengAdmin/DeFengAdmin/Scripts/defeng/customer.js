@@ -534,6 +534,7 @@ function InitCustomerAdd() {
                 });
         });
     });
+   
 }
 
 function ShowCustomerPanel(action) {
@@ -576,6 +577,374 @@ function ShowCustomerPanel(action) {
         $(".follow-record-panel").css("top", scrollTop + 500 + "px");
         ShowFollowRecordPanel();
     });
+
+    $("#houseUseTypeSelect").on("click", function () {
+        var checkHouseUseType = $("#houseUseTypeSelect").val();
+        switch (checkHouseUseType) {
+            //住宅
+            case "1":
+                $(".room").show();
+                $(".hall").show();
+                $(".toilet").show();
+                $(".balcony").show();
+                $(".shopLocation").hide();
+                $(".officeLevel").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".floor").show();
+                $(".houseType").show();
+                $(".orientation").show();
+                $(".decorationType").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".industry").hide();
+                $(".electricity").hide();
+                $(".park").hide();
+                $(".layerNumber").hide();
+                $(".landType").hide();
+                $(".lavatory").hide();
+                $(".wall").hide();
+                $(".shopArea").hide();
+                $(".commissionPayType").show();
+
+                
+                break;
+                //商住
+            case "2":
+                $(".room").show();
+                $(".hall").show();
+                $(".toilet").show();
+                $(".balcony").show();
+                $(".shopLocation").hide();
+                $(".officeLevel").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".floor").show();
+                $(".houseType").show();
+                $(".orientation").show();
+                $(".decorationType").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".industry").hide();
+                $(".electricity").hide();
+                $(".park").hide();
+                $(".layerNumber").hide();
+                $(".landType").hide();
+                $(".lavatory").hide();
+                $(".wall").hide();
+                $(".shopArea").hide();
+                $(".commissionPayType").show();
+                break;
+                //商铺
+            case "3":
+                $(".shopLocation").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".officeLevel").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".industry").show();
+                $(".houseType").show();
+                $(".layerNumber").show();
+                $(".lavatory").show();
+                $(".housePayType").show();
+                $(".shopArea").show();
+                $(".commissionPayType").show();
+                $(".landType").hide();
+                $(".orientation").hide();
+                $(".electricity").hide();
+                $(".park").hide();
+                $(".floor").hide();
+                $(".decorationType").hide();
+                $(".wall").hide();
+                $(".supporting").hide();
+                break;
+                //地皮
+            case "4":
+                $(".landPlan").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".shopLocation").hide();
+                $(".officeLevel").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".park").show();
+                $(".houseType").show();
+                $(".landType").show();
+                $(".wall").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".commissionPayType").show();
+                $(".floor").hide();
+                $(".industry").hide();
+                $(".electricity").hide();
+                $(".orientation").hide();
+                $(".decorationType").hide();
+                $(".lavatory").hide();
+                $(".shopArea").hide();
+                $(".layerNumber").hide();
+               
+
+                
+
+                break;
+                //其他
+            case "5":
+                $(".room").show();
+                $(".hall").show();
+                $(".toilet").show();
+                $(".balcony").show();
+                $(".shopLocation").hide();
+                $(".officeLevel").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".floor").show();
+                $(".houseType").show();
+                $(".orientation").show();
+                $(".decorationType").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".commissionPayType").show();
+                $(".industry").hide();
+                $(".electricity").hide();
+                $(".park").hide();
+                $(".layerNumber").hide();
+                $(".landType").hide();
+                $(".lavatory").hide();
+                $(".wall").hide();
+                $(".shopArea").hide();
+                
+
+                break;
+                //写字楼
+            case "6":
+                $(".officeLevel").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".shopLocation").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".floor").show();
+                $(".houseType").show();
+                $(".layerNumber").show();
+                $(".lavatory").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".industry").hide();
+                $(".commissionPayType").show();
+                $(".electricity").hide();
+                $(".park").hide();
+                $(".orientation").hide();
+                $(".landType").hide();
+                $(".decorationType").hide();
+                $(".wall").hide();
+                $(".shopArea").hide();
+                break;
+                //网点
+            case "7":
+                $(".shopLocation").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".officeLevel").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".industry").show();
+                $(".houseType").show();
+                $(".layerNumber").show();
+                $(".lavatory").show();
+                $(".housePayType").show();
+                $(".shopArea").show();
+                $(".commissionPayType").show();
+                $(".landType").hide();
+                $(".orientation").hide();
+                $(".electricity").hide();
+                $(".park").hide();
+                $(".floor").hide();
+                $(".decorationType").hide();
+                $(".wall").hide();
+                $(".supporting").hide();
+                break;
+                //厂房
+            case "8":
+                $(".workerCount").show();
+                $(".dormCount").show();
+                $(".officeCount").show();
+                $(".clearingCount").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".shopLocation").hide();
+                $(".officeLevel").hide();
+                $(".landPlan").hide();
+
+                $(".electricity").show();
+                $(".houseType").show();
+                $(".layerNumber").show();
+                $(".wall").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".commissionPayType").show();
+                $(".floor").hide();
+                $(".industry").hide();
+                $(".park").hide();
+                $(".orientation").hide();
+                $(".landType").hide();
+                $(".decorationType").hide();
+                $(".lavatory").hide();
+                $(".shopArea").hide();
+
+                break;
+                //写厂
+            case "9":
+                $(".officeLevel").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".shopLocation").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".floor").show();
+                $(".houseType").show();
+                $(".layerNumber").show();
+                $(".lavatory").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".industry").hide();
+                $(".commissionPayType").show();
+                $(".electricity").hide();
+                $(".park").hide();
+                $(".orientation").hide();
+                $(".landType").hide();
+                $(".decorationType").hide();
+                $(".wall").hide();
+                $(".shopArea").hide();
+                
+                break;
+                //辅厂
+            case "10":
+                $(".shopLocation").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".officeLevel").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".industry").show();
+                $(".houseType").show();
+                $(".layerNumber").show();
+                $(".lavatory").show();
+                $(".housePayType").show();
+                $(".shopArea").show();
+                $(".commissionPayType").show();
+                $(".landType").hide();
+                $(".orientation").hide();
+                $(".electricity").hide();
+                $(".park").hide();
+                $(".floor").hide();
+                $(".decorationType").hide();
+                $(".wall").hide();
+                $(".supporting").hide();
+
+                break;
+                //仓库
+            case "11":
+                $(".workerCount").show();
+                $(".dormCount").show();
+                $(".officeCount").show();
+                $(".clearingCount").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".shopLocation").hide();
+                $(".officeLevel").hide();
+                $(".landPlan").hide();
+                $(".electricity").show();
+                $(".houseType").show();
+                $(".layerNumber").show();
+                $(".wall").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".commissionPayType").show();
+                $(".floor").hide();
+                $(".industry").hide();
+                $(".park").hide();
+                $(".orientation").hide();
+                $(".landType").hide();
+                $(".decorationType").hide();
+                $(".lavatory").hide();
+                $(".shopArea").hide();
+                break;
+                //车位
+            case "12":
+                $(".shopLocation").show();
+                $(".room").hide();
+                $(".hall").hide();
+                $(".toilet").hide();
+                $(".balcony").hide();
+                $(".officeLevel").hide();
+                $(".workerCount").hide();
+                $(".dormCount").hide();
+                $(".officeCount").hide();
+                $(".clearingCount").hide();
+                $(".landPlan").hide();
+                $(".park").show();
+                $(".houseType").show();
+                $(".landType").show();
+                $(".wall").show();
+                $(".housePayType").show();
+                $(".supporting").show();
+                $(".commissionPayType").show();
+                $(".floor").hide();
+                $(".industry").hide();
+                $(".electricity").hide();
+                $(".orientation").hide();
+                $(".decorationType").hide();
+                $(".lavatory").hide();
+                $(".shopArea").hide();
+                $(".layerNumber").hide();
+                
+                break;
+
+        }
+    })
 }
 
 function CreateCustomerTable(json) {

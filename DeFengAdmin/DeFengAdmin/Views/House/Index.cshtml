@@ -612,286 +612,135 @@
             </div>
         </div>
         <div class="row">
-            <!--住宅-->
-            <div class="div1">
-                <div class="col-md-1">
+            <!--住宅 商住 其他-->
+                <div class="col-md-1 room">
                     <div class="form-group">
                         <label class="control-label" for="roomCount">房</label>
                         <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1 hall">
                     <div class="form-group">
                         <label class="control-label" for="hallCount">厅</label>
                         <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1 toilet">
                     <div class="form-group">
                         <label class="control-label" for="toiletCount">卫</label>
                         <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
                     </div>
                 </div>
 
-                <div class="col-md-1">
+                <div class="col-md-1 balcony">
                     <div class="form-group">
                         <label class="control-label" for="balconyCount">阳台</label>
                         <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
                     </div>
                 </div>
+            <!--商铺 网点 辅厂--> 
+            <div class="col-md-2 commission" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="commission">位置</label>
+                    <select class="form-control"></select>
+                </div>
             </div>
-            <!--商住-->
-            <div class="div2" style="display:none">
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <label class="control-label" for="roomCount">房</label>
-                        <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
-                    </div>
+            <div class="col-md-2 ziboCity" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="ziboCity">进深</label>
+                    <input class="form-control" name="ziboCity" id="ziboCityTxt" data-validate="required" placeholder="m" />
                 </div>
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <label class="control-label" for="hallCount">厅</label>
-                        <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
-                    </div>
+            </div>
+            <!--写字楼 写厂-->
+            <div class="col-md-2 level" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="level">级别</label>
+                    <select class="form-control"></select>
                 </div>
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <label class="control-label" for="toiletCount">卫</label>
-                        <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
-                    </div>
+            </div>
+            <div class="col-md-2 realRate" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="realRate">实率</label>
+                    <input class="form-control" name="RealRate" id="realRate" data-validate="required" placeholder="实率" />
                 </div>
+            </div>
+            <div class="col-md-2 height" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="height">层高</label>
+                    <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="m" />
+                </div>
+            </div>
 
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <label class="control-label" for="balconyCount">阳台</label>
-                        <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
-                    </div>
-                </div>
-            </div>
-            <!--商铺-->
-            <div class="div3" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="commission">位置</label>
-                        <select class="form-control"></select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="ziboCity">进深</label>
-                        <input class="form-control" name="ziboCity" id="ziboCityTxt" data-validate="required" placeholder="m" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="height">层高</label>
-                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="m" />
-                    </div>
-                </div>
-            </div>
             <!--地皮-->
-            <div class="div4" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="planning">规划</label>
-                        <select class="form-control"></select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="length">长度</label>
-                        <input class="form-control" name="length" id="LengthTxt" data-validate="required" placeholder="m" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="width">宽度</label>
-                        <input class="form-control" name="width" id="WidthTxt" data-validate="required" placeholder="m" />
-                    </div>
+            <div class="col-md-2 planning" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="planning">规划</label>
+                    <select class="form-control"></select>
                 </div>
             </div>
-            <!--其他-->
-            <div class="div5" style="display:none">
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <label class="control-label" for="roomCount">房</label>
-                        <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
-                    </div>
+            <div class="col-md-2 length" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="length">长度</label>
+                    <input class="form-control" name="length" id="LengthTxt" data-validate="required" placeholder="m" />
                 </div>
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <label class="control-label" for="hallCount">厅</label>
-                        <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
-                    </div>
+            </div>
+            <div class="col-md-2 Width" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="width">宽度</label>
+                    <input class="form-control" name="width" id="WidthTxt" data-validate="required" placeholder="m" />
                 </div>
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <label class="control-label" for="toiletCount">卫</label>
-                        <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
-                    </div>
-                </div>
+            </div>
+            
+          
+           
 
-                <div class="col-md-1">
-                    <div class="form-group">
-                        <label class="control-label" for="balconyCount">阳台</label>
-                        <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
-                    </div>
-                </div>
-            </div>
-            <!--写字楼-->
-            <div class="div6" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="level">级别</label>
-                        <select class="form-control"></select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="realRate">实率</label>
-                        <input class="form-control" name="RealRate" id="realRate" data-validate="required" placeholder="实率" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="height">层高</label>
-                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="层高" />
-                    </div>
-                </div>
-            </div>
-            <!--网点-->
-            <div class="div7" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="commission">位置</label>
-                        <select class="form-control"></select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="ziboCity">进深</label>
-                        <input class="form-control" name="ziboCity" id="ziboCityTxt" data-validate="required" placeholder="m" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="height">层高</label>
-                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="m" />
-                    </div>
-                </div>
-            </div>
+           
             <!--厂房-->
-            <div class="div8" style="display:none">
-                <div class="col-md-1">
+                <div class="col-md-1 Warehouse" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="warehouse">厂房</label>
                         <input class="form-control" name="warehouse" id="WarehouseTxt" data-validate="required" placeholder="厂房" />
                     </div>
                 </div>
-                <div class="col-md-1">
+            <div class="col-md-2 WarehouseType" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="warehouseType">仓库</label>
+                    <input class="form-control" name="warehouseType" id="WarehouseTypeTxt" data-validate="required" placeholder="厅" />
+                </div>
+            </div>
+                <div class="col-md-1 Dormitory" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="dormitory">宿舍</label>
                         <input class="form-control" name="dormitory" id="DormitoryTxt" data-validate="required" placeholder="宿舍" />
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1 Long" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="long">长</label>
                         <input class="form-control" name="long" id="LongTxt" data-validate="required" placeholder="m" />
                     </div>
                 </div>
 
-                <div class="col-md-1">
+                <div class="col-md-1 wide" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="wide">宽</label>
                         <input class="form-control" name="wide" id="wideTxt" data-validate="required" placeholder="m" />
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-1 heighter" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="heighter">高</label>
                         <input class="form-control" name="heighter" id="heighterTxt" data-validate="required" placeholder="高" />
                     </div>
                 </div>
-            </div>
-            <!--写厂-->
-            <div class="div9" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="level">级别</label>
-                        <select class="form-control"></select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="ziboCity">实率</label>
-                        <input class="form-control" name="ziboCity" id="ziboCityTxt" data-validate="required" placeholder="实率" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="height">层高</label>
-                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="层高" />
-                    </div>
-                </div>
-            </div>
-            <!--辅厂-->
-            <div class="div10" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="commission">位置</label>
-                        <input class="form-control" name="commission" id="CommissionTxt" data-validate="required" placeholder="位置" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="ziboCity">进深</label>
-                        <input class="form-control" name="ziboCity" id="ziboCityTxt" data-validate="required" placeholder="进深" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="height">层高</label>
-                        <input class="form-control" name="height" id="heightTxt" data-validate="required" placeholder="层高" />
-                    </div>
-                </div>
-            </div>
+            
+            
+      
+           
             <!--仓库-->
-            <div class="div11" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="warehouse">仓库</label>
-                        <input class="form-control" name="warehouse" id="WarehouseTxt" data-validate="required" placeholder="厅" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="dormitory">宿舍</label>
-                        <input class="form-control" name="dormitory" id="DormitoryTxt" data-validate="required" placeholder="卫" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="long">长</label>
-                        <input class="form-control" name="long" id="LongTxt" data-validate="required" placeholder="阳台" />
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="wide">宽</label>
-                        <input class="form-control" name="wide" id="wideTxt" data-validate="required" placeholder="卫" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="heighter">高</label>
-                        <input class="form-control" name="heighter" id="heighterTxt" data-validate="required" placeholder="阳台" />
-                    </div>
-                </div>
-            </div>
+           
             <!--车位-->
-            <div class="div12" style="display:none">
+            @*<div class="div12" style="display:none">
                 <div class="col-md-2">
                     <div class="form-group">
                         <label class="control-label" for="warehouse">位置</label>
@@ -910,7 +759,7 @@
                         <input class="form-control" name="long" id="LongTxt" data-validate="required" placeholder="m" />
                     </div>
                 </div>
-            </div>
+            </div>*@
           
                 <div class="col-md-2">
                     <div class="form-group">
@@ -966,25 +815,23 @@
                 </div>
             </div>
         <div class="row">
-            <!--住宅-->
-            <div class="div1">
-            <div class="col-md-2">
+            <!--住宅 商住 其他-->
+         
+            <div class="col-md-2 house">
                 <div class="form-group">
                     <label class="control-label" for="houseSize">面积</label>
                     <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 houseUse">
                 <div class="form-group">
                     <label class="control-label" for="houseUseSize">套内</label>
                     <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="㎡" />
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 orientation">
                 <div class="form-group">
                     <label class="control-label">朝向</label>
-
-
                     <script type="text/javascript">
                         jQuery(document).ready(function ($) {
                             $("#orientationSelect").select2({
@@ -1002,282 +849,71 @@
 
                 </div>
             </div>
-                </div>
-            <!--商住-->
-            <div class="div2" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseUseSize">套内</label>
-                        <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label">朝向</label>
-
-
-                        <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#orientationSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                        </script>
-
-                        <select class="form-control" id="orientationSelect"></select>
-
-                    </div>
-                </div>
-            </div>
-            <!--商铺-->
-            <div class="div3" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
+     
+            
+            <!--商铺--> 
+                <div class="col-md-2 Within" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="Within ">门宽</label>
                         <input id="Within Txt" class="form-control" name="Within " data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 layerNumber" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="layerNumber">层数</label>
                         <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
                     </div>
                 </div>
-            </div>
             <!--地皮-->
-            <div class="div4" style="display:none">
-                <div class="col-md-2">
+                <div class="col-md-2 status" style="display:none">
                     <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="Clearing">套内</label>
-                        <input id="ClearingTxt" class="form-control" name="Clearing" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="total">状况</label>
+                        <label class="control-label" for="status">状况</label>
                         <select class="form-control"></select>
                     </div>
                 </div>
-            </div>
-            <!--其他-->
-            <div class="div5" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseUseSize">套内</label>
-                        <input id="houseUseSizeTxt" class="form-control" name="houseUseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label">朝向</label>
-
-
-                        <script type="text/javascript">
-                        jQuery(document).ready(function ($) {
-                            $("#orientationSelect").select2({
-                                placeholder: 'Choose your favorite US Countries',
-                                allowClear: true
-                            }).on('select2-open', function () {
-                                // Adding Custom Scrollbar
-                                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
-                            });
-
-                        });
-                        </script>
-
-                        <select class="form-control" id="orientationSelect"></select>
-
-                    </div>
-                </div>
-            </div>
-            <!--写字楼-->
-            <div class="div6" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="withinSize">套内</label>
-                        <input id="WithinSizeTxt" class="form-control" name="withinSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="layerNumber">层数</label>
-                        <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
-                    </div>
-                </div>
-            </div>
             <!--网点-->
-            <div class="div7" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="doorWide">门宽</label>
-                        <input id="doorWideTxt" class="form-control" name="doorWide " data-validate="required" placeholder="m" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="layerNumber">层数</label>
-                        <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
-                    </div>
-                </div>
-            </div>
+            
             <!--厂房-->
-            <div class="div8" style="display:none">
-                <div class="col-md-2">
+                <div class="col-md-2 office" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="office">办公</label>
                         <input id="OfficeTxt" class="form-control" name="office" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 Clearing" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="Clearing">空地</label>
                         <input id="ClearingTxt" class="form-control" name="Clearing" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 total" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="total">总计</label>
                         <input id="totalTxt" class="form-control" name="total" data-validate="required" placeholder="层" />
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="layerNumber">层数</label>
-                        <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
-                    </div>
-                </div>
-            </div>
+              
             <!--写厂-->
-            <div class="div9" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="Clearing ">套内</label>
-                        <input id="ClearingTxt" class="form-control" name="Clearing " data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="layerNumber">层数</label>
-                        <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
-                    </div>
-                </div>
-            </div>
+           
             <!--辅厂-->
-            <div class="div10" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="Within ">门宽</label>
-                        <input id="Within Txt" class="form-control" name="Within " data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="layerNumber">层数</label>
-                        <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
-                    </div>
-                </div>
-            </div>
+     
             <!--仓库-->
-            <div class="div11" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="office">办公</label>
-                        <input id="OfficeTxt" class="form-control" name="office" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="Clearing">空地</label>
-                        <input id="ClearingTxt" class="form-control" name="Clearing" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="total">总计</label>
-                        <input id="totalTxt" class="form-control" name="total" data-validate="required" placeholder="层" />
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="layerNumber">层数</label>
-                        <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
-                    </div>
-                </div>
-            </div>
+            
             <!--车位-->
-            <div class="div12" style="display:none">
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label class="control-label" for="houseSize">面积</label>
-                        <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
-                    </div>
-                </div>
-                <div class="col-md-2">
+               
+                <div class="col-md-2 monthly" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="monthly">包月</label>
                         <input id="monthlyTxt" class="form-control" name="monthly" data-validate="required" placeholder="㎡" />
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 displacement" style="display:none">
                     <div class="form-group">
                         <label class="control-label" for="displacement">排量</label>
                         <select class="form-control"></select>
                     </div>
                 </div>
-            </div>
+            
             <div class="col-md-2">
                 <div class="form-group">
                     <label class="control-label">类型</label>
