@@ -350,6 +350,5 @@ D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.Go
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
-D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
