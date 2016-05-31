@@ -26,11 +26,8 @@ function GetAnnouncement() {
 function InitPushRange() {
     InitDepartmentTreeView(".post-department-treeview", false);
     $(".").on("click", function (data) {
-        var arr = ;
-        var option = "";
-        for (var i = 0; i < arr.length; i++) {
-            option += "<option>";
-        }
+       
+       $()
     });
     $(".department-treeview ul a").unbind("dblclick").on("dblclick", function () {
         var thisObj = $(this);
