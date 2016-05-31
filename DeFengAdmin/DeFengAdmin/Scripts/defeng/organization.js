@@ -22,6 +22,27 @@ $(document).ready(function () {
         $('.theme-popover-mask').hide();
         $('.theme-popover').slideUp(200);
     });
+
+    $('#personnel-upadate').click(function () {
+        $('.personnel-theme-popover-mask').show();
+        $('.personnel-theme-popover-mask').height($(document).height());
+        $('.department-addAndEdit-panel').slideDown(200);
+    });
+    $('#personnel-upadate').click(function () {
+        $('.personnel-theme-popover-mask').show();
+        $('.personnel-theme-popover-mask').height($(document).height());
+        $('.staff-updateAndEdit-panel').slideDown(200);
+        var objArr = $(".col-select.cbr-checked");
+        if (objArr.length > 0) {
+            var selectTr = $(objArr[0]).parents("tr");
+            InitDepartmentData(selectTr);
+        }
+    });
+    $('.theme-poptit .close').click(function () {
+        $('.personnel-theme-popover-mask').hide();
+        $('.personnel-theme-popover').slideUp(200);
+    });
+
     //$("#content div").hide();
     $("#tab2").hide();
     $("#tab3").hide();

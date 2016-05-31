@@ -65,7 +65,7 @@
                     <img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>发送范围：</span>
                 </div>
                 <div class="row">
-                    <input type="text" class="form-control input-dark" name="title" id="title" autocomplete="off" />
+                    <input type="button" class="form-control input-dark" name="title" id="scope"  href="javascript:;" readonly/>
                 </div>
 
                 <div class="row">&nbsp;</div>
@@ -109,6 +109,66 @@
 
     </div>
 </div>
+<div class="office-theme-popover department-addAndEdit-panel">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" href="#home">
+                            <span class="visible-xs"><i class="fa-home"></i></span>
+                            <span class="hidden-xs">人员</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#profile">
+                            <span class="visible-xs"><i class="fa-user"></i></span>
+                            <span class="hidden-xs">机构</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#messages">
+                            <span class="visible-xs"><i class="fa-envelope-o"></i></span>
+                            <span class="hidden-xs">岗位</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#settings">
+                            <span class="visible-xs"><i class="fa-cog"></i></span>
+                            <span class="hidden-xs">常用组</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="col-md-12 panel">
+                    <div class="col-md-11">
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane active">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <input type="text" id="title" name="title" class="form-control input-dark">
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-link">
+                                                <i class="linecons-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                        </div>
+                                        </div>
+                                    <div class="row">&nbsp;</div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                        </div>
+                                        </div>
+                                </div>
 
 <input id="depJson" type="hidden" />
 <input id="postJson" type="hidden" />
@@ -123,8 +183,118 @@
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
 
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input type="text" id="title" name="title" class="form-control input-dark">
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-link">
+                                            <i class="linecons-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
 
-<script type="text/javascript">
+                            <div id="settings" class="tab-pane">
+
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input type="text" id="title" name="title" class="form-control input-dark">
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-link">
+                                            <i class="linecons-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="8" cols="5" id="field-5"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <i class="fa fa-arrow-up"></i>
+                        </div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <i class="fa fa-arrow-down"></i>
+                        </div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <i class="fa fa-arrow-right"></i>
+                        </div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <i class="fa fa-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+
+                <div class="row">&nbsp;</div>
+                <div class="row">&nbsp;</div>
+                <div class="row panel">
+                    <div class="col-md-3">已选对象</div>
+                    <div class="col-md-0">[0]</div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-dark text-left">
+                            设为常用组
+                        </button>
+                    </div>
+                    <div class="row">
+                        <textarea class="form-control" rows="19" cols="3" id="field-5"></textarea>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="/scripts/daterangepicker/daterangepicker.js"></script>
+    <script src="/scripts/datepicker/bootstrap-datepicker.js"></script>
+    <script src="/scripts/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="~/Scripts/defeng/office.js"></script>
+    <script src="~/Scripts/jquery.treeview.js"></script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $('.form_datetime').datetimepicker({
                 format: 'yyyy-mm-dd',
@@ -139,4 +309,4 @@
             });
         });
 
-</script>
+    </script>
