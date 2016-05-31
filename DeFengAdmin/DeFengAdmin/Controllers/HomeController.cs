@@ -55,6 +55,10 @@ namespace DeFengAdmin.Controllers
         public ActionResult ProcessCenter() {
             return View();
         }
+        public ActionResult Personnel()
+        {
+            return View();
+        }
 
         //注册 
         public int StaffRegister()
