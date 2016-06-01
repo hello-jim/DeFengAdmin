@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "DepTreeview";
+    Layout = null;
+}
+<link rel="stylesheet" href="/Content/css/bootstrap.css">
+<link rel="stylesheet" href="~/Content/css/screen.css" />
+<link rel="stylesheet" href="~/Content/css/jquery.treeview.css" />
+<div class="ps-scrollbar-y department-treeview" style="top: 0px; height: 0px;">
+    <ul id="departmentTreeview" class="treeview-gray" departmentID="1"></ul>
+</div>
+<script src="/Scripts/jquery-1.11.1.min.js"></script>
+<script src="/Scripts/bootstrap.min.js"></script>
+
+<script src="~/Scripts/jquery.cookie.js"></script>
+<script src="~/Scripts/jquery.treeview.js"></script>
+<script type="text/javascript" src="~/Scripts/defeng/common.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        InitDepartmentTreeView(".department-treeview", true);
+    });
+</script>

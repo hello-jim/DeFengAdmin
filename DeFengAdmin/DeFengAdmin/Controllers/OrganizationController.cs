@@ -282,5 +282,15 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
+        public ActionResult DepTreeview()
+        {
+            return View("DepTreeview");
+        }
+
+        public ActionResult TestView()
+        {
+            return View("TestView");
+        }
+
     }
 }

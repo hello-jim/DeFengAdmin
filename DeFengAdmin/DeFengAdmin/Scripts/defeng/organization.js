@@ -314,15 +314,6 @@ function CreateStaffTable(json) {
     InitCheckBox();
 }
 
-//获取下级部门
-function GetChildrenObj(ID, obj) {
-    var childrenObj = obj.filter(function (item, index) {
-        if (item.Parent == ID)
-            return true;
-    });
-    return childrenObj;
-}
-
 function InitDepartmentData(obj) {
     $("#depID").val($(obj).attr("depID"));
     $("#departmentNameTxt").val($(obj).attr("departmentName"));

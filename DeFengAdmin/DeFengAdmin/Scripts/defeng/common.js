@@ -1960,7 +1960,7 @@ function InitDepartmentTreeView(element, async) {
                 else {
                     childrenHtml += "<li departmentID='" + departmentList[i].ID + "'><span><a href='javascript:void(0);' level='" + departmentList[i].Level + "' isEnable='" + (departmentList[i].IsEnable == true ? "是" : "否") + "' describe='" + departmentList[i].Describe + "' departmentName='" + departmentList[i].DepartmentName + "' departmentID2='" + departmentList[i].ID + "' parentID='" + departmentList[i].Parent + "'>" + departmentList[i].DepartmentName + "</a></span></li>";
                 }
-                $("[departmentID=" + departmentList[i].Parent + "]").append(childrenHtml);
+                $(""+element+" [departmentID=" + departmentList[i].Parent + "]").append(childrenHtml);
                 departmentList.shift();
             }
             $(element).treeview({
@@ -1970,4 +1970,34 @@ function InitDepartmentTreeView(element, async) {
             });
         }
     });
+}
+
+//获取下级部门
+function GetChildrenObj(ID, obj) {
+    var childrenObj = obj.filter(function (item, index) {
+        if (item.Parent == ID)
+            return true;
+    });
+    return childrenObj;
+}
+
+function GetStaff(async) {
+    var result = "";
+    $.ajax({
+        url: "/Organization/GetStaff",
+        async: async,
+        success: function (data) {
+            result = data;
+        }
+    });
+    return result;
+}
+
+//将对象数据按属性值转换为数组
+function ConvertArr(objArr, atrrName) {
+    var arr = new Array();
+    for (var i = 0; i < objArr.length; i++) {
+        arr.push(objArr[i][atrrName]);
+    }
+    return arr;
 }

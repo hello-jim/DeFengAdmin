@@ -264,7 +264,6 @@ D:\Project_V2\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojRe
 D:\Project_V2\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_V2\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFengAdmin.dll.config
-D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\ApplicationInsights.config
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\roslyn\csc.exe
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -352,3 +351,4 @@ D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\Microsoft.Owin.Security.Mi
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.DAL.pdb
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_V7\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
