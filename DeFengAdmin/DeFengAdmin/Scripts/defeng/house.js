@@ -245,9 +245,9 @@ function CreateHouseTable(json) {
             html += "<td class='colHouseSize'>" + json[i].HouseSize + "</td>";
             html += "<td class='colHouseUseSize'>" + json[i].HouseUseSize + "</td>";
             html += "<td class='colOrientation' colOrientationID='" + json[i].Orientation.ID + "'>" + json[i].Orientation.OrientationName + "</td>";
-            html += "<td class='colSaleTotalPrice'>" + json[i].SaleTotalPrice + "</td>";
+            html += "<td class='colSaleTotalPrice'>" + json[i].Price + "</td>";
             html += "<td class='colSaleUnitPrice'>" + GetHouseUnitPrice(json[i].SaleTotalPrice, json[i].HouseSize) + "</td>";
-            html += "<td class='colLeaseTotalPrice'>" + json[i].LeaseTotalPrice + "</td>";
+            html += "<td class='colLeaseTotalPrice'>" + json[i].LeasePrice + "</td>";
             html += "<td class='colLeaseUnitPrice'>" + GetHouseUnitPrice(json[i].LeaseTotalPrice, json[i].HouseSize) + "</td>";
             html += "<td class='colProxyStartDate'>" + DateTimeConvert_yyyyMMdd(json[i].ProxyStartDate) + "</td>";
             html += "<td class='colLookHouseType' colLookHouseTypeID='" + json[i].LookHouseType.ID + "'>" + json[i].LookHouseType.TypeName + "</td>";
@@ -1514,8 +1514,15 @@ function InitMatchData(obj) {
     $("#matchHouseSize").val(obj.HouseSize);
     $("#matchPrice").val(obj.SaleTotalPrice);
 }
-$("#houseSizeTxt").on("blur", function () {
+$("#saleTotalPriceTxt").on("blur", function () {
     var text1 = $("#houseSizeTxt").val();
     var text2 = $("#saleTotalPriceTxt").val();
-    $("#unitPriceTxt").attr("value", text2 /text1);
+    $("#unitPriceTxt").attr("value", text2 / text1);
+    $("#minSalePriceTxt").attr("value", text2);
+});
+$("#leaseTotalPriceTxt").on("blur", function () {
+    var text1 = $("#houseSizeTxt").val();
+    var text2 = $("#leaseTotalPriceTxt").val();
+    $("#leaseunitPriceTxt").attr("value", text2 / text1);
+    $("#minLeasePriceTxt").attr("value", text2);
 });
