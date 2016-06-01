@@ -61,7 +61,7 @@ function InitCity(id, proID, districtID, areaID, async, arr) {
             var html = "";
             for (var i = 0; i < json.length; i++) {
                 var selected = "";
-                if (json[i].ID == selectedValue) {
+                if (json[i].ID == 195) {
                     selected = "selected=selected";
                 }
                 html += "<option value=" + json[i].ID + " " + selected + ">" + json[i].Name + "</option>";
