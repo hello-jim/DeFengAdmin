@@ -10,32 +10,41 @@
 
             });
     });
-    
+
     $('#scope').click(function () {
         $('.office-theme-popover-mask').show();
         $('.theme-popover-mask').height($(document).height());
         $('.department-addAndEdit-panel').slideDown(200);
+   
         $("#staff-dep-treeview").attr("src", "/Organization/DepTreeview");
-        $($(window.frames["staff-dep-treeview"]).context.contentDocument.body).find(".department-treeview ul a").on("click", function () {
-            var staffJsonStr = $("#staffJson").val();
-            var staffJson = staffJsonStr != "" ? $.parseJSON(staffJsonStr) : "";
-            if (staffJson != "") {
-                var depID=$(this).attr("departmentID2");
-                //筛选出属于该部门的员工
-                var filterarray = $.grep(staffJson, function (value) {
-                    return value.Department.ID == depID;
-                });
-                //如果选择范围里面已经包含了该项则不再显示
-                var selectRangeArr = ConvertArr(($("#selected-range option")), "value");
-                var resultArr = $.grep(filterarray, function (obj) {
-                    return $.inArray(("S_" + obj.ID), selectRangeArr) == -1;
-                });
-                CreateStaffOption("#staffSelect", resultArr);
-                $("#staffSelect option").unbind("dblclick").on("dblclick", function () {
-                    $("#selected-range").append($(this));
-                });
-            }
+        var a = $($(window.frames["staff-dep-treeview"]).context.contentDocument.body).find(".department-treeview ul a").on("click", function () {
+            alert(1);
         });
+        //$(a).on("click", function () {
+        //    alert(1);
+             
+        //});
+        //$($(window.frames["staff-dep-treeview"]).context.contentDocument.body).find(".department-treeview ul a").on("click", function () {
+        //    var staffJsonStr = $("#staffJson").val();
+        //    var staffJson = staffJsonStr != "" ? $.parseJSON(staffJsonStr) : "";
+        //    if (staffJson != "") {
+        //        var depID = $(this).attr("departmentID2");
+        //        //筛选出属于该部门的员工
+        //        var filterarray = $.grep(staffJson, function (value) {
+        //            return value.Department.ID == depID;
+        //        });
+        //        //如果选择范围里面已经包含了该项则不再显示
+        //        var selectRangeArr = ConvertArr(($("#selected-range option")), "value");
+        //        var resultArr = $.grep(filterarray, function (obj) {
+        //            return $.inArray(("S_" + obj.ID), selectRangeArr) == -1;
+        //        });
+        //        CreateStaffOption("#staffSelect", resultArr);
+        //        $("#staffSelect option").unbind("dblclick").on("dblclick", function () {
+        //            $("#selected-range").append($(this));
+        //        });
+        //    }
+        //});
+      
     });
     $('.department-update-btn').click(function () {
         $('.office-theme-popover-mask').show();
@@ -50,8 +59,8 @@
         $('.theme-popover-mask').hide();
         $('.office-theme-popover').slideUp(200);
     });
-   
-   InitPushRange();;
+
+    InitPushRange();;
 });
 
 
@@ -66,8 +75,8 @@ function GetAnnouncement() {
 }
 
 function InitPushRange() {
-    
-    $("#staffJson").val(GetStaff(false));   
+
+    $("#staffJson").val(GetStaff(false));
     $(".fa-arrow-right").on("click", function (data) {
         $("#selected-range").append($(".range :selected"));
     });
@@ -82,7 +91,7 @@ function InitPushRange() {
     //    }   
     //});
     //员工范围
-   
+
 
     //岗位范围
     //$($(window.frames["post-dep-treeview"]).context.contentDocument.body).find(".department-treeview ul a").on("click", function () {
