@@ -715,6 +715,23 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
+        public string LoadAnnouncementType()
+        {
+            var result = "";
+            try
+            {
+                AnnouncementType_BLL bll = new AnnouncementType_BLL();
+                var list = bll.LoadAnnouncementType();
+                result = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+        
+
 
     }
 }

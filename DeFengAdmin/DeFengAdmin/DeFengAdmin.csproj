@@ -1785,6 +1785,7 @@
     <Content Include="Views\ProcessCenter\Index.cshtml" />
     <Content Include="Views\Organization\DepTreeview.cshtml" />
     <Content Include="Views\Organization\TestView.cshtml" />
+    <Content Include="Views\Organization\DepTreeview2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

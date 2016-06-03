@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.SqlClient;
+using Newtonsoft.Json;
 using DeFeng.Model;
 using DeFeng.BLL;
-using System.Data.SqlClient;
 using DeFeng.Common;
+using System.Text.RegularExpressions;
 
 namespace DeFengAdmin.Controllers
 {
@@ -270,6 +272,11 @@ namespace DeFengAdmin.Controllers
             var idList = new List<int>();
             try
             {
+                var json = Server.UrlDecode(HttpContext.Request["announcement"]);
+                var announcement = JsonConvert.DeserializeObject<Announcement>(json);
+                var staffIDList = GetStaffIDList(announcement.PushRange);
+                var postIDArr = announcement.PushRange.Where(l => l.Contains("P")).ToList();
+                var depIDArr = announcement.PushRange.Where(l => l.Contains("D")).ToList();
                 Staff_BLL bll = new Staff_BLL();
                 Announcement_BLL announcementBll = new Announcement_BLL();
                 var list = bll.GetStaffByDepartment(1);
@@ -279,13 +286,33 @@ namespace DeFengAdmin.Controllers
                     {
                         idList.Add(list[i].ID);
                     }
-                }       
+                }
             }
             catch (Exception ex)
             {
 
             }
             return result;
+        }
+
+        private List<int> GetStaffIDList(List<string> list)
+        {
+            var staffIDList = new List<int>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                staffIDList.Add(Convert.ToInt32(list[i].Replace("S_","")));
+            }
+            return staffIDList;
+        }
+
+        private List<int> GetPostIDList(List<string> list)
+        {
+            var postIDList = new List<int>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                postIDList.Add(Convert.ToInt32(list[i].Replace("P_", "")));
+            }
+            return postIDList;
         }
     }
 }
