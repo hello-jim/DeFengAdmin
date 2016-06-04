@@ -274,11 +274,23 @@ namespace DeFengAdmin.Controllers
             {
                 var json = Server.UrlDecode(HttpContext.Request["announcement"]);
                 var announcement = JsonConvert.DeserializeObject<Announcement>(json);
-                var staffIDList = GetStaffIDList(announcement.PushRange);
-                var postIDArr = announcement.PushRange.Where(l => l.Contains("P")).ToList();
-                var depIDArr = announcement.PushRange.Where(l => l.Contains("D")).ToList();
+                var staffIDList = new List<int>();
                 Staff_BLL bll = new Staff_BLL();
+                if (announcement.PushRange.Count != 0)
+                {
+                    staffIDList = GetStaffIDList(announcement.PushRange);
+                    var postIDList = GetPostIDList(announcement.PushRange);
+                    var depIDList = GetDepIDList(announcement.PushRange);
+                    staffIDList.AddRange(bll.GetStaffIDByDepartment(depIDList));
+                    staffIDList.AddRange(bll.GetStaffIDByPost(postIDList));
+                    staffIDList = staffIDList.Distinct().ToList();
+                }
+                else
+                {
+                    staffIDList.AddRange(bll.GetStaffID());
+                }           
                 Announcement_BLL announcementBll = new Announcement_BLL();
+                announcementBll.CreateAnnouncement(staffIDList, announcement);
                 var list = bll.GetStaffByDepartment(1);
                 for (int i = 0; i < list.Count; i++)
                 {
@@ -297,22 +309,35 @@ namespace DeFengAdmin.Controllers
 
         private List<int> GetStaffIDList(List<string> list)
         {
+            var filterList = list.Where(f=>f.Contains("S")).ToList();
             var staffIDList = new List<int>();
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < filterList.Count; i++)
             {
-                staffIDList.Add(Convert.ToInt32(list[i].Replace("S_","")));
+                staffIDList.Add(Convert.ToInt32(filterList[i].Replace("S_", "")));
             }
             return staffIDList;
         }
 
         private List<int> GetPostIDList(List<string> list)
         {
+            var filterList = list.Where(f => f.Contains("P")).ToList();
             var postIDList = new List<int>();
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < filterList.Count; i++)
             {
-                postIDList.Add(Convert.ToInt32(list[i].Replace("P_", "")));
+                postIDList.Add(Convert.ToInt32(filterList[i].Replace("P_", "")));
             }
             return postIDList;
+        }
+
+        private List<int> GetDepIDList(List<string> list)
+        {
+            var filterList = list.Where(f => f.Contains("D")).ToList();
+            var depIDList = new List<int>();
+            for (int i = 0; i < filterList.Count; i++)
+            {
+                depIDList.Add(Convert.ToInt32(filterList[i].Replace("D_", "")));
+            }
+            return depIDList;
         }
     }
 }
