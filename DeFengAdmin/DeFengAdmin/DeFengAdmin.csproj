@@ -232,6 +232,7 @@
     <Content Include="App_Data\SysConfKey.xml" />
     <Content Include="Content\css\customer.css" />
     <Content Include="Content\css\home.css" />
+    <Content Include="Content\css\modality.css" />
     <Content Include="Content\css\office.css" />
     <Content Include="Content\css\organization.css" />
     <Content Include="Scripts\card.js" />
@@ -320,6 +321,7 @@
     <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.uk.js" />
     <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Scripts\defeng\announcementDetail.js" />
     <Content Include="Scripts\defeng\common.js" />
     <Content Include="Scripts\defeng\customer.js" />
     <Content Include="Scripts\defeng\group.js" />
@@ -1458,6 +1460,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\attachment\NewFolder1\" />
     <Folder Include="Content\images\house\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
@@ -1786,6 +1789,7 @@
     <Content Include="Views\Organization\DepTreeview.cshtml" />
     <Content Include="Views\Organization\TestView.cshtml" />
     <Content Include="Views\Organization\DepTreeview2.cshtml" />
+    <Content Include="Views\Home\AnnouncementDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

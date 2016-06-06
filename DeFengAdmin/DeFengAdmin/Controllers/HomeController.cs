@@ -60,6 +60,11 @@ namespace DeFengAdmin.Controllers
             return View();
         }
 
+        public ActionResult AnnouncementDetail()
+        {
+            return View();
+        }
+
         //注册 
         public int StaffRegister()
         {
@@ -266,6 +271,27 @@ namespace DeFengAdmin.Controllers
             }
         }
 
+        public string LoadAnnouncement()
+        {
+            var json = "";
+            try
+            {
+                Announcement_BLL bll = new Announcement_BLL();
+                var staff = (Staff)Session["staffInfo"];
+                var list = bll.LoadAnnouncement(2);
+                json = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return json;
+        }
+
+        /// <summary>
+        /// 创建公告
+        /// </summary>
+        /// <returns></returns>
         public bool CreateAnnouncement()
         {
             var result = false;
@@ -288,17 +314,24 @@ namespace DeFengAdmin.Controllers
                 else
                 {
                     staffIDList.AddRange(bll.GetStaffID());
-                }           
-                Announcement_BLL announcementBll = new Announcement_BLL();
-                announcementBll.CreateAnnouncement(staffIDList, announcement);
-                var list = bll.GetStaffByDepartment(1);
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (idList.Contains(list[i].ID))
-                    {
-                        idList.Add(list[i].ID);
-                    }
                 }
+                Announcement_BLL announcementBll = new Announcement_BLL();
+                Attachment_BLL attachmentBll = new Attachment_BLL();
+                var announcementID = announcementBll.CreateAnnouncement(staffIDList, announcement);
+                #region 插入附件
+                var filePath = "";
+                for (int i = 0; i < 1; i++)
+                {
+                    var attachment = new Attachment
+                    {
+                        AttachmentName = "",
+                        OfID = announcementID,
+                        AttachmentType = AttachmentType.Announcement
+                    };
+                    attachmentBll.AddAttachment(attachment);
+                }
+                #endregion
+                result = true;
             }
             catch (Exception ex)
             {
@@ -309,7 +342,7 @@ namespace DeFengAdmin.Controllers
 
         private List<int> GetStaffIDList(List<string> list)
         {
-            var filterList = list.Where(f=>f.Contains("S")).ToList();
+            var filterList = list.Where(f => f.Contains("S")).ToList();
             var staffIDList = new List<int>();
             for (int i = 0; i < filterList.Count; i++)
             {
@@ -338,6 +371,23 @@ namespace DeFengAdmin.Controllers
                 depIDList.Add(Convert.ToInt32(filterList[i].Replace("D_", "")));
             }
             return depIDList;
+        }
+
+        public string GetAnnouncementByID()
+        {
+            var json = "";
+            try
+            {
+                Announcement_BLL bll = new Announcement_BLL();
+                var announcementID = Request["announcementID"] != null ? Convert.ToInt32(Request["announcementID"]) : 0;
+                var obj = bll.GetAnnouncementByID(announcementID);
+                json = JsonConvert.SerializeObject(obj);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return json;
         }
     }
 }
