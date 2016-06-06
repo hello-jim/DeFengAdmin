@@ -246,9 +246,9 @@ function CreateHouseTable(json) {
             html += "<td class='colHouseUseSize'>" + json[i].HouseUseSize + "</td>";
             html += "<td class='colOrientation' colOrientationID='" + json[i].Orientation.ID + "'>" + json[i].Orientation.OrientationName + "</td>";
             html += "<td class='colSaleTotalPrice'>" + json[i].Price + "</td>";
-            html += "<td class='colSaleUnitPrice'>" + GetHouseUnitPrice(json[i].SaleTotalPrice, json[i].HouseSize) + "</td>";
+            html += "<td class='colSaleUnitPrice'>" + GetHouseUnitPrice(json[i].Price, json[i].HouseSize) + "</td>";
             html += "<td class='colLeaseTotalPrice'>" + json[i].LeasePrice + "</td>";
-            html += "<td class='colLeaseUnitPrice'>" + GetHouseUnitPrice(json[i].LeaseTotalPrice, json[i].HouseSize) + "</td>";
+            html += "<td class='colLeaseUnitPrice'>" + GetHouseUnitPrice(json[i].LeasePrice, json[i].HouseSize) + "</td>";
             html += "<td class='colProxyStartDate'>" + DateTimeConvert_yyyyMMdd(json[i].ProxyStartDate) + "</td>";
             html += "<td class='colLookHouseType' colLookHouseTypeID='" + json[i].LookHouseType.ID + "'>" + json[i].LookHouseType.TypeName + "</td>";
             html += "<td class='colDepartment'>" + "暂无" + "</td>";
@@ -474,6 +474,10 @@ function HouseTableDoubleClick() {
         InitAppliance("#applianceSelect", "", false);
         InitLookHouseType("#lookHouseTypeSelect", "", false);
         InitCountry("#nationalitySelect", "", false);
+        //商铺位置
+        InitShopLocation("#shopLocationSelect", " ", false);
+        $("#shopLocationSelect [value=" + obj.ShopLocation.ID + "]").attr("selected", "selected");
+        $("#shopLocationSelect").prev().find("a span")[0].innerText = obj.ShopLocation.Item;
         InitEditHouseData(obj);
         $("#submitHouseDate").val(DateTimeConvert_yyyyMMdd(new Date()));
         $("#proxyStartDate").val(DateTimeConvert_yyyyMMdd(new Date()));
@@ -592,6 +596,10 @@ function GetHouseObj() {
     house.SubmitHouseDate = $("#submitHouseDate").val();
     //委托编号
     house.EntrustID = $("#entrustIDTxt").val();
+    //商铺位置
+    var shopLocation = new Object();
+    shopLocation.ID = $("#shopLocationSelect").val() != null ? $("#shopLocationSelect").val() : 0;
+    house.ShopLocation = shopLocation;
     //来源
     var source = new Object();
     source.ID = $("#sourceSelect").val() != null ? $("#sourceSelect").val() : 0;
@@ -773,6 +781,7 @@ function InitEditHouseData(obj) {
     //家电
     $("#applianceSelect [value=" + (obj.Appliance != null ? obj.Appliance.ID : 0) + "]").attr("selected", "selected");
     $("#applianceSelect").prev().find("a span")[0].innerText = $("#applianceSelect :selected").text();
+
     //看房
     $("#lookHouseTypeSelect [value=" + (obj.LookHouseType != null ? obj.LookHouseType.ID : 0) + "]").attr("selected", "selected");
     $("#lookHouseTypeSelect").prev().find("a span")[0].innerText = $("#lookHouseTypeSelect :selected").text();
@@ -822,6 +831,7 @@ function HouseAdd() {
         InitAppliance("#applianceSelect", "", true);
         InitLookHouseType("#lookHouseTypeSelect", "", true);
         InitCountry("#nationalitySelect", "", true);
+        InitShopLocation("#shopLocationSelect", " ", true);
         $("#submitHouseDate").val(DateTimeConvert_yyyyMMdd(new Date()));
         $("#proxyStartDate").val(DateTimeConvert_yyyyMMdd(new Date()));
         $("#addHouse").unbind("click").on("click", function () {
@@ -859,7 +869,7 @@ function HouseAdd() {
                 $(".status").hide();
                 $(".monthly").hide();
                 $(".displacement").hide();
-                $(".commission").hide();
+                $(".shopLocation").hide();
                 $(".ziboCity").hide();
                 $(".level").hide();
                 $(".realRate").hide();
@@ -891,7 +901,7 @@ function HouseAdd() {
                 $(".status").hide();
                 $(".monthly").hide();
                 $(".displacement").hide();
-                $(".commission").hide();
+                $(".shopLocation").hide();
                 $(".ziboCity").hide();
                 $(".level").hide();
                 $(".realRate").hide();
@@ -908,7 +918,7 @@ function HouseAdd() {
                 break;
                 //商铺
             case "3":
-                $(".commission").show();
+                $(".shopLocation").show();
                 $(".ziboCity").show();
                 $(".height").show();
                 $(".Within").show();
@@ -958,7 +968,7 @@ function HouseAdd() {
                 $(".hall").hide();
                 $(".toilet").hide();
                 $(".balcony").hide();
-                $(".commission").hide();
+                $(".shopLocation").hide();
                 $(".ziboCity").hide();
                 $(".level").hide();
                 $(".realRate").hide();
@@ -987,7 +997,7 @@ function HouseAdd() {
                 $(".status").hide();
                 $(".monthly").hide();
                 $(".displacement").hide();
-                $(".commission").hide();
+                $(".shopLocation").hide();
                 $(".ziboCity").hide();
                 $(".level").hide();
                 $(".realRate").hide();
@@ -1022,7 +1032,7 @@ function HouseAdd() {
                 $(".hall").hide();
                 $(".toilet").hide();
                 $(".balcony").hide();
-                $(".commission").hide();
+                $(".shopLocation").hide();
                 $(".ziboCity").hide();
                 $(".planning").hide();
                 $(".length").hide();
@@ -1036,7 +1046,7 @@ function HouseAdd() {
                 break;
                 //网点
             case "7":
-                $(".commission").show();
+                $(".shopLocation").show();
                 $(".ziboCity").show();
                 $(".height").show();
                 $(".Within").show();
@@ -1090,7 +1100,7 @@ function HouseAdd() {
                 $(".hall").hide();
                 $(".toilet").hide();
                 $(".balcony").hide();
-                $(".commission").hide();
+                $(".shopLocation").hide();
                 $(".ziboCity").hide();
                 $(".level").hide();
                 $(".realRate").hide();
@@ -1119,7 +1129,7 @@ function HouseAdd() {
                 $(".hall").hide();
                 $(".toilet").hide();
                 $(".balcony").hide();
-                $(".commission").hide();
+                $(".shopLocation").hide();
                 $(".ziboCity").hide();
                 $(".planning").hide();
                 $(".length").hide();
@@ -1133,7 +1143,7 @@ function HouseAdd() {
                 break;
                 //辅厂
             case "10":
-                $(".commission").show();
+                $(".shopLocation").show();
                 $(".ziboCity").show();
                 $(".height").show();
                 $(".Within").show();
@@ -1187,7 +1197,7 @@ function HouseAdd() {
                 $(".hall").hide();
                 $(".toilet").hide();
                 $(".balcony").hide();
-                $(".commission").hide();
+                $(".shopLocation").hide();
                 $(".ziboCity").hide();
                 $(".level").hide();
                 $(".realRate").hide();
@@ -1198,7 +1208,7 @@ function HouseAdd() {
                 break;
                 //车位
             case "12":
-                $(".commission").show();
+                $(".shopLocation").show();
                 $(".Width").show();
                 $(".length").show();
                 $(".room").hide();

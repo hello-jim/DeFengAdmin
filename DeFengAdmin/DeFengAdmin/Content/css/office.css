@@ -1,11 +1,10 @@
-﻿body {
+﻿.windowShow {
+     position: relative;
+     top: -980px;
+     z-index:20;
+     margin:100px;
+     border:solid 2px #e4e4e4;
 }
-
-#selected-range {
-    height:400px;
-    width:400px;
-}
-.range {
-    width:300px;
-    height:200px !important;
+.announcement {
+    z-index:1;
 }

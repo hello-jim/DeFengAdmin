@@ -212,6 +212,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BusinessCenterController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
@@ -232,6 +233,7 @@
     <Content Include="App_Data\SysConfKey.xml" />
     <Content Include="Content\css\customer.css" />
     <Content Include="Content\css\home.css" />
+    <Content Include="Content\css\modality.css" />
     <Content Include="Content\css\office.css" />
     <Content Include="Content\css\organization.css" />
     <Content Include="Scripts\card.js" />
@@ -320,6 +322,7 @@
     <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.uk.js" />
     <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.zh-CN.js" />
     <Content Include="Scripts\datetimepicker\locales\bootstrap-datetimepicker.zh-TW.js" />
+    <Content Include="Scripts\defeng\announcement.js" />
     <Content Include="Scripts\defeng\common.js" />
     <Content Include="Scripts\defeng\customer.js" />
     <Content Include="Scripts\defeng\group.js" />
@@ -1785,6 +1788,15 @@
     <Content Include="Views\ProcessCenter\Index.cshtml" />
     <Content Include="Views\Organization\DepTreeview.cshtml" />
     <Content Include="Views\Organization\TestView.cshtml" />
+    <Content Include="Views\ProcessCenter\WritingPaper.cshtml" />
+    <Content Include="Views\ProcessCenter\PostManagement.cshtml" />
+    <Content Include="Views\BusinessCenter\Induction.cshtml" />
+    <Content Include="Views\BusinessCenter\Positive.cshtml" />
+    <Content Include="Views\BusinessCenter\Transfer.cshtml" />
+    <Content Include="Views\BusinessCenter\PartTime.cshtml" />
+    <Content Include="Views\BusinessCenter\Departure.cshtml" />
+    <Content Include="Views\BusinessCenter\Announcement.cshtml" />
+    <Content Include="Views\BusinessCenter\OtherAnnouncements.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

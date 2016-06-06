@@ -9,304 +9,306 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css">
-@*<link rel="stylesheet" href="~/Content/css/office.css" />
-<link rel="stylesheet" href="~/Content/css/jquery.treeview.css" />
+<link rel="stylesheet" href="~/Content/css/office.css" />
+@*<link rel="stylesheet" href="~/Content/css/jquery.treeview.css" />
 <link rel="stylesheet" href="~/Content/css/screen.css" />*@
-<div class="panel panel-default">
-    <div class="row">
-        <div class="row">&nbsp;</div>
+    <div class="panel panel-default announcement">
         <div class="row">
-            <div class="col-md-10"></div>
-            <div class="col-md-2"><a>发布</a>丨<a>暂存</a>丨<a>预览</a></div>
-        </div>
-        <div class="row panel-heading">&nbsp;</div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="col-md-12">
-                <div class="row">
-                    <h4>公告发布</h4>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <span>标题</span>
-                </div>
-                <div class="row">
-                    <input type="text" class="form-control input-dark" name="title" id="title" autocomplete="off" />
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <span>内容</span>
-                </div>
-                <div class="row">
-                    <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
-                </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-2"><a>发布</a>丨<a>暂存</a>丨<a>预览</a></div>
             </div>
+            <div class="row panel-heading">&nbsp;</div>
         </div>
-
-
-        <div class="col-md-4">
-            <div class="col-md-12">
-                <div class="row">&nbsp;</div>
-                <div class="row"><img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>公告类型：</span></div>
-                <div class="row">
-                    <select class="form-control" id="education">
-                        <option></option>
-                        <option value="行政">行政</option>
-                        <option value="财务">财务</option>
-                        <option value="人事">人事</option>
-                        <option value="营销">营销</option>
-                        <option value="其他公告">其他公告</option>
-                        <option value="房友系统">房友系统</option>
-                        <option value="会议纪要">会议纪要</option>
-                        <option value="活动公告">活动公告</option>
-                    </select>
-                </div>
-                <div class="row">&nbsp;</div>
-
-                <div class="row">
-                    <img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>发送范围：</span>
-                </div>
-                <div class="row">
-                    <input type="button" class="form-control input-dark" name="title" id="scope" href="javascript:;" readonly />
-                </div>
-
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>已阅提醒：</span>
-                </div>
-                <div class="row">
-                    <label class="radio-inline">
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" checked="" name="sex" value="否">
-                        否
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="sex" value="是">
-                        是
-                    </label>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <span>提醒截止:(选填)</span>
-                </div>
-                <div class="row">
-                    <div class="date form_datetime">
-                        <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
-                        <span class="add-on"><i class="icon-remove"></i></span>
-                        <span class="add-on"><i class="icon-calendar"></i></span>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="col-md-12">
+                    <div class="row">
+                        <h4>公告发布</h4>
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <span>标题</span>
+                    </div>
+                    <div class="row">
+                        <input type="text" class="form-control input-dark" name="title" id="title" autocomplete="off" />
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <span>内容</span>
+                    </div>
+                    <div class="row">
+                        <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
                     </div>
                 </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <span>附件:(选填)</span>
-                </div>
-                <div class="row">
-                    <input type="text" id="PathDisplayer" class="form-control input-dark" disabled />
-                    <a class="link-btn">选择文件</a>
-                </div>
-
             </div>
+
+
+            <div class="col-md-4">
+                <div class="col-md-12">
+                    <div class="row">&nbsp;</div>
+                    <div class="row"><img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>公告类型：</span></div>
+                    <div class="row">
+                        <select class="form-control" id="education">
+                            <option></option>
+                            <option value="行政">行政</option>
+                            <option value="财务">财务</option>
+                            <option value="人事">人事</option>
+                            <option value="营销">营销</option>
+                            <option value="其他公告">其他公告</option>
+                            <option value="房友系统">房友系统</option>
+                            <option value="会议纪要">会议纪要</option>
+                            <option value="活动公告">活动公告</option>
+                        </select>
+                    </div>
+                    <div class="row">&nbsp;</div>
+
+                    <div class="row">
+                        <img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>发送范围：</span>
+                    </div>
+                    <div class="row">
+                        <input type="button" class="form-control input-dark follow-record-panel-show" name="title" id="scope" readonly />
+                    </div>
+
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>已阅提醒：</span>
+                    </div>
+                    <div class="row">
+                        <label class="radio-inline">
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" checked="" name="sex" value="否">
+                            否
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="sex" value="是">
+                            是
+                        </label>
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <span>提醒截止:(选填)</span>
+                    </div>
+                    <div class="row">
+                        <div class="date form_datetime">
+                            <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                            <span class="add-on"><i class="icon-remove"></i></span>
+                            <span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <span>附件:(选填)</span>
+                    </div>
+                    <div class="row">
+                        <input type="text" id="PathDisplayer" class="form-control input-dark" disabled />
+                        <a class="link-btn">选择文件</a>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-
     </div>
-</div>
-<div class="department-addAndEdit-panel">
-    <div class="theme-poptit">
-        <a href="javascript:;" title="关闭" class="close">×</a>
-    </div>
-    <div class="theme-popbod dform">
-        <div class="row">
-            <div class="col-md-6">
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a data-toggle="tab" href="#home">
-                            <span class="visible-xs"><i class="fa-home"></i></span>
-                            <span class="hidden-xs">人员</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#profile">
-                            <span class="visible-xs"><i class="fa-user"></i></span>
-                            <span class="hidden-xs">机构</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#messages">
-                            <span class="visible-xs"><i class="fa-envelope-o"></i></span>
-                            <span class="hidden-xs">岗位</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a data-toggle="tab" href="#settings">
-                            <span class="visible-xs"><i class="fa-cog"></i></span>
-                            <span class="hidden-xs">常用组</span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="col-md-12 panel">
-                    <div class="col-md-11">
-                        <div class="tab-content">
-                            <div id="home" class="tab-pane active">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-10">
 
-                                        </div>
-                                        <div>
-                                            <button type="submit" class="btn btn-link">
-                                                <i class="linecons-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
+
+
+    <div class="department-addAndEdit-panel windowShow" style="display:none">
+            <div class="theme-poptit">
+                <a href="javascript:;" title="关闭" class="close">×</a>
+            </div>
+            <div class="theme-popbod dform">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#home">
+                                    <span class="visible-xs"><i class="fa-home"></i></span>
+                                    <span class="hidden-xs">人员</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#profile">
+                                    <span class="visible-xs"><i class="fa-user"></i></span>
+                                    <span class="hidden-xs">机构</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#messages">
+                                    <span class="visible-xs"><i class="fa-envelope-o"></i></span>
+                                    <span class="hidden-xs">岗位</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#settings">
+                                    <span class="visible-xs"><i class="fa-cog"></i></span>
+                                    <span class="hidden-xs">常用组</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="col-md-12 panel">
+                            <div class="col-md-11">
+                                <div class="tab-content">
+                                    <div id="home" class="tab-pane active">
                                         <div class="col-md-12">
-                                            <iframe frameborder="0" src="/Organization/DepTreeview" scrolling="yes" style="border: 0px solid #5585B8;padding:2px 0px 0px 0px" name="contentFrame" cellspacing="0" cellpadding="0" id="staff-dep-treeview"></iframe>
+                                            <div class="row">
+                                                <div class="col-md-10">
+
+                                                </div>
+                                                <div>
+                                                    <button type="submit" class="btn btn-link">
+                                                        <i class="linecons-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <iframe frameborder="0" src="/Organization/DepTreeview" scrolling="yes" style="border: 0px solid #5585B8;padding:2px 0px 0px 0px" name="contentFrame" cellspacing="0" cellpadding="0" id="staff-dep-treeview"></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="row">&nbsp;</div>
+                                            <div class="row">
+
+                                                <select id="staffSelect" class="range" multiple></select>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div id="profile" class="tab-pane">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                3
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">&nbsp;</div>
-                                    <div class="row">
+                                    <div id="messages" class="tab-pane">
 
-                                        <select id="staffSelect" class="range" multiple></select>
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <input type="text" id="title" name="title" class="form-control input-dark">
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn btn-link">
+                                                    <i class="linecons-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                4
+                                            </div>
+                                        </div>
+                                        <div class="row">&nbsp;</div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <select id="postSelect" class="range" multiple></select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="settings" class="tab-pane">
+
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <input type="text" id="title" name="title" class="form-control input-dark">
+                                            </div>
+                                            <div>
+                                                <button type="submit" class="btn btn-link">
+                                                    <i class="linecons-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                5
+                                            </div>
+                                        </div>
+                                        <div class="row">&nbsp;</div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <select id="" multiple></select>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
-
                             </div>
-                            <div id="profile" class="tab-pane">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        3
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="messages" class="tab-pane">
+                            <div class="col-md-1">
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">&nbsp;</div>
 
                                 <div class="row">
-                                    <div class="col-md-10">
-                                        <input type="text" id="title" name="title" class="form-control input-dark">
-                                    </div>
-                                    <div>
-                                        <button type="submit" class="btn btn-link">
-                                            <i class="linecons-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        4
-                                    </div>
+                                    <a href="javascript:void(0);">
+                                        <i class="fa fa-arrow-right"></i>
+                                    </a>
                                 </div>
                                 <div class="row">&nbsp;</div>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <select id="postSelect" class="range" multiple></select>
-                                    </div>
+                                    <a href="javascript:void(0);">
+                                        <i class="fa fa-arrow-left"></i>
+                                    </a>
                                 </div>
                             </div>
+                        </div>
 
-                            <div id="settings" class="tab-pane">
+                    </div>
+                    <div class="col-md-6">
 
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <input type="text" id="title" name="title" class="form-control input-dark">
-                                    </div>
-                                    <div>
-                                        <button type="submit" class="btn btn-link">
-                                            <i class="linecons-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        5
-                                    </div>
-                                </div>
-                                <div class="row">&nbsp;</div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <select id="" multiple></select>
-                                    </div>
-                                </div>
-
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div class="col-md-3">已选对象</div>
+                            <div class="col-md-0">[0]</div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-dark text-left">
+                                    设为常用组
+                                </button>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="row">&nbsp;</div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">&nbsp;</div>
 
+                        </div>
                         <div class="row">
-                            <a href="javascript:void(0);">
-                                <i class="fa fa-arrow-right"></i>
-                            </a>
-                        </div>
-                        <div class="row">&nbsp;</div>
-                        <div class="row">
-                            <a href="javascript:void(0);">
-                                <i class="fa fa-arrow-left"></i>
-                            </a>
+                            <select id="selected-range" multiple></select>
                         </div>
                     </div>
-                </div>
-
-            </div>
-            <div class="col-md-6">
-
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col-md-3">已选对象</div>
-                    <div class="col-md-0">[0]</div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-dark text-left">
-                            设为常用组
-                        </button>
-                    </div>
-
-                </div>
-                <div class="row">
-                    <select id="selected-range" multiple></select>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<input id="staffJson" type="hidden" />
-<input id="postJson" type="hidden" />
-<input id="depJson" type="hidden" />
-<script src="~/Scripts/jquery-1.11.1.min.js"></script>
-<script src="~/scripts/bootstrap.min.js"></script>
-<script src="/scripts/daterangepicker/daterangepicker.js"></script>
-<script src="/scripts/datepicker/bootstrap-datepicker.js"></script>
-<script src="/scripts/timepicker/bootstrap-timepicker.min.js"></script>
-<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-<script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="~/Scripts/defeng/common.js"></script>
-<script type="text/javascript" src="~/Scripts/defeng/office.js"></script>
-<script src="~/Scripts/jquery.treeview.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.form_datetime').datetimepicker({
-            format: 'yyyy-mm-dd',
-            language: 'zh-CN',
-            // weekStart: 1,
-            todayBtn: 1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
+    <input id="staffJson" type="hidden" />
+    <input id="postJson" type="hidden" />
+    <input id="depJson" type="hidden" />
+    <script src="~/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="/scripts/daterangepicker/daterangepicker.js"></script>
+    <script src="/scripts/datepicker/bootstrap-datepicker.js"></script>
+    <script src="/scripts/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="~/Scripts/defeng/common.js"></script>
+    <script type="text/javascript" src="~/Scripts/defeng/office.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.form_datetime').datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                // weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
         });
-    });
 
-</script>
+    </script>
