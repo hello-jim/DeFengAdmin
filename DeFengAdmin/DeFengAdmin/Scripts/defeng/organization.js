@@ -83,8 +83,6 @@ $(document).ready(function () {
     });
 });
 
-
-
 function InitDepartment() {
     InitDepartmentTreeView(".department-treeview", false);
     $(".department-treeview ul a").unbind("click").on("click", function () {
@@ -332,10 +330,6 @@ function InitPostData(obj) {
     $("#postGradeTxt").val($(obj).attr("postGrade"));
 }
 
-function InitStaffData() {
-
-}
-
 function GetDepartmentObj() {
     var department = new Object();
     department.ID = $("#depID").val() != "" ? $("#depID").val() : 0;
@@ -469,7 +463,7 @@ function GetAllParentDepartment(parentID, depName) {
     allDepName = allDepName.substring(0, allDepName.lastIndexOf('/'));
     var depNameArr = allDepName.split('/');
     allDepName = "";
-    for (var i = depNameArr.length-1; i != -1; i--) {
+    for (var i = depNameArr.length - 1; i != -1; i--) {
         allDepName += depNameArr[i] + "/";
     }
     allDepName += depName;
@@ -486,6 +480,18 @@ function GetParentDepartment(parentID) {
     }
     return allDepName;
 }
+
+
+function InitPermission() {
+    $.ajax({
+        url: "/Common/LoadPermission",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+        }
+    });
+}
+
 
 
 

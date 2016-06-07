@@ -277,9 +277,25 @@ namespace DeFengAdmin.Controllers
             }
             catch (Exception ex)
             {
-                
+
             }
             return result;
+        }
+
+        public string LoadPermission()
+        {
+            var json = "";
+            try
+            {
+                Permission_BLL bll = new Permission_BLL();
+                var list = bll.LoadPermission();
+                json = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return json;
         }
 
         public ActionResult DepTreeview()
