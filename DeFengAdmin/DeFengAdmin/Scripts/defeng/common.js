@@ -1,4 +1,4 @@
-﻿///初始化省 
+﻿///初始化省  
 
 function InitProvince(id, cityID, districtID, areaID, async) {
     $.ajax({
