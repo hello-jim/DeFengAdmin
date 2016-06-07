@@ -13,5 +13,13 @@ namespace DeFengAdmin.Controllers
         {
             return View();
         }
+        public ActionResult WritingPaper()
+        {
+            return View();
+        }
+        public ActionResult PostManagement()
+        {
+            return View();
+        }
     }
 }

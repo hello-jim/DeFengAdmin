@@ -10,3 +10,16 @@ font-size:18px;
 .statistical {
     border-bottom: 2px solid #ddd;
 }
+.search {
+    position: relative;
+    top:-30px;
+    left:75%;
+}
+.r_search {
+    position: relative;
+    top:-30px;
+    left:80%;
+}
+.distance {
+    margin-left:2px;
+}
