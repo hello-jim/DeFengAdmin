@@ -1,0 +1,426 @@
+﻿
+@{
+    ViewBag.Title = "Induction";
+}
+<link rel="stylesheet" href="/Scripts/dropzone/css/dropzone.css">
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css"> 
+<div class="panel">
+<div class="row text-right"><a>送办</a>丨<a>查看流程</a>丨<a>暂存</a>丨<a>打印</a>丨<a>返回</a></div>
+<div class="row text-center"><h3>员工入职申请</h3></div>
+   <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">编号</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="number" id="number" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">姓名</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="staffName" id="staffName" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">生日类别</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="新历" name="application_method">新历</option>
+                        <option value="农历" name="application_method">农历</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">身份证号</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="number" id="number" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">出生年月</div>
+                <div class="col-md-3">
+                    <div class="date form_datetime">
+                        <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                        <span class="add-on"><i class="icon-remove"></i></span>
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-md-0 text-center translation">性别</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="男" name="application_method">男</option>
+                        <option value="女" name="application_method">女</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">年龄</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="number" id="number" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">生日</div>
+                <div class="col-md-3">
+                    <div class="date form_datetime">
+                        <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                        <span class="add-on"><i class="icon-remove"></i></span>
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-md-0 text-center translation">婚姻状况</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="未婚" name="application_method">未婚</option>
+                        <option value="已婚" name="application_method">已婚</option>
+                        <option value="离异" name="application_method">离异</option>
+                        <option value="丧偶" name="application_method">丧偶</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">学历</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="未婚" name="application_method">高中以下</option>
+                        <option value="已婚" name="application_method">高中</option>
+                        <option value="离异" name="application_method">中专</option>
+                        <option value="丧偶" name="application_method">大专</option>
+                        <option value="未婚" name="application_method">本科</option>
+                        <option value="已婚" name="application_method">硕士</option>
+                        <option value="离异" name="application_method">博士</option>
+                    </select>
+                </div>
+                <div class="col-md-0 text-center translation">专业</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="professional" id="professional" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">血型</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="O型" name="application_method">O型</option>
+                        <option value="A型" name="application_method">A型</option>
+                        <option value="B型" name="application_method">B型</option>
+                        <option value="AB型" name="application_method">AB型</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">入职时间</div>
+                <div class="col-md-3">
+                    <div class="date form_datetime">
+                        <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                        <span class="add-on"><i class="icon-remove"></i></span>
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="col-md-0 text-center translation">入职状态</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="试用" name="application_method">试用</option>
+                        <option value="实习" name="application_method">实习</option>
+                        <option value="正式入职" name="application_method">正式入职</option>
+                    </select>
+                </div>
+                <div class="col-md-0 text-center translation">试用期</div>
+                <div class="col-md-1">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="一个月" name="application_method">一个月</option>
+                        <option value="两个月" name="application_method">两个月</option>
+                        <option value="三个月" name="application_method">三个月</option>
+                        <option value="四个月" name="application_method">四个月</option>
+                        <option value="五个月" name="application_method">五个月</option>
+                        <option value="六个月" name="application_method">六个月</option>
+                    </select>
+                </div>
+                <div class="col-md-1 text-center translation">身高</div>
+                <div class="col-md-1">
+                    <input type="text" class="form-control input-dark" name="height" id="height" autocomplete="off" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">试用薪金</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="number" id="number" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">转正薪金</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="staffName" id="staffName" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">政治面貌</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="群众" name="application_method">群众</option>
+                        <option value="中共党员" name="application_method">中共党员</option>
+                        <option value="共青团员" name="application_method">共青团员</option>
+                        <option value="九三学社社员" name="application_method">九三学社社员</option>
+                        <option value="台盟盟员" name="application_method">台盟盟员</option>
+                        <option value="其他" name="application_method">其他</option>
+                        <option value="中共预备党员" name="application_method">中共预备党员</option>
+                        <option value="民革会员" name="application_method">民革会员</option>
+                        <option value="无党派民主人士" name="application_method">无党派民主人士</option>
+                        <option value="民党会员" name="application_method">民党会员</option>
+                        <option value="民建会员" name="application_method">民建会员</option>
+                        <option value="发进会员" name="application_method">发进会员</option>
+                        <option value="农工党党员" name="application_method">农工党党员</option>
+                        <option value="致工党党员" name="application_method">致工党党员</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">职称</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="title" id="title" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">民族</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="national" id="national" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">邮箱地址</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="email" id="email" autocomplete="off" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">移动电话</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="mobilePhone" id="mobilePhone" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">住宅电话</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="homePhone" id="homePhone" autocomplete="off" />
+                </div>
+                <div class="col-md-0 text-center translation">办公电话</div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control input-dark" name="officePhone" id="officePhone" autocomplete="off" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-0 text-center translation">户口类别</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="application_method">
+                        <option></option>
+                        <option value="市内农业户口" name="application_method">市内农业户口</option>
+                        <option value="市外非农户口" name="application_method">市外非农户口</option>
+                        <option value="市内非农户口" name="application_method">市内非农户口</option>
+                        <option value="市外农业户口" name="application_method">市外农业户口</option>
+                    </select>
+                </div>
+                <div class="col-md-0 text-center translation">户口所在地</div>
+                <div class="col-md-8">
+                    <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+                </div>
+            </div>
+<div class="row">
+    <div class="col-md-0 text-center translation">籍贯</div>
+    <div class="col-md-3">
+        <input type="text" class="form-control input-dark" name="native" id="native" autocomplete="off" />
+    </div>
+    <div class="col-md-0 text-center translation">现住址</div>
+    <div class="col-md-8">
+        <input type="text" class="form-control input-dark" name="currentAddress" id="currentAddress" autocomplete="off" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-0 text-center translation">应聘渠道</div>
+    <div class="col-md-11">
+        <label class="radio-inline">
+            <input type="radio" value="人才市场" name="market" checked="">
+            人才市场
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value="网上招聘" name="online" checked="">
+            网上招聘
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value="外部张贴" name="posted" checked="">
+            外部张贴
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value="登报招聘" name="serve" checked="">
+            登报招聘
+        </label>
+        <label class="radio-inline">
+            <input type="radio" value="内部推荐" name="recommend" checked="">
+            内部推荐
+        </label>
+      
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-0 text-center translation">家庭成员</div>
+    <div class="col-md-1">
+        <input type="text" class="form-control input-dark" name="native" id="native" autocomplete="off" />
+    </div>
+    <div class="col-md-0 text-center translation">关系</div>
+    <div class="col-md-2">
+        <input type="text" class="form-control input-dark" name="native" id="native" autocomplete="off" />
+    </div>
+    <div class="col-md-0 text-center translation">职业</div>
+    <div class="col-md-1">
+        <input type="text" class="form-control input-dark" name="native" id="native" autocomplete="off" />
+    </div>
+    <div class="col-md-1 text-center translation">所在单位或地址</div>
+    <div class="col-md-3">
+        <input type="text" class="form-control input-dark" name="native" id="native" autocomplete="off" />
+    </div>
+    <div class="col-md-0 text-center translation">联系电话</div>
+    <div class="col-md-2">
+        <input type="text" class="form-control input-dark" name="native" id="native" autocomplete="off" />
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">入职单位</div>
+        <div class="col-md-2">
+            <input type="text" class="form-control input-dark" name="unit" id="unit" autocomplete="off" />
+        </div>
+        <div class="col-md-0 text-center translation">入职部门</div>
+        <div class="col-md-3">
+            <input type="text" class="form-control input-dark" name="department" id="department" autocomplete="off" />
+        </div>
+        <div class="col-md-0 text-center translation">岗位</div>
+        <div class="col-md-2">
+            <input type="text" class="form-control input-dark" name="jobs" id="jobs" autocomplete="off" />
+        </div>
+        <div class="col-md-0 text-center translation">直属领导</div>
+        <div class="col-md-3">
+            <input type="text" class="form-control input-dark" name="leadership" id="leadership" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">兼职部门</div>
+        <div class="col-md-12">
+            <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">兼职岗位</div>
+        <div class="col-md-12">
+            <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">附件</div>
+        <div class="col-md-2 text-center translation">身份证、银行卡、体检表</div>
+        <div class="col-md-9">
+            <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row text-center">
+        教育经历
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="#">新建</a>
+            <a href="#">删除</a>
+        </div>
+</div>
+    <div class="row">
+        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th data-priority="1" id="idcf0ae581-col-1"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></th>
+                    <th data-priority="3" id="idcf0ae581-col-2">开始时间</th>
+                    <th data-priority="1" id="idcf0ae581-col-3">结束时间</th>
+                    <th data-priority="3" id="idcf0ae581-col-4">学历</th>
+                    <th data-priority="3" id="idcf0ae581-col-5">院校名称</th>
+                    <th data-priority="6" id="idcf0ae581-col-6">专业</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+        </table>
+    </div>
+    <div class="row text-center">
+       工作经历
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="#">新建</a>
+            <a href="#">删除</a>
+        </div>
+    </div>
+    <div class="row">
+        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th data-priority="1" id="idcf0ae581-col-1"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></th>
+                    <th data-priority="3" id="idcf0ae581-col-2">开始时间</th>
+                    <th data-priority="1" id="idcf0ae581-col-3">结束时间</th>
+                    <th data-priority="3" id="idcf0ae581-col-4">公司名称</th>
+                    <th data-priority="3" id="idcf0ae581-col-5">职位</th>
+                    <th data-priority="6" id="idcf0ae581-col-6">月薪</th>
+                    <th data-priority="6" id="idcf0ae581-col-6">年薪</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-1">声明</div>
+        <div class="col-md-11">
+            <div class="row">1、本表所填内容完整、真实、准确，愿意接受公司有关背景调查 </div>
+            <div class="row">2、本人身体健康，未患有有何传染或其他疾病。如有隐瞒，自愿接受公司一切处罚（包括辞退）。 </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">分行经理</div>
+        <div class="col-md-12">
+            <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">现场经理</div>
+        <div class="col-md-12">
+            <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">人事文员</div>
+        <div class="col-md-12">
+            <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">人事经理</div>
+        <div class="col-md-12">
+            <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">总经理</div>
+        <div class="col-md-12">
+            <input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-0 text-center translation">分配权限</div>
+        <div class="col-md-1 text-center translation">登录名</div>
+        <div class="col-md-5"><input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" /></div>
+        <div class="col-md-0 text-center translation">访问权限</div>
+        <div class="col-md-5"><input type="text" class="form-control input-dark" name="domicilePlace" id="domicilePlace" autocomplete="off" /></div>
+    </div>
+</div>
+<script src="~/Scripts/dropzone/dropzone.min.js"></script>
+<script src="/Scripts/daterangepicker/daterangepicker.js"></script>
+<script src="/Scripts/datepicker/bootstrap-datepicker.js"></script>
+<script src="/Scripts/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.form_datetime').datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                // weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+        });
+
+</script>
