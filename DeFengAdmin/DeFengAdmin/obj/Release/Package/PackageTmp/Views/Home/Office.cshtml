@@ -1,386 +1,311 @@
-﻿
-@{
-    ViewBag.Title = "Office";
+﻿@{
+    ViewBag.Title = "Login";
 }
 
 <!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <title>惠州大亚湾其易房网发展有限公司</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-<div class="row">
-    <div class="col-md-6">
+<meta charset="utf-8">
+<title>发布公告</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-        <!-- Default panel -->
-        <div class="panel panel-default fillet">
-            <div class="panel-heading">
-                公告
-                <div class="panel-options">
-
-                    <a href="/Home/Login">
-                        <span class="expand-icon">+</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa-rotate-right"></i>
-                    </a>
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="/Scripts/select2/select2.css">
+<link rel="stylesheet" href="/Scripts/select2/select2-bootstrap.css">
+<link rel="stylesheet" href="~/Content/css/office.css" />
+@*<link rel="stylesheet" href="~/Content/css/jquery.treeview.css" />
+<link rel="stylesheet" href="~/Content/css/screen.css" />*@
+<div class="panel panel-default">
+    <div class="row">
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2"><a class="announcement-save" href="javascript:void(0);">发布</a>丨<a href="javascript:void(0);">暂存</a>丨<a href="javascript:void(0);">预览</a></div>
+        </div>
+        <div class="row panel-heading">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="col-md-12">
+                <div class="row">
+                    <h4>公告发布</h4>
                 </div>
-            </div>
-            <div class="panel-body">
-                    <table class="table table-hover">
-
-                        <tbody>
-                            <tr>
-                                <td>Arlind</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
-                            <tr>
-                                <td>Art</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
-                            <tr>
-                                <td>Filan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                <div class="row pull-right"><a>更多</a></div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <span>标题</span>
+                </div>
+                <div class="row">
+                    <input type="text" class="form-control input-dark" name="title" id="attachmentNameTxt" autocomplete="off" />
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <span>内容</span>
+                </div>
+                <div class="row">
+                    <textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
+                </div>
             </div>
         </div>
 
-    </div>
 
-    <div class="col-md-6">
-
- 
-        <div class="panel panel-default fillet">
-            <div class="panel-heading">
-                我的日程
-                <div class="panel-options">
-
-                    <a href="/Home/Login">
-                        <span class="expand-icon">+</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa-rotate-right"></i>
-                    </a>
+        <div class="col-md-4">
+            <div class="col-md-12">
+                <div class="row">&nbsp;</div>
+                <div class="row"><img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>公告类型：</span></div>
+                <div class="row">
+                    <select class="form-control" id="announcementTypeSelect"></select>
                 </div>
-            </div>
-            <div class="panel-body">
+                <div class="row">&nbsp;</div>
 
-                <table class="table table-hover">
-
-                    <tbody>
-                        <tr>
-                            <td>Arlind</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Art</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Filan</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row pull-right"><a>更多</a></div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-6">
-
-        <!-- Default panel -->
-        <div class="panel panel-default fillet">
-            <div class="panel-heading">
-                我的事项
-                <div class="panel-options">
-
-                    <a href="/Home/Login">
-                        <span class="expand-icon">+</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa-rotate-right"></i>
-                    </a>
+                <div class="row">
+                    <img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>发送范围：</span>
                 </div>
-            </div>
-            <div class="panel-body">
-                <table class="table table-hover">
-
-                    <tbody>
-                        <tr>
-                            <td>Arlind</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Art</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Filan</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row pull-right"><a>更多</a></div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-
-        <div class="panel panel-default fillet">
-            <div class="panel-heading">
-                常用流程
-                <div class="panel-options">
-
-                    <a href="/Home/Login">
-                        <span class="expand-icon">+</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa-rotate-right"></i>
-                    </a>
+                <div class="row">
+                    <input  type="button" class="form-control input-dark" name="title" id="pushRangeTxt" href="javascript:;" readonly />
                 </div>
-            </div>
-            <div class="panel-body">
 
-                <table class="table table-hover">
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <img src="~/Content/images/asterisk.png" class="img_size">&nbsp;&nbsp;<span>已阅提醒：</span>
+                </div>
+                <div class="row">
+                    <label class="radio-inline">
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" checked="" name="sex" value="否">
+                        否
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="sex" value="是">
+                        是
+                    </label>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <span>提醒截止:(选填)</span>
+                </div>
+                <div class="row">
+                    <div class="date form_datetime">
+                        <input id="lastReadDateTxt" class="form-control" name="lastReadDate" data-validate="required" readonly />
+                        <span class="add-on"><i class="icon-remove"></i></span>
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <span>附件:(选填)</span>
+                </div>
+                <div class="row">
+                    <input type="text" id="PathDisplayer" class="form-control input-dark" disabled />
+                    <a class="link-btn">选择文件</a>
+                </div>
 
-                    <tbody>
-                        <tr>
-                            <td>Arlind</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Art</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Filan</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row pull-right"><a>更多</a></div>
             </div>
         </div>
 
     </div>
 </div>
-
-<div class="row">
-    <div class="col-md-6">
-
-        <!-- Default panel -->
-        <div class="panel panel-default fillet">
-            <div class="panel-heading">
-                新闻
-                <div class="panel-options">
-
-                    <a href="/Home/Login">
-                        <span class="expand-icon">+</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa-rotate-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="panel-body">
-                <table class="table table-hover">
-
-                    <tbody>
-                        <tr>
-                            <td>Arlind</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Art</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Filan</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row pull-right"><a>更多</a></div>
-            </div>
-        </div>
-
+<div class="office-theme-popover department-addAndEdit-panel">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
     </div>
+    <div class="theme-popbod dform">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" href="#home">
+                            <span class="visible-xs"><i class="fa-home"></i></span>
+                            <span class="hidden-xs">人员</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#profile">
+                            <span class="visible-xs"><i class="fa-user"></i></span>
+                            <span class="hidden-xs">机构</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#messages">
+                            <span class="visible-xs"><i class="fa-envelope-o"></i></span>
+                            <span class="hidden-xs">岗位</span>
+                        </a>
+                    </li>
+                    @*<li>
+                        <a data-toggle="tab" href="#settings">
+                            <span class="visible-xs"><i class="fa-cog"></i></span>
+                            <span class="hidden-xs">常用组</span>
+                        </a>
+                    </li>*@
+                </ul>
+                <div class="col-md-12 panel">
+                    <div class="col-md-11">
+                        <div class="tab-content">
+                            <div id="home" class="tab-pane active">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-10">
 
-    <div class="col-md-6">
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-link">
+                                                <i class="linecons-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 staff-dep-div">
+                                            <iframe frameborder="0" src="" scrolling="yes" style="border: 0px solid #5585B8;padding:2px 0px 0px 0px" name="contentFrame" cellspacing="0" cellpadding="0" id="staff-dep-treeview"></iframe>                                       
+                                        </div>
+                                    </div>
+                                    <div class="row">&nbsp;</div>
+                                    <div class="row">
 
+                                        <select id="staffSelect" class="range" multiple></select>
 
-        <div class="panel panel-default fillet">
-            <div class="panel-heading">
-               邮件
-                <div class="panel-options">
+                                    </div>
+                                </div>
 
-                    <a href="/Home/Login">
-                        <span class="expand-icon">+</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa-rotate-right"></i>
-                    </a>
+                            </div>
+                            <div id="profile" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <iframe frameborder="0" src="" class="iframe-dep" scrolling="yes" style="height:450px; border: 0px solid #5585B8;padding:2px 0px 0px 0px"  cellspacing="0" cellpadding="0" id="dep-treeview" ></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="messages" class="tab-pane">
+
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input type="text" id="" name="title" class="form-control input-dark">
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-link">
+                                            <i class="linecons-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <iframe frameborder="0" src="" scrolling="yes" style="border: 0px solid #5585B8;padding:2px 0px 0px 0px" name="contentFrame" cellspacing="0" cellpadding="0" id="post-dep-treeview"></iframe>
+                                    </div>
+                                </div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <select id="postSelect" class="range" multiple></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<div id="settings" class="tab-pane">
+
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input type="text" id="title" name="title" class="form-control input-dark">
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-link">
+                                            <i class="linecons-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        5
+                                    </div>
+                                </div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <select id="" multiple></select>
+                                    </div>
+                                </div>
+
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+
+                        <div class="row">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <a href="javascript:void(0);">
+                                <i class="fa fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+
+                <div class="row">&nbsp;</div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-3">已选对象</div>
+                    <div class="col-md-0">[0]</div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-dark text-left">
+                            设为常用组
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <select id="selected-range" multiple></select>
                 </div>
             </div>
-            <div class="panel-body">
-
-                <table class="table table-hover">
-
-                    <tbody>
-                        <tr>
-                            <td>Arlind</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Art</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                            <td>Filan</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row pull-right"><a>更多</a></div>
-            </div>
         </div>
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-6">
-
-        <!-- Default panel -->
-        <div class="panel panel-default fillet">
-            <div class="panel-heading">
-                计划
-                <div class="panel-options">
-
-                    <a href="/Home/Login">
-                        <span class="expand-icon">+</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa-rotate-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="panel-body">
-                <table class="table table-hover">
-
-                    <tbody>
-                        <tr>
-                            <td>Arlind</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-
-                        <tr>
-                            <td>Art</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-
-                        <tr>
-                            <td>Filan</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row pull-right"><a>更多</a></div>
-            </div>
+        <div class="row">
+            <div class="col-md-11"></div>
+            <div class="col-md-1"><button class="btn btn-white push-range-save">确定</button></div>
         </div>
-
-    </div>
-
-    <div class="col-md-6">
-
-
-        <div class="panel panel-default fillet">
-            <div class="panel-heading">
-                工作圈子
-                <div class="panel-options">
-
-                    <a href="/Home/Login">
-                        <span class="expand-icon">+</span>
-                    </a>
-                    <a href="#">
-                        <i class="fa-rotate-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="panel-body">
-
-                <table class="table table-hover">
-
-                    <tbody>
-                        <tr>
-                            <td>Arlind</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-
-                        <tr>
-                            <td>Art</td>
-                            <td>&nbsp;</td>
-                            <td>&nbsp;</td>
-                        </tr>
-
-                        <tr>
-                            <td>Filan</td>
-                            <td>1</td>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row pull-right"><a>更多</a></div>
-            </div>
-        </div>
-
     </div>
 </div>
+<input id="staffJson" type="hidden" />
+<input id="postJson" type="hidden" />
+<input id="depJson" type="hidden" />
+<script src="~/Scripts/jquery-1.11.1.min.js"></script>
+<script src="~/scripts/bootstrap.min.js"></script>
+<script src="/Scripts/select2/select2.min.js"></script>
+<script src="/Scripts/jquery-ui/jquery-ui.min.js"></script>
+<script src="/Scripts/selectboxit/jquery.selectBoxIt.min.js"></script>
+<script src="/scripts/daterangepicker/daterangepicker.js"></script>
+<script src="/scripts/datepicker/bootstrap-datepicker.js"></script>
+<script src="/scripts/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="~/Scripts/defeng/common.js"></script>
+<script type="text/javascript" src="~/Scripts/defeng/office.js"></script>
+@*<script src="~/Scripts/jquery.treeview.js"></script>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.form_datetime').datetimepicker({
+            format: 'yyyy-mm-dd',
+            language: 'zh-CN',
+            // weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+    });
 
-
-
+</script>

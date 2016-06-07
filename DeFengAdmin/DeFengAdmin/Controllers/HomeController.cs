@@ -59,9 +59,13 @@ namespace DeFengAdmin.Controllers
         {
             return View();
         }
-       
+
         public ActionResult AnnouncementDetail()
         {
+            var staffID = 2;
+            var announcementID = Convert.ToInt32(Request.QueryString["id"]);
+            AnnouncementRead_BLL bll = new AnnouncementRead_BLL();
+            bll.UpdateStaffReadStatus(announcementID, staffID);
             return View();
         }
 
@@ -328,7 +332,7 @@ namespace DeFengAdmin.Controllers
                         OfID = announcementID,
                         AttachmentType = AttachmentType.Announcement
                     };
-                    attachmentBll.AddAttachment(attachment);
+                    var id = attachmentBll.AddAttachment(attachment);
                 }
                 #endregion
                 result = true;
@@ -340,6 +344,11 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
+        /// <summary>
+        /// 获取推送范围的员工ID
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         private List<int> GetStaffIDList(List<string> list)
         {
             var filterList = list.Where(f => f.Contains("S")).ToList();
@@ -351,6 +360,11 @@ namespace DeFengAdmin.Controllers
             return staffIDList;
         }
 
+        /// <summary>
+        /// 获取推送范围的岗位ID
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         private List<int> GetPostIDList(List<string> list)
         {
             var filterList = list.Where(f => f.Contains("P")).ToList();
@@ -362,6 +376,11 @@ namespace DeFengAdmin.Controllers
             return postIDList;
         }
 
+        /// <summary>
+        /// 获取推送范围的部门ID
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         private List<int> GetDepIDList(List<string> list)
         {
             var filterList = list.Where(f => f.Contains("D")).ToList();
@@ -373,6 +392,10 @@ namespace DeFengAdmin.Controllers
             return depIDList;
         }
 
+        /// <summary>
+        /// 根据公告ID获取公告
+        /// </summary>
+        /// <returns></returns>
         public string GetAnnouncementByID()
         {
             var json = "";
@@ -388,6 +411,57 @@ namespace DeFengAdmin.Controllers
 
             }
             return json;
+        }
+
+        /// <summary>
+        /// 根据类型和附件从属ID获取附件
+        /// </summary>
+        /// <returns></returns>
+        public string LoadAttachment()
+        {
+            var json = "";
+            try
+            {
+                Attachment_BLL bll = new Attachment_BLL();
+                var ofID =Convert.ToInt32(Request["announcementID"]);
+                var list = bll.LoadAttachment(AttachmentType.Announcement, ofID);
+                json = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return json;
+        }
+
+        public string GetAnnouncementRead()
+        {
+            var json = "";
+            try
+            {
+                AnnouncementRead_BLL bll = new AnnouncementRead_BLL();
+                var announcementID = Convert.ToInt32(Request["announcementID"]);
+                var list = bll.GetAnnouncementRead(announcementID);
+                json = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+            }
+            return json;
+        }
+
+        public bool UpdateStaffReadStatus()
+        {
+            var result = false;
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
         }
     }
 }

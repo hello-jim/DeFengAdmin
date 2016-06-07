@@ -61,7 +61,7 @@ function InitCity(id, proID, districtID, areaID, async, arr) {
             var html = "";
             for (var i = 0; i < json.length; i++) {
                 var selected = "";
-                if (json[i].ID == selectedValue) {
+                if (json[i].ID == 195) {
                     selected = "selected=selected";
                 }
                 html += "<option value=" + json[i].ID + " " + selected + ">" + json[i].Name + "</option>";
@@ -1097,15 +1097,15 @@ function InitEntrustOverDate(id, firstText, async) {
     });
 }
 
-function InitMultipleSelectData(id, arr) {  
+function InitMultipleSelectData(id, arr) {
     if (arr) {
-        arr = arr.split(",");     
+        arr = arr.split(",");
         $(id).prev().find("ul li").remove();
         for (var i = 0; i < arr.length; i++) {
             var selectedID = id + " option[value=" + arr[i] + "]";
             $(selectedID).attr("selected", "selected");
             var li = "<li class='select2-search-choice'>    <div>" + $(selectedID).text() + "</div>    <a tabindex='-1' class='select2-search-choice-close' href='#'></a></li>";
-            $(id).prev().find("ul").append(li);           
+            $(id).prev().find("ul").append(li);
         }
         $(id).select2({
             placeholder: 'Select your country...',
@@ -1944,4 +1944,108 @@ function InitCheckBox() {
         }
     });
 }
+
+function InitDepartmentTreeView(element, async) {
+    $("" + element + " ul *").remove();
+    $.ajax({
+        url: "/Organization/LoadDepartment",
+        async: async,
+        success: function (data) {
+            var departmentList = $.parseJSON(data);
+            for (var i = 0; i < departmentList.length;) {
+                var childrenHtml = "";
+                if (GetChildrenObj(departmentList[i].ID, departmentList).length > 0) {
+                    childrenHtml += "<li><span><a href='javascript:void(0);' level='" + departmentList[i].Level + "'  isEnable='" + (departmentList[i].IsEnable == true ? "是" : "否") + "' describe='" + departmentList[i].Describe + "' departmentName='" + departmentList[i].DepartmentName + "' departmentID2='" + departmentList[i].ID + "' parentID='" + departmentList[i].Parent + "'>" + departmentList[i].DepartmentName + "</a></span><ul departmentID='" + departmentList[i].ID + "'><li></li></ul></li>";
+                }
+                else {
+                    childrenHtml += "<li departmentID='" + departmentList[i].ID + "'><span><a href='javascript:void(0);' level='" + departmentList[i].Level + "' isEnable='" + (departmentList[i].IsEnable == true ? "是" : "否") + "' describe='" + departmentList[i].Describe + "' departmentName='" + departmentList[i].DepartmentName + "' departmentID2='" + departmentList[i].ID + "' parentID='" + departmentList[i].Parent + "'>" + departmentList[i].DepartmentName + "</a></span></li>";
+                }
+                $("" + element + " [departmentID=" + departmentList[i].Parent + "]").append(childrenHtml);
+                departmentList.shift();
+            }
+            $(element).treeview({
+                control: "#treecontrol",
+                persist: "cookie",
+                cookieId: "treeview-black"
+            });
+        }
+    });
+}
+
+//获取下级部门
+function GetChildrenObj(ID, obj) {
+    var childrenObj = obj.filter(function (item, index) {
+        if (item.Parent == ID)
+            return true;
+    });
+    return childrenObj;
+}
+
+function GetStaff(async) {
+    var result = "";
+    $.ajax({
+        url: "/Organization/GetStaff",
+        async: async,
+        success: function (data) {
+            result = data;
+        }
+    });
+    return result;
+}
+
+function GetPost(async) {
+    var result = "";
+    $.ajax({
+        url: "/Organization/GetPost",
+        async: async,
+        success: function (data) {
+            result = data;
+        }
+    });
+    return result;
+}
+
+//将对象数据按属性值转换为数组
+function ConvertArr(objArr, atrrName) {
+    var arr = new Array();
+    for (var i = 0; i < objArr.length; i++) {
+        arr.push(objArr[i][atrrName]);
+    }
+    return arr;
+}
+/*
+公告类型
+*/
+function InitAnnouncementType(id, firstText, async) {
+    $.ajax({
+        url: "/Common/LoadAnnouncementType",
+        async: async,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            var html = "";
+            if (firstText != "") {
+                html += "<option value=0 >" + firstText + "</option>";
+            }
+            for (var i = 0; i < json.length; i++) {
+                html += "<option value=" + json[i].ID + ">" + json[i].TypeName + "</option>";
+            }
+
+            $(id).html(html);
+            $(id).selectBoxIt().on('open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
+            });
+        }
+    });
+}
+
+/*
+获取超链接传递参数
+*/
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}
+
 

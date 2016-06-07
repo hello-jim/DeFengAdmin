@@ -533,7 +533,7 @@
                  </div>
             
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                     <div class="form-group">
                         <label class="control-label" for="balconyCount">地址</label>
                         <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="地址" />
@@ -541,28 +541,74 @@
                 </div>
                </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    <!--住宅 商住 其他-->
+                    <div class="col-md-3 room">
                         <div class="form-group">
                             <label class="control-label" for="roomCount">房</label>
                             <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 hall">
                         <div class="form-group">
                             <label class="control-label" for="hallCount">厅</label>
                             <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 toilet">
                         <div class="form-group">
                             <label class="control-label" for="toiletCount">卫</label>
                             <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 balcony">
                         <div class="form-group">
                             <label class="control-label" for="balconyCount">阳台</label>
                             <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
+                        </div>
+                    </div>
+                    <!--商铺 网点 辅厂-->
+                    <div class="col-md-12 shopLocation" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label">位置</label>
+                            <select class="form-control" id="shopLocationSelect"></select>
+                        </div>
+                    </div>
+                    <!--写字楼 写厂-->
+                    <div class="col-md-12 officeLevel" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label">级别</label>
+                            <select class="form-control" id="officeLevelSelect"></select>
+                        </div>
+                    </div>
+                    <!--厂房 仓库-->
+                    <div class="col-md-3 workerCount" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label" for="workerCount">员工</label>
+                            <input class="form-control" name="workerCount" id="workerCountTxt" data-validate="required" placeholder="员工" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 dormCount" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label" for="dormCount">宿舍</label>
+                            <input class="form-control" name="dormCount" id="dormCountTxt" data-validate="required" placeholder="宿舍" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 officeCount" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label" for="officeCount">办公</label>
+                            <input class="form-control" name="officeCount" id="officeCountTxt" data-validate="required" placeholder="办公" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 clearingCount" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label" for="clearingCount">空地</label>
+                            <input class="form-control" name="clearingCount" id="clearingCountTxt" data-validate="required" placeholder="空地" />
+                        </div>
+                    </div>
+                    <div class="col-md-12 landPlan" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label">规划</label>
+                            <select class="form-control" id="landPlanSelect"></select>
                         </div>
                     </div>
                 </div>
@@ -603,42 +649,91 @@
                 </div>
             <div class="col-md-6">
                 <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 ">
                     <div class="form-group">
                         <label class="control-label">用途</label>
                         <select class="form-control" id="houseUseTypeSelect"></select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 floor">
                     <div class="form-group">
                         <label class="control-label" for="floor">楼层</label>
                         <input class="form-control" name="floor" id="floorTxt" data-validate="required" placeholder="楼层" />
                     </div>
                 </div>
+                    <!--商铺-->
+                    <div class="col-md-6 industry" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label" for="industry">行业</label>
+                            <input id="industryTxt" class="form-control" name="industry" data-validate="required" placeholder="行业" />
+                        </div>
+                    </div>
+                    <!--厂房-->
+                    <div class="col-md-6 electricity" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label" for="electricity">电量</label>
+                            <input id="electricityTxt" class="form-control" name="electricity" data-validate="required" placeholder="电量" />
+                        </div>
+                    </div>
+                    <!--地皮-->
+                    <div class="col-md-6 park" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label" for="park">停车</label>
+                            <input id="parkTxt" class="form-control" name="park" data-validate="required" placeholder="停车" />
+                        </div>
+                    </div>
             </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 houseType">
                         <div class="form-group">
                             <label class="control-label">类型</label>
                             <select class="form-control" id="houseTypeSelect"></select>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 orientation">
                         <div class="form-group">
                             <label class="control-label">朝向</label>
-                            <select class="form-control" id="houseTypeSelect"></select>
+                            <select class="form-control" id="orientationSelect"></select>
+                        </div>
+                    </div>
+                    <!--商铺-->
+                    <div class="col-md-6 layerNumber" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label" for="layerNumber">层数</label>
+                            <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
+                        </div>
+                    </div>
+                    <!--地皮-->
+                    <div class="col-md-6 landType" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label">状况</label>
+                            <select class="form-control" id="landTypeSelect"></select>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 decorationType">
                         <div class="form-group">
                             <label class="control-label">装修</label>
                             <select class="form-control" id="decorationTypeSelect"></select>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <!--商铺-->
+                    <div class="col-md-6 lavatory" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label">厕所</label>
+                            <select class="form-control" id="lavatorySelect"></select>
+                        </div>
+                    </div>
+                    <!--厂房-->
+                    <div class="col-md-6 wall" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label">围墙</label>
+                            <select class="form-control" id="wallSelect"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 housePayType">
                         <div class="form-group">
                             <label class="control-label">付款</label>
                             <select class="form-control" id="housePayTypeSelect"></select>
@@ -647,13 +742,20 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 supporting" style="display:none">
                         <div class="form-group">
                             <label class="control-label">配套</label>
                             <select class="form-control" id="supportingSelect"></select>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <!--商铺-->
+                    <div class="col-md-6 shopArea" style="display:none">
+                        <div class="form-group">
+                            <label class="control-label">地段</label>
+                            <select class="form-control" id="shopAreaSelect"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 commissionPayType" style="display:none">
                         <div class="form-group">
                             <label class="control-label">付佣</label>
                             <select class="form-control" id="commissionPayTypeSelect"></select>
@@ -733,48 +835,10 @@
             </div>
         </div>
 
-        <div class="col-md-2">
-            <div class="form-group">
-                <label class="control-label" for="workerCount">员工</label>
-                <input class="form-control" name="workerCount" id="workerCountTxt" data-validate="required" placeholder="员工" />
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label class="control-label" for="dormCount">宿舍</label>
-                <input class="form-control" name="dormCount" id="dormCountTxt" data-validate="required" placeholder="宿舍" />
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label class="control-label" for="officeCount">办公</label>
-                <input class="form-control" name="officeCount" id="officeCountTxt" data-validate="required" placeholder="办公" />
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label class="control-label" for="clearingCount">空地</label>
-                <input class="form-control" name="clearingCount" id="clearingCountTxt" data-validate="required" placeholder="空地" />
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label class="control-label">级别</label>
-                <select class="form-control" id="officeLevelSelect"></select>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label class="control-label">位置</label>
-                <select class="form-control" id="shopLocationSelect"></select>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="form-group">
-                <label class="control-label">规划</label>
-                <select class="form-control" id="landPlanSelect"></select>
-            </div>
-        </div>
+        
+       
+        
+       
         <div class="col-md-2">
             <div class="form-group">
                 <label class="control-label">停车场</label>
@@ -792,50 +856,7 @@
             </div>
 
         </div>
-        <div class="row">
-
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="park">停车</label>
-                    <input id="parkTxt" class="form-control" name="park" data-validate="required" placeholder="停车" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="industry">行业</label>
-                    <input id="industryTxt" class="form-control" name="industry" data-validate="required" placeholder="行业" />
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label" for="electricity">电量</label>
-                    <input id="electricityTxt" class="form-control" name="electricity" data-validate="required" placeholder="电量" />
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">围墙</label>
-                    <select class="form-control" id="wallSelect"></select>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">状况</label>
-                    <select class="form-control" id="landTypeSelect"></select>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div class="form-group">
-                    <label class="control-label">地段</label>
-                    <select class="form-control" id="shopAreaSelect"></select>
-                </div>
-            </div>
-           
-           
-            
-        </div>
+     
         <div class="row">
             <div class="form-group">
                 <div class="col-md-6 follow-record">

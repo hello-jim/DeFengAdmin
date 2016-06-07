@@ -1,0 +1,10 @@
+﻿.windowShow {
+     position: relative;
+     top: -980px;
+     z-index:20;
+     margin:100px;
+     border:solid 2px #e4e4e4;
+}
+.announcement {
+    z-index:1;
+}

@@ -168,7 +168,7 @@ function GetAnnouncement() {
     announcementType.ID = $("#announcementTypeSelect").val();
     announcement.AnnouncementType = announcementType;
     announcement.LastReadDate = $("#lastReadDateTxt").val();
-    announcement.Title = $("#titleTxt").val();
+    announcement.attachmentName = $("#attachmentNameTxt").val();
     announcement.PushRange = ConvertArr($("#selected-range option"), "value");
     return announcement;
 }

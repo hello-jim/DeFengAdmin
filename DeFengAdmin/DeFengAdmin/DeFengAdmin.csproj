@@ -1460,7 +1460,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\attachment\NewFolder1\" />
+    <Folder Include="Content\attachment\announcement\" />
     <Folder Include="Content\images\house\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

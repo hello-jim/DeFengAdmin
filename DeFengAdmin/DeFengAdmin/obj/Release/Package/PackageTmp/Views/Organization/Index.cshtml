@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="~/Content/css/jquery.treeview.css" />
 <link rel="stylesheet" href="~/Content/css/screen.css" />
-<link rel="stylesheet" href="~/Content/css/organization.css"/>
+<link rel="stylesheet" href="~/Content/css/organization.css" />
 @*<link rel="stylesheet" href="~/Content/css/bootstrap.min.css">*@
 
 <div class="row">
@@ -35,10 +35,13 @@
         <div class="panel panel-default" style="display: block; top: 0px; height: 789px; right: 2px;">
             <div class="ps-scrollbar-y department-treeview" style="top: 0px; height: 0px;">
                 <ul id="departmentTreeview" class="treeview-gray" departmentID="1"></ul>
-            </div>    
+            </div>
             <div class="ps-scrollbar-y post-department-treeview" style="top: 0px; height: 0px;">
-                <ul  class="treeview-gray" departmentID="1"></ul>
-            </div>     
+                <ul class="treeview-gray" departmentID="1"></ul>
+            </div>
+            <div class="ps-scrollbar-y staff-department-treeview" style="top: 0px; height: 0px;">
+                <ul class="treeview-gray" departmentid="1"></ul>
+            </div>
         </div>
     </div>
     <div class="col-md-9">
@@ -70,7 +73,7 @@
                             </button>
                             <button class="btn btn-default department-delete">
                                 删除
-                            </button>                 
+                            </button>
                         </div>
                     </div>
                     <div class="row">&nbsp;</div>
@@ -106,13 +109,13 @@
                         </div>
 
                         <div class="col-md-6 pull-right">
-                            <button class="btn btn-default">
+                            <button class="btn btn-default post-add-btn">
                                 增加
                             </button>
-                            <button class="btn btn-default">
+                            <button class="btn btn-default post-update-btn">
                                 修改
                             </button>
-                            <button class="btn btn-default">
+                            <button class="btn btn-default post-delete">
                                 删除
                             </button>
                             <button class="btn btn-default">
@@ -125,23 +128,19 @@
                     </div>
                     <div class="row">&nbsp;</div>
                     <!--人员-->
-                    <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+                    <table cellspacing="0" class="table table-small-font table-bordered table-striped post-table">
                         <thead>
                             <tr>
                                 <th><input type="checkbox"></th>
                                 <th>序号</th>
-                                <th>登录名称</th>
-                                <th>用户名称</th>
-                                <th>默认部门</th>
-                                <th>岗位</th>
-                                <th>性别</th>
+                                <th>名称</th>
+                                <th>岗位级数</th>
                                 <th>启用</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            
-                        </tbody>
+                        <tbody></tbody>
                     </table>
+
                 </div>
                 <div id="tab3">
                     <div class="row">
@@ -159,10 +158,10 @@
                             </form>
                         </div>
                         <div class="col-md-9 pull-right">
-                            <button class="btn btn-default">
+                            <button class="btn btn-default" href="javascript:;" id="personnel-upadate">
                                 修改
                             </button>
-                            <button class="btn btn-default">
+                            <button class="btn btn-default staff-delete">
                                 删除
                             </button>
                             <button class="btn btn-default">
@@ -184,244 +183,19 @@
                     </div>
                     <div class="row">&nbsp;</div>
                     <!--岗位-->
-                    <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+                    <table cellspacing="0" class="table table-small-font table-bordered table-striped staff-table">
                         <thead>
                             <tr>
                                 <th><input type="checkbox"></th>
-                                <th colspan="2">序号</th>
-                                <th colspan="3">名称</th>
-                                <th colspan="2">岗位级数</th>
-                                <th>访问级数</th>
+                                <th>序号</th>
+                                <th>用户名称</th>
+                                <th>默认部门</th>
+                                <th>岗位</th>
+                                <th>性别</th>
                                 <th>启用</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-
-                                <td colspan="1"><input type="checkbox"></td>
-                                <td colspan="2">1</td>
-                                <td colspan="3">财务总监</td>
-                                <td colspan="2">1</td>
-                                <td colspan="1">1</td>
-                                <td colspan="1">是</td>
-
-                            </tr>
-                            <tr>
-
-                                <td colspan="1">378.94</td>
-                                <td colspan="2">12:22PM</td>
-                                <td colspan="3">5.74 (1.54%)</td>
-                                <td colspan="2">373.20</td>
-                                <td colspan="1">381.02</td>
-                                <td colspan="1">378.92 x 300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td colspan="1">191.55</td>
-                                <td colspan="2">12:23PM</td>
-                                <td colspan="3">3.16 (1.68%)</td>
-                                <td colspan="2">188.39</td>
-                                <td colspan="1">194.99</td>
-                                <td colspan="1">191.52 x 300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td colspan="1" data-columns="id36d759c0c1f7-col-1">31.15</td>
-                                <td colspan="2" data-columns="id36d759c0c1f7-col-2">12:44PM</td>
-                                <td colspan="3" data-columns="id36d759c0c1f7-col-3">1.41 (4.72%)</td>
-                                <td colspan="2" data-columns="id36d759c0c1f7-col-4">29.74</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">30.67</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">31.14 x 6500</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">25.50</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:27PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">0.66 (2.67%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">24.84</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">25.37</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">25.50 x 71100</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">18.65</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:45PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">0.97 (5.49%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">17.68</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">18.23</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">18.65 x 10300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">15.81</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:25PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">0.11 (0.67%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">15.70</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">15.94</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">15.79 x 6100</td>
-
-                            </tr>
-                            <!-- Repeat -->
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">597.74</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:12PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">14.81 (2.54%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">582.93</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">597.95</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">597.73 x 100</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">378.94</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:22PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">5.74 (1.54%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">373.20</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">381.02</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">378.92 x 300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">191.55</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:23PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">3.16 (1.68%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">188.39</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">194.99</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">191.52 x 300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">31.15</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:44PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">1.41 (4.72%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">29.74</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">30.67</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">31.14 x 6500</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">25.50</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:27PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">0.66 (2.67%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">24.84</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">25.37</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">25.50 x 71100</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">18.65</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:45PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">0.97 (5.49%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">17.68</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">18.23</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">18.65 x 10300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">15.81</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:25PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">0.11 (0.67%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">15.70</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">15.94</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">15.79 x 6100</td>
-
-                            </tr>
-                            <!-- Repeat -->
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">597.74</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:12PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">14.81 (2.54%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">582.93</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">597.95</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">597.73 x 100</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">378.94</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:22PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">5.74 (1.54%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">373.20</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">381.02</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">378.92 x 300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">191.55</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:23PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">3.16 (1.68%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">188.39</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">194.99</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">191.52 x 300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">31.15</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:44PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">1.41 (4.72%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">29.74</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">30.67</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">31.14 x 6500</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">25.50</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:27PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">0.66 (2.67%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">24.84</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">25.37</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">25.50 x 71100</td>
-
-                            </tr>
-                            <tr>
-
-                                <td colspan="1" data-columns="id36d759c0c1f7-col-1">18.65</td>
-                                <td colspan="2" data-columns="id36d759c0c1f7-col-2">12:45PM</td>
-                                <td colspan="3" data-columns="id36d759c0c1f7-col-3">0.97 (5.49%)</td>
-                                <td colspan="2" data-columns="id36d759c0c1f7-col-4">17.68</td>
-                                <td colspan="1" data-columns="id36d759c0c1f7-col-5">18.23</td>
-                                <td colspan="1" data-columns="id36d759c0c1f7-col-6">18.65 x 10300</td>
-
-                            </tr>
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">15.81</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:25PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">0.11 (0.67%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">15.70</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">15.94</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">15.79 x 6100</td>
-
-                            </tr>
-                            <!-- Repeat -->
-                            <tr>
-
-                                <td data-priority="1" colspan="1" data-columns="id36d759c0c1f7-col-1">597.74</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-2">12:12PM</td>
-                                <td data-priority="1" colspan="3" data-columns="id36d759c0c1f7-col-3">14.81 (2.54%)</td>
-                                <td data-priority="3" colspan="2" data-columns="id36d759c0c1f7-col-4">582.93</td>
-                                <td data-priority="3" colspan="1" data-columns="id36d759c0c1f7-col-5">597.95</td>
-                                <td data-priority="6" colspan="1" data-columns="id36d759c0c1f7-col-6">597.73 x 100</td>
-
-                            </tr>
-
-
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
@@ -457,12 +231,12 @@
             <div class="row">
                 <div class="col-md-2">上级单位</div>
                 <div class="col-md-8">
-                    <input class="form-control input-dark" type="text" name="log" />
+                    <input id="allParentDep" class="form-control input-dark " type="text" name="log" />
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2">访问权限</div>
-                <div class="col-md-3">
+                @*<div class="col-md-2">访问权限</div>*@
+                @*<div class="col-md-3">
                     <select class="form-control" id="application_method">
                         <option></option>
                         <option value="全部" name="application_method">全部</option>
@@ -475,8 +249,8 @@
                         <option value="全否" name="application_method">全否</option>
                     </select>
                 </div>
-                <div class="col-md-2">机构代码</div>
-                <div class="col-md-3"><input class="form-control input-dark" type="text" name="log" /></div>
+                <div class="col-md-2">机构代码</div>*@
+                @*<div class="col-md-3"><input class="form-control input-dark" type="text" name="log" /></div>*@
             </div>
             <div class="row">
                 <div class="col-md-2">启用</div>
@@ -487,8 +261,8 @@
                         <option value="0" name="application_method">否</option>
                     </select>
                 </div>
-                <div class="col-md-2">排列顺序</div>
-                <div class="col-md-3"><input class="form-control input-dark" type="text" name="log" /></div>
+                @*<div class="col-md-2">排列顺序</div>*@
+                @*<div class="col-md-3"><input class="form-control input-dark" type="text" name="log" /></div>*@
             </div>
             <div class="row">
                 <div class="col-md-1">
@@ -506,6 +280,264 @@
 
     </div>
 </div>
+
+<div class="theme-popover post-addAndEdit-panel">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row">
+            <div class="row"><h4>部门信息</h4></div>
+            <div class="row">
+                <input id="postID" type="hidden"/>
+                <input id="postDepID" type="hidden" value="" />
+                <div class="col-md-2">部门名称</div>
+                <div class="col-md-8"><input id="departmentNameTxt" class="form-control input-dark" type="text" name="log" /></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">名称</div>
+                <div class="col-md-8">
+                    <input id="postNameTxt" class="form-control input-dark" type="text" name="log" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">描述</div>
+                <div class="col-md-8">
+                    <input id="postDescriptionTxt" class="form-control input-dark" type="text" name="log" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">级次</div>
+                <div class="col-md-8">
+                    <input id="postGradeTxt" class="form-control input-dark" type="text" name="log" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">启用</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="postIsEnableSelect">
+                        <option></option>
+                        <option value="1" name="application_method">是</option>
+                        <option value="0" name="application_method">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <button class="btn btn-default post-add">
+                        增加
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-default post-update">
+                        修改
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="theme-popover staff-addAndEdit-panel">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row">
+            <div class="row">
+                <h4>部门信息</h4>
+            </div>
+            <div class="row">
+                <input id="postID" type="hidden" />
+                <input id="postDepID" type="hidden" value="" />
+                <div class="col-md-2">部门名称</div>
+                <div class="col-md-8">
+                    <input id="" class="form-control input-dark" type="text" name="log" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">名称</div>
+                <div class="col-md-8">
+                    <input id="" class="form-control input-dark" type="text" name="log" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">描述</div>
+                <div class="col-md-8">
+                    <input id="" class="form-control input-dark" type="text" name="log" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">级次</div>
+                <div class="col-md-8">
+                    <input id="" class="form-control input-dark" type="text" name="log" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">启用</div>
+                <div class="col-md-3">
+                    <select class="form-control" id="postIsEnableSelect">
+                        <option></option>
+                        <option value="1" name="application_method">是</option>
+                        <option value="0" name="application_method">否</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <button class="btn btn-default staff-add">
+                        增加
+                    </button>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn btn-default staff-update">
+                        修改
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="personnel-theme-popover staff-updateAndEdit-panel">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row">
+            <div class="row text-center"><h3>用户信息</h3></div>
+            <div class="row">&nbsp;</div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-2 translation">登录名称</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-2 translation">用户名称</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                    <div class="row">
+                    <div class="col-md-2 translation">性别</div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="postIsEnableSelect">
+                            <option></option>
+                            <option value="男" name="application_method">男</option>
+                            <option value="女" name="application_method">女</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 translation">年龄</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+               </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">身份证号</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-2 translation">入职日期</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">办公电话</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-2 translation">移动电话</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">邮箱地址</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-2 translation">出生日期</div>
+                    <div class="col-md-4">
+                    <div class="date form_datetime">
+                        <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                        <span class="add-on"><i class="icon-remove"></i></span>
+                        <span class="add-on"><i class="icon-calendar"></i></span>
+                    </div>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">工作部门</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-2 translation">工作岗位</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">兼职部门</div>
+                    <div class="col-md-10"><input class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">兼职岗位</div>
+                    <div class="col-md-10"><input class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">访问权限</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-2 translation">是否启用</div>
+                    <div class="col-md-4">
+                        <select class="form-control" id="postIsEnableSelect">
+                            <option></option>
+                            <option value="0" name="application_method">是</option>
+                            <option value="1" name="application_method">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">排列顺序</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-2 translation">直属领导</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-2 translation">外部用户</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-2 translation">登录密码</div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-1">
+                        <button id="save" type="button" class="btn btn-success">保存</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.form_datetime').datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                // weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+        });
+
+</script>
+
+<input id="postJsonHidden" type="hidden" />
+<input id="staffJsonHidden" type="hidden" />
 <script src="~/Scripts/defeng/common.js"></script>
 <script src="~/Scripts/jquery.treeview.js"></script>
 <script src="~/Scripts/defeng/organization.js"></script>
+<script src="/Scripts/daterangepicker/daterangepicker.js"></script>
+<script src="/Scripts/datepicker/bootstrap-datepicker.js"></script>
+<script src="/Scripts/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
