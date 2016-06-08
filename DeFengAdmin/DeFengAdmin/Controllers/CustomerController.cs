@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace DeFengAdmin.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomerController : BaseController
     {
         // GET: Customer
         public ActionResult Index()

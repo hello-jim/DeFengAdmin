@@ -1,6 +1,6 @@
 ﻿jQuery(document).ready(function ($) {
 
-   
+
     // Reveal Login form
     setTimeout(function () { $(".fade-in-effect").addClass('in'); }, 1);
 
@@ -47,7 +47,7 @@
             };
 
             $.ajax({
-                url: "/Home/UserLogin",
+                url: "/Staff/UserLogin",
                 method: 'POST',
                 dataType: 'json',
                 data: {
@@ -58,19 +58,17 @@
                 success: function (data) {
 
                     // Redirect after successful login page (when progress bar reaches 100%)
-                    if (data == 0) {
-                        alert("账号不存在");
+                    if (data == 1) {
+                        window.location.href = '/Home/Index';
+                        return;
                     }
-                    else {
-                        if (data == 2) {
-                            window.location.href = '/Home/Information';
-                        }
-                        else {
-                            if (data == 1) {
-                                alert("密码错误");
-                            }
-                        }
-
+                    else if (data == -1) {
+                        alert("账号不存在");
+                        return;
+                    }
+                    else if (data == -2) {
+                        alert("账号或密码错误");
+                        return;
                     }
                 }
             });

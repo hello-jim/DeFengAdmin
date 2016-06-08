@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace DeFengAdmin.Controllers
 {
-    public class ProcessCenterController : Controller
+    public class ProcessCenterController : BaseController
     {
         // GET: ProcessCenter
         public ActionResult Index()

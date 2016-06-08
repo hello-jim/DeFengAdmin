@@ -12,33 +12,10 @@ using System.Text.RegularExpressions;
 
 namespace DeFengAdmin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Register()
-        {
-
-            return View();
-        }
+      
         public ActionResult Information()
         {
             return View();
@@ -69,86 +46,7 @@ namespace DeFengAdmin.Controllers
             return View();
         }
 
-        //注册 
-        public int StaffRegister()
-        {
-            var request = Request;
-            var account = request["account"] != null ? Convert.ToString(request["account"]) : "";
-            var password1 = request["passWord"] != null ? Convert.ToString(request["passWord"]) : "";
-            var idCard = request["idCard"] != null ? Convert.ToString(request["idCard"]) : "";
-            var phone = request["phone"] != null ? Convert.ToString(request["phone"]) : "";
-            string password;
-            password = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(password1, "MD5");
-            Staff staff = new Staff()
-            {
-                Account = account,
-                Password = password,
-                IdCard = idCard,
-                Phone = phone
-            };
-            Staff_BLL bll = new Staff_BLL();
-            var status = bll.Register(staff);
-
-            return status;
-        }
-        //验证用户名是否已注册
-        public int CheckUserName()
-        {
-            var request = Request;
-            var account = request["account"] != null ? Convert.ToString(request["account"]) : "";
-            Staff staff = new Staff()
-            {
-                Account = account,
-            };
-            Staff_BLL bll = new Staff_BLL();
-            bll.CheckUserName(account);
-            if ((bll.CheckUserName(account) > 0))
-            {
-                //已存在用户名
-                return 1;
-            }
-            else
-            {
-                return 2;
-            }
-        }
-
-
-        //登录
-        public int UserLogin()
-        {
-            var request = Request;
-            var account = request["account"] != null ? Convert.ToString(request["account"]) : "";
-            var password1 = request["password"] != null ? Convert.ToString(request["password"]) : "";
-            string password;
-            password = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(password1, "MD5");
-            Staff staff = new Staff()
-            {
-                Account = account,
-                Password = password,
-            };
-            Staff_BLL bll = new Staff_BLL();
-            bll.UserLogin(staff);
-            var result = bll.UserLogin(staff);
-            if (result == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                if (result == 1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    //Session["@account"] = account;
-                    //Session["@password"] = password;
-                    Session["staff"] = staff;
-                    return 2;
-                }
-            }
-        }
+      
 
         //个人信息
         public int StaffInformation()
@@ -174,7 +72,7 @@ namespace DeFengAdmin.Controllers
                 var entry_time = request["entry_time"] != null ? Convert.ToDateTime(request["entry_time"]) : new DateTime();
                 var entry_status = request["entry_status"] != null ? Convert.ToString(request["entry_status"]) : "";
                 var probation = request["probation"] != null ? Convert.ToString(request["probation"]) : "";
-                var height = request["height"] != null ? Convert.ToString(request["height"]) : "";
+                var height = request["height"] != null ? Convert.ToSingle(request["height"]) : 0;
                 var probation_salary = request["probation_salary"] != null ? Convert.ToDecimal(request["probation_salary"]) : 0;
                 var salary = request["salary"] != null ? Convert.ToDecimal(request["salary"]) : 0;
                 var politics = request["politics"] != null ? Convert.ToString(request["politics"]) : "";
@@ -222,11 +120,11 @@ namespace DeFengAdmin.Controllers
                     Education = education,
                     Major = major,
                     BloodType = bloodType,
-                    Entry_time = entry_time,
+                    EntryTime = entry_time,
                     Entry_status = entry_status,
                     Probation = probation,
                     Height = height,
-                    Probation_salary = probation_salary,
+                    ProbationSalary = probation_salary,
                     Salary = salary,
                     Politics = politics,
                     Title = title,
@@ -423,7 +321,7 @@ namespace DeFengAdmin.Controllers
             try
             {
                 Attachment_BLL bll = new Attachment_BLL();
-                var ofID =Convert.ToInt32(Request["announcementID"]);
+                var ofID = Convert.ToInt32(Request["announcementID"]);
                 var list = bll.LoadAttachment(AttachmentType.Announcement, ofID);
                 json = JsonConvert.SerializeObject(list);
             }

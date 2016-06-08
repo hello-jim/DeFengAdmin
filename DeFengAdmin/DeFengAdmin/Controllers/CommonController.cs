@@ -10,7 +10,7 @@ using DeFeng.Common;
 
 namespace DeFengAdmin.Controllers
 {
-    public class CommonController : Controller
+    public class CommonController : BaseController
     {
         // GET: Base
         public ActionResult Index()

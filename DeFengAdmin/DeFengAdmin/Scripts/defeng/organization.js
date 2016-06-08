@@ -42,7 +42,35 @@ $(document).ready(function () {
         $('.personnel-theme-popover-mask').hide();
         $('.personnel-theme-popover').slideUp(200);
     });
+    //人员权限
+    $('#personnel-permissions').click(function () {
+        $('#stafPermissions').show();
+        $('#stafPermissions').slideDown(200);
+    });
+    $('#personnel-permissions').click(function () {
+        $('#stafPermissions').show();
+        $('#stafPermissions').slideDown(200);
+        var objArr = $(".col-select.cbr-checked");
+        if (objArr.length > 0) {
+            var selectTr = $(objArr[0]).parents("tr");
+            InitDepartmentData(selectTr);
+        }
+    });
+    $('.theme-poptit #closePermissions').click(function () {
+        $('#stafPermissions').hide();
+        $('#stafPermissions').slideUp(200);
+    });
 
+    $('#shrinkage').click(function () {
+        $('.collaborative').toggle();
+        $('#arrowOn').toggle();
+        $('#arrowUp').toggle();
+    });
+    $('#Shrinkage1').click(function () {
+        $('.collaborativeShrinkage').toggle();
+        $('#collaborativeArrowOn').toggle();
+        $('#collaborativeArrowUp').toggle();
+    });
     //$("#content div").hide();
     $("#tab2").hide();
     $("#tab3").hide();
@@ -330,6 +358,24 @@ function InitPostData(obj) {
     $("#postGradeTxt").val($(obj).attr("postGrade"));
 }
 
+function InitStaffData() {
+    $("#staffName").val();
+    $("#sex").val();
+    $("#age").val();
+    $("#idCard").val();
+    $("#entryTime").val();
+    $("#officTel").val();
+    $("#phone").val();
+    $("#email").val();
+    $("#dateBirth").val();
+    $("#staffDepartment").val();
+    $("#staffPost").val();
+    $("#leader").val();
+    $("#password").val();
+    $("#isEnable").val();
+    $("");//访问权限
+}
+
 function GetDepartmentObj() {
     var department = new Object();
     department.ID = $("#depID").val() != "" ? $("#depID").val() : 0;
@@ -490,6 +536,28 @@ function InitPermission() {
             var json = $.parseJSON(data);
         }
     });
+}
+
+function InitPermissionList(json) {
+    var arr = GetPermissionTypeArr(json);
+    CreatePermissionList(arr);
+}
+
+function CreatePermissionList(arr) {
+    var html = "";
+    for (var i = 0; i < arr.length; i++) {
+
+    }
+    $("").html(html);
+}
+
+function GetPermissionTypeArr(json) {
+    var arr = new Array();
+    for (var i = 0; i < json.length; i++) {
+        arr.push(json.PermissionType.TypeName);
+    }
+    arr = $.unique(arr);
+    return arr;
 }
 
 

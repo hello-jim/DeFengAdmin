@@ -52,7 +52,7 @@
     </Reference>
     <Reference Include="DeFeng.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DeFeng\DeFeng.Common\bin\Debug\DeFeng.Common.dll</HintPath>
+      <HintPath>..\..\..\DeFeng\DeFeng\DeFeng.Common\bin\Debug\DeFeng.Common.dll</HintPath>
     </Reference>
     <Reference Include="DeFeng.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -212,13 +212,14 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
-    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\ProcessCenterController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -330,6 +331,7 @@
     <Content Include="Content\css\jquery.treeview.css" />
     <Content Include="Scripts\defeng\information.js" />
     <Content Include="Scripts\defeng\jquery.login.js" />
+    <Content Include="Scripts\defeng\layout.js" />
     <Content Include="Scripts\defeng\login.js" />
     <Content Include="Scripts\defeng\office.js" />
     <Content Include="Scripts\defeng\register.js" />
@@ -1776,11 +1778,11 @@
     <Content Include="Views\House\Index.cshtml" />
     <Content Include="Views\Department\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Staff\Register.cshtml" />
     <None Include="Properties\PublishProfiles\DeFengAdmin.pubxml" />
     <Content Include="Views\Home\userLogin.cshtml" />
     <Content Include="Views\Home\Information.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Staff\Login.cshtml" />
     <Content Include="Views\Home\Office.cshtml" />
     <Content Include="Views\Organization\Index.cshtml" />
     <Content Include="Scripts\devexpress-web-14.1\.DS_Store" />

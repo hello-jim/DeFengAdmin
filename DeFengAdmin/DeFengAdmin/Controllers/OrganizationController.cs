@@ -9,7 +9,7 @@ using DeFeng.Model.Global;
 using Newtonsoft.Json;
 namespace DeFengAdmin.Controllers
 {
-    public class OrganizationController : Controller
+    public class OrganizationController : BaseController
     {
         // GET: Organization
         public ActionResult Index()

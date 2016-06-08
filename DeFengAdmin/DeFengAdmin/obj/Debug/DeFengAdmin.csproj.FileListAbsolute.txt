@@ -440,3 +440,5 @@ D:\Project_V9\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.dll
 D:\Project_V9\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.pdb
 D:\Project_V9\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
 D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\obj\Debug\DeFengAdmin.csprojResolveAssemblyReference.cache
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Common.dll
+D:\Project_GIT\DeFengAdmin\DeFengAdmin\DeFengAdmin\bin\DeFeng.Common.pdb

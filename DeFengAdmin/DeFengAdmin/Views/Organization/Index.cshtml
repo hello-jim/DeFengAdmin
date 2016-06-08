@@ -173,7 +173,7 @@
                             <button class="btn btn-default">
                                 列入未分配
                             </button>
-                            <button class="btn btn-default">
+                            <button class="btn btn-default" id="personnel-permissions">
                                 人员权限
                             </button>
                             <button class="btn btn-default">
@@ -509,6 +509,108 @@
                         <button id="save" type="button" class="btn btn-success">保存</button>
                     </div>
                     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="personnel-theme-permissions" style="display:none;" id="stafPermissions">
+    <div class="theme-poptit">
+        <a class="close" title="关闭" href="javascript:;" id="closePermissions">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12 text-right"><a href="#">保存</a></div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row translation">
+                <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                <div class="col-md-2">公告标题</div>
+                <div class="col-md-2">功能菜单</div>
+                <div class="col-md-1">新增</div>
+                <div class="col-md-1">修改</div>
+                <div class="col-md-1">删除</div>
+                <div class="col-md-1">查看</div>
+                <div class="col-md-1">打印</div>
+                <div class="col-md-1">导出</div>
+                <div class="col-md-1"><a href="#" id="shrinkage"><i class="fa fa-sort-up" id="arrowOn"></i><i class="fa fa-sort-desc" style="display:none" id="arrowUp"></i></a></div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="collaborative">
+                <div class="row translation">
+                    <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                    <div class="col-md-2">协同管理</div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1"><a href="#" id="Shrinkage1"><i class="fa fa-sort-up" id="collaborativeArrowOn"></i><i class="fa fa-sort-desc" style="display:none" id="collaborativeArrowUp"></i></a></div>
+                </div>
+                <div class="collaborativeShrinkage">
+                    <div class="row translation">
+                        <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                        <div class="col-md-2">新建协同</div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row translation">
+                        <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                        <div class="col-md-2">协同办公</div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row translation">
+                        <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                        <div class="col-md-2">草稿箱</div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row translation">
+                        <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                        <div class="col-md-2">已发协同</div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row translation">
+                        <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                        <div class="col-md-2">协同模板</div>
+                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-1"></div>
+                    </div>
                 </div>
             </div>
         </div>

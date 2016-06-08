@@ -48,6 +48,25 @@ namespace DeFengAdmin
             });
         }
 
+        protected void Session_Start()
+        {
+            //if (Session["staffInfo"] != null)
+            //{
+            //    return "";
+            //}
+            //else
+            //{
+            //    return "请登录";
+            //}
+            var testcode = "";
+             
+        }
+
+        protected void Application_BeginRequest()
+        {
+            var testcode = "";
+        }
+
 
         public void WriteLog(Log log)
         {
