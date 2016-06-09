@@ -42,54 +42,28 @@ $(document).ready(function () {
     });
 
 
+   
     //人员权限
+    //$('#personnel-permissions').click(function () {
+    //    $('#stafPermissions').show();
+    //    $('#stafPermissions').slideDown(200);
+    //});
+    //$('#personnel-permissions').click(function () {
+    //    $('#stafPermissions').show();
+    //    $('#stafPermissions').slideDown(200);
+    //    var objArr = $(".col-select.cbr-checked");
+    //    if (objArr.length > 0) {
+    //        var selectTr = $(objArr[0]).parents("tr");
+    //        InitDepartmentData(selectTr);
+    //    }
+    //});
+    //$('.theme-poptit #closePermissions').click(function () {
+    //    $('#stafPermissions').hide();
+    //    $('#stafPermissions').slideUp(200);
+    //});
     $('#personnel-permissions').click(function () {
-        $('#stafPermissions').show();
-        $('#stafPermissions').slideDown(200);
+        $('.access').toggle();
     });
-    $('#personnel-permissions').click(function () {
-        $('#stafPermissions').show();
-        $('#stafPermissions').slideDown(200);
-        var objArr = $(".col-select.cbr-checked");
-        if (objArr.length > 0) {
-            var selectTr = $(objArr[0]).parents("tr");
-            InitDepartmentData(selectTr);
-        }
-    });
-    $('.theme-poptit #closePermissions').click(function () {
-        $('#stafPermissions').hide();
-        $('#stafPermissions').slideUp(200);
-    });
-    
-    $('#shrinkage').click(function () {
-        $('.collaborative').toggle();
-        $('#arrowOn').toggle();
-        $('#arrowUp').toggle();
-    });
-    $('#Shrinkage1').click(function () {
-        $('.collaborativeShrinkage').toggle();
-        $('#collaborativeArrowOn').toggle();
-        $('#collaborativeArrowUp').toggle();
-    });
-    //人员权限
-    $('#personnel-permissions').click(function () {
-        $('#stafPermissions').show();
-        $('#stafPermissions').slideDown(200);
-    });
-    $('#personnel-permissions').click(function () {
-        $('#stafPermissions').show();
-        $('#stafPermissions').slideDown(200);
-        var objArr = $(".col-select.cbr-checked");
-        if (objArr.length > 0) {
-            var selectTr = $(objArr[0]).parents("tr");
-            InitDepartmentData(selectTr);
-        }
-    });
-    $('.theme-poptit #closePermissions').click(function () {
-        $('#stafPermissions').hide();
-        $('#stafPermissions').slideUp(200);
-    });
-
     $('#shrinkage').click(function () {
         $('.collaborative').toggle();
         $('#arrowOn').toggle();
