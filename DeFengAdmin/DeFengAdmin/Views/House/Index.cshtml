@@ -617,18 +617,21 @@
                     <div class="form-group">
                         <label class="control-label" for="roomCount">房</label>
                         <input class="form-control" name="roomCount" id="roomCountTxt" data-validate="required" placeholder="房" />
+                        <span class="RoomCount" style="display:none;color:#ff0000">房不能为空！</span>
                     </div>
                 </div>
                 <div class="col-md-1 hall">
                     <div class="form-group">
                         <label class="control-label" for="hallCount">厅</label>
                         <input class="form-control" name="hallCount" id="hallCountTxt" data-validate="required" placeholder="厅" />
+                        <span class="HallCount" style="display:none;color:#ff0000">厅不能为空！</span>
                     </div>
                 </div>
                 <div class="col-md-1 toilet">
                     <div class="form-group">
                         <label class="control-label" for="toiletCount">卫</label>
                         <input class="form-control" name="toiletCount" id="toiletCountTxt" data-validate="required" placeholder="卫" />
+                        <span class="ToiletCount" style="display:none;color:#ff0000">卫不能为空</span>
                     </div>
                 </div>
 
@@ -636,6 +639,7 @@
                     <div class="form-group">
                         <label class="control-label" for="balconyCount">阳台</label>
                         <input class="form-control" name="balconyCount" id="balconyCountTxt" data-validate="required" placeholder="阳台" />
+                        <span class="BalconyCount" style="display:none;color:#ff0000">阳台不能为空</span>
                     </div>
                 </div>
             <!--商铺 网点 辅厂--> 
@@ -711,7 +715,7 @@
             <div class="col-md-2 WarehouseType" style="display:none">
                 <div class="form-group">
                     <label class="control-label" for="warehouseType">仓库</label>
-                    <input class="form-control" name="warehouseType" id="WarehouseTypeTxt" data-validate="required" placeholder="厅" />
+                    <input class="form-control" name="warehouseType" id="WarehouseTypeTxt" data-validate="required" placeholder="仓库" />
                 </div>
             </div>
                 <div class="col-md-1 Dormitory" style="display:none">
@@ -827,6 +831,7 @@
                 <div class="form-group">
                     <label class="control-label" for="houseSize">面积</label>
                     <input id="houseSizeTxt" class="form-control" name="houseSize" data-validate="required" placeholder="㎡" />
+                <span class="HouseSize" style="display:none;color:#ff0000">面积不能为空！</span>
                 </div>
             </div>
             <div class="col-md-2 houseUse">
@@ -868,6 +873,7 @@
                     <div class="form-group">
                         <label class="control-label" for="layerNumber">层数</label>
                         <input id="layerNumberTxt" class="form-control" name="layerNumber" data-validate="required" placeholder="层" />
+                    <span class="LayerNumber" style="display:none;color:#ff0000">层数不能为空！</span>
                     </div>
                 </div>
             <!--地皮-->
@@ -1065,6 +1071,7 @@
                     <label class="control-label" for="saleTotalPrice">售价</label>
                     <input id="saleTotalPriceTxt" class="form-control" name="saleTotalPrice" data-validate="required" placeholder="万" />
                 </div>
+                <span class="SaleTotalPrice" style="display:none;color:#ff0000;">售价不能为空！</span>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
@@ -1101,7 +1108,7 @@
 
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 decorationType">
                 <div class="form-group">
                     <label class="control-label">装修</label>
                     <script type="text/javascript">
@@ -1118,6 +1125,12 @@
                     </script>
 
                     <select class="form-control" id="decorationTypeSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2 wall" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="wall">围墙</label>
+                    <input id="wallTxt" class="form-control" name="wall" data-validate="required" placeholder="" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -1165,7 +1178,7 @@
                     <input id="originalPriceTxt" class="form-control" name="originalPrice" data-validate="required" placeholder="万" />
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 supporting">
                 <div class="form-group">
                     <label class="control-label">配套</label>
                     <script type="text/javascript">
@@ -1182,6 +1195,12 @@
                     </script>
 
                     <select class="form-control" id="supportingSelect" multiple></select>
+                </div>
+            </div>
+            <div class="col-md-2 industry" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="industry">行业</label>
+                    <input id="industryTxt" class="form-control" name="industry" data-validate="required" placeholder="行业" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -1238,7 +1257,7 @@
                     <input id="managementPriceTxt" class="form-control" name="managementPrice" data-validate="required" placeholder="管理费" />
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 furniture">
                 <div class="form-group">
                     <label class="control-label">家具</label>
                     <script type="text/javascript">
@@ -1255,6 +1274,18 @@
                     </script>
 
                     <select class="form-control" id="furnitureSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2 lavatory" style="display:none">
+                <div class="form-group">
+                    <label class="control-label">厕所</label>
+                    <select class="form-control" id="lavatorySelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2 hostel" style="display:none">
+                <div class="form-group">
+                    <label class="control-label" for="hostel">宿舍</label>
+                    <input class="form-control" name="hostel" id="HostelTxt" data-validate="required" placeholder="宿舍" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -1314,7 +1345,7 @@
 
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 appliance">
                 <div class="form-group">
                     <label class="control-label">家电</label>
                     <script type="text/javascript">
@@ -1331,6 +1362,24 @@
                     </script>
 
                     <select class="form-control" id="applianceSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2 shopArea" style="display:none">
+                <div class="form-group">
+                    <label class="control-label">地段</label>
+                    <select class="form-control" id="shopAreaSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2 airCondition" style="display:none">
+                <div class="form-group">
+                    <label class="control-label">空调</label>
+                    <select class="form-control" id="airConditionSelect"></select>
+                </div>
+            </div>
+            <div class="col-md-2 refectory" style="display:none">
+                <div class="form-group">
+                    <label class="control-label">食堂</label>
+                    <input id="refectoryTxt" class="form-control" name="refectory" data-validate="required" placeholder="" />
                 </div>
             </div>
             <div class="col-md-2">
@@ -1810,7 +1859,7 @@
 <script src="/Scripts/handlebars.min.js"></script>
 <script src="/Scripts/multiselect/js/jquery.multi-select.js"></script>
 <script src="~/Scripts/dropzone/dropzone.min.js"></script>
-
+<script src="~/Scripts/defeng/judgeHouse.js"></script>
 <!-- JavaScripts initializations and stuff -->
 <script src="/Scripts/xenon-custom.js"></script>
 <script src="~/Scripts/defeng/Common.js" charset=“UTF-8”></script>

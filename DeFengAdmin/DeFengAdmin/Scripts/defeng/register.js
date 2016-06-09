@@ -5,7 +5,10 @@
         if (!re.test(checkUserName)) {
             $("#gradeInfo").html("<font color=\"red\">输入的账号不能含有标点符号！</font>");
         } else {
-            $.post("/Home/CheckUserName",
+            if (checkUserName == "") {
+                $("#gradeInfo").html("<font color=\"red\">账号不能为空！</font>");
+            } else {
+                $.post("/Home/CheckUserName",
                 {
                     account: checkUserName
                 },
@@ -17,6 +20,7 @@
                         $("#gradeInfo").html('<img src="/Content/images/symbol-check.png" style="width:30px;height:30px"/>');
                     }
                 })
+            }
         }
     }),   
         // Reveal Login form
@@ -100,8 +104,9 @@
                     data: {
                         do_login: true,
                         account: $(form).find('#account').val(),
+                        staffName:$(form).find('#staffName').va(),
                         password: $(form).find('#password').val(),
-                        //idCard: $(form).find('#idCard').val(),
+                        idCard: $(form).find('#idCard').val(),
                         phone: $(form).find('#phone').val(),
                     },
                     success: function (data) {
@@ -110,7 +115,12 @@
                             window.location.href = '/Home/Login';
                         }
                         else {
-                            alert("用户名已存在");                  
+                            if (data == 0) {
+                                alert("身份证已存在");
+                            }
+                            else{
+                                alert("用户名已存在"); 
+                            }
                         }
                     }
         

@@ -29,6 +29,11 @@
                 <div class="prompt" id="gradeInfo"></div>
             </div>
         </div>
+        <div class="col-sm-6" style="width:50%;float:right;position:relative;top:135px;left:-30px;">
+            <div class="form-group" id="gradeInfoStaffName">
+                <div class="prompt" id="gradeInfoStaffName"></div>
+            </div>
+        </div>
         <div class="row">        
                 <div class="col-sm-6" style="float:left">
 
@@ -44,12 +49,14 @@
                             <span>注册页面</span>
                         </div>
                         <div class="form-group">
-
-                            <label class="control-label" for="account">姓名</label>
+                            <label class="control-label" for="account">账号</label>
                             <input type="text" class="form-control input-dark" name="account" id="account" autocomplete="off"/>
-
                         </div>
-
+                        <div class="form-group">
+                            <label class="control-label" for="staffName">姓名</label>
+                            <input type="text" class="form-control input-dark" name="staffName" id="staffName" autocomplete="off" />
+                        </div>
+                        
                         <div class="form-group">
                             <label class="control-label" for="password">密码</label>
                             <input type="password" class="form-control input-dark" name="password" id="password" autocomplete="off" />
@@ -60,10 +67,10 @@
                             <input type="password" class="form-control input-dark" name="passwd1" id="passwd1" autocomplete="off" />
                         </div>
 
-                        @*<div class="form-group">
+                        <div class="form-group">
                             <label class="control-label" for="idCard">身份证</label>
                             <input type="text" class="form-control input-dark" name="idCard" id="idCard" autocomplete="off" />
-                        </div>*@
+                        </div>
 
                         <div class="form-group">
                             <label class="control-label" for="phone">电话号码</label>
@@ -75,16 +82,13 @@
                                 注册账号
                             </button>
                             
-                                <div class="btn btn-dark text-left"><a href="/Home/index">已存在账号？</a></div>
+                                <div class="btn btn-dark text-left font-color"><a href="/Home/Login">已存在账号？</a></div>
                         </div>
                        
                             <div class="login-footer">
 
                             </div>
-
-
-
-</form>
+                    </form>
                 </div>
            
 

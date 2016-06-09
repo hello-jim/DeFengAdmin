@@ -330,6 +330,7 @@
     <Content Include="Content\css\jquery.treeview.css" />
     <Content Include="Scripts\defeng\information.js" />
     <Content Include="Scripts\defeng\jquery.login.js" />
+    <Content Include="Scripts\defeng\judgeHouse.js" />
     <Content Include="Scripts\defeng\login.js" />
     <Content Include="Scripts\defeng\office.js" />
     <Content Include="Scripts\defeng\register.js" />

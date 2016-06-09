@@ -70,6 +70,7 @@ namespace DeFengAdmin.Controllers
         {
             var request = Request;
             var account = request["account"] != null ? Convert.ToString(request["account"]) : "";
+            var staffName = request["staffName"] != null ? Convert.ToString(request["staffName"]) : "";
             var password1 = request["passWord"] != null ? Convert.ToString(request["passWord"]) : "";
             var idCard = request["idCard"] != null ? Convert.ToString(request["idCard"]) : "";
             var phone = request["phone"] != null ? Convert.ToString(request["phone"]) : "";
@@ -78,6 +79,7 @@ namespace DeFengAdmin.Controllers
             Staff staff = new Staff()
             {
                 Account = account,
+                StaffName = staffName,
                 Password = password,
                 IdCard = idCard,
                 Phone = phone

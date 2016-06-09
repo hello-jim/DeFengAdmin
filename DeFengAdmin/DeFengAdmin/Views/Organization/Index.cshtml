@@ -158,7 +158,7 @@
                             </form>
                         </div>
                         <div class="col-md-9 pull-right">
-                            <button class="btn btn-default" href="javascript:;" id="personnel-upadate">
+                            <button class="btn btn-default" href="javascript:;" id="personnel-update">
                                 修改
                             </button>
                             <button class="btn btn-default staff-delete">
@@ -173,7 +173,7 @@
                             <button class="btn btn-default">
                                 列入未分配
                             </button>
-                            <button class="btn btn-default">
+                            <button class="btn btn-default" href="javascript:;" id="personnel-permissions">
                                 人员权限
                             </button>
                             <button class="btn btn-default">
@@ -200,16 +200,70 @@
                 </div>
             </div>
             <div class="row">
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
+                <table cellspacing="0" class="table table-small-font table-bordered table-striped staff-table">
+                    <thead class="translation">
+                        <tr>
+                            <th><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></th>
+                            <th>公告标题</th>
+                            <th>功能菜单</th>
+                            <th>新增</th>
+                            <th>修改</th>
+                            <th>删除</th>
+                            <th>查看</th>
+                            <th>打印</th>
+                            <th>导出</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td></td></tr>
+                        <tr><td><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></td><td>协同管理</td></tr>
+                        <tr><td><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></td><td>新建协同</td></tr>
+                        <tr><td><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></td><td>协同办公</td></tr>
+                        <tr><td><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></td><td></td></tr>
+                        <tr></tr>
+                    </tbody>
+                </table>
+                    <div class="collaborative">
+                       
+                            <div class="row translation">
+                                <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                                <div class="col-md-2">草稿箱</div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            <div class="row translation">
+                                <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                                <div class="col-md-2">已发协同</div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            <div class="row translation">
+                                <div class="col-md-1 text-right"><div class="cbr-replaced"><div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div><div class="cbr-state"><span></span></div></div></div>
+                                <div class="col-md-2">协同模板</div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -342,7 +396,7 @@
 
 <div class="theme-popover staff-addAndEdit-panel">
     <div class="theme-poptit">
-        <a href="javascript:;" title="关闭" class="close">×</a>
+        <a href="javascript:;" title="关闭" class="closeTwo">×</a>
     </div>
     <div class="theme-popbod dform">
         <div class="row">
@@ -403,9 +457,9 @@
     </div>
 </div>
 
-<div class="personnel-theme-popover staff-updateAndEdit-panel">
+<div class="personnel-theme-popover staff-updateAndEdit-panel" id="staffUpdate">
     <div class="theme-poptit">
-        <a href="javascript:;" title="关闭" class="close">×</a>
+        <a href="javascript:;" title="关闭" class="close" id="closeUpdate">×</a>
     </div>
     <div class="theme-popbod dform">
         <div class="row">
@@ -514,6 +568,9 @@
         </div>
     </div>
 </div>
+
+        
+   
 <script type="text/javascript">
         $(document).ready(function () {
             $('.form_datetime').datetimepicker({
