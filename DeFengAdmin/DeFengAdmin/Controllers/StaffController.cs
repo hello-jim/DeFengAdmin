@@ -105,6 +105,8 @@ namespace DeFengAdmin.Controllers
                 var obj = bll.UserLogin(staff);
                 if (obj != null)
                 {
+                    Permission_BLL permissionBll = new Permission_BLL();
+                    obj.Permission = permissionBll.GetPermissionByStaff(obj.ID);
                     Session["staffInfo"] = obj;
                     status = 1;
                 }

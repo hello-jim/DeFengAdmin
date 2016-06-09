@@ -298,6 +298,24 @@ namespace DeFengAdmin.Controllers
             return json;
         }
 
+        public bool AddStaffPermission()
+        {
+            var result = false;
+            try
+            {
+                StaffPermission_BLL bll = new StaffPermission_BLL();
+                var staffID = Convert.ToInt32(Request["staffID"]);
+                var permissionIDList = Convert.ToString(Request["permissionIDArr"]).Split(',').ToList().ConvertAll<int>(x=>Convert.ToInt32(x));
+                var staff = (Staff)Session["staffInfo"];
+                result = bll.AddStaffPermission(staffID, staff.ID, permissionIDList);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
         public ActionResult DepTreeview()
         {
             return View("DepTreeview");
@@ -312,6 +330,8 @@ namespace DeFengAdmin.Controllers
         {
             return View("TestView");
         }
+
+
 
     }
 }
