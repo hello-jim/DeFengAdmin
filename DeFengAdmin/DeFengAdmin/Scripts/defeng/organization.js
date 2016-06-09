@@ -19,18 +19,16 @@ $(document).ready(function () {
         }
     });
     $('.theme-poptit .close').click(function () {
-        $('.theme-popover-mask').hide();
+        $('.theme-popover').hide();
         $('.theme-popover').slideUp(200);
     });
 
-    $('#personnel-upadate').click(function () {
-        $('.personnel-theme-popover-mask').show();
-        $('.personnel-theme-popover-mask').height($(document).height());
-        $('.department-addAndEdit-panel').slideDown(200);
+    $('#personnel-update').click(function () {
+        $('#staffUpdate').show();
+        $('#staffUpdate').slideDown(200);
     });
-    $('#personnel-upadate').click(function () {
-        $('.personnel-theme-popover-mask').show();
-        $('.personnel-theme-popover-mask').height($(document).height());
+    $('#personnel-update').click(function () {
+        $('#staffUpdate').show();
         $('.staff-updateAndEdit-panel').slideDown(200);
         var objArr = $(".col-select.cbr-checked");
         if (objArr.length > 0) {
@@ -38,9 +36,40 @@ $(document).ready(function () {
             InitDepartmentData(selectTr);
         }
     });
-    $('.theme-poptit .close').click(function () {
-        $('.personnel-theme-popover-mask').hide();
-        $('.personnel-theme-popover').slideUp(200);
+    $('#closeUpdate').click(function () {
+        $('#staffUpdate').hide();
+        $('#staffUpdate').slideUp(200);
+    });
+
+
+    //人员权限
+    $('#personnel-permissions').click(function () {
+        $('#stafPermissions').show();
+        $('#stafPermissions').slideDown(200);
+    });
+    $('#personnel-permissions').click(function () {
+        $('#stafPermissions').show();
+        $('#stafPermissions').slideDown(200);
+        var objArr = $(".col-select.cbr-checked");
+        if (objArr.length > 0) {
+            var selectTr = $(objArr[0]).parents("tr");
+            InitDepartmentData(selectTr);
+        }
+    });
+    $('.theme-poptit #closePermissions').click(function () {
+        $('#stafPermissions').hide();
+        $('#stafPermissions').slideUp(200);
+    });
+    
+    $('#shrinkage').click(function () {
+        $('.collaborative').toggle();
+        $('#arrowOn').toggle();
+        $('#arrowUp').toggle();
+    });
+    $('#Shrinkage1').click(function () {
+        $('.collaborativeShrinkage').toggle();
+        $('#collaborativeArrowOn').toggle();
+        $('#collaborativeArrowUp').toggle();
     });
     //人员权限
     $('#personnel-permissions').click(function () {
