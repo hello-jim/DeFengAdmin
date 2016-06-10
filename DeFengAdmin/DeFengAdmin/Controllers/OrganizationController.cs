@@ -11,6 +11,8 @@ namespace DeFengAdmin.Controllers
 {
     public class OrganizationController : BaseController
     {
+        PermissionType_BLL permissionTypeBll = new PermissionType_BLL();
+        StaffPermission_BLL staffPermissionBll = new StaffPermission_BLL();
         // GET: Organization
         public ActionResult Index()
         {
@@ -282,13 +284,13 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
-        public string LoadPermission()
+        public string GetPermission()
         {
             var json = "";
             try
             {
                 Permission_BLL bll = new Permission_BLL();
-                var list = bll.LoadPermission();
+                var list = bll.GetPermission();
                 json = JsonConvert.SerializeObject(list);
             }
             catch (Exception ex)
@@ -298,22 +300,49 @@ namespace DeFengAdmin.Controllers
             return json;
         }
 
+        public string GetPermissionType()
+        {
+            var json = "";
+            try
+            {
+                var list = permissionTypeBll.GetPermissionType();
+                json = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex) { }
+            return json;
+        }
+
         public bool AddStaffPermission()
         {
             var result = false;
             try
             {
-                StaffPermission_BLL bll = new StaffPermission_BLL();
+
                 var staffID = Convert.ToInt32(Request["staffID"]);
-                var permissionIDList = Convert.ToString(Request["permissionIDArr"]).Split(',').ToList().ConvertAll<int>(x=>Convert.ToInt32(x));
+                var permissionIDList = Convert.ToString(Request.Form[1]).Split(',').ToList().ConvertAll<int>(x => Convert.ToInt32(x));
                 var staff = (Staff)Session["staffInfo"];
-                result = bll.AddStaffPermission(staffID, staff.ID, permissionIDList);
+                result = staffPermissionBll.AddStaffPermission(staffID, staff.ID, permissionIDList);
             }
             catch (Exception ex)
             {
 
             }
             return result;
+        }
+
+        public string GetPermissionByStaff()
+        {
+            var json = "";
+            try
+            {
+                var staffID = Convert.ToInt32(Request["staffID"]);
+                var list = staffPermissionBll.GetPermissionByStaff(staffID);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return json;
         }
 
         public ActionResult DepTreeview()

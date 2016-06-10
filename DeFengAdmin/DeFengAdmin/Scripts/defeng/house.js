@@ -73,9 +73,7 @@ $(document).ready(function () {
              },
             function (data) {
                 var json = "";
-                if (data != "") {
-                    json = $.parseJSON(data);
-                }
+                json = $.parseJSON(data);
                 CreateHouseTable(json);
                 searchAction = "jointSearch";
             }
@@ -223,8 +221,11 @@ function GetSameOwnerHouseObj(tr) {
 
 function CreateHouseTable(json) {
     var html = "";
-    if (json == "") {
-        html += "没有数据";
+    if (json == "-1") {
+        alert("系统错误 ");
+    }
+    else if (json == "-2") {
+        alert("没有权限");
     }
     else {
         html += "<tbody>";
@@ -1658,9 +1659,9 @@ $("#saleTotalPriceTxt").on("blur", function () {
     else {
         $(".SaleTotalPrice").show();
         return false;
-       
+
     }
-    
+
 });
 $("#leaseTotalPriceTxt").on("blur", function () {
     var text1 = $("#houseSizeTxt").val();

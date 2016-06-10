@@ -15,6 +15,7 @@ namespace DeFengAdmin.Controllers
     public class HouseController : BaseController
     {
         House_BLL bll = new House_BLL();
+
         // GET: House
         public ActionResult Index()
         {
@@ -80,20 +81,28 @@ namespace DeFengAdmin.Controllers
             var result = "";
             try
             {
-                var house = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<House>(HttpContext.Request.Form["house"]) : null;
-                if (house != null)
+                if (sessionStaff.Permission.Where(s => s.ID == 3).Count() > 0)
                 {
-                    var list = bll.Search(house);
-                    if (list.Count > 0)
+                    var house = HttpContext.Request.Form != null ? JsonConvert.DeserializeObject<House>(HttpContext.Request.Form["house"]) : null;
+                    if (house != null)
                     {
-                        list[0].PageIndex = house.PageIndex;
+                        var list = bll.Search(house);
+                        if (list.Count > 0)
+                        {
+                            list[0].PageIndex = house.PageIndex;
+                        }
+                        result = JsonConvert.SerializeObject(list);
                     }
-                    result = JsonConvert.SerializeObject(list);
+                    else
+                    {
+                        result = "-1";
+                    }
                 }
                 else
                 {
-                    result = "-1";
+                    result = "-2";//没有权限
                 }
+
             }
             catch (Exception ex)
             {

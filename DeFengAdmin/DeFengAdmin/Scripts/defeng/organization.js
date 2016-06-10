@@ -41,6 +41,41 @@ $(document).ready(function () {
         $('#staffUpdate').slideUp(200);
     });
 
+    $('.management').on("click", function () {
+        $('#management').fadeIn();
+        $('#settings').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+    });
+    $('.settings').on("click", function () {
+        $('#management').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+        $('#dailyOffice').hide();
+        $('#settings').fadeIn();
+    });
+    $('.announcement').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide();
+        $('#dailyOffice').hide();
+        $('#questionnaire').hide();
+        $('#announcement').fadeIn();
+    });
+    $('.questionnaire').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide();
+        $('#announcement').hide();
+        $('#dailyOffice').hide();
+        $('#questionnaire').fadeIn();
+    });
+    $('.dailyOffice').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+        $('#dailyOffice').fadeIn();
+    });
+
 
 
     //人员权限
@@ -109,6 +144,7 @@ $(document).ready(function () {
                 $("#tab1").hide();
                 $("#tab2").hide();
                 InitStaff();
+                InitPermission();
                 break;
         }
     });
@@ -307,7 +343,7 @@ function CreatePostTabel(json) {
         html += "</tr>";
     }
     $(".post-table tbody").html(html);
-    InitCheckBox();
+    //  InitCheckBox();
 }
 
 function CreateDepartmentTable(childrenDepartmentArr) {
@@ -323,7 +359,7 @@ function CreateDepartmentTable(childrenDepartmentArr) {
         html += "</tr>";
     }
     $("#departmentTabel tbody").html(html);
-    InitCheckBox();
+    //  InitCheckBox();
 }
 
 function CreateStaffTable(json) {
@@ -340,7 +376,21 @@ function CreateStaffTable(json) {
         html += "</tr>";
     }
     $(".staff-table tbody").html(html);
-    InitCheckBox();
+    $(".staff-table tbody tr").on("click", function () {
+        var staffID = $(this).attr("staffID");
+        $.post("/Organization/GetPermissionByStaff",
+            {
+                staffID: staffID
+            },
+            function (data) {
+
+            })
+    });
+    // InitCheckBox();
+}
+
+function InitStaffPermission(arr) {
+    
 }
 
 function InitDepartmentData(obj) {
@@ -531,78 +581,86 @@ function GetParentDepartment(parentID) {
 }
 
 
-function InitPermission() {
+function InitPermissionList() {
     $.ajax({
-        url: "/Common/LoadPermission",
-        async: async,
+        url: "/Organization/GetPermission",
+        async: true,
         success: function (data) {
             var json = $.parseJSON(data);
+            CreatePermissionList(json);
+
         }
     });
 }
 
-function InitPermissionList(json) {
-    var arr = GetPermissionTypeArr(json);
-    CreatePermissionList(arr);
-}
-
-function CreatePermissionList(arr) {
-    var html = "";
-    for (var i = 0; i < arr.length; i++) {
-
-    }
-    $("").html(html);
-}
-
-function GetPermissionTypeArr(json) {
-    var arr = new Array();
+function CreatePermissionList(json) {
+    $(".permission-list div").html("");
     for (var i = 0; i < json.length; i++) {
-        arr.push(json.PermissionType.TypeName);
+        var html = "<span>" + json[i].PermissionName + "</span>";
+        html += "<div permissionID='" + json[i].ID + "' class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>";
+
+        $(".permission-list div[permissionTypeID='" + json[i].PermissionType.ID + "']").append(html);
     }
-    arr = $.unique(arr);
-    return arr;
+    InitCheckBox();
 }
 
+function CreatePermissionTypeList(json) {
+    var li = "";
+    var html = "";
+    for (var i = 0; i < json.length; i++) {
+        li += "<li permissionTypeID='" + json[i].ID + "' class=''>";
+        li += "<a href='javascript:void(0);' class='management'>";
+        li += "<span class='visible-xs'><i class='fa-home'></i></span>";
+        li += "<span class='hidden-xs'>" + json[i].TypeName + "</span>";
+        li += "</a>";
+        li += "</li>";
+        html += "<div class='permission-panel' permissionTypeID='" + json[i].ID + "'></div>";
+    }
+    $(".permission-type").html(li);
+    $(".permission-list").html(html);
+    $(".permission-list div").hide();
 
-
-    $('.management').on("click", function () {
-        $('#management').fadeIn();
-        $('#settings').hide(); 
-        $('#announcement').hide();
-        $('#questionnaire').hide();
+    $(".permission-list div:eq(0)").show();
+    $(".permission-type li").on("click", function () {
+        var permissionTypeID = $(this).attr("permissionTypeID");
+        $(".permission-list .permission-panel[permissionTypeID='" + permissionTypeID + "']").show();
+        $(".permission-list .permission-panel[permissionTypeID!='" + permissionTypeID + "']").hide();
     });
-    $('.settings').on("click", function () {
-        $('#management').hide();
-        $('#announcement').hide();
-        $('#questionnaire').hide();
-        $('#dailyOffice').hide();
-        $('#settings').fadeIn();
+}
+
+function InitPermission() {
+    $.ajax({
+        url: "/Organization/GetPermissionType",
+        async: true,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            CreatePermissionTypeList(json);
+            InitPermissionList(json);
+        }
     });
-    $('.announcement').on("click", function () {
-        $('#management').hide();
-        $('#settings').hide();
-        $('#dailyOffice').hide();
-        $('#questionnaire').hide();
-        $('#announcement').fadeIn();
-    })
-    $('.questionnaire').on("click", function () {
-        $('#management').hide();
-        $('#settings').hide(); 
-        $('#announcement').hide();
-        $('#dailyOffice').hide();
-        $('#questionnaire').fadeIn();
-    })
-    $('.dailyOffice').on("click",function(){
-        $('#management').hide();
-        $('#settings').hide();
-        $('#announcement').hide();
-        $('#questionnaire').hide();
-        $('#dailyOffice').fadeIn();
-    })
-        
-   
-
-
+    $(".permission-all-select").unbind("click").on("click", function () {
+        $(".permission .permission-list .cbr-replaced").addClass("cbr-checked");
+    });
+    $(".permission-all-clear").unbind("click").on("click", function () {
+        $(".permission .permission-list .cbr-replaced").removeClass("cbr-checked");
+    });
+    $(".permission-save").unbind("click").on("click", function () {
+        var arr = ConvertArr($(".permission .permission-list .cbr-replaced.cbr-checked"), "permissionID");
+        var staffID = 0;
+        $.post("/Organization/AddStaffPermission",
+            {
+                staffID: staffID,
+                permissionIDArr: arr
+            },
+            function (data) {
+                if (data == "1") {
+                    alert("保存成功");
+                } else {
+                    alert("保存失败");
+                }
+            });
+    });
+}
 
 
 
