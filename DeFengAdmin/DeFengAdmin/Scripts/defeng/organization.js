@@ -61,19 +61,19 @@ $(document).ready(function () {
     //    $('#stafPermissions').hide();
     //    $('#stafPermissions').slideUp(200);
     //});
-    $('#personnel-permissions').click(function () {
-        $('.access').toggle();
-    });
-    $('#shrinkage').click(function () {
-        $('.collaborative').toggle();
-        $('#arrowOn').toggle();
-        $('#arrowUp').toggle();
-    });
-    $('#Shrinkage1').click(function () {
-        $('.collaborativeShrinkage').toggle();
-        $('#collaborativeArrowOn').toggle();
-        $('#collaborativeArrowUp').toggle();
-    });
+    //$('#personnel-permissions').click(function () {
+    //    $('.access').toggle();
+    //});
+    //$('#shrinkage').click(function () {
+    //    $('.collaborative').toggle();
+    //    $('#arrowOn').toggle();
+    //    $('#arrowUp').toggle();
+    //});
+    //$('#Shrinkage1').click(function () {
+    //    $('.collaborativeShrinkage').toggle();
+    //    $('#collaborativeArrowOn').toggle();
+    //    $('#collaborativeArrowUp').toggle();
+    //});
     //$("#content div").hide();
     $("#tab2").hide();
     $("#tab3").hide();
@@ -564,6 +564,43 @@ function GetPermissionTypeArr(json) {
 }
 
 
+
+    $('.management').on("click", function () {
+        $('#management').fadeIn();
+        $('#settings').hide(); 
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+    });
+    $('.settings').on("click", function () {
+        $('#management').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+        $('#dailyOffice').hide();
+        $('#settings').fadeIn();
+    });
+    $('.announcement').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide();
+        $('#dailyOffice').hide();
+        $('#questionnaire').hide();
+        $('#announcement').fadeIn();
+    })
+    $('.questionnaire').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide(); 
+        $('#announcement').hide();
+        $('#dailyOffice').hide();
+        $('#questionnaire').fadeIn();
+    })
+    $('.dailyOffice').on("click",function(){
+        $('#management').hide();
+        $('#settings').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+        $('#dailyOffice').fadeIn();
+    })
+        
+   
 
 
 
