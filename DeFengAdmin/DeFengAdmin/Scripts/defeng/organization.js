@@ -565,6 +565,44 @@ function GetPermissionTypeArr(json) {
 
 
 
+    $('.management').on("click", function () {
+        $('#management').fadeIn();
+        $('#settings').hide(); 
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+    });
+    $('.settings').on("click", function () {
+        $('#management').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+        $('#dailyOffice').hide();
+        $('#settings').fadeIn();
+    });
+    $('.announcement').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide();
+        $('#dailyOffice').hide();
+        $('#questionnaire').hide();
+        $('#announcement').fadeIn();
+    })
+    $('.questionnaire').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide(); 
+        $('#announcement').hide();
+        $('#dailyOffice').hide();
+        $('#questionnaire').fadeIn();
+    })
+    $('.dailyOffice').on("click",function(){
+        $('#management').hide();
+        $('#settings').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+        $('#dailyOffice').fadeIn();
+    })
+        
+   
+
+
 
 
 
