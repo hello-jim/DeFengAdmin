@@ -42,7 +42,7 @@ $(document).ready(function () {
     });
 
 
-   
+
     //人员权限
     //$('#personnel-permissions').click(function () {
     //    $('#stafPermissions').show();
@@ -361,7 +361,7 @@ function InitPostData(obj) {
     $("#postGradeTxt").val($(obj).attr("postGrade"));
 }
 
-function InitStaffData() {
+function InitStaffData(obj) {
     $("#staffName").val();
     $("#sex").val();
     $("#age").val();
