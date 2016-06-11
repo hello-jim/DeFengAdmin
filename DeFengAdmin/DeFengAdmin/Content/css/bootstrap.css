@@ -6199,6 +6199,7 @@ button.close {
 .office-theme-popover{z-index:9;position:absolute;top:25%;left:40%;width:1000px;height:700px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#ddd;display:none;box-shadow:0 0 10px #666;background:#fff;}
 .personnel-theme-popover{z-index:9;position:absolute;top:25%;left:50%;width:800px;height:900px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#fff;display:none;box-shadow:0 0 10px #666;background:#fff;}
 .personnel-theme-permissions{z-index:9;position:absolute;top:25%;left:50%;width:800px;height:800px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#fff;display:none;box-shadow:0 0 10px #666;background:#fff;}
+.pdfOpen{z-index:9;position:absolute;top:25%;left:50%;width:800px;height:300px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#fff;display:none;box-shadow:0 0 10px #666;background:#fff;}
 *{margin:0;padding:0;list-style-type:none;}
 .newfrom {
  /*float:right; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;

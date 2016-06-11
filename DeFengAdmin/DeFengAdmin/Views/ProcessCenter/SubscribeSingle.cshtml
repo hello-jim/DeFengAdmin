@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "SubscribeSingle";
+}
+<div class="panel">
+    <div class="row text-right"><a href="#" class="pdfOpens">Pdf打开</a>丨<a href="#" class="pdfOpens">Excel打开</a>丨<a>打印报表</a>丨<a href="/ProcessCenter/index">返回</a></div>
+    <div class="row text-center"><h3>一手房认购单（送审日期)</h3></div>
+    <div class="row">
+        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>项目</th>
+                    <th>房栋</th>
+                    <th>单元</th>
+                    <th>房号</th>
+                    <th>认购日期</th>
+                    <th>客户姓名</th>
+                    <th>定金</th>
+                    <th>认购总价</th>
+                    <th>业绩模式</th>
+                    <th>送客方前台</th>
+                    <th>送客方业务员（经纪人）</th>
+                    <th>送客方分行经理</th>
+                    <th>送客房部门经理</th>
+                    <th>驻点方经纪人</th>
+                    <th>驻点方分行经理</th>
+                    <th>驻点部门经理</th>
+                    <th>客户联系号码</th>
+                    <th>送审时间</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody class="collaborative">
+                <tr>
+                    <td>海惠商铺</td>
+                    <td></td>
+                    <td></td>
+                    <td>122</td>
+                    <td>2015-12-29</td>
+                    <td>钟惠英</td>
+                    <td>37000.00</td>
+                    <td></td>
+                    <td>外勤</td>
+                    <td>马婷,李亚</td>
+                    <td>李祥兵</td>
+                    <td>廖应献</td>
+                    <td>杨海波</td>
+                    <td>高冲</td>
+                    <td></td>
+                    <td>张雪梅</td>
+                    <td></td>
+                    <td>2015-12-30</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>亲水湾</td>
+                    <td></td>
+                    <td></td>
+                    <td>804</td>
+                    <td>2015-12-29</td>
+                    <td>张明亮</td>
+                    <td>20000.00</td>
+                    <td></td>
+                    <td>门店+驻点</td>
+                    <td></td>
+                    <td>黄贤清</td>
+                    <td>袁森峰</td>
+                    <td>黄贤清</td>
+                    <td>高冲</td>
+                    <td></td>
+                    <td>张雪梅</td>
+                    <td></td>
+                    <td>2015-12-30</td>
+                    <td></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="pdfOpen">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row text-right">
+            <a href="#">确定</a>
+        </div>
+        <div class="row">
+            <div class="row">
+                <h4>导出页码选择</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-0">
+                <div class="cbr-replaced">
+                    <div class="cbr-input">
+                        <input type="checkbox" class="cbr cbr-done">
+                    </div>
+                    <div class="cbr-state"><span></span></div>
+                </div>
+            </div>
+            <div class="col-md-2"><b>导出全部</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-0">
+                <div class="cbr-replaced">
+                    <div class="cbr-input">
+                        <input type="checkbox" class="cbr cbr-done">
+                    </div>
+                    <div class="cbr-state"><span></span></div>
+                </div>
+            </div>
+            <div class="col-md-2"><b>导出范围</b></div>
+            <div class="col-md-3"><input type="text" class="form-control input-dark" name="s"></div><div class="col-md-0">至</div><div class="col-md-3"><input type="text" class="form-control input-dark" name="s"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/defeng/processCenter.js"></script>

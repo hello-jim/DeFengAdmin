@@ -23,4 +23,16 @@ font-size:18px;
 .distance {
     margin-left:2px;
 }
-
+.picture {
+     position: relative;
+      left: -80px;
+}
+.td1 {
+    width:100px;
+}
+.td2 {
+    width:200px;
+}
+.staffTable {
+    border:1px solid #ddd;
+}
