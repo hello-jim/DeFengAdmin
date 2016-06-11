@@ -378,19 +378,25 @@ function CreateStaffTable(json) {
     $(".staff-table tbody").html(html);
     $(".staff-table tbody tr").on("click", function () {
         var staffID = $(this).attr("staffID");
+        $(".staff-table tbody tr[isSelectStaff]").removeAttr("isSelectStaff");
+        $(this).attr("isSelectStaff", "");
         $.post("/Organization/GetPermissionByStaff",
             {
                 staffID: staffID
             },
             function (data) {
-
+                var json = $.parseJSON(data);
+                InitStaffPermission(json);
             })
     });
     // InitCheckBox();
 }
 
 function InitStaffPermission(arr) {
-    
+    $(".permission .permission-list .cbr-replaced").removeClass("cbr-checked");
+    for (var i = 0; i < arr.length; i++) {
+        $(".permission .permission-list .cbr-replaced[permissionID='" + arr[i] + "']").addClass("cbr-checked");
+    }
 }
 
 function InitDepartmentData(obj) {
@@ -412,21 +418,18 @@ function InitPostData(obj) {
 }
 
 function InitStaffData(obj) {
-    $("#staffName").val();
-    $("#sex").val();
-    $("#age").val();
-    $("#idCard").val();
-    $("#entryTime").val();
-    $("#officTel").val();
-    $("#phone").val();
-    $("#email").val();
-    $("#dateBirth").val();
+    $("#staffNameTxt").val(obj.StaffName);
+    $("#sex").val(obj.Sex);
+    $("#ageTxt").val(obj.Age);
+    $("#idCardTxt").val(obj.IdCard);
+    $("#entryTime").val(obj.EntryTime);
+    $("#officTelTxt").val(obj.OfficTel);
+    $("#phoneTxt").val(obj.Phone);
+    $("#emailTxt").val(obj.Email);
+    $("#dateBirth").val(obj.DateBirth);
     $("#staffDepartment").val();
     $("#staffPost").val();
-    $("#leader").val();
-    $("#password").val();
-    $("#isEnable").val();
-    $("");//访问权限
+    $("#staffIsEnable").val(obj.IsEnabl);
 }
 
 function GetDepartmentObj() {
@@ -452,7 +455,7 @@ function GetPostObj() {
     return post;
 }
 
-function GetStaff() {
+function GetStaffObj() {
     var staff = new Object();
     staff.ID = $("#staffID").val() != "" ? $("#staffID").val() : 0;
     staff.StaffName = $("#staffNameTxt").val();
@@ -505,20 +508,41 @@ function InitStaff() {
         var objArr = $(".col-staff-select.cbr-checked");
         if (objArr.length > 0) {
             var selectTr = $(objArr[0]).parents("tr");
-            InitPostData(selectTr);
+            var staffID = $(selectTr).attr("staffID");
+            $.post("/Organization/GetStaffByID",
+                {
+                    staffID: staffID
+                },
+                function (data) {
+                    var json = $.parseJSON(data);
+                    InitStaffData(json);
+                    $('.staff-addAndEdit-panel').show();
+                    $('.staff-addAndEdit-panel').height($(document).height());
+                    $('.staff-addAndEdit-panel').slideDown(200);
+                });
+        } else {
+            return;
         }
-        $('.theme-popover-mask').show();
-        $('.theme-popover-mask').height($(document).height());
-        $('.staff-addAndEdit-panel').slideDown(200);
-
     });
 
-    $(".staff-update").unbind("click").on("click", function () {
-        var post = GetPostObj();
-        var postJson = JSON.stringify(post);
+    $(".staff-add-save").unbind("click").on("click", function () {
+        var staff = GetStaffObj();
+        var staffJson = JSON.stringify(staff);
+        $.post("/Organization/AddStaff",
+          {
+              staff: staffJson
+          },
+          function (data) {
+
+          });
+    });
+
+    $(".staff-update-save").unbind("click").on("click", function () {
+        var staff = GetStaffObj();
+        var staffJson = JSON.stringify(staff);
         $.post("/Organization/UpdateStaff",
           {
-              post: postJson
+              staff: staffJson
           },
           function (data) {
 
@@ -580,7 +604,6 @@ function GetParentDepartment(parentID) {
     return allDepName;
 }
 
-
 function InitPermissionList() {
     $.ajax({
         url: "/Organization/GetPermission",
@@ -597,7 +620,7 @@ function CreatePermissionList(json) {
     $(".permission-list div").html("");
     for (var i = 0; i < json.length; i++) {
         var html = "<span>" + json[i].PermissionName + "</span>";
-        html += "<div permissionID='" + json[i].ID + "' class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>";
+        html += "<div permissionID='" + json[i].ID + "' class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
 
         $(".permission-list div[permissionTypeID='" + json[i].PermissionType.ID + "']").append(html);
     }
@@ -646,7 +669,7 @@ function InitPermission() {
     });
     $(".permission-save").unbind("click").on("click", function () {
         var arr = ConvertArr($(".permission .permission-list .cbr-replaced.cbr-checked"), "permissionID");
-        var staffID = 0;
+        var staffID = $(".staff-table tbody tr[isSelectStaff]").attr("staffID");
         $.post("/Organization/AddStaffPermission",
             {
                 staffID: staffID,

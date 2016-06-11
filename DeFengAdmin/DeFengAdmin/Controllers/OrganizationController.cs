@@ -13,6 +13,7 @@ namespace DeFengAdmin.Controllers
     {
         PermissionType_BLL permissionTypeBll = new PermissionType_BLL();
         StaffPermission_BLL staffPermissionBll = new StaffPermission_BLL();
+
         // GET: Organization
         public ActionResult Index()
         {
@@ -223,6 +224,21 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
+        public bool UpdateStaff()
+        {
+            var result = false;
+            Staff_BLL bll = new Staff_BLL();
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
         public string GetStaffByDepartment()
         {
             var list = new List<Staff>();
@@ -251,6 +267,23 @@ namespace DeFengAdmin.Controllers
                 Staff_BLL bll = new Staff_BLL();
                 var list = bll.GetStaff();
                 json = JsonConvert.SerializeObject(list);
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return json;
+        }
+
+        public string GetStaffByID()
+        {
+            var json = "";
+            try
+            {
+                Staff_BLL bll = new Staff_BLL();
+                var staffID = Convert.ToInt32(Request["staffID"]);
+                var obj = bll.GetStaffByID(staffID);
+                json = JsonConvert.SerializeObject(obj);
             }
             catch (Exception ex)
             {
@@ -337,6 +370,7 @@ namespace DeFengAdmin.Controllers
             {
                 var staffID = Convert.ToInt32(Request["staffID"]);
                 var list = staffPermissionBll.GetPermissionByStaff(staffID);
+                json = JsonConvert.SerializeObject(list);
             }
             catch (Exception ex)
             {

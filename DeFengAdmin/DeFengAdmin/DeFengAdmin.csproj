@@ -231,6 +231,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SysConfKey.xml" />
+    <Content Include="Content\css\common.css" />
     <Content Include="Content\css\customer.css" />
     <Content Include="Content\css\home.css" />
     <Content Include="Content\css\modality.css" />

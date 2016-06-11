@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css">
 <link rel="stylesheet" href="~/Content/css/jquery.treeview.css" />
 <link rel="stylesheet" href="~/Content/css/screen.css" />
+<link rel="stylesheet" href="~/Content/css/common.css" />
 <link rel="stylesheet" href="~/Content/css/organization.css" />
 @*<link rel="stylesheet" href="~/Content/css/bootstrap.min.css">*@
 
@@ -158,26 +159,11 @@
                             </form>
                         </div>
                         <div class="col-md-9 pull-right">
-                            <button class="btn btn-default" href="javascript:;" id="personnel-update">
+                            <button class="btn btn-default staff-update-btn" href="javascript:;">
                                 修改
                             </button>
                             <button class="btn btn-default staff-delete">
                                 删除
-                            </button>
-                            <button class="btn btn-default">
-                                指定下属
-                            </button>
-                            <button class="btn btn-default">
-                                初始化密码
-                            </button>
-                            <button class="btn btn-default">
-                                列入未分配
-                            </button>
-                            <button class="btn btn-default" id="personnel-permissions">
-                                人员权限
-                            </button>
-                            <button class="btn btn-default">
-                                导入
                             </button>
                         </div>
                     </div>
@@ -197,23 +183,25 @@
                         </thead>
                         <tbody></tbody>
                     </table>
-                    <div class="permission">
+                    <div class="permission panel panel-default panel-border panel-shadow">
                         <div class="row">
-                            <ul class="nav nav-tabs left-aligned permission-type"></ul>
-                        </div>
-                        <div class="row"></div>
-                        <div class="row">
-                            <div class="permission-list">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs left-aligned permission-type"></ul>
                             </div>
                         </div>
-                        <div class="row"></div>
+                        <div class="row space-height-20"></div>
                         <div class="row">
-                            <div class="col-md-1"><a class="permission-all-select" href="javascript:void(0);">全部选中</a></div>
-                            <div class="col-md-1"><a class="permission-all-clear" href="javascript:void(0);">全部清除</a></div>
-                            <div class="col-md-1"><a href="javascript:void(0);">预设</a></div>
-                            <div class="col-md-1"><a href="javascript:void(0);">职务授权</a></div>
-                            <div class="col-md-4"><a class="permission-save" href="javascript:void(0);">保存权限到员工</a></div>
-                            <div class="col-md-4"><a href="javascript:void(0);">保存权限到职务</a></div>
+                            <div class="col-md-12">
+                                <div class="permission-list">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row space-height-20"></div>
+
+                        <div class="row">
+                            <div class="col-md-2"><button class="permission-all-select btn btn-gray" href="javascript:void(0);">全部选中</button></div>
+                            <div class="col-md-2"><button class="permission-all-clear btn btn-gray" href="javascript:void(0);">全部清除</button></div>
+                            <div class="col-md-2"><button class="permission-save btn btn-gray" href="javascript:void(0);">保存权限到员工</button></div>
                         </div>
                     </div>
                 </div>
@@ -348,70 +336,7 @@
     </div>
 </div>
 
-<div class="theme-popover staff-addAndEdit-panel">
-    <div class="theme-poptit">
-        <a href="javascript:;" title="关闭" class="closeTwo">×</a>
-    </div>
-    <div class="theme-popbod dform">
-        <div class="row">
-            <div class="row">
-                <h4>部门信息</h4>
-            </div>
-            <div class="row">
-                <input id="postID" type="hidden" />
-                <input id="postDepID" type="hidden" value="" />
-                <div class="col-md-2">部门名称</div>
-                <div class="col-md-8">
-                    <input id="" class="form-control input-dark" type="text" name="log" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">名称</div>
-                <div class="col-md-8">
-                    <input id="" class="form-control input-dark" type="text" name="log" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">描述</div>
-                <div class="col-md-8">
-                    <input id="" class="form-control input-dark" type="text" name="log" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-2">级次</div>
-                <div class="col-md-8">
-                    <input id="" class="form-control input-dark" type="text" name="log" />
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-2">启用</div>
-                <div class="col-md-3">
-                    <select class="form-control" id="postIsEnableSelect">
-                        <option></option>
-                        <option value="1" name="application_method">是</option>
-                        <option value="0" name="application_method">否</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-1">
-                    <button class="btn btn-default staff-add">
-                        增加
-                    </button>
-                </div>
-                <div class="col-md-1">
-                    <button class="btn btn-default staff-update">
-                        修改
-                    </button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="personnel-theme-popover staff-updateAndEdit-panel" id="staffUpdate">
+<div class="personnel-theme-popover staff-addAndEdit-panel" id="staffUpdate">
     <div class="theme-poptit">
         <a href="javascript:;" title="关闭" class="close" id="closeUpdate">×</a>
     </div>
@@ -421,102 +346,82 @@
             <div class="row">&nbsp;</div>
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-2 translation">登录名称</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
                     <div class="col-md-2 translation">用户名称</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
+                    <div class="col-md-4"><input id="staffNameTxt" class="form-control input-dark" type="text" /></div>
                     <div class="col-md-2 translation">性别</div>
                     <div class="col-md-4">
-                        <select class="form-control" id="postIsEnableSelect">
+                        <select class="form-control" id="sex">
                             <option></option>
-                            <option value="男" name="application_method">男</option>
-                            <option value="女" name="application_method">女</option>
+                            <option value="1" name="application_method">男</option>
+                            <option value="0" name="application_method">女</option>
                         </select>
                     </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">            
                     <div class="col-md-2 translation">年龄</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
+                    <div class="col-md-4"><input id="ageTxt" class="form-control input-dark" type="text" /></div>
                     <div class="col-md-2 translation">身份证号</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-4"><input id="idCardTxt" class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">                
                     <div class="col-md-2 translation">入职日期</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
+                    <div class="col-md-4"><input id="entryTime" class="form-control input-dark" type="text" /></div>
                     <div class="col-md-2 translation">办公电话</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
-                    <div class="col-md-2 translation">移动电话</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-4"><input id="officTelTxt" class="form-control input-dark" type="text" /></div>
                 </div>
                 <div class="row">&nbsp;</div>
-                <div class="row">
+                <div class="row">               
+                    <div class="col-md-2 translation">移动电话</div>
+                    <div class="col-md-4"><input id="phoneTxt" class="form-control input-dark" type="text" /></div>
                     <div class="col-md-2 translation">邮箱地址</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-4"><input id="emailTxt" class="form-control input-dark" type="text" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">                 
                     <div class="col-md-2 translation">出生日期</div>
                     <div class="col-md-4">
                         <div class="date form_datetime">
-                            <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                            <input id="dateBirth" class="form-control" name="dateBirth" data-validate="required" readonly />
                             <span class="add-on"><i class="icon-remove"></i></span>
                             <span class="add-on"><i class="icon-calendar"></i></span>
                         </div>
                     </div>
+                    <div class="col-md-2 translation" >工作部门</div>
+                    <div class="col-md-4"><input id="staffDepartment" class="form-control input-dark" type="text" /></div>
                 </div>
                 <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col-md-2 translation">工作部门</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
-                    <div class="col-md-2 translation">工作岗位</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col-md-2 translation">兼职部门</div>
-                    <div class="col-md-10"><input class="form-control input-dark" type="text" /></div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col-md-2 translation">兼职岗位</div>
-                    <div class="col-md-10"><input class="form-control input-dark" type="text" /></div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col-md-2 translation">访问权限</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                <div class="row">               
+                    <div class="col-md-2 translation" >工作岗位</div>
+                    <div class="col-md-4"><input id="staffPost" class="form-control input-dark" type="text" /></div>
                     <div class="col-md-2 translation">是否启用</div>
                     <div class="col-md-4">
-                        <select class="form-control" id="postIsEnableSelect">
+                        <select class="form-control" id="staffIsEnable">
                             <option></option>
                             <option value="0" name="application_method">是</option>
                             <option value="1" name="application_method">否</option>
                         </select>
                     </div>
                 </div>
+                @*<div class="row">&nbsp;</div>*@
+                @*<div class="row">
+                        <div class="col-md-2 translation">直属领导</div>
+                        <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    </div>*@
                 <div class="row">&nbsp;</div>
                 <div class="row">
-                    <div class="col-md-2 translation">排列顺序</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
-                    <div class="col-md-2 translation">直属领导</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col-md-2 translation">外部用户</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    @*<div class="col-md-2 translation">外部用户</div>
+                        <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>*@
                     <div class="col-md-2 translation">登录密码</div>
-                    <div class="col-md-4"><input class="form-control input-dark" type="text" /></div>
+                    <div class="col-md-4"><input class="form-control input-dark" type="password" /></div>
                 </div>
                 <div class="row">&nbsp;</div>
                 <div class="row">
                     <div class="col-md-5"></div>
                     <div class="col-md-1">
-                        <button id="save" type="button" class="btn btn-success">保存</button>
+                        <button id="save" type="button" class="btn btn-success staff-add-save">保存</button>
                     </div>
-
                 </div>
             </div>
         </div>
