@@ -1,15 +1,4 @@
-﻿$("#roomCountTxt").on("blur", function () {
-    var roomCountTxt = $("#roomCountTxt").val();
-    if (roomCountTxt != "") {
-        $(".RoomCount").hide();
-    }
-    else {
-        $(".RoomCount").show();
-        return false;
-    }
-});
-
-$("#hallCountTxt").on("blur", function () {
+﻿$("#hallCountTxt").on("blur", function () {
     var hallCountTxt = $("#hallCountTxt").val();
     if (hallCountTxt != "") {
         $(".HallCount").hide();

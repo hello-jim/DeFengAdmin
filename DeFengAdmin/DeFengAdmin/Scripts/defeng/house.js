@@ -231,36 +231,73 @@ function CreateHouseTable(json) {
         html += "<tbody>";
         var IDPrefix = "df000";
         for (var i = 0; i < json.length; i++) {
-            html += "<tr class='houseTabTr' houseID=" + json[i].ID + " houseJson='" + JSON.stringify(json[i]) + "'>";
-            html += "<td><div  class='cbr-replaced col-select' houseID=" + json[i].ID + "><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div></td>";
-            html += "<td class='colHouseID'>" + IDPrefix + json[i].ID + "</td>";
-            html += "<td class='colTransactionType' transactionTypeID='" + json[i].TransactionType.ID + "'>" + json[i].TransactionType.TransactionTypeName + "</td>";
-            html += "<td class='colDistrict' districtID='" + json[i].District.ID + "'>" + json[i].District.Name + "</td>";
-            html += "<td class='colArea' areaID='" + json[i].Area.ID + "'>" + json[i].Area.AreaName + "</td>";
-            html += "<td class='colResidentialDistrict' colResidentialDistrictID='" + json[i].ResidentialDistrict.ID + "'>" + json[i].ResidentialDistrict.Name + "</td>";
-            html += "<td class='colResidentialDistrictAddr'>" + json[i].ResidentialDistrict.Address + "</td>";
-            html += "<td class='colHousePosition'>" + json[i].HousePosition + "</td>";
-            html += "<td class='colHouseNumber'>" + json[i].HouseNumber + "</td>";
-            html += "<td class='colTotalFloor'>" + json[i].TotalFloor + "</td>";
-            html += "<td class='colHouseType1'>" + GetHouseType1(json[i].RoomCount, json[i].HallCount, json[i].ToiletCount, json[i].BalconyCount) + "</td>";
-            html += "<td class='colHouseSize'>" + json[i].HouseSize + "</td>";
-            html += "<td class='colHouseUseSize'>" + json[i].HouseUseSize + "</td>";
-            html += "<td class='colOrientation' colOrientationID='" + json[i].Orientation.ID + "'>" + json[i].Orientation.OrientationName + "</td>";
-            html += "<td class='colSaleTotalPrice'>" + json[i].Price + "</td>";
-            html += "<td class='colSaleUnitPrice'>" + GetHouseUnitPrice(json[i].Price, json[i].HouseSize) + "</td>";
-            html += "<td class='colLeaseTotalPrice'>" + json[i].LeasePrice + "</td>";
-            html += "<td class='colLeaseUnitPrice'>" + GetHouseUnitPrice(json[i].LeasePrice, json[i].HouseSize) + "</td>";
-            html += "<td class='colProxyStartDate'>" + DateTimeConvert_yyyyMMdd(json[i].ProxyStartDate) + "</td>";
-            html += "<td class='colLookHouseType' colLookHouseTypeID='" + json[i].LookHouseType.ID + "'>" + json[i].LookHouseType.TypeName + "</td>";
-            html += "<td class='colDepartment'>" + "暂无" + "</td>";
-            html += "<td class='colStaff'>" + "暂无" + "</td>";
-            html += "<td class='colHouseStatus' colHouseStatusID='" + json[i].HouseStatus.ID + "'>" + json[i].HouseStatus.StatusName + "</td>";
-            html += "<td class='colHousingLetter' colHousingLetterID='" + json[i].HousingLetter.ID + "'>" + json[i].HousingLetter.LetterName + "</td>";
-            html += "<td class='colHouseSource'>" + json[i].Source.SourceName + "</td>";
-            // html += "<td class='colImgCount'>" + "暂无" + "</td>";
-            html += "<td class='colLastFollowDate'>" + DateTimeConvert_yyyyMMdd(json[i].LastFollowDate) + "</td>";
-            html += "</tr>";
+            var colHousekeyID = json[i].LookHouseType.ID;
+            if (colHousekeyID == 3) {
+                html += "<tr class='houseTabTr' houseID=" + json[i].ID + " houseJson='" + JSON.stringify(json[i]) + "'>";
+                html += "<td><div  class='cbr-replaced col-select' houseID=" + json[i].ID + "><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div></td>";
+                html += "<td class='colHousekey'><i class='fa fa-key'></i></td>"
+                html += "<td class='colHouseID'>" + IDPrefix + json[i].ID + "</td>";
+                html += "<td class='colTransactionType' transactionTypeID='" + json[i].TransactionType.ID + "'>" + json[i].TransactionType.TransactionTypeName + "</td>";
+                html += "<td class='colDistrict' districtID='" + json[i].District.ID + "'>" + json[i].District.Name + "</td>";
+                html += "<td class='colArea' areaID='" + json[i].Area.ID + "'>" + json[i].Area.AreaName + "</td>";
+                html += "<td class='colResidentialDistrict' colResidentialDistrictID='" + json[i].ResidentialDistrict.ID + "'>" + json[i].ResidentialDistrict.Name + "</td>";
+                html += "<td class='colResidentialDistrictAddr'>" + json[i].ResidentialDistrict.Address + "</td>";
+                html += "<td class='colHousePosition'>" + json[i].HousePosition + "</td>";
+                html += "<td class='colHouseNumber'>" + json[i].HouseNumber + "</td>";
+                html += "<td class='colTotalFloor'>" + json[i].TotalFloor + "</td>";
+                html += "<td class='colHouseType1'>" + GetHouseType1(json[i].RoomCount, json[i].HallCount, json[i].ToiletCount, json[i].BalconyCount) + "</td>";
+                html += "<td class='colHouseSize'>" + json[i].HouseSize + "</td>";
+                html += "<td class='colHouseUseSize'>" + json[i].HouseUseSize + "</td>";
+                html += "<td class='colOrientation' colOrientationID='" + json[i].Orientation.ID + "'>" + json[i].Orientation.OrientationName + "</td>";
+                html += "<td class='colSaleTotalPrice'>" + json[i].Price + "</td>";
+                html += "<td class='colSaleUnitPrice'>" + GetHouseUnitPrice(json[i].Price, json[i].HouseSize) + "</td>";
+                html += "<td class='colLeaseTotalPrice'>" + json[i].LeasePrice + "</td>";
+                html += "<td class='colLeaseUnitPrice'>" + GetHouseUnitPrice(json[i].LeasePrice, json[i].HouseSize) + "</td>";
+                html += "<td class='colProxyStartDate'>" + DateTimeConvert_yyyyMMdd(json[i].ProxyStartDate) + "</td>";
+                html += "<td class='colLookHouseType' colLookHouseTypeID='" + json[i].LookHouseType.ID + "'>" + json[i].LookHouseType.TypeName + "</td>";
+                html += "<td class='colDepartment'>" + "暂无" + "</td>";
+                html += "<td class='colStaff'>" + "暂无" + "</td>";
+                html += "<td class='colHouseStatus' colHouseStatusID='" + json[i].HouseStatus.ID + "'>" + json[i].HouseStatus.StatusName + "</td>";
+                html += "<td class='colHousingLetter' colHousingLetterID='" + json[i].HousingLetter.ID + "'>" + json[i].HousingLetter.LetterName + "</td>";
+                html += "<td class='colHouseSource'>" + json[i].Source.SourceName + "</td>";
+                // html += "<td class='colImgCount'>" + "暂无" + "</td>";
+                html += "<td class='colLastFollowDate'>" + DateTimeConvert_yyyyMMdd(json[i].LastFollowDate) + "</td>";
+                html += "</tr>";
+            }
+            else {
+                html += "<tr class='houseTabTr' houseID=" + json[i].ID + " houseJson='" + JSON.stringify(json[i]) + "'>";
+                html += "<td><div  class='cbr-replaced col-select' houseID=" + json[i].ID + "><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div></td>";
+                html += "<td class='colHousekey'></td>"
+                html += "<td class='colHouseID'>" + IDPrefix + json[i].ID + "</td>";
+                html += "<td class='colTransactionType' transactionTypeID='" + json[i].TransactionType.ID + "'>" + json[i].TransactionType.TransactionTypeName + "</td>";
+                html += "<td class='colDistrict' districtID='" + json[i].District.ID + "'>" + json[i].District.Name + "</td>";
+                html += "<td class='colArea' areaID='" + json[i].Area.ID + "'>" + json[i].Area.AreaName + "</td>";
+                html += "<td class='colResidentialDistrict' colResidentialDistrictID='" + json[i].ResidentialDistrict.ID + "'>" + json[i].ResidentialDistrict.Name + "</td>";
+                html += "<td class='colResidentialDistrictAddr'>" + json[i].ResidentialDistrict.Address + "</td>";
+                html += "<td class='colHousePosition'>" + json[i].HousePosition + "</td>";
+                html += "<td class='colHouseNumber'>" + json[i].HouseNumber + "</td>";
+                html += "<td class='colTotalFloor'>" + json[i].TotalFloor + "</td>";
+                html += "<td class='colHouseType1'>" + GetHouseType1(json[i].RoomCount, json[i].HallCount, json[i].ToiletCount, json[i].BalconyCount) + "</td>";
+                html += "<td class='colHouseSize'>" + json[i].HouseSize + "</td>";
+                html += "<td class='colHouseUseSize'>" + json[i].HouseUseSize + "</td>";
+                html += "<td class='colOrientation' colOrientationID='" + json[i].Orientation.ID + "'>" + json[i].Orientation.OrientationName + "</td>";
+                html += "<td class='colSaleTotalPrice'>" + json[i].Price + "</td>";
+                html += "<td class='colSaleUnitPrice'>" + GetHouseUnitPrice(json[i].Price, json[i].HouseSize) + "</td>";
+                html += "<td class='colLeaseTotalPrice'>" + json[i].LeasePrice + "</td>";
+                html += "<td class='colLeaseUnitPrice'>" + GetHouseUnitPrice(json[i].LeasePrice, json[i].HouseSize) + "</td>";
+                html += "<td class='colProxyStartDate'>" + DateTimeConvert_yyyyMMdd(json[i].ProxyStartDate) + "</td>";
+                html += "<td class='colLookHouseType' colLookHouseTypeID='" + json[i].LookHouseType.ID + "'>" + json[i].LookHouseType.TypeName + "</td>";
+                html += "<td class='colDepartment'>" + "暂无" + "</td>";
+                html += "<td class='colStaff'>" + "暂无" + "</td>";
+                html += "<td class='colHouseStatus' colHouseStatusID='" + json[i].HouseStatus.ID + "'>" + json[i].HouseStatus.StatusName + "</td>";
+                html += "<td class='colHousingLetter' colHousingLetterID='" + json[i].HousingLetter.ID + "'>" + json[i].HousingLetter.LetterName + "</td>";
+                html += "<td class='colHouseSource'>" + json[i].Source.SourceName + "</td>";
+                // html += "<td class='colImgCount'>" + "暂无" + "</td>";
+                html += "<td class='colLastFollowDate'>" + DateTimeConvert_yyyyMMdd(json[i].LastFollowDate) + "</td>";
+                html += "</tr>";
+            }
         }
+
         html += "</tbody>";
         // html += "</table>";
         var pageIndexHtml = "";
@@ -835,6 +872,20 @@ function HouseAdd() {
         InitShopLocation("#shopLocationSelect", " ", true);
         $("#submitHouseDate").val(DateTimeConvert_yyyyMMdd(new Date()));
         $("#proxyStartDate").val(DateTimeConvert_yyyyMMdd(new Date()));
+
+        $("#roomCountTxt").on("blur", function () {
+            var roomCountTxt = $("#roomCountTxt").val();
+            if (roomCountTxt != "") {
+                $(".RoomCount").hide();
+            }
+            else {
+                $(".RoomCount").show();
+                return false;
+            }
+        });
+
+        
+
         $("#addHouse").unbind("click").on("click", function () {
             var house = GetHouseObj();
             var houseJson = JSON.stringify(house);

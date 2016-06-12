@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Mortgage";
+}
+
+<div class="panel">
+    <div class="row text-right"><a href="#" class="pdfOpens">Pdf打开</a>丨<a href="#" class="pdfOpens">Excel打开</a>丨<a>打印报表</a>丨<a href="/ProcessCenter/index">返回</a></div>
+    <div class="row text-center"><h3>二手房业务流程单（按揭部）</h3></div>
+    <div class="row">
+        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>合同编号</th>
+                    <th>分行</th>
+                    <th>项目</th>
+                    <th>楼盘信息</th>
+                    <th>是否一次性</th>
+                    <th>是否赎楼</th>
+                    <th>是否按揭</th>
+                    <th>买方姓名</th>
+                    <th>买房电话</th>
+                    <th>卖方姓名</th>
+                    <th>卖方电话</th>
+                    <th>钥匙方经纪人姓名</th>
+                    <th>钥匙方经纪人电话</th>
+                    <th>客源方经纪人姓名</th>
+                    <th>客源方经纪人电话</th>
+                    <th>按揭受理日期</th>
+                    <th>报税日期</th>
+                    <th>按揭审批日期</th>
+                    <th>赎楼日期</th>
+                    <th>过户日期</th>
+                    <th>按揭日期</th>
+                    <th>系统送审标识</th>
+                    <th>按揭岗通知日期</th>
+                    <th>过户岗测绘日期</th>
+                    <th>融资担保赎楼日期</th>
+                    <th>融资担保还款日期</th>
+                    <th>卖方委托代理人姓名</th>
+                    <th>卖方委托代理人电话</th>
+                    <th>放款日期</th>
+                </tr>
+            </thead>
+            <tbody class="collaborative">
+                
+                <tr>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="pdfOpen">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row text-right">
+            <a href="#">确定</a>
+        </div>
+        <div class="row">
+            <div class="row">
+                <h4>导出页码选择</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-0">
+                <div class="cbr-replaced">
+                    <div class="cbr-input">
+                        <input type="checkbox" class="cbr cbr-done">
+                    </div>
+                    <div class="cbr-state"><span></span></div>
+                </div>
+            </div>
+            <div class="col-md-2"><b>导出全部</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-0">
+                <div class="cbr-replaced">
+                    <div class="cbr-input">
+                        <input type="checkbox" class="cbr cbr-done">
+                    </div>
+                    <div class="cbr-state"><span></span></div>
+                </div>
+            </div>
+            <div class="col-md-2"><b>导出范围</b></div>
+            <div class="col-md-3"><input type="text" class="form-control input-dark" name="s"></div><div class="col-md-0">至</div><div class="col-md-3"><input type="text" class="form-control input-dark" name="s"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/defeng/processCenter.js"></script>

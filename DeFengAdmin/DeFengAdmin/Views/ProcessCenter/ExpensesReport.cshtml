@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "ExpensesReport";
+}
+
+<div class="panel">
+    <div class="row text-right"><a href="#" class="pdfOpens">Pdf打开</a>丨<a href="#" class="pdfOpens">Excel打开</a>丨<a>打印报表</a>丨<a href="/ProcessCenter/index">返回</a></div>
+    <div class="row text-center"><h3>费用报销报表</h3></div>
+    <div class="row">
+        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>报销部门</th>
+                    <th>年月日</th>
+                    <th>报销人</th>
+                    <th>期间</th>
+                    <th>金额</th>
+                    <th>系统送审标识</th>
+                    <th>用途</th>
+                </tr>
+            </thead>
+            <tbody class="collaborative">
+                <tr>
+                    <td>财务部</td>
+                    <td>2016-01-03</td>
+                    <td>测试</td>
+                    <td>2015-12-01</td>
+                    <td>100.00</td>
+                    <td>正常办结</td>
+                    <td>水费</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="pdfOpen">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row text-right">
+            <a href="#">确定</a>
+        </div>
+        <div class="row">
+            <div class="row">
+                <h4>导出页码选择</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-0">
+                <div class="cbr-replaced">
+                    <div class="cbr-input">
+                        <input type="checkbox" class="cbr cbr-done">
+                    </div>
+                    <div class="cbr-state"><span></span></div>
+                </div>
+            </div>
+            <div class="col-md-2"><b>导出全部</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-0">
+                <div class="cbr-replaced">
+                    <div class="cbr-input">
+                        <input type="checkbox" class="cbr cbr-done">
+                    </div>
+                    <div class="cbr-state"><span></span></div>
+                </div>
+            </div>
+            <div class="col-md-2"><b>导出范围</b></div>
+            <div class="col-md-3"><input type="text" class="form-control input-dark" name="s"></div><div class="col-md-0">至</div><div class="col-md-3"><input type="text" class="form-control input-dark" name="s"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/defeng/processCenter.js"></script>

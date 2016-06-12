@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "ContractReport";
+}
+
+<div class="panel">
+    <div class="row text-right"><a href="#" class="pdfOpens">Pdf打开</a>丨<a href="#" class="pdfOpens">Excel打开</a>丨<a>打印报表</a>丨<a href="/ProcessCenter/index">返回</a></div>
+    <div class="row text-center"><h3>一手房合同单（送客方送审后)</h3></div>
+    <div class="row">
+        <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>送审日期</th>
+                    <th>项目</th>
+                    <th>房栋</th>
+                    <th>单元</th>
+                    <th>房号</th>
+                    <th>认购日期</th>
+                    <th>合同日期</th>
+                    <th>定金</th>
+                    <th>合同总价</th>
+                    <th>客户姓名</th>
+                    <th>客户联系号码</th>
+                    <th>业绩模式</th>
+                    <th>付款方式</th>
+                    <th>送客方业务员</th>
+                    <th>送客方前台</th>
+                    <th>送客方分行经理</th>
+                    <th>送客方部门经理</th>
+                    <th>驻点业务员</th>
+                    <th>驻点前台</th>
+                    <th>驻点分行经理</th>
+                    <th>驻点部门经理</th>
+                    <th>公司结佣金点数</th>
+                    <th>应结佣金</th>
+                    <th>佣金是否结回</th>
+                    <th>佣金异常</th>
+                    <th>总价异常说明</th>
+                    <th>备注</th>
+                </tr>
+            </thead>
+            <tbody class="collaborative">
+                <tr>
+                    <td>
+                        <div class="cbr-replaced">
+                            <div class="cbr-input">
+                                <input type="checkbox" class="cbr cbr-done">
+                            </div>
+                            <div class="cbr-state"><span></span></div>
+                        </div>
+                    </td>
+                    <td>2016-01-21</td>
+                    <td>盛荟花园（住宅）</td>
+                    <td></td>
+                    <td></td>
+                    <td>2704</td>
+                    <td>2016-01-05</td>
+                    <td>2016-01-20</td>
+                    <td>37000.00</td>
+                    <td>40000.00</td>
+                    <td>767500.0</td>
+                    <td>胡雄兵</td>
+                    <td>18928473787</td>
+                    <td>门店</td>
+                    <td>按揭</td>
+                    <td>佘鑫柯,江贤帝</td>
+                    <td>黄兰英</td>
+                    <td>梁星源</td>
+                    <td>刘爱群</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>0.0600</td>
+                    <td>46050.00</td>
+                    <td>46050</td>
+                    <td></td>
+                    <td></td>
+                    <td>此价格经李芳经理同意二套房首付</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="pdfOpen">
+    <div class="theme-poptit">
+        <a href="javascript:;" title="关闭" class="close">×</a>
+    </div>
+    <div class="theme-popbod dform">
+        <div class="row text-right">
+            <a href="#">确定</a>
+        </div>
+        <div class="row">
+            <div class="row">
+                <h4>导出页码选择</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-0">
+                <div class="cbr-replaced">
+                    <div class="cbr-input">
+                        <input type="checkbox" class="cbr cbr-done">
+                    </div>
+                    <div class="cbr-state"><span></span></div>
+                </div>
+            </div>
+            <div class="col-md-2"><b>导出全部</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-0">
+                <div class="cbr-replaced">
+                    <div class="cbr-input">
+                        <input type="checkbox" class="cbr cbr-done">
+                    </div>
+                    <div class="cbr-state"><span></span></div>
+                </div>
+            </div>
+            <div class="col-md-2"><b>导出范围</b></div>
+            <div class="col-md-3"><input type="text" class="form-control input-dark" name="s"></div><div class="col-md-0">至</div><div class="col-md-3"><input type="text" class="form-control input-dark" name="s"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/defeng/processCenter.js"></script>
