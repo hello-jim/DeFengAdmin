@@ -5,7 +5,7 @@
         if (!re.test(checkUserName)) {
             $("#gradeInfo").html("<font color=\"red\">输入的账号不能含有标点符号！</font>");
         } else {
-            $.post("/Home/CheckUserName",
+            $.post("/Staff/CheckUserName",
                 {
                     account: checkUserName
                 },
@@ -94,7 +94,7 @@
 
 
                 $.ajax({
-                    url: "/Home/StaffRegister",
+                    url: "/Staff/StaffRegister",
                     method: 'POST',
                     dataType: 'json',
                     data: {
@@ -107,7 +107,10 @@
                     success: function (data) {
                         // Redirect after successful login page (when progress bar reaches 100%)
                         if (data == 1) {
-                            window.location.href = '/Home/index';
+                            window.location.href = '/Staff/Login';
+                        }
+                        else if(data=="-1"){
+                        
                         }
                         else {
                             alert("用户名已存在");                  

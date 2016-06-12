@@ -76,26 +76,6 @@ $(document).ready(function () {
         $('#dailyOffice').fadeIn();
     });
 
-
-
-    //人员权限
-    //$('#personnel-permissions').click(function () {
-    //    $('#stafPermissions').show();
-    //    $('#stafPermissions').slideDown(200);
-    //});
-    //$('#personnel-permissions').click(function () {
-    //    $('#stafPermissions').show();
-    //    $('#stafPermissions').slideDown(200);
-    //    var objArr = $(".col-select.cbr-checked");
-    //    if (objArr.length > 0) {
-    //        var selectTr = $(objArr[0]).parents("tr");
-    //        InitDepartmentData(selectTr);
-    //    }
-    //});
-    //$('.theme-poptit #closePermissions').click(function () {
-    //    $('#stafPermissions').hide();
-    //    $('#stafPermissions').slideUp(200);
-    //});
     $('#personnel-permissions').click(function () {
         $('.access').toggle();
     });
@@ -331,6 +311,91 @@ function InitDepartmentEvent() {
     });
 }
 
+function InitStaff() {
+    InitDepartmentTreeView(".staff-department-treeview", false);
+    $.post("/Organization/GetStaff",
+        function (data) {
+            $("#staffJsonHidden").val(data);
+            var json = $.parseJSON(data);
+            CreateStaffTable(json);
+        });
+    $(".staff-department-treeview ul a").unbind("click").on("click", function () {
+        var thisObj = $(this);
+        var departmentID = $(thisObj).attr("departmentID2");
+        //$("#DepID").val(departmentID);
+        $.post("/Organization/GetStaffByDepartment",
+            {
+                depID: departmentID
+            },
+            function (data) {
+                if (data != "") {
+                    var json = $.parseJSON(data);
+                    CreateStaffTable(json);
+                }
+            });
+    });
+    $(".staff-update-btn").unbind("click").on("click", function () {
+        var objArr = $(".col-staff-select.cbr-checked");
+        if (objArr.length > 0) {
+            var selectTr = $(objArr[0]).parents("tr");
+            var staffID = $(selectTr).attr("staffID");
+            $("#staffID").val(staffID);
+            $.post("/Organization/GetStaffByID",
+                {
+                    staffID: staffID
+                },
+                function (data) {
+                    var json = $.parseJSON(data);
+                    InitStaffData(json);
+                    $('.staff-addAndEdit-panel').show();
+                    $('.staff-addAndEdit-panel').height($(document).height());
+                    $('.staff-addAndEdit-panel').slideDown(200);
+                });
+        } else {
+            return;
+        }
+    });
+
+    $(".staff-update-save").unbind("click").on("click", function () {
+        var staff = GetStaffObj();
+        var staffJson = JSON.stringify(staff);
+        $.post("/Organization/UpdateStaff",
+          {
+              staff: staffJson
+          },
+          function (data) {
+
+          });
+    });
+
+    $(".staff-delete").unbind("click").on("click", function () {
+        var objArr = $(".col-staff-select.cbr-checked");
+        if (objArr.length > 0) {
+            var isDelete = confirm("确定要删除吗？");
+            if (isDelete) {
+                var idArr = new Array();
+                for (var i = 0; i < objArr.length; i++) {
+                    idArr.push($(objArr[i]).parents("tr").attr("staffID"));
+                }
+                $.post("/Organization/DeleteStaff",
+                    {
+                        idArr: idArr
+                    },
+                    function (data) {
+                        if (data) {
+                            $(".col-staff-select.cbr-checked").parents("tr").remove();
+                        }
+                    });
+            }
+            else {
+                return;
+            }
+        } else {
+        }
+
+    });
+}
+
 function CreatePostTabel(json) {
     var html = "";
     for (var i = 0; i < json.length; i++) {
@@ -375,7 +440,15 @@ function CreateStaffTable(json) {
         html += "<td>" + (json[i].IsEnable == 1 ? "是" : "否") + "</td>";
         html += "</tr>";
     }
+    var pageIndexHtml = "";
+    pageIndexHtml += "<div class='row pageCount'>";
+    pageIndexHtml += "<div class='col-md-6'></div>";
+    pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous page-up' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#'>上一页</a></li>";
+    pageIndexHtml += GetPageCountHtml(json[0].TotalCount, json[0].PageIndex, 10);
+    pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetTotalPageCount(json[0].TotalCount, 10) + ">最后一页</a></li></ul></div></div></div>";
     $(".staff-table tbody").html(html);
+    $(".page-select").html(pageIndexHtml);
+
     $(".staff-table tbody tr").on("click", function () {
         var staffID = $(this).attr("staffID");
         $(".staff-table tbody tr[isSelectStaff]").removeAttr("isSelectStaff");
@@ -389,7 +462,39 @@ function CreateStaffTable(json) {
                 InitStaffPermission(json);
             })
     });
-    // InitCheckBox();
+
+    $(".staff-page .page-select ul li a").unbind("click").on("click", function () {
+        var pageIndex = $(this).attr("pageIndex");
+        if (pageIndex == null) {
+            pageIndex = parseInt($(".paginate_button.active a").attr("pageIndex"));
+            if ($(this).hasClass("page-up")) {
+                if (!pageIndex <= 1) {
+                    pageIndex--;
+                    if (pageIndex < 1) {
+                        return;
+                    }
+                }
+            }
+            if ($(this).hasClass("page-next")) {
+                var page = $(".paginate_button");
+
+                var totalPageLength = parseInt($(page)[($(page).length - 3)].firstChild.text);
+                if (pageIndex != totalPageLength) {
+                    pageIndex++;
+                } else if (pageIndex >= totalPageLength) {
+                    return;
+                }
+            }
+        }
+        $.post("/Organization/GetStaff",
+            {
+                pageIndex: pageIndex
+            },
+            function (data) {
+                var json = $.parseJSON(data);
+                CreateStaffTable(json);
+            });
+    });
 }
 
 function InitStaffPermission(arr) {
@@ -429,7 +534,7 @@ function InitStaffData(obj) {
     $("#dateBirth").val(obj.DateBirth);
     $("#staffDepartment").val();
     $("#staffPost").val();
-    $("#staffIsEnable").val(obj.IsEnabl);
+    $("#staffIsEnable").val(Number(obj.IsEnable));
 }
 
 function GetDepartmentObj() {
@@ -457,124 +562,20 @@ function GetPostObj() {
 
 function GetStaffObj() {
     var staff = new Object();
-    staff.ID = $("#staffID").val() != "" ? $("#staffID").val() : 0;
+    staff.ID = $("#staffID").val();
     staff.StaffName = $("#staffNameTxt").val();
-    staff.Sex = $("#sexSelect").val();
+    staff.Sex = $("#sex").val();
     staff.Age = $("#ageTxt").val();
     staff.IdCard = $("#idCardTxt").val();
+    staff.EntryTime = $("#entryTime").val();
     staff.OfficTel = $("#officTelTxt").val();
     staff.Phone = $("#phoneTxt").val();
     staff.Email = $("#emailTxt").val();
-    staff.DateBirth = $("#dateBirthTxt").val();
-    staff.IsEnable = $("#staffIsEnableSelect").val();
-    staff.Leader.ID = $("#leader").val();
-    staff.Password = $("#passwordTxt").val();
+    staff.Birthday = $("#dateBirth").val();
+    //$("#staffDepartment").val();
+    //$("#staffPost").val();
+    staff.IsEnable = parseInt($("#staffIsEnable").val());
     return staff;
-}
-
-function GetStaffByDepartment(departmentID) {
-    $.post("/Organization/GetStaffByDepartment",
-        {
-            departmentID: departmentID
-        },
-        function (data) {
-
-        });
-}
-
-function InitStaff() {
-    InitDepartmentTreeView(".staff-department-treeview", false);
-    $.post("/Organization/GetStaff",
-        function (data) {
-            $("#staffJsonHidden").val(data);
-            var json = $.parseJSON(data);
-            CreateStaffTable(json);
-        });
-    $(".staff-department-treeview ul a").unbind("click").on("click", function () {
-        var thisObj = $(this);
-        var departmentID = $(thisObj).attr("departmentID2");
-        //$("#DepID").val(departmentID);
-        var staffJsonStr = $("#staffJsonHidden").val();
-
-        if (staffJsonStr != "") {
-            var staffJson = $.parseJSON(staffJsonStr);
-            var filterarray = $.grep(staffJson, function (value) {
-                return value.Department.ID == departmentID;
-            });
-            CreateStaffTable(filterarray);
-        }
-    });
-    $(".staff-update-btn").unbind("click").on("click", function () {
-        var objArr = $(".col-staff-select.cbr-checked");
-        if (objArr.length > 0) {
-            var selectTr = $(objArr[0]).parents("tr");
-            var staffID = $(selectTr).attr("staffID");
-            $.post("/Organization/GetStaffByID",
-                {
-                    staffID: staffID
-                },
-                function (data) {
-                    var json = $.parseJSON(data);
-                    InitStaffData(json);
-                    $('.staff-addAndEdit-panel').show();
-                    $('.staff-addAndEdit-panel').height($(document).height());
-                    $('.staff-addAndEdit-panel').slideDown(200);
-                });
-        } else {
-            return;
-        }
-    });
-
-    $(".staff-add-save").unbind("click").on("click", function () {
-        var staff = GetStaffObj();
-        var staffJson = JSON.stringify(staff);
-        $.post("/Organization/AddStaff",
-          {
-              staff: staffJson
-          },
-          function (data) {
-
-          });
-    });
-
-    $(".staff-update-save").unbind("click").on("click", function () {
-        var staff = GetStaffObj();
-        var staffJson = JSON.stringify(staff);
-        $.post("/Organization/UpdateStaff",
-          {
-              staff: staffJson
-          },
-          function (data) {
-
-          });
-    });
-
-    $(".staff-delete").unbind("click").on("click", function () {
-        var objArr = $(".col-staff-select.cbr-checked");
-        if (objArr.length > 0) {
-            var isDelete = confirm("确定要删除吗？");
-            if (isDelete) {
-                var idArr = new Array();
-                for (var i = 0; i < objArr.length; i++) {
-                    idArr.push($(objArr[i]).parents("tr").attr("staffID"));
-                }
-                $.post("/Organization/DeleteStaff",
-                    {
-                        idArr: idArr
-                    },
-                    function (data) {
-                        if (data) {
-                            $(".col-staff-select.cbr-checked").parents("tr").remove();
-                        }
-                    });
-            }
-            else {
-                return;
-            }
-        } else {
-        }
-
-    });
 }
 
 /*

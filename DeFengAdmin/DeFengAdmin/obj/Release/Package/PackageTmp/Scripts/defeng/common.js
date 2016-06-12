@@ -2005,14 +2005,23 @@ function GetPost(async) {
     return result;
 }
 
-//将对象数据按属性值转换为数组
-function ConvertArr(objArr, atrrName) {
+//将对象数组按属性值转换为数组
+//function ConvertArr(objArr, attrName) {
+//    var arr = new Array();
+//    for (var i = 0; i < objArr.length; i++) {
+//        arr.push(objArr[i][attrName]);
+//    }
+//    return arr;
+//}
+//将对象数组按属性值转换为数组 jquery
+function ConvertArr(objArr, attrName) {
     var arr = new Array();
     for (var i = 0; i < objArr.length; i++) {
-        arr.push(objArr[i][atrrName]);
+        arr.push($(objArr[i]).attr(attrName));
     }
     return arr;
 }
+
 /*
 公告类型
 */
@@ -2047,5 +2056,7 @@ function GetQueryString(name) {
     var r = window.location.search.substr(1).match(reg);
     if (r != null) return unescape(r[2]); return null;
 }
+
+
 
 

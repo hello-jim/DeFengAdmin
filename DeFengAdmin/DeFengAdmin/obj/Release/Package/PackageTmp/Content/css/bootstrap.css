@@ -6183,8 +6183,7 @@ button.close {
 
 
 .theme-buy{margin-top:7%;text-align:center;}
-.theme-signin{font-size:15px;}
-.theme-popover-mask{z-index:1;position:absolute;left:0;top:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);-moz-opacity:0.5;display:none;}
+/*.theme-popover-mask{z-index:1;position:absolute;left:0;top:0;width:100%;height:100%;background:#000;opacity:0.5;filter:alpha(opacity=50);-moz-opacity:0.5;display:none;}*/
 .theme-popover{z-index:9;position:absolute;top:25%;left:50%;width:660px;height:360px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#fff;display:none;box-shadow:0 0 10px #666;background:#fff;}
 .theme-poptit{border-bottom:1px solid #ddd;padding:12px;position:relative;height:24px;}
 .theme-poptit .close{float:right;color:#999;padding:0px;margin:-2px -5px -5px;font:bold 14px/14px simsun;text-shadow:0 1px 0 #ddd}
@@ -6199,6 +6198,8 @@ button.close {
 .theme-signin p{font-size: 12px;color: #999;}
 .office-theme-popover{z-index:9;position:absolute;top:25%;left:40%;width:1000px;height:700px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#ddd;display:none;box-shadow:0 0 10px #666;background:#fff;}
 .personnel-theme-popover{z-index:9;position:absolute;top:25%;left:50%;width:800px;height:900px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#fff;display:none;box-shadow:0 0 10px #666;background:#fff;}
+.personnel-theme-permissions{z-index:9;position:absolute;top:25%;left:50%;width:800px;height:800px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#fff;display:none;box-shadow:0 0 10px #666;background:#fff;}
+.pdfOpen{z-index:9;position:absolute;top:25%;left:50%;width:800px;height:300px;margin:-180px 0 0 -330px;border-radius:5px;border:solid 2px #e4e4e4;background-color:#fff;display:none;box-shadow:0 0 10px #666;background:#fff;}
 *{margin:0;padding:0;list-style-type:none;}
 .newfrom {
  /*float:right; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -6226,6 +6227,11 @@ button.close {
 .translation {
     padding:4px 0px 4px 0px;
 }
-
+.font-color a:hover{
+    color:#fff;
+}
+.font-color a{
+    color:#fff;
+}
 
 

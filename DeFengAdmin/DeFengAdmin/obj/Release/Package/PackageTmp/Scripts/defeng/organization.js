@@ -19,18 +19,16 @@ $(document).ready(function () {
         }
     });
     $('.theme-poptit .close').click(function () {
-        $('.theme-popover-mask').hide();
+        $('.theme-popover').hide();
         $('.theme-popover').slideUp(200);
     });
 
-    $('#personnel-upadate').click(function () {
-        $('.personnel-theme-popover-mask').show();
-        $('.personnel-theme-popover-mask').height($(document).height());
-        $('.department-addAndEdit-panel').slideDown(200);
+    $('#personnel-update').click(function () {
+        $('#staffUpdate').show();
+        $('#staffUpdate').slideDown(200);
     });
-    $('#personnel-upadate').click(function () {
-        $('.personnel-theme-popover-mask').show();
-        $('.personnel-theme-popover-mask').height($(document).height());
+    $('#personnel-update').click(function () {
+        $('#staffUpdate').show();
         $('.staff-updateAndEdit-panel').slideDown(200);
         var objArr = $(".col-select.cbr-checked");
         if (objArr.length > 0) {
@@ -38,11 +36,79 @@ $(document).ready(function () {
             InitDepartmentData(selectTr);
         }
     });
-    $('.theme-poptit .close').click(function () {
-        $('.personnel-theme-popover-mask').hide();
-        $('.personnel-theme-popover').slideUp(200);
+    $('#closeUpdate').click(function () {
+        $('#staffUpdate').hide();
+        $('#staffUpdate').slideUp(200);
     });
 
+    $('.management').on("click", function () {
+        $('#management').fadeIn();
+        $('#settings').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+    });
+    $('.settings').on("click", function () {
+        $('#management').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+        $('#dailyOffice').hide();
+        $('#settings').fadeIn();
+    });
+    $('.announcement').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide();
+        $('#dailyOffice').hide();
+        $('#questionnaire').hide();
+        $('#announcement').fadeIn();
+    });
+    $('.questionnaire').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide();
+        $('#announcement').hide();
+        $('#dailyOffice').hide();
+        $('#questionnaire').fadeIn();
+    });
+    $('.dailyOffice').on("click", function () {
+        $('#management').hide();
+        $('#settings').hide();
+        $('#announcement').hide();
+        $('#questionnaire').hide();
+        $('#dailyOffice').fadeIn();
+    });
+
+
+
+    //人员权限
+    //$('#personnel-permissions').click(function () {
+    //    $('#stafPermissions').show();
+    //    $('#stafPermissions').slideDown(200);
+    //});
+    //$('#personnel-permissions').click(function () {
+    //    $('#stafPermissions').show();
+    //    $('#stafPermissions').slideDown(200);
+    //    var objArr = $(".col-select.cbr-checked");
+    //    if (objArr.length > 0) {
+    //        var selectTr = $(objArr[0]).parents("tr");
+    //        InitDepartmentData(selectTr);
+    //    }
+    //});
+    //$('.theme-poptit #closePermissions').click(function () {
+    //    $('#stafPermissions').hide();
+    //    $('#stafPermissions').slideUp(200);
+    //});
+    $('#personnel-permissions').click(function () {
+        $('.access').toggle();
+    });
+    $('#shrinkage').click(function () {
+        $('.collaborative').toggle();
+        $('#arrowOn').toggle();
+        $('#arrowUp').toggle();
+    });
+    $('#Shrinkage1').click(function () {
+        $('.collaborativeShrinkage').toggle();
+        $('#collaborativeArrowOn').toggle();
+        $('#collaborativeArrowUp').toggle();
+    });
     //$("#content div").hide();
     $("#tab2").hide();
     $("#tab3").hide();
@@ -78,6 +144,7 @@ $(document).ready(function () {
                 $("#tab1").hide();
                 $("#tab2").hide();
                 InitStaff();
+                InitPermission();
                 break;
         }
     });
@@ -276,7 +343,7 @@ function CreatePostTabel(json) {
         html += "</tr>";
     }
     $(".post-table tbody").html(html);
-    InitCheckBox();
+    //  InitCheckBox();
 }
 
 function CreateDepartmentTable(childrenDepartmentArr) {
@@ -292,7 +359,7 @@ function CreateDepartmentTable(childrenDepartmentArr) {
         html += "</tr>";
     }
     $("#departmentTabel tbody").html(html);
-    InitCheckBox();
+    //  InitCheckBox();
 }
 
 function CreateStaffTable(json) {
@@ -309,7 +376,27 @@ function CreateStaffTable(json) {
         html += "</tr>";
     }
     $(".staff-table tbody").html(html);
-    InitCheckBox();
+    $(".staff-table tbody tr").on("click", function () {
+        var staffID = $(this).attr("staffID");
+        $(".staff-table tbody tr[isSelectStaff]").removeAttr("isSelectStaff");
+        $(this).attr("isSelectStaff", "");
+        $.post("/Organization/GetPermissionByStaff",
+            {
+                staffID: staffID
+            },
+            function (data) {
+                var json = $.parseJSON(data);
+                InitStaffPermission(json);
+            })
+    });
+    // InitCheckBox();
+}
+
+function InitStaffPermission(arr) {
+    $(".permission .permission-list .cbr-replaced").removeClass("cbr-checked");
+    for (var i = 0; i < arr.length; i++) {
+        $(".permission .permission-list .cbr-replaced[permissionID='" + arr[i] + "']").addClass("cbr-checked");
+    }
 }
 
 function InitDepartmentData(obj) {
@@ -328,6 +415,21 @@ function InitPostData(obj) {
     $("#postIsEnableSelect").val(Number($(obj).attr("isenable") == "true"));
     $("#postDescriptionTxt").val($(obj).attr("description"));
     $("#postGradeTxt").val($(obj).attr("postGrade"));
+}
+
+function InitStaffData(obj) {
+    $("#staffNameTxt").val(obj.StaffName);
+    $("#sex").val(obj.Sex);
+    $("#ageTxt").val(obj.Age);
+    $("#idCardTxt").val(obj.IdCard);
+    $("#entryTime").val(obj.EntryTime);
+    $("#officTelTxt").val(obj.OfficTel);
+    $("#phoneTxt").val(obj.Phone);
+    $("#emailTxt").val(obj.Email);
+    $("#dateBirth").val(obj.DateBirth);
+    $("#staffDepartment").val();
+    $("#staffPost").val();
+    $("#staffIsEnable").val(Number(obj.IsEnable));
 }
 
 function GetDepartmentObj() {
@@ -353,7 +455,7 @@ function GetPostObj() {
     return post;
 }
 
-function GetStaff() {
+function GetStaffObj() {
     var staff = new Object();
     staff.ID = $("#staffID").val() != "" ? $("#staffID").val() : 0;
     staff.StaffName = $("#staffNameTxt").val();
@@ -406,20 +508,41 @@ function InitStaff() {
         var objArr = $(".col-staff-select.cbr-checked");
         if (objArr.length > 0) {
             var selectTr = $(objArr[0]).parents("tr");
-            InitPostData(selectTr);
+            var staffID = $(selectTr).attr("staffID");
+            $.post("/Organization/GetStaffByID",
+                {
+                    staffID: staffID
+                },
+                function (data) {
+                    var json = $.parseJSON(data);
+                    InitStaffData(json);
+                    $('.staff-addAndEdit-panel').show();
+                    $('.staff-addAndEdit-panel').height($(document).height());
+                    $('.staff-addAndEdit-panel').slideDown(200);
+                });
+        } else {
+            return;
         }
-        $('.theme-popover-mask').show();
-        $('.theme-popover-mask').height($(document).height());
-        $('.staff-addAndEdit-panel').slideDown(200);
-
     });
 
-    $(".staff-update").unbind("click").on("click", function () {
-        var post = GetPostObj();
-        var postJson = JSON.stringify(post);
+    $(".staff-add-save").unbind("click").on("click", function () {
+        var staff = GetStaffObj();
+        var staffJson = JSON.stringify(staff);
+        $.post("/Organization/AddStaff",
+          {
+              staff: staffJson
+          },
+          function (data) {
+
+          });
+    });
+
+    $(".staff-update-save").unbind("click").on("click", function () {
+        var staff = GetStaffObj();
+        var staffJson = JSON.stringify(staff);
         $.post("/Organization/UpdateStaff",
           {
-              post: postJson
+              staff: staffJson
           },
           function (data) {
 
@@ -481,19 +604,86 @@ function GetParentDepartment(parentID) {
     return allDepName;
 }
 
-
-function InitPermission() {
+function InitPermissionList() {
     $.ajax({
-        url: "/Common/LoadPermission",
-        async: async,
+        url: "/Organization/GetPermission",
+        async: true,
         success: function (data) {
             var json = $.parseJSON(data);
+            CreatePermissionList(json);
+
         }
     });
 }
 
+function CreatePermissionList(json) {
+    $(".permission-list div").html("");
+    for (var i = 0; i < json.length; i++) {
+        var html = "<span>" + json[i].PermissionName + "</span>";
+        html += "<div permissionID='" + json[i].ID + "' class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
 
+        $(".permission-list div[permissionTypeID='" + json[i].PermissionType.ID + "']").append(html);
+    }
+    InitCheckBox();
+}
 
+function CreatePermissionTypeList(json) {
+    var li = "";
+    var html = "";
+    for (var i = 0; i < json.length; i++) {
+        li += "<li permissionTypeID='" + json[i].ID + "' class=''>";
+        li += "<a href='javascript:void(0);' class='management'>";
+        li += "<span class='visible-xs'><i class='fa-home'></i></span>";
+        li += "<span class='hidden-xs'>" + json[i].TypeName + "</span>";
+        li += "</a>";
+        li += "</li>";
+        html += "<div class='permission-panel' permissionTypeID='" + json[i].ID + "'></div>";
+    }
+    $(".permission-type").html(li);
+    $(".permission-list").html(html);
+    $(".permission-list div").hide();
+
+    $(".permission-list div:eq(0)").show();
+    $(".permission-type li").on("click", function () {
+        var permissionTypeID = $(this).attr("permissionTypeID");
+        $(".permission-list .permission-panel[permissionTypeID='" + permissionTypeID + "']").show();
+        $(".permission-list .permission-panel[permissionTypeID!='" + permissionTypeID + "']").hide();
+    });
+}
+
+function InitPermission() {
+    $.ajax({
+        url: "/Organization/GetPermissionType",
+        async: true,
+        success: function (data) {
+            var json = $.parseJSON(data);
+            CreatePermissionTypeList(json);
+            InitPermissionList(json);
+        }
+    });
+    $(".permission-all-select").unbind("click").on("click", function () {
+        $(".permission .permission-list .cbr-replaced").addClass("cbr-checked");
+    });
+    $(".permission-all-clear").unbind("click").on("click", function () {
+        $(".permission .permission-list .cbr-replaced").removeClass("cbr-checked");
+    });
+    $(".permission-save").unbind("click").on("click", function () {
+        var arr = ConvertArr($(".permission .permission-list .cbr-replaced.cbr-checked"), "permissionID");
+        var staffID = $(".staff-table tbody tr[isSelectStaff]").attr("staffID");
+        $.post("/Organization/AddStaffPermission",
+            {
+                staffID: staffID,
+                permissionIDArr: arr
+            },
+            function (data) {
+                if (data == "1") {
+                    alert("保存成功");
+                } else {
+                    alert("保存失败");
+                }
+            });
+    });
+}
 
 
 

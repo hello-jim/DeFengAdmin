@@ -107,7 +107,7 @@
                     success: function (data) {
                         // Redirect after successful login page (when progress bar reaches 100%)
                         if (data == 1) {
-                            window.location.href = '/Home/Login';
+                            window.location.href = '/Staff/Login';
                         }
                         else if(data=="-1"){
                         

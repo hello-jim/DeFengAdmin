@@ -1,0 +1,378 @@
+﻿
+@{
+    ViewBag.Title = "Induction";
+}
+<link rel="stylesheet" href="/Scripts/dropzone/css/dropzone.css">
+<link rel="stylesheet" href="~/Content/css/modality.css">
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css"> 
+<div class="panel">
+    <div class="row text-right"><a>送办</a>丨<a>查看流程</a>丨<a>暂存</a>丨<a>打印</a>丨<a href="/ProcessCenter/Application">返回</a></div>
+    <div class="row">&nbsp;</div>
+    <div class="row text-center"><h3>员工入职申请</h3></div>
+    <div class="row">&nbsp;</div>
+    <table class="table table-bordered staffTable table-small-font">
+        <tr>
+            <td>编号</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>姓名</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>生日类别</td>
+            <td colspan="3">
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="新历" name="application_method">新历</option>
+                    <option value="农历" name="application_method">农历</option>
+                </select>
+            </td>
+            <td>照片</td>
+        </tr>
+        <tr>
+            <td>身份证号</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>出生年月</td>
+            <td>
+                <div class="date form_datetime">
+                    <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+            </td>
+            <td>性别</td>
+            <td colspan="3">
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="男" name="application_method">男</option>
+                    <option value="女" name="application_method">女</option>
+                </select>
+            </td>
+            <td colspan="2" rowspan="3"></td>
+        </tr>
+        <tr>
+            <td>年龄</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>生日</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>婚姻状况</td>
+            <td colspan="3">
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="未婚" name="application_method">未婚</option>
+                    <option value="已婚" name="application_method">已婚</option>
+                    <option value="离异" name="application_method">离异</option>
+                    <option value="丧偶" name="application_method">丧偶</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>学历</td>
+            <td>
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="未婚" name="application_method">高中以下</option>
+                    <option value="已婚" name="application_method">高中</option>
+                    <option value="离异" name="application_method">中专</option>
+                    <option value="丧偶" name="application_method">大专</option>
+                    <option value="未婚" name="application_method">本科</option>
+                    <option value="已婚" name="application_method">硕士</option>
+                    <option value="离异" name="application_method">博士</option>
+                </select>
+            </td>
+            <td>专业</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>血型</td>
+            <td colspan="3">
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="O型" name="application_method">O型</option>
+                    <option value="A型" name="application_method">A型</option>
+                    <option value="B型" name="application_method">B型</option>
+                    <option value="AB型" name="application_method">AB型</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>入职时间</td>
+            <td>
+                <div class="date form_datetime">
+                    <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+            </td>
+            <td>入职状态</td>
+            <td>
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="试用" name="application_method">试用</option>
+                    <option value="实习" name="application_method">实习</option>
+                    <option value="正式入职" name="application_method">正式入职</option>
+                </select>
+            </td>
+            <td>试用期</td>
+            <td colspan="2">
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="一个月" name="application_method">一个月</option>
+                    <option value="两个月" name="application_method">两个月</option>
+                    <option value="三个月" name="application_method">三个月</option>
+                    <option value="四个月" name="application_method">四个月</option>
+                    <option value="五个月" name="application_method">五个月</option>
+                    <option value="六个月" name="application_method">六个月</option>
+                </select>
+            </td>
+            <td>身高</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td colspan="1">试用薪金</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td colspan="1">转正薪金</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td colspan="1">政治面貌</td>
+            <td colspan="2">
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="群众" name="application_method">群众</option>
+                    <option value="中共党员" name="application_method">中共党员</option>
+                    <option value="共青团员" name="application_method">共青团员</option>
+                    <option value="九三学社社员" name="application_method">九三学社社员</option>
+                    <option value="台盟盟员" name="application_method">台盟盟员</option>
+                    <option value="其他" name="application_method">其他</option>
+                    <option value="中共预备党员" name="application_method">中共预备党员</option>
+                    <option value="民革会员" name="application_method">民革会员</option>
+                    <option value="无党派民主人士" name="application_method">无党派民主人士</option>
+                    <option value="民党会员" name="application_method">民党会员</option>
+                    <option value="民建会员" name="application_method">民建会员</option>
+                    <option value="发进会员" name="application_method">发进会员</option>
+                    <option value="农工党党员" name="application_method">农工党党员</option>
+                    <option value="致工党党员" name="application_method">致工党党员</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="1">职称</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td colspan="1">民族</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td colspan="1">邮箱地址</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>移动电话</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>住宅电话</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>办公电话</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+
+        </tr>
+        <tr>
+            <td>户口类型</td>
+            <td>
+                <select class="form-control" id="application_method">
+                    <option></option>
+                    <option value="市内农业户口" name="application_method">市内农业户口</option>
+                    <option value="市外非农户口" name="application_method">市外非农户口</option>
+                    <option value="市内非农户口" name="application_method">市内非农户口</option>
+                    <option value="市外农业户口" name="application_method">市外农业户口</option>
+                </select>
+            </td>
+            <td>户口所在地</td>
+            <td colspan="6"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>应聘渠道</td>
+            <td colspan="10">
+                <label class="radio-inline">
+                    <input type="radio" value="人才市场" name="market">
+                    人才市场
+                </label>
+
+
+                <label class="radio-inline">
+                    <input type="radio" value="网上招聘" name="online">
+                    网上招聘
+                </label>
+
+
+                <label class="radio-inline">
+                    <input type="radio" value="外部张贴" name="posted">
+                    外部张贴
+                </label>
+
+
+                <label class="radio-inline">
+                    <input type="radio" value="登报招聘" name="serve">
+                    登报招聘
+                </label>
+
+
+                <label class="radio-inline">
+                    <input type="radio" value="内部推荐" name="recommend">
+                    内部推荐
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">家庭成员</td>
+            <td colspan="2">关系</td>
+            <td colspan="1">职业</td>
+            <td colspan="3">所以在单位或住址</td>
+            <td colspan="1">联系电话</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td colspan="1"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td colspan="1"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>入职单位</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>入职部门</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>岗位</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>直属领导</td>
+            <td colspan="2"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>兼职部门</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>兼职岗位</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>附件</td>
+            <td>身份证、银行卡、体检表</td>
+            <td colspan="7"> <input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td colspan="10" class="text-center">教育经历</td>
+        </tr>
+        <tr>
+            <td colspan="10"> <a href="#">新建</a>丨<a href="#">删除</a></td>
+        </tr>
+        <tr>
+            <td colspan="10">
+                <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="cbr-replaced">
+                                    <div class="cbr-input">
+                                        <input type="checkbox" class="cbr cbr-done">
+                                    </div>
+                                    <div class="cbr-state"><span></span></div>
+                                </div>
+                            </th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>学历</th>
+                            <th>院校名称</th>
+                            <th>专业</th>
+                        </tr>
+                    </thead>
+                    <tbody class="collaborative">
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr><td colspan="10" class="text-center">工作经历</td> </tr>
+        <tr>
+            <td colspan="10"> <a href="#">新建</a>丨<a href="#">删除</a></td>
+        </tr>
+        <tr>
+            <td colspan="10">
+                <table cellspacing="0" class="table table-small-font table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="cbr-replaced">
+                                    <div class="cbr-input">
+                                        <input type="checkbox" class="cbr cbr-done">
+                                    </div>
+                                    <div class="cbr-state"><span></span></div>
+                                </div>
+                            </th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>公司名称</th>
+                            <th>职位</th>
+                            <th>月薪</th>
+                            <th>年薪</th>
+                        </tr>
+                    </thead>
+                    <tbody class="collaborative">
+                        <tr></tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">声明</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>分行经理</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>现场经理</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>分行经理</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>人事部文员</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>人事经理</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>总经理</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>分配权限</td>
+            <td>登录名</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>访问权限</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+    </table>
+
+</div>
+<script src="~/Script/divs/dropzone/dropzone.min.js"></script>
+<script src="/Scripts/daterangepicker/daterangepicker.js"></script>
+<script src="/Scripts/datepicker/bootstrap-datepicker.js"></script>
+<script src="/Scripts/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.form_datetime').datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                // weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+        });
+
+</script>

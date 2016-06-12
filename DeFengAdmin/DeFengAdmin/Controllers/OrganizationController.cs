@@ -230,7 +230,8 @@ namespace DeFengAdmin.Controllers
             Staff_BLL bll = new Staff_BLL();
             try
             {
-
+                var staff = JsonConvert.DeserializeObject<Staff>(Request["staff"]);
+                result = bll.UpdateStaff(staff);
             }
             catch (Exception ex)
             {
@@ -246,15 +247,15 @@ namespace DeFengAdmin.Controllers
             Staff_BLL bll = new Staff_BLL();
             try
             {
-                var departmentID = Request["departmentID"] != null ? Convert.ToInt32(Request["departmentID"]) : 0;
-                list = bll.GetStaffByDepartment(departmentID);
+                var depID = Request["depID"] != null ? Convert.ToInt32(Request["depID"]) : 0;
+                var pageIndex = Request["pageIndex"] != null ? Convert.ToInt32(Request["pageIndex"]) : 0;
+                list = bll.GetStaffByDepartment(depID, pageIndex);
                 json = JsonConvert.SerializeObject(list);
                 bll = null;
             }
             catch (Exception ex)
             {
                 bll = null;
-
             }
             return json;
         }
@@ -265,7 +266,8 @@ namespace DeFengAdmin.Controllers
             try
             {
                 Staff_BLL bll = new Staff_BLL();
-                var list = bll.GetStaff();
+                var pageIndex = Request["pageIndex"] != null ? Convert.ToInt32(Request["pageIndex"]) : 1;
+                var list = bll.GetStaff(pageIndex);
                 json = JsonConvert.SerializeObject(list);
             }
             catch (Exception ex)

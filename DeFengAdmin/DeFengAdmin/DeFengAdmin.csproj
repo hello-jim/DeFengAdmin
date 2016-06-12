@@ -1839,6 +1839,13 @@
     <Content Include="Views\ProcessCenter\SecondhandOrderApply.cshtml" />
     <Content Include="Views\ProcessCenter\DepositBack.cshtml" />
     <Content Include="Views\ProcessCenter\DepositBackApply.cshtml" />
+    <Content Include="Views\ProcessCenter\Induction.cshtml" />
+    <Content Include="Views\ProcessCenter\Departure.cshtml" />
+    <Content Include="Views\ProcessCenter\PartTime.cshtml" />
+    <Content Include="Views\ProcessCenter\Positive.cshtml" />
+    <Content Include="Views\ProcessCenter\Postmanagement.cshtml" />
+    <Content Include="Views\ProcessCenter\Transfer.cshtml" />
+    <Content Include="Views\ProcessCenter\WritingPaper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

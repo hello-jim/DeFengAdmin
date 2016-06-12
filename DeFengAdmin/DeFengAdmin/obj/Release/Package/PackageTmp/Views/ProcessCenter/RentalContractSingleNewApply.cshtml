@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "RentalContractSingleNewApply";
+}
+
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css">
+<div class="panel">
+    <div class="row text-right"><a>送办</a>丨<a>查看流程</a>丨<a>暂存</a>丨<a href="/ProcessCenter/RentalContractSingleNew">返回</a></div>
+    <div class="row">&nbsp;</div>
+    <div class="row text-center"><h3>二手房合同单</h3></div>
+    <div class="row">&nbsp;</div>
+    <table class="table table-bordered staffTable table-small-font">
+        <tr>
+            <td>项目</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>单元</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>分行经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>部门经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>项目名称</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>房号</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>销售时间</td>
+            <td colspan="3">
+                <div class="date form_datetime">
+                    <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                    <span class="add-on"><i class="icon-calendar"></i></span>
+                </div>
+            </td>
+            <td>是否代办过户</td>
+            <td colspan="3">
+                <label class="radio-inline">
+                    <input type="radio" value="是" name="online">
+                    是
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="否" name="posted">
+                    否
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>卖方姓名</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>买方姓名</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>合同总价</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>应收佣金</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>实收总佣金</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>保证金</td>
+            <td><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>付款方式</td>
+            <td colspan="8">
+                <label class="radio-inline">
+                    <input type="radio" value="一次性" name="online">
+                    一次性
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="按揭" name="posted">
+                    按揭
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>佣金异常情况说明</td>
+            <td colspan="8">
+                <input type="text" class="form-control input-dark" name="title" id="title" />
+            </td>
+        </tr>
+        <tr>
+            <td>附件</td>
+            <td colspan="8">
+                <input type="text" class="form-control input-dark" name="title" id="title" />
+            </td>
+        </tr>
+        <tr>
+            <td>客方经纪人</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>盘方经纪人</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>客方分行经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>盘方分行经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>客方部门经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>盘方部门经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>钥匙方经纪人</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>实堪方经纪人</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>钥匙方分行经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>实堪方分行经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>钥匙方部门经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>实堪方部门经理</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>客户经理200元</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>按揭专员300元</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>过户专员150元</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+            <td>报税专员150元</td>
+            <td colspan="3"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>融资担保200元</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>分行经理</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>部门经理</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>吴梦玲</td>
+            <td colspan="8"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+        <tr>
+            <td>叶美珍</td>
+            <td>送审日期</td>
+            <td></td>
+            <td colspan="6"><input type="text" class="form-control input-dark" name="title" id="title" /></td>
+        </tr>
+    </table>
+</div>

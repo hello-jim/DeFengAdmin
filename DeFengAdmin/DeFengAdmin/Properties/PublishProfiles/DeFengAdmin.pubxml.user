@@ -22,19 +22,19 @@
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
     <File Include="bin/DeFeng.BLL.dll">
-      <publishTime>06/07/2016 09:42:24</publishTime>
+      <publishTime>06/12/2016 09:58:49</publishTime>
     </File>
     <File Include="bin/DeFeng.Common.dll">
-      <publishTime>06/07/2016 10:07:20</publishTime>
+      <publishTime>06/12/2016 09:58:48</publishTime>
     </File>
     <File Include="bin/DeFeng.DAL.dll">
-      <publishTime>06/07/2016 09:42:24</publishTime>
+      <publishTime>06/12/2016 09:58:49</publishTime>
     </File>
     <File Include="bin/DeFeng.Model.dll">
-      <publishTime>06/07/2016 09:42:24</publishTime>
+      <publishTime>06/12/2016 09:58:48</publishTime>
     </File>
     <File Include="bin/DeFengAdmin.dll">
-      <publishTime>06/07/2016 10:26:15</publishTime>
+      <publishTime>06/12/2016 10:48:32</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/07/2016 10:07:20</publishTime>
@@ -181,10 +181,13 @@
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
     <File Include="Content/css/bootstrap.css">
-      <publishTime>06/07/2016 10:08:59</publishTime>
+      <publishTime>06/12/2016 08:46:30</publishTime>
     </File>
     <File Include="Content/css/bootstrap.min.css">
       <publishTime>06/07/2016 10:07:20</publishTime>
+    </File>
+    <File Include="Content/css/common.css">
+      <publishTime>06/11/2016 17:59:08</publishTime>
     </File>
     <File Include="Content/css/customer.css">
       <publishTime>06/07/2016 10:07:20</publishTime>
@@ -199,7 +202,7 @@
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
     <File Include="Content/css/modality.css">
-      <publishTime>06/07/2016 10:09:09</publishTime>
+      <publishTime>06/12/2016 08:46:30</publishTime>
     </File>
     <File Include="Content/css/office.css">
       <publishTime>06/07/2016 10:08:59</publishTime>
@@ -2383,10 +2386,10 @@
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
     <File Include="Scripts/defeng/announcementDetail.js">
-      <publishTime>06/07/2016 10:07:20</publishTime>
+      <publishTime>06/07/2016 17:54:37</publishTime>
     </File>
     <File Include="Scripts/defeng/common.js">
-      <publishTime>06/07/2016 10:07:20</publishTime>
+      <publishTime>06/10/2016 18:58:14</publishTime>
     </File>
     <File Include="Scripts/defeng/customer.js">
       <publishTime>06/07/2016 10:07:20</publishTime>
@@ -2398,7 +2401,7 @@
       <publishTime>06/07/2016 10:23:56</publishTime>
     </File>
     <File Include="Scripts/defeng/house.js">
-      <publishTime>06/07/2016 10:08:59</publishTime>
+      <publishTime>06/12/2016 08:46:30</publishTime>
     </File>
     <File Include="Scripts/defeng/information.js">
       <publishTime>06/07/2016 10:07:20</publishTime>
@@ -2406,17 +2409,23 @@
     <File Include="Scripts/defeng/jquery.login.js">
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
+    <File Include="Scripts/defeng/layout.js">
+      <publishTime>06/08/2016 17:10:01</publishTime>
+    </File>
     <File Include="Scripts/defeng/login.js">
-      <publishTime>06/07/2016 10:07:20</publishTime>
+      <publishTime>06/08/2016 17:00:47</publishTime>
     </File>
     <File Include="Scripts/defeng/office.js">
-      <publishTime>06/07/2016 10:08:59</publishTime>
+      <publishTime>06/12/2016 09:28:07</publishTime>
     </File>
     <File Include="Scripts/defeng/organization.js">
-      <publishTime>06/07/2016 10:07:20</publishTime>
+      <publishTime>06/12/2016 10:01:48</publishTime>
+    </File>
+    <File Include="Scripts/defeng/processCenter.js">
+      <publishTime>06/12/2016 08:46:30</publishTime>
     </File>
     <File Include="Scripts/defeng/register.js">
-      <publishTime>06/07/2016 10:07:20</publishTime>
+      <publishTime>06/12/2016 10:59:48</publishTime>
     </File>
     <File Include="Scripts/devexpress-web-14.1/.DS_Store">
       <publishTime>06/07/2016 10:07:20</publishTime>
@@ -4360,7 +4369,7 @@
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
     <File Include="Views/Home/AnnouncementDetail.cshtml">
-      <publishTime>06/07/2016 10:07:20</publishTime>
+      <publishTime>06/07/2016 17:52:21</publishTime>
     </File>
     <File Include="Views/Home/blank-menu-horizontal-boxed.html">
       <publishTime>06/07/2016 10:07:20</publishTime>
@@ -4642,7 +4651,7 @@
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
     <File Include="Views/Home/Office.cshtml">
-      <publishTime>06/07/2016 10:10:38</publishTime>
+      <publishTime>06/07/2016 15:25:12</publishTime>
     </File>
     <File Include="Views/Home/ProcessCenter.cshtml">
       <publishTime>06/07/2016 10:07:20</publishTime>
@@ -4765,7 +4774,7 @@
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
     <File Include="Views/House/Index.cshtml">
-      <publishTime>06/07/2016 10:08:59</publishTime>
+      <publishTime>06/12/2016 08:46:30</publishTime>
     </File>
     <File Include="Views/Organization/DepTreeview.cshtml">
       <publishTime>06/07/2016 10:07:20</publishTime>
@@ -4774,12 +4783,168 @@
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
     <File Include="Views/Organization/Index.cshtml">
-      <publishTime>06/07/2016 10:07:20</publishTime>
+      <publishTime>06/12/2016 10:12:02</publishTime>
     </File>
     <File Include="Views/Organization/TestView.cshtml">
       <publishTime>06/07/2016 10:07:20</publishTime>
     </File>
+    <File Include="Views/ProcessCenter/Application.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Changes.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/ClinchInformation.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/ContractReport.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Departure.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Deployment.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/DepositBack.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/DepositBackApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/DepositSingle.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/DepositSingleApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/ExpenseAccount.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/ExpensesReport.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/FareReimbursement.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
     <File Include="Views/ProcessCenter/Index.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Induction.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/LeaveApplication.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Mortgage.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/NewHouseContract.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/NewHouseContractApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/NewSecondHousingContractReport.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/NewSubscription.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/NewSubscriptionApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/NewSubscriptionFujian.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/NewSubscriptionFujianApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/OnSiteParty.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/PartTime.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/PartTimeJob.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Positive.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/PostApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Postmanagement.cshtml">
+      <publishTime>06/07/2016 10:08:59</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/ProjectCommission.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/ProjectCommissionApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Regular.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/RegularWorker.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/RentalContractSingle.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/RentalContractSingleApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/RentalContractSingleNew.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/RentalContractSingleNewApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/RentalReport.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Resignation.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/ReturnOrderDeposit.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/ReturnOrderDepositApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/SecondhandOrder.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/SecondhandOrderApply.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/SecondHousingContractReport.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/SecondHousingDepositReport.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/SecondHousingOrderReport.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Single.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/StaffEntryInduction.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/SubscribeSingle.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/Transfer.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/TurnoverRegistration.cshtml">
+      <publishTime>06/12/2016 08:46:30</publishTime>
+    </File>
+    <File Include="Views/ProcessCenter/WritingPaper.cshtml">
       <publishTime>06/07/2016 10:08:59</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
@@ -4793,6 +4958,12 @@
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>06/07/2016 10:07:20</publishTime>
+    </File>
+    <File Include="Views/Staff/Login.cshtml">
+      <publishTime>06/12/2016 10:53:20</publishTime>
+    </File>
+    <File Include="Views/Staff/Register.cshtml">
+      <publishTime>06/09/2016 11:55:13</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/07/2016 10:07:20</publishTime>

@@ -185,49 +185,9 @@ function InitPushRange() {
     InitStaffDepIfames();
     InitPostDepIfames();
     InitDepIfames();
-    ////部门范围
-    //$($(window.frames["staff-dep-treeview"]).context.contentDocument.body).find(".department-treeview ul a").on("click", function () {
-    //    var selectRangeArr = ConvertArr(($("#selected-range option")), "value");
-    //    if ($.inArray(("S_" + $(this).attr("departmentID2")), selectRangeArr) == -1) {
-    //        $("#selected-range").append("<option value='D_" + $(this).attr("departmentID2") + "'></option>");
-    //    }   
-    //});
-    //员工范围
-
-
-    //岗位范围
-    //$($(window.frames["post-dep-treeview"]).context.contentDocument.body).find(".department-treeview ul a").on("click", function () {
-    //    var postJsonStr = $("#postJson").val();
-    //    var postJson = postJsonStr != "" ? $.parseJSON(postJsonStr) : "";
-    //    if (postJson != "") {
-    //        //筛选出属于该部门的员工
-    //        var filterarray = $.grep(postJson, function (value) {
-    //            return value.Department.ID == $(this).attr("departmentID2");
-    //        });
-    //        //如果选择范围里面已经包含了该项则不再显示
-    //        var selectRangeArr = ConvertArr(($("#selected-range option")), "value");
-    //        var resultArr = $.grep(filterarray, function (obj) {
-    //            return $.inArray(("P_" + obj.ID), selectRangeArr) == -1;
-    //        });
-    //        CreateStaffOption("#postSelect", resultArr);
-    //        $("#postSelect option").unbind("dblclick").on("dblclick", function () {
-    //            $("#selected-range").append($(this));
-    //        });
-    //    }
-    //});
-    //$(".post-department-treeview ul a").unbind("click").on("click", function () {
-    //    var thisObj = $(this);
-    //    var depID = $(this).attr("departmentID2");
-    //    var postJsonStr = $("#postJson").val();
-    //    var postJson = postJsonStr != "" ? $.parseJSON(postJsonStr) : "";
-    //    if (postJson != "") {
-    //        CreatePostOption("", postJson);
-    //    }
-    //});
 }
 
 function CreateStaff(element, json) {
-
     var html = "";
     for (var i = 0; i < json.length; i++) {
         html += "<option value='S_" + json[i].ID + "'>" + json[i].StaffName + "</option>";

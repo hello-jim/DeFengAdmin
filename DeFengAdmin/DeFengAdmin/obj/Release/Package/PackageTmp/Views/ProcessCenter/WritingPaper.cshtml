@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "WritingPaper";
+}
+<link rel="stylesheet" href="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.css"> 
+<div class="panel">
+<div class="row text-right"><a href="#">送办</a>丨<a href="#">暂存</a>丨<a href="/ProcessCenter/PostManagement">返回</a></div>
+<div class="row text-center"><h3>发文稿纸</h3></div>
+<div class="row">
+    <div class="col-md-1 text-right translation">文件标题:</div>
+    <div class="col-md-11"><input type="text" class="form-control input-dark" name="fileHeader" id="fileHeader" autocomplete="off" /></div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">发文单位:</div>
+    <div class="col-md-5"><input type="text" class="form-control input-dark" name="units" id="units" autocomplete="off" /></div>
+    <div class="col-md-1 text-right translation">归档部门:</div>
+    <div class="col-md-5"><input type="text" class="form-control input-dark" name="department" id="department" autocomplete="off" /></div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">公文种类:</div>
+    <div class="col-md-5">
+        <select class="form-control" id="application_method">
+            <option></option>
+            <option value="通知" name="application_method">通知</option>
+            <option value="请示" name="application_method">请示</option>
+            <option value="明传" name="application_method">明传</option>
+            <option value="文件" name="application_method">文件</option>
+            <option value="会议纪要" name="application_method">会议纪要</option>
+            <option value="公告" name="application_method">公告</option>
+            <option value="通告" name="application_method">通告</option>
+            <option value="通报" name="application_method">通报</option>
+            <option value="意见" name="application_method">意见</option>
+            <option value="函" name="application_method">函</option>
+            <option value="决定" name="application_method">决定</option>
+            <option value="议案" name="application_method">议案</option>
+            <option value="批复" name="application_method">批复</option>
+            <option value="报告" name="application_method">报告</option>
+        </select> 
+    </div>
+    <div class="col-md-1 text-right translation">主题词:</div>
+    <div class="col-md-5"><input type="text" class="form-control input-dark" name="department" id="department" autocomplete="off" /></div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">拟稿日期:</div>
+    <div class="col-md-5">
+        <div class="date form_datetime">
+            <input id="submitHouseDate" class="form-control" name="submitHouseDate" data-validate="required" readonly />
+            <span class="add-on"><i class="icon-remove"></i></span>
+            <span class="add-on"><i class="icon-calendar"></i></span>
+        </div>
+    </div>
+    <div class="col-md-1 text-right translation">文件编号:</div>
+    <div class="col-md-5"><input type="text" class="form-control input-dark" name="fileNumber" id="fileNumber" autocomplete="off" /></div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">紧急程度:</div>
+    <div class="col-md-5">
+        <select class="form-control" id="application_method">
+            <option></option>
+            <option value="平件" name="application_method">平件</option>
+            <option value="急件" name="application_method">急件</option>
+          
+        </select> 
+    </div>
+    <div class="col-md-1 text-right translation">密级:</div>
+    <div class="col-md-5">
+        <select class="form-control" id="application_method">
+            <option></option>
+            <option value="一般" name="application_method">一般</option>
+            <option value="秘密" name="application_method">秘密</option>
+            <option value="机密" name="application_method">机密</option>
+            <option value="绝密" name="application_method">绝密</option>
+        </select> 
+    </div>
+</div>
+    <div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">主送单位:</div>
+    <div class="col-md-5"><input type="text" class="form-control input-dark" name="lordSend" id="lordSend" autocomplete="off" /></div>
+    <div class="col-md-1 text-right translation">抄送单位:</div>
+    <div class="col-md-5"><input type="text" class="form-control input-dark" name="CcUnit" id="CcUnit" autocomplete="off" /></div>
+</div>
+    <div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">拟稿部门:</div>
+    <div class="col-md-5"><input type="text" class="form-control input-dark" name="isDepartment" id="isDepartment" autocomplete="off" /></div>
+    <div class="col-md-1 text-right translation">拟稿人:</div>
+    <div class="col-md-5"><input type="text" class="form-control input-dark" name="isPerson" id="isPerson" autocomplete="off" /></div>
+</div>
+    <div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">
+        <div class="row">&nbsp;</div>
+        附件:
+    </div>
+    <div class="col-md-11">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="#">新建</a>
+                <a href="#">导入</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" class="form-control input-dark" name="fileHeader" id="fileHeader" autocomplete="off" />
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">主管副总审批:</div>
+    <div class="col-md-11"><input type="text" class="form-control input-dark" name="approval" id="approval" autocomplete="off" /></div>
+</div>
+    <div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">总经理批示:</div>
+    <div class="col-md-11"><input type="text" class="form-control input-dark" name="instructions" id="instructions" autocomplete="off" /></div>
+</div>
+    <div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">校对意见:</div>
+    <div class="col-md-11"><input type="text" class="form-control input-dark" name="proofread" id="proofread" autocomplete="off" /></div>
+</div>
+    <div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-1 text-right translation">分发意见:</div>
+    <div class="col-md-11"><input type="text" class="form-control input-dark" name="distribution" id="distribution" autocomplete="off" /></div>
+</div>
+</div>
+<script src="/Scripts/daterangepicker/daterangepicker.js"></script>
+<script src="/Scripts/datepicker/bootstrap-datepicker.js"></script>
+<script src="/Scripts/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Scripts/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="/Scripts/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.form_datetime').datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                // weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+        });
+
+</script>
