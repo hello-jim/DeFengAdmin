@@ -135,21 +135,23 @@ namespace DeFengAdmin.Controllers
             return result;
         }
 
-        public List<Post> GetPostByDepartment()
+        public string GetPostByDepartment()
         {
-            var list = new List<Post>();
+            var json = "";
             Post_BLL bll = new Post_BLL();
             try
             {
-                var departmentID = Request["departmentID"] != null ? Convert.ToInt32(Request["departmentID"]) : 0;
-                list = bll.GetPostByDepartment(departmentID);
+                var departmentID = Request["depID"] != null ? Convert.ToInt32(Request["depID"]) : 0;
+                var pageIndex = Request["pageIndex"] != null ? Convert.ToInt32(Request["pageIndex"]) : 1;
+                var list = bll.GetPostByDepartment(departmentID, pageIndex);
+                json = JsonConvert.SerializeObject(list);
                 bll = null;
             }
             catch (Exception ex)
             {
                 bll = null;
             }
-            return list;
+            return json;
         }
 
         public string GetPost()
@@ -248,7 +250,7 @@ namespace DeFengAdmin.Controllers
             try
             {
                 var depID = Request["depID"] != null ? Convert.ToInt32(Request["depID"]) : 0;
-                var pageIndex = Request["pageIndex"] != null ? Convert.ToInt32(Request["pageIndex"]) : 0;
+                var pageIndex = Request["pageIndex"] != null ? Convert.ToInt32(Request["pageIndex"]) : 1;
                 list = bll.GetStaffByDepartment(depID, pageIndex);
                 json = JsonConvert.SerializeObject(list);
                 bll = null;

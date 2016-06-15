@@ -146,28 +146,34 @@ function InitDepartment() {
 function InitPost() {
     InitDepartmentTreeView(".post-department-treeview", false);
     $(".post-department-treeview ul a").unbind("click").on("click", function () {
-        var thisObj = $(this);
-        var departmentID = $(thisObj).attr("departmentID2");
-        $("#postDepID").val(departmentID);
-        var postJsonStr = $("#postJsonHidden").val();
-
-        if (postJsonStr != "") {
-            var postJson = $.parseJSON(postJsonStr);
-            var filterarray = $.grep(postJson, function (value) {
-                return value.Department.ID == departmentID;
+        var depID = $(this).attr("departmentID2");
+        $("#postDepID").val(depID);
+        $.post("/Organization/GetPostByDepartment",
+            {
+                depID: depID,
+            },
+            function (data) {
+                var json = $.parseJSON(data);
+                CreatePostTabel(json);
             });
-            CreatePostTabel(filterarray);
-        }
+        //var postJsonStr = $("#postJsonHidden").val();
+
+        //if (postJsonStr != "") {
+        //    var postJson = $.parseJSON(postJsonStr);
+        //    var filterarray = $.grep(postJson, function (value) {
+        //        return value.Department.ID == departmentID;
+        //    });
+        //    CreatePostTabel(filterarray);
+        //}
     });
     $.post("/Organization/GetPost",
        function (data) {
            var json = $.parseJSON(data);
-           $("#postJsonHidden").val(data);
            CreatePostTabel(json);
        });
     $(".post-add-btn").unbind("click").on("click", function () {
-        $('.theme-popover-mask').show();
-        $('.theme-popover-mask').height($(document).height());
+        $('.theme-popover-mask.post-addAndEdit-panel').show();
+        $('.theme-popover-mask.post-addAndEdit-panel').height($(document).height());
         $('.post-addAndEdit-panel').slideDown(200);
     });
 
@@ -191,8 +197,10 @@ function InitPost() {
               post: postJson
           },
           function (data) {
-              if (data == "1") {
-
+              if (data == "True") {
+                  alert("添加成功");
+              } else {
+                  alert("添加失败");
               }
           });
     });
@@ -317,15 +325,14 @@ function InitStaff() {
         function (data) {
             $("#staffJsonHidden").val(data);
             var json = $.parseJSON(data);
-            CreateStaffTable(json);
+            CreateStaffTable(json, "all");
         });
     $(".staff-department-treeview ul a").unbind("click").on("click", function () {
-        var thisObj = $(this);
-        var departmentID = $(thisObj).attr("departmentID2");
-        //$("#DepID").val(departmentID);
+        var depID = $(this).attr("departmentID2");
+        $(".staff-page").attr("depID", depID)
         $.post("/Organization/GetStaffByDepartment",
             {
-                depID: departmentID
+                depID: depID
             },
             function (data) {
                 if (data != "") {
@@ -396,105 +403,198 @@ function InitStaff() {
     });
 }
 
-function CreatePostTabel(json) {
+/*
+创建员工表格
+@param json 岗位json 
+@param type 搜索类型
+*/
+function CreatePostTabel(json, type) {
     var html = "";
-    for (var i = 0; i < json.length; i++) {
-        html += "<tr postID='" + json[i].ID + "' postName='" + json[i].PostName + "'  description='" + json[i].Description + "' isEnable=" + json[i].IsEnable + " postDepID=" + json[i].Department.ID + "  postGrade='" + json[i].PostGrade + "' >";
-        html += "<td>" + "<div  class='cbr-replaced col-post-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
-        html += "<td>" + (i + 1) + "</td>";
-        html += "<td>" + json[i].PostName + "</td>";
-        html += "<td>" + json[i].PostGrade + "</td>";
-        html += "<td>" + (json[i].IsEnable == true ? "是" : "否") + "</td>";
-        html += "</tr>";
-    }
-    $(".post-table tbody").html(html);
-    //  InitCheckBox();
-}
+    if (json.length > 0) {
+        for (var i = 0; i < json.length; i++) {
+            html += "<tr postID='" + json[i].ID + "' postName='" + json[i].PostName + "'  description='" + json[i].Description + "' isEnable=" + json[i].IsEnable + " postDepID=" + json[i].Department.ID + "  postGrade='" + json[i].PostGrade + "' >";
+            html += "<td>" + "<div  class='cbr-replaced col-post-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
+            html += "<td>" + (i + 1) + "</td>";
+            html += "<td>" + json[i].PostName + "</td>";
+            html += "<td>" + json[i].PostGrade + "</td>";
+            html += "<td>" + (json[i].IsEnable == true ? "是" : "否") + "</td>";
+            html += "</tr>";
+        }
+        var pageIndexHtml = "";
+        pageIndexHtml += "<div class='row pageCount'>";
+        pageIndexHtml += "<div class='col-md-6'></div>";
+        pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#' class='page-up'>上一页</a></li>";
+        pageIndexHtml += GetPageCountHtml(json[0].TotalCount, json[0].PageIndex, 10);
+        pageIndexHtml += "<li class='paginate_button' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#' class='page-next'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetTotalPageCount(json[0].TotalCount, 10) + ">最后一页</a></li></ul></div></div></div>";
+        $(".post-page .post-table tbody").html(html);
+        $(".post-page .page-select").html(pageIndexHtml);
 
-function CreateDepartmentTable(childrenDepartmentArr) {
-    var html = "";
-    for (var i = 0; i < childrenDepartmentArr.length; i++) {
-        html += "<tr depID='" + $(childrenDepartmentArr[i]).attr("departmentID2") + "' departmentName='" + $(childrenDepartmentArr[i]).attr("departmentName") + "'  describe='" + $(childrenDepartmentArr[i]).attr("describe") + "' isEnable='" + $(childrenDepartmentArr[i]).attr("isEnable") + "' parentID='" + $(childrenDepartmentArr[i]).attr("parentID") + "' level='" + $(childrenDepartmentArr[i]).attr("level") + "' >";
-        html += "<td>" + "<div  class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
-        html += "<td>" + i + 1 + "</td>";
-        html += "<td>" + $(childrenDepartmentArr[i]).attr("departmentName") + "</td>";
-        html += "<td>" + $(childrenDepartmentArr[i]).attr("describe") + "</td>";
-        html += "<td>" + $(childrenDepartmentArr[i]).attr("departmentID2") + "</td>";
-        html += "<td>" + $(childrenDepartmentArr[i]).attr("isEnable") + "</td>";
-        html += "</tr>";
-    }
-    $("#departmentTabel tbody").html(html);
-    //  InitCheckBox();
-}
-
-function CreateStaffTable(json) {
-    var html = "";
-    for (var i = 0; i < json.length; i++) {
-        html += "<tr staffID=" + json[i].ID + ">";
-        html += "<td>" + "<div  class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
-        html += "<td>" + (i + 1) + "</td>";
-        html += "<td>" + json[i].StaffName + "</td>";
-        html += "<td>" + json[i].Department.DepartmentName + "</td>";
-        html += "<td>" + json[i].Post.PostName + "</td>";
-        html += "<td>" + (json[i].Sex == 1 ? "男" : "女") + "</td>";
-        html += "<td>" + (json[i].IsEnable == 1 ? "是" : "否") + "</td>";
-        html += "</tr>";
-    }
-    var pageIndexHtml = "";
-    pageIndexHtml += "<div class='row pageCount'>";
-    pageIndexHtml += "<div class='col-md-6'></div>";
-    pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous page-up' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#'>上一页</a></li>";
-    pageIndexHtml += GetPageCountHtml(json[0].TotalCount, json[0].PageIndex, 10);
-    pageIndexHtml += "<li class='paginate_button page-next' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetTotalPageCount(json[0].TotalCount, 10) + ">最后一页</a></li></ul></div></div></div>";
-    $(".staff-table tbody").html(html);
-    $(".page-select").html(pageIndexHtml);
-
-    $(".staff-table tbody tr").on("click", function () {
-        var staffID = $(this).attr("staffID");
-        $(".staff-table tbody tr[isSelectStaff]").removeAttr("isSelectStaff");
-        $(this).attr("isSelectStaff", "");
-        $.post("/Organization/GetPermissionByStaff",
-            {
-                staffID: staffID
-            },
-            function (data) {
-                var json = $.parseJSON(data);
-                InitStaffPermission(json);
-            })
-    });
-
-    $(".staff-page .page-select ul li a").unbind("click").on("click", function () {
-        var pageIndex = $(this).attr("pageIndex");
-        if (pageIndex == null) {
-            pageIndex = parseInt($(".paginate_button.active a").attr("pageIndex"));
-            if ($(this).hasClass("page-up")) {
-                if (!pageIndex <= 1) {
-                    pageIndex--;
-                    if (pageIndex < 1) {
+        $(".post-page .page-select ul li a").unbind("click").on("click", function () {
+            var pageIndex = $(this).attr("pageIndex");
+            if (pageIndex == null) {
+                pageIndex = parseInt($(".paginate_button.active a").attr("pageIndex"));
+                if ($(this).hasClass("page-up")) {
+                    if (!pageIndex <= 1) {
+                        pageIndex--;
+                        if (pageIndex < 1) {
+                            return;
+                        }
+                    }
+                }
+                if ($(this).hasClass("page-next")) {
+                    var page = $(".paginate_button");
+                    var totalPageLength = parseInt($(page)[($(page).length - 3)].firstChild.text);
+                    if (pageIndex != totalPageLength) {
+                        pageIndex++;
+                    } else if (pageIndex >= totalPageLength) {
                         return;
                     }
                 }
             }
-            if ($(this).hasClass("page-next")) {
-                var page = $(".paginate_button");
+            if ($(".post-page .page-select[all]").length > 0) {
+                $.post("/Organization/GetStaff",
+                       {
+                           pageIndex: pageIndex
+                       },
+                       function (data) {
+                           var json = $.parseJSON(data);
+                           CreateStaffTable(json, "all");
+                       });
+            } else {
+                var depID = $(".post-page").attr("depID");
+                $.post("/Organization/GetPostByDepartment",
+                    {
+                        depID: depID,
+                        pageIndex: pageIndex
+                    },
+                    function (data) {
+                        var json = $.parseJSON(data);
+                        CreateStaffTable(json);
+                    });
+            }
+        });
+        InitCheckBox();
+    } else {
+        $(".post-table tbody tr").remove();
+    }
+}
 
-                var totalPageLength = parseInt($(page)[($(page).length - 3)].firstChild.text);
-                if (pageIndex != totalPageLength) {
-                    pageIndex++;
-                } else if (pageIndex >= totalPageLength) {
-                    return;
+function CreateDepartmentTable(childrenDepartmentArr) {
+    var html = "";
+    if (childrenDepartmentArr.length > 0) {
+        for (var i = 0; i < childrenDepartmentArr.length; i++) {
+            html += "<tr depID='" + $(childrenDepartmentArr[i]).attr("departmentID2") + "' departmentName='" + $(childrenDepartmentArr[i]).attr("departmentName") + "'  describe='" + $(childrenDepartmentArr[i]).attr("describe") + "' isEnable='" + $(childrenDepartmentArr[i]).attr("isEnable") + "' parentID='" + $(childrenDepartmentArr[i]).attr("parentID") + "' level='" + $(childrenDepartmentArr[i]).attr("level") + "' >";
+            html += "<td>" + "<div  class='cbr-replaced col-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
+            html += "<td>" + i + 1 + "</td>";
+            html += "<td>" + $(childrenDepartmentArr[i]).attr("departmentName") + "</td>";
+            html += "<td>" + $(childrenDepartmentArr[i]).attr("describe") + "</td>";
+            html += "<td>" + $(childrenDepartmentArr[i]).attr("departmentID2") + "</td>";
+            html += "<td>" + $(childrenDepartmentArr[i]).attr("isEnable") + "</td>";
+            html += "</tr>";
+        }
+        $("#departmentTabel tbody").html(html);
+        InitCheckBox();
+    } else {
+        $("#departmentTabel tbody tr").remove();
+    }
+}
+
+/*
+创建员工表格
+@param json 员工json 
+@param type 搜索类型
+*/
+function CreateStaffTable(json, type) {
+    var html = "";
+    if (json.length > 0) {
+        for (var i = 0; i < json.length; i++) {
+            html += "<tr staffID=" + json[i].ID + ">";
+            html += "<td>" + "<div  class='cbr-replaced col-staff-select'><div class='cbr-input'><input type='checkbox' class='cbr cbr-done col-checked'></div><div class='cbr-state'><span></span></div></div>" + "</td>";
+            html += "<td>" + (i + 1) + "</td>";
+            html += "<td>" + json[i].StaffName + "</td>";
+            html += "<td>" + json[i].Department.DepartmentName + "</td>";
+            html += "<td>" + json[i].Post.PostName + "</td>";
+            html += "<td>" + (json[i].Sex == 1 ? "男" : "女") + "</td>";
+            html += "<td>" + (json[i].IsEnable == 1 ? "是" : "否") + "</td>";
+            html += "</tr>";
+        }
+        var pageIndexHtml = "";
+        pageIndexHtml += "<div class='row pageCount'>";
+        pageIndexHtml += "<div class='col-md-6'></div>";
+        pageIndexHtml += "<div class='col-md-6'><div class='dataTables_paginate paging_simple_numbers' id='example-1_paginate'><ul class='pagination'><li class='paginate_button previous' aria-controls='example-1' tabindex='0' id='example-1_previous' ><a href='#' class='page-up'>上一页</a></li>";
+        pageIndexHtml += GetPageCountHtml(json[0].TotalCount, json[0].PageIndex, 10);
+        pageIndexHtml += "<li class='paginate_button' aria-controls='example-1' tabindex='0' id='example-1_next'><a href='#' class='page-next'>下一页</a></li><li class='paginate_button page-last' aria-controls='example-1' tabindex='0' id='example-1_next' ><a href='#' pageIndex=" + GetTotalPageCount(json[0].TotalCount, 10) + ">最后一页</a></li></ul></div></div></div>";
+        $(".staff-table tbody").html(html);
+        $(".page-select").html(pageIndexHtml);
+        if (type === undefined) {
+            $(".page-select").removeAttr("all");
+        } else {
+            $(".page-select").attr(type, "");
+        }
+
+
+        $(".staff-table tbody tr").on("click", function () {
+            var staffID = $(this).attr("staffID");
+            $(".staff-table tbody tr[isSelectStaff]").removeAttr("isSelectStaff");
+            $(this).attr("isSelectStaff", "");
+            $.post("/Organization/GetPermissionByStaff",
+                {
+                    staffID: staffID
+                },
+                function (data) {
+                    var json = $.parseJSON(data);
+                    InitStaffPermission(json);
+                })
+        });
+
+        $(".staff-page .page-select ul li a").unbind("click").on("click", function () {
+            var pageIndex = $(this).attr("pageIndex");
+            if (pageIndex == null) {
+                pageIndex = parseInt($(".paginate_button.active a").attr("pageIndex"));
+                if ($(this).hasClass("page-up")) {
+                    if (!pageIndex <= 1) {
+                        pageIndex--;
+                        if (pageIndex < 1) {
+                            return;
+                        }
+                    }
+                }
+                if ($(this).hasClass("page-next")) {
+                    var page = $(".paginate_button");
+                    var totalPageLength = parseInt($(page)[($(page).length - 3)].firstChild.text);
+                    if (pageIndex != totalPageLength) {
+                        pageIndex++;
+                    } else if (pageIndex >= totalPageLength) {
+                        return;
+                    }
                 }
             }
-        }
-        $.post("/Organization/GetStaff",
-            {
-                pageIndex: pageIndex
-            },
-            function (data) {
-                var json = $.parseJSON(data);
-                CreateStaffTable(json);
-            });
-    });
+            if ($(".staff-page .page-select[all]").length > 0) {
+                $.post("/Organization/GetStaff",
+                       {
+                           pageIndex: pageIndex
+                       },
+                       function (data) {
+                           var json = $.parseJSON(data);
+                           CreateStaffTable(json, "all");
+                       });
+            } else {
+                var depID = $(".staff-page").attr("depID");
+                $.post("/Organization/GetStaffByDepartment",
+                    {
+                        depID: depID,
+                        pageIndex: pageIndex
+                    },
+                    function (data) {
+                        var json = $.parseJSON(data);
+                        CreateStaffTable(json);
+                    });
+            }
+        });
+    }
+    else {
+        $(".staff-table tbody tr").remove();
+    }
 }
 
 function InitStaffPermission(arr) {
